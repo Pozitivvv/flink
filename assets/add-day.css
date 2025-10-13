@@ -1,0 +1,340 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, sans-serif;
+  background: #0f0f0f;
+  color: #e4e4e4;
+  padding-bottom: 80px;
+  min-height: 100vh;
+}
+
+.container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px 16px;
+}
+
+h1 {
+  font-size: 24px;
+  margin-bottom: 24px;
+  color: #fff;
+  font-weight: 600;
+}
+
+.message {
+  background: rgba(239, 68, 68, 0.15);
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  color: #fca5a5;
+  padding: 12px 16px;
+  border-radius: 12px;
+  margin-bottom: 20px;
+  font-size: 14px;
+}
+
+form {
+  background: #1a1a1a;
+  padding: 20px;
+  border-radius: 16px;
+  margin-bottom: 32px;
+  border: 1px solid #2a2a2a;
+}
+
+input[type="text"] {
+  width: 100%;
+  padding: 14px 16px;
+  background: #0f0f0f;
+  border: 1px solid #2a2a2a;
+  border-radius: 12px;
+  color: #e4e4e4;
+  font-size: 16px;
+  margin-bottom: 16px;
+  transition: all 0.3s ease;
+}
+
+input[type="text"]:focus {
+  outline: none;
+  border-color: #3b82f6;
+  background: #141414;
+}
+
+input[type="text"]::placeholder {
+  color: #6b6b6b;
+}
+
+button[type="submit"] {
+  width: 100%;
+  padding: 14px;
+  background: linear-gradient(135deg, #3b82f6, #2563eb);
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+}
+
+button[type="submit"]:active {
+  transform: scale(0.98);
+}
+button[type="submit"]:hover {
+  background: linear-gradient(135deg, #3b83f6e3, #174ab7);
+}
+
+h3 {
+  font-size: 18px;
+  margin-bottom: 16px;
+  color: #fff;
+  font-weight: 600;
+}
+
+.theme-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.theme-item {
+  background: #1a1a1a;
+  border: 1px solid #2a2a2a;
+  border-radius: 16px;
+  padding: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.theme-item:active {
+  transform: scale(0.98);
+  background: #1f1f1f;
+}
+
+.theme-item strong {
+  color: #fff;
+  font-size: 16px;
+  display: block;
+  margin-bottom: 6px;
+}
+
+.theme-item small {
+  color: #6b6b6b;
+  font-size: 13px;
+}
+
+.theme-item > div {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex-shrink: 0;
+  margin-left: 12px;
+}
+
+.theme-item a,
+.delete-btn {
+  padding: 8px 14px;
+  border-radius: 8px;
+  font-size: 13px;
+  text-decoration: none;
+  text-align: center;
+  white-space: nowrap;
+  transition: all 0.3s ease;
+  font-weight: 500;
+}
+
+.theme-item a {
+  background: #10b981;
+  color: white;
+  display: block;
+}
+
+.theme-item a:active {
+  background: #059669;
+}
+
+.delete-btn {
+  background: rgba(239, 68, 68, 0.15);
+  color: #ef4444;
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  cursor: pointer;
+}
+
+.delete-btn:active {
+  background: rgba(239, 68, 68, 0.25);
+}
+
+.empty-state {
+  text-align: center;
+  padding: 40px 20px;
+  color: #6b6b6b;
+}
+
+/* Модальне вікно */
+.modal-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.8);
+  z-index: 2000;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  animation: fadeIn 0.2s ease;
+}
+
+.modal-overlay.active {
+  display: flex;
+}
+
+.modal {
+  background: #1a1a1a;
+  border: 1px solid #2a2a2a;
+  border-radius: 20px;
+  padding: 24px;
+  max-width: 400px;
+  width: 100%;
+  animation: slideUp 0.3s ease;
+}
+
+.modal-header {
+  text-align: center;
+  margin-bottom: 16px;
+}
+
+.modal-icon {
+  font-size: 48px;
+  margin-bottom: 12px;
+}
+
+.modal h2 {
+  font-size: 20px;
+  color: #fff;
+  margin-bottom: 8px;
+}
+
+.modal p {
+  color: #9ca3af;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.modal-buttons {
+  display: flex;
+  gap: 12px;
+  margin-top: 24px;
+}
+
+.modal-btn {
+  flex: 1;
+  padding: 12px;
+  border: none;
+  border-radius: 12px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.modal-btn-cancel {
+  background: #2a2a2a;
+  color: #e4e4e4;
+}
+
+.modal-btn-cancel:active {
+  background: #333;
+}
+
+.modal-btn-delete {
+  background: #ef4444;
+  color: white;
+}
+
+.modal-btn-delete:active {
+  background: #dc2626;
+  transform: scale(0.98);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@media (min-width: 768px) {
+  body {
+    padding-bottom: 0;
+  }
+
+  .container {
+    padding: 40px 24px;
+    margin-bottom: 40px;
+  }
+
+  h1 {
+    font-size: 32px;
+  }
+
+  .theme-item > div {
+    flex-direction: row;
+  }
+
+  .delete-btn:hover {
+    background: rgba(255, 36, 36, 0.43);
+    color: white;
+  }
+
+  .theme-item a:hover {
+    background: #059669;
+  }
+
+  .modal-btn-cancel:hover {
+    background: #333;
+  }
+
+  .modal-btn-delete:hover {
+    background: #dc2626;
+  }
+}
+
+.theme-item {
+  cursor: pointer;
+  padding: 12px 16px;
+  border: 1px solid #3c3c3c;
+  border-radius: 8px;
+  margin-bottom: 8px;
+  transition: background-color 0.2s, box-shadow 0.2s;
+}
+
+.theme-item:hover {
+  background-color: #2f2f2f;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.actions {
+  float: right;
+}

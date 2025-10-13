@@ -1,0 +1,272 @@
+/* Нижній навбар */
+.bottom-nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #1a1a1a;
+  border-top: 1px solid #2a2a2a;
+  display: flex;
+  justify-content: space-around;
+  padding: 12px 0 max(12px, env(safe-area-inset-bottom));
+  box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+  transition: all 0.3s ease;
+}
+
+.nav-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  text-decoration: none;
+  color: #6b6b6b;
+  font-size: 12px;
+  padding: 8px 16px;
+  border-radius: 12px;
+  transition: all 0.3s ease;
+  min-width: 70px;
+  cursor: pointer;
+}
+
+.nav-item span {
+  font-size: 24px;
+  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.nav-item .nav-text {
+  display: block;
+}
+
+.nav-item:hover {
+  transform: translateY(-2px);
+}
+
+.nav-item.active {
+  color: #3b82f6;
+  background: rgba(59, 130, 246, 0.15);
+}
+
+.nav-item:active {
+  background: rgba(59, 130, 246, 0.15);
+  transform: scale(0.97);
+}
+
+/* macOS Dock стиль для десктопа */
+@media (min-width: 768px) {
+  body {
+    padding-bottom: 100px;
+  }
+
+  .bottom-nav {
+    bottom: 16px;
+    left: 50%;
+    right: auto;
+    transform: translateX(-50%);
+    width: auto;
+    max-width: 400px;
+
+    /* Глазоморфизм эффект */
+    background: rgba(26, 26, 26, 0.7);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    padding: 8px 16px;
+
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4),
+      inset 0 1px 0 rgba(255, 255, 255, 0.1);
+
+    flex-direction: row;
+    justify-content: center;
+    gap: 8px;
+  }
+
+  .nav-item {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: auto;
+    min-width: 60px;
+    padding: 8px 12px;
+    font-size: 10px;
+    gap: 4px;
+    border-radius: 14px;
+    background: transparent;
+    position: relative;
+  }
+
+  .nav-item span {
+    font-size: 28px;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+  }
+
+  /* Эффект увеличения при наведении (как в macOS Dock) */
+  .nav-item:hover {
+    transform: translateY(-8px) scale(1.1);
+  }
+
+  .nav-item:hover span {
+    transform: scale(1.2);
+  }
+
+  /* Эффект на соседние элементы при наведении */
+  .nav-item:hover + .nav-item span {
+    transform: scale(1.1);
+  }
+
+  .nav-item:has(+ .nav-item:hover) span {
+    transform: scale(1.1);
+  }
+
+  .nav-item.active {
+    background: rgba(59, 130, 246, 0.2);
+    border: 1px solid rgba(59, 130, 246, 0.3);
+    box-shadow: 0 4px 16px rgba(59, 130, 246, 0.4),
+      inset 0 1px 0 rgba(59, 130, 246, 0.2);
+  }
+
+  .nav-item.active::before {
+    content: "";
+    position: absolute;
+    bottom: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 4px;
+    height: 4px;
+    background: #3b82f6;
+    border-radius: 50%;
+    box-shadow: 0 0 8px rgba(59, 130, 246, 0.8);
+  }
+
+  .nav-item:active {
+    transform: translateY(-6px) scale(1.05);
+  }
+
+  .nav-text {
+    font-weight: 500;
+    opacity: 0.9;
+  }
+
+  .nav-item:hover .nav-text {
+    opacity: 1;
+    font-weight: 600;
+  }
+}
+
+/* Анимация появления */
+@keyframes dockSlideUp {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+}
+
+@media (min-width: 768px) {
+  .bottom-nav {
+    animation: dockSlideUp 0.4s ease-out;
+  }
+}
+
+.page-header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 28px;
+}
+
+/* Кнопка "Назад" */
+.back-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+  background: #1a1a1a;
+  border: 1px solid #2a2a2a;
+  color: #e4e4e4;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+  line-height: 0; /* убирает лишние смещения из-за inline-бокса */
+}
+
+.back-btn svg {
+  width: 20px;
+  height: 20px;
+  stroke: #e4e4e4;
+  transition: stroke 0.2s ease;
+  display: block; /* устраняет смещение от inline-svg */
+}
+
+.back-btn:hover {
+  background: #2a2a2a;
+}
+
+.back-btn:hover svg {
+  stroke: #ffffff;
+}
+
+.back-btn:active {
+  transform: scale(0.95);
+  background: #333;
+}
+
+/* Заголовок */
+.page-header h1 {
+  margin: 0;
+  font-size: 24px;
+  font-weight: 600;
+  color: #fff;
+  line-height: 1;
+}
+
+/* ALERTS */
+/* messages.css */
+/* Стилі повідомлень: помилка та успіх */
+
+#notifications {
+  margin-bottom: 15px; /* отступы от краев экрана */
+}
+
+.message {
+  gap: 10px;
+  border-radius: 12px;
+  padding: 14px 16px;
+  font-size: 14px;
+  font-weight: 500;
+  width: 100%; /* растянуть на весь контейнер */
+  margin-bottom: 0; /* уже есть gap, margin можно убрать */
+}
+
+/* 🔴 Ошибка */
+.message.error {
+  background: rgba(239, 68, 68, 0.15);
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  color: #fca5a5;
+}
+
+.message.error::before {
+  content: "⚠️";
+  font-size: 18px;
+}
+
+/* 🟢 Успех */
+.message.success {
+  background: rgba(16, 185, 129, 0.15);
+  border: 1px solid rgba(16, 185, 129, 0.3);
+  color: #6ee7b7;
+}
+
+.message.success::before {
+  content: "✅";
+  font-size: 18px;
+}
+
+/* Убираем анимации */

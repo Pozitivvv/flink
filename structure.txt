@@ -1,0 +1,11 @@
+│
+├─ config.php              ← подключение к MySQL
+├─ index.php               ← страница входа / регистрации
+├─ dashboard.php           ← меню (добавление урока, слова, флешкарточки)
+├─ add_day.php             ← создание дней/тем
+├─ add_word.php            ← добавление слов
+├─ flashcards.php          ← тренировка
+├─ logout.php              ← выход
+└─ /assets/
+    ├─ style.css
+    └─ app.js
