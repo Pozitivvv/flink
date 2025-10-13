@@ -86,16 +86,19 @@ $days = $stmt->fetchAll(PDO::FETCH_ASSOC);
         <?php if ($days): ?>
             <ul class="theme-list" id="themeList">
                 <?php foreach ($days as $day): ?>
+                    <?php
+                        // 🕒 Форматуємо дату створення (дд.мм.рр, гг:хх)
+                        $formatted_date = date("d.m.y, H:i", strtotime($day['created_at']));
+                    ?>
                     <li class="theme-item" data-id="<?= $day['id'] ?>" onclick="location.href='add_word.php?day_id=<?= $day['id'] ?>'">
                         <span>
                             <strong><?= htmlspecialchars($day['title']) ?></strong><br>
-                            <small>Створено: <?= htmlspecialchars($day['created_at']) ?></small>
+                            <small>📅 <?= $formatted_date ?></small>
                         </span>
                         <div class="actions">
                             <button class="delete-btn" onclick="event.stopPropagation();">🗑️ Видалити</button>
                         </div>
                     </li>
-
                 <?php endforeach; ?>
             </ul>
         <?php else: ?>
