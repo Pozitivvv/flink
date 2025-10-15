@@ -133,8 +133,8 @@ $allTranslations = $stmt_trans->fetchAll(PDO::FETCH_COLUMN);
             Практика
         </a>
         <a href="settings.php" class="nav-item">
-            <span>⚙️</span>
-            Налаштування
+            <span>👤</span>
+            Профиль
         </a>
     </nav>
 
