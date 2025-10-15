@@ -186,7 +186,7 @@ if ($day_id) {
                 <span>✏️</span>
                 Практика
             </a>
-            <a href="settings.php" class="nav-item">
+            <a href="profile/" class="nav-item">
                 <span>👤</span>
                 Профиль
             </a>

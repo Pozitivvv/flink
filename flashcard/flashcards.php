@@ -132,7 +132,7 @@ $allTranslations = $stmt_trans->fetchAll(PDO::FETCH_COLUMN);
             <span>✏️</span>
             Практика
         </a>
-        <a href="settings.php" class="nav-item">
+        <a href="../profile/" class="nav-item">
             <span>👤</span>
             Профиль
         </a>
