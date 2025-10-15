@@ -1,19 +1,20 @@
 <?php
 /**
- * migrate.php — создаёт все таблицы для приложения "Німецький словник"
+ * migrate.php — створює всі таблиці для застосунку "Німецький словник"
  */
 
 require_once '../../config.php';
 
 try {
-    // Проверим соединение
+    // Перевіримо підключення
     $pdo->query("SELECT 1");
     echo "✅ Підключення до бази даних успішне.<br>";
 
-    // Создание таблицы users
+    // Таблиця users
     $pdo->exec("
         CREATE TABLE IF NOT EXISTS users (
             id INT AUTO_INCREMENT PRIMARY KEY,
+            name VARCHAR(100) NOT NULL,
             login VARCHAR(100) NOT NULL UNIQUE,
             email VARCHAR(255) UNIQUE NOT NULL,
             password VARCHAR(255) NOT NULL,
@@ -22,7 +23,7 @@ try {
     ");
     echo "🧩 Таблиця 'users' створена або вже існує.<br>";
 
-    // Создание таблицы days (уроки/теми)
+    // Таблиця days (уроки/теми)
     $pdo->exec("
         CREATE TABLE IF NOT EXISTS days (
             id INT AUTO_INCREMENT PRIMARY KEY,
@@ -34,7 +35,7 @@ try {
     ");
     echo "📘 Таблиця 'days' створена або вже існує.<br>";
 
-    // Создание таблицы words (слова)
+    // Таблиця words (слова)
     $pdo->exec("
         CREATE TABLE IF NOT EXISTS words (
             id INT AUTO_INCREMENT PRIMARY KEY,
@@ -49,8 +50,9 @@ try {
         );
     ");
     echo "🗣️ Таблиця 'words' створена або вже існує.<br>";
-    
-    &pdo->exec ("
+
+    // Таблиця user_errors (помилки користувача)
+    $pdo->exec("
         CREATE TABLE IF NOT EXISTS user_errors (
             id INT AUTO_INCREMENT PRIMARY KEY,
             user_id INT NOT NULL,
@@ -62,6 +64,17 @@ try {
         );
     ");
     echo "🚫 Таблиця 'user_errors' створена або вже існує.<br>";
+
+    $pdo->exec("
+        CREATE TABLE base_words (
+            id INT AUTO_INCREMENT PRIMARY KEY,
+            article VARCHAR(20),
+            german VARCHAR(255) NOT NULL,
+            transcription VARCHAR(255),
+            translation VARCHAR(255) NOT NULL,
+            created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+        );
+    ");
 
     echo "<br>✅ Міграція завершена успішно!";
 } catch (PDOException $e) {

@@ -12,11 +12,12 @@ $message = '';
 $error = false;
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $name = trim($_POST['name'] ?? '');
     $login = trim($_POST['login'] ?? '');
     $email = trim($_POST['email'] ?? '');
     $password = trim($_POST['password'] ?? '');
 
-    if ($login === '' || $email === '' || $password === '') {
+    if ($name === '' || $login === '' || $email === '' || $password === '') {
         $message = 'Заповніть усі поля';
         $error = true;
     } else {
@@ -29,13 +30,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         } else {
             // Создаём пользователя
             $hashed = password_hash($password, PASSWORD_DEFAULT);
-            $stmt = $pdo->prepare("INSERT INTO users (login, email, password) VALUES (?, ?, ?)");
-            $stmt->execute([$login, $email, $hashed]);
+            $stmt = $pdo->prepare("INSERT INTO users (name, login, email, password) VALUES (?, ?, ?, ?)");
+            $stmt->execute([$name, $login, $email, $hashed]);
 
             // Автоматический вход
             $user_id = $pdo->lastInsertId();
             $_SESSION['user_id'] = $user_id;
             $_SESSION['user_login'] = $login;
+            $_SESSION['user_name'] = $name;
 
             header('Location: dashboard.php');
             exit();
@@ -65,6 +67,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <?php endif; ?>
 
         <form method="POST">
+            <div class="input-group">
+                <span class="input-icon">🧍</span>
+                <input type="text" name="name" placeholder="Ім’я" required autocomplete="name">
+            </div>
             <div class="input-group">
                 <span class="input-icon">👤</span>
                 <input type="text" name="login" placeholder="Логін" required autocomplete="username">
