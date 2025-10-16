@@ -269,4 +269,91 @@
   font-size: 18px;
 }
 
-/* Убираем анимации */
+/* Модальное окно */
+.modal-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.8);
+  z-index: 2000;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  animation: fadeIn 0.2s ease;
+}
+
+.modal-overlay.active {
+  display: flex;
+}
+
+.modal {
+  background: #1a1a1a;
+  border: 1px solid #2a2a2a;
+  border-radius: 20px;
+  padding: 24px;
+  max-width: 400px;
+  width: 100%;
+  animation: slideUp 0.3s ease;
+}
+
+.modal-header {
+  text-align: center;
+  margin-bottom: 16px;
+}
+
+.modal-icon {
+  font-size: 48px;
+  margin-bottom: 12px;
+}
+
+.modal h2 {
+  font-size: 20px;
+  color: #fff;
+  margin-bottom: 8px;
+}
+
+.modal p {
+  color: #9ca3af;
+  font-size: 14px;
+  line-height: 1.5;
+  text-align: center;
+}
+
+.modal-buttons {
+  display: flex;
+  gap: 12px;
+  margin-top: 24px;
+}
+
+.modal-btn {
+  flex: 1;
+  padding: 12px;
+  border: none;
+  border-radius: 12px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.modal-btn-cancel {
+  background: #2a2a2a;
+  color: #e4e4e4;
+}
+
+.modal-btn-cancel:active {
+  background: #333;
+}
+
+.modal-btn-delete {
+  background: #ef4444;
+  color: white;
+}
+
+.modal-btn-delete:active {
+  background: #dc2626;
+  transform: scale(0.98);
+}
