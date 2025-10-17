@@ -87,7 +87,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </form>
 
         <p class="footer-text">
-            Вже маєте акаунт? <a href="index.php">Увійти</a>
+            Вже маєте акаунт? <a href="login.php">Увійти</a>
         </p>
     </div>
     <script src="script/alerts.js"></script>

@@ -91,7 +91,7 @@ $dateDE = $daysDE[$dayName] . ', ' . date('d') . ' ' . $monthsDE[$monthName] . '
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Головна | Німецький словник</title>
-    <link rel="stylesheet" href="assets/dashboard.css">
+    <link rel="stylesheet" href="assets/dashboard.css?v=0.0.1">
     <link rel="stylesheet" href="assets/main-style.css">
 </head>
 <body>

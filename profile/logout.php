@@ -16,5 +16,5 @@ if (ini_get("session.use_cookies")) {
 }
 
 // Перенаправляємо на головну або сторінку входу
-header("Location: index.php");
+header("Location: ../login.php");
 exit();

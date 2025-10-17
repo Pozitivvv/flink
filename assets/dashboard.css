@@ -315,3 +315,9 @@ body {
     transform: translateY(-4px);
   }
 }
+
+@media (max-width: 404px) {
+  .action-icon {
+    font-size: 24px;
+  }
+}

@@ -170,11 +170,11 @@ if ($day_id) {
         <?php endif; ?>
     
     <nav class="bottom-nav">
-            <a href="dashboard.php" class="nav-item active">
+            <a href="dashboard.php" class="nav-item">
                 <span>🏠</span>
                 Головна
             </a>
-            <a href="add_day.php" class="nav-item ">
+            <a href="add_day.php" class="nav-item">
                 <span>📘</span>
                 Теми
             </a>

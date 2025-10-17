@@ -46,9 +46,11 @@ $allTranslations = $stmt_trans->fetchAll(PDO::FETCH_COLUMN);
     <html lang="uk">
     <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>🧠 Тест на слова</title>
-    <link rel="stylesheet" href="style/flashcard.css">
     <link rel="stylesheet" href="../assets/main-style.css">
+    <link rel="stylesheet" href="style/flashcard.css">
+    
 </head>
 <body>
 <div class="container">
