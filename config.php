@@ -4,9 +4,9 @@
  */
 
 $DB_HOST = 'localhost';          // або хост з панелі (іноді не localhost)
-$DB_NAME = 'flyca583_wortly';   // назва бази
-$DB_USER = 'flyca583_wortly';   // ім’я користувача MySQL
-$DB_PASS = 'wortlyCMD_';        // ✅ це твій пароль
+$DB_NAME = 'flink';   // назва бази
+$DB_USER = 'root';   // ім’я користувача MySQL
+$DB_PASS = 'root';        // ✅ це твій пароль
 
 try {
     $pdo = new PDO(

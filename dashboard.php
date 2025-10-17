@@ -91,7 +91,7 @@ $dateDE = $daysDE[$dayName] . ', ' . date('d') . ' ' . $monthsDE[$monthName] . '
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Головна | Німецький словник</title>
-    <link rel="stylesheet" href="assets/dashboard.css?v=0.0.1">
+    <link rel="stylesheet" href="assets/dashboard.css?v=0.0.3">
     <link rel="stylesheet" href="assets/main-style.css">
 </head>
 <body>
@@ -232,19 +232,8 @@ $dateDE = $daysDE[$dayName] . ', ' . date('d') . ' ' . $monthsDE[$monthName] . '
             Профиль
         </a>
     </nav>
-
+    <script src="script/voice.js"></script>
     <script>
-        // Озвучування
-        function playWord(word) {
-            if ('speechSynthesis' in window) {
-                window.speechSynthesis.cancel();
-                const utterance = new SpeechSynthesisUtterance(word);
-                utterance.lang = 'de-DE';
-                utterance.rate = 0.85;
-                setTimeout(() => window.speechSynthesis.speak(utterance), 100);
-            }
-        }
-
         // Додавання до словника
         function toggleFavorite(wordId, btn) {
             const isActive = btn.classList.contains('active');

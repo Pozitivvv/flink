@@ -61,7 +61,6 @@ if (isset($_GET['ajax']) && $_GET['ajax'] === '1') {
             echo '<td>' . htmlspecialchars($word['article']) . '</td>';
             echo '<td class="word-cell" data-word="' . htmlspecialchars($fullWord) . '">';
             echo '<span class="word-text"><strong>' . htmlspecialchars($word['german']) . '</strong></span>';
-            echo '<button class="sound-btn" title="Озвучити" type="button">🔊</button>';
             echo '</td>';
             echo '<td>' . htmlspecialchars($word['translation']) . '</td>';
             echo '<td>' . ($word['day_title'] ? htmlspecialchars($word['day_title']) : '—') . '</td>';

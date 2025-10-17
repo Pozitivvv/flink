@@ -1,4 +1,4 @@
-<?php
+<?php 
 session_start();
 require_once 'config.php';
 
@@ -8,13 +8,38 @@ if (!isset($_SESSION['user_id'])) {
 }
 
 $user_id = $_SESSION['user_id'];
-$message = '';
+$day_id = isset($_GET['day_id']) ? (int)$_GET['day_id'] : null;
+
+// ✅ AJAX - Добавление слова
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['ajax_add'])) {
+    $selected_day = $_POST['day_id'] !== '' ? (int)$_POST['day_id'] : null;
+    $article = trim($_POST['article'] ?? '');
+    $german = trim($_POST['german'] ?? '');
+    $translation = trim($_POST['translation'] ?? '');
+
+    if ($german !== '' && $translation !== '') {
+        $check = $pdo->prepare("SELECT id FROM words WHERE user_id = ? AND german = ?");
+        $check->execute([$user_id, $german]);
+        
+        if ($check->fetch()) {
+            echo json_encode(['status' => 'error', 'message' => ' Це слово вже є у вашому словнику.']);
+        } else {
+            $stmt = $pdo->prepare("
+                INSERT INTO words (user_id, day_id, article, german, translation)
+                VALUES (?, ?, ?, ?, ?)
+            ");
+            $stmt->execute([$user_id, $selected_day, $article, $german, $translation]);
+            echo json_encode(['status' => 'success', 'message' => ' Слово додано!']);
+        }
+    } else {
+        echo json_encode(['status' => 'error', 'message' => 'Заповніть усі поля.']);
+    }
+    exit;
+}
 
 // ✅ AJAX видалення слова
 if (isset($_POST['delete_id'])) {
     $delete_id = (int)$_POST['delete_id'];
-
-    // Перевіряємо, чи слово належить поточному користувачу
     $check = $pdo->prepare("SELECT id FROM words WHERE id = ? AND user_id = ?");
     $check->execute([$delete_id, $user_id]);
 
@@ -25,46 +50,15 @@ if (isset($_POST['delete_id'])) {
     } else {
         echo "error";
     }
-    exit; // 🔥 важливо для AJAX — не вантажимо HTML
+    exit;
 }
-
-// Получаем ID темы, если передан
-$day_id = isset($_GET['day_id']) ? (int)$_GET['day_id'] : null;
 
 // Получаем список всех тем пользователя
 $stmt = $pdo->prepare("SELECT id, title FROM days WHERE user_id = ? ORDER BY created_at DESC");
 $stmt->execute([$user_id]);
 $days = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-// Добавление слова
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['german'])) {
-    $selected_day = $_POST['day_id'] !== '' ? (int)$_POST['day_id'] : null;
-    $article = trim($_POST['article']);
-    $german = trim($_POST['german']);
-    $translation = trim($_POST['translation']);
-
-    if ($german !== '' && $translation !== '') {
-        // Проверка, есть ли уже такое слово у пользователя
-        $check = $pdo->prepare("SELECT id FROM words WHERE user_id = ? AND german = ?");
-        $check->execute([$user_id, $german]);
-        if ($check->fetch()) {
-            $message = "⚠️ Це слово вже є у вашому словнику.";
-        } else {
-            // Добавляем слово
-            $stmt = $pdo->prepare("
-                INSERT INTO words (user_id, day_id, article, german, translation)
-                VALUES (?, ?, ?, ?, ?)
-            ");
-            $stmt->execute([$user_id, $selected_day, $article, $german, $translation]);
-            $message = "✅ Слово <b>" . htmlspecialchars($german) . "</b> додано!";
-            if ($selected_day) $day_id = $selected_day;
-        }
-    } else {
-        $message = '⚠️ Заповніть усі поля.';
-    }
-}
-
-// Если выбрана тема — показываем слова только из неё
+// Получаем слова выбранной темы
 $words = [];
 if ($day_id) {
     $stmt = $pdo->prepare("
@@ -105,13 +99,9 @@ if ($day_id) {
         <h1>✍️ Додати слово</h1>
     </div>
 
-        <?php if ($message): ?>
-            <p class="message" style="color:<?= str_contains($message, '✅') ? 'green' : 'red' ?>;">
-                <?= $message ?>
-            </p>
-        <?php endif; ?>
+        <div id="message-container"></div>
 
-        <form method="POST">
+        <form id="addWordForm">
             <label for="day_id">Оберіть тему (необов'язково):</label>
             <select name="day_id" id="day_id">
                 <option value="">— Без теми —</option>
@@ -207,7 +197,161 @@ if ($day_id) {
         </div>
     </div>
 
-    <script src="script/add-word.js"></script>
-    <script src="script/alerts.js"></script>
+    <script>
+        let wordIdToDelete = null;
+        const modal = document.getElementById("deleteModal");
+        const cancelBtn = document.getElementById("cancelDelete");
+        const confirmBtn = document.getElementById("confirmDelete");
+        const messageContainer = document.getElementById("message-container");
+
+        // AJAX добавление слова
+        document.getElementById("addWordForm").addEventListener("submit", function(e) {
+            e.preventDefault();
+            
+            const formData = new FormData(this);
+            formData.append("ajax_add", "1");
+            
+            fetch("", {
+                method: "POST",
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                showMessage(data.message, data.status);
+                if (data.status === 'success') {
+                    document.getElementById("addWordForm").reset();
+                    // Перезагружаем слова если нужно
+                    setTimeout(() => location.reload(), 2000);
+                }
+            });
+        });
+
+        // Показ сообщения
+        function showMessage(msg, status) {
+            const message = document.createElement("div");
+            message.className = `message ${status === "success" ? "success" : "error"}`;
+            message.textContent = msg;
+
+            messageContainer.innerHTML = "";
+            messageContainer.appendChild(message);
+
+            // Плавное появление
+            message.style.opacity = "0";
+            setTimeout(() => (message.style.opacity = "1"), 50);
+
+            // Авто-скрытие для успешных сообщений
+            if (status === "success") {
+                setTimeout(() => {
+                    message.style.opacity = "0";
+                    setTimeout(() => (messageContainer.innerHTML = ""), 300);
+                }, 6000);
+            }
+        }
+
+
+        // 🔊 Функция озвучивания слова
+        function playWord(word) {
+            if ("speechSynthesis" in window) {
+                window.speechSynthesis.cancel();
+                const utterance = new SpeechSynthesisUtterance(word);
+                utterance.lang = "de-DE";
+                utterance.rate = 0.85;
+                utterance.pitch = 1.0;
+                utterance.volume = 1.0;
+                setTimeout(() => {
+                    window.speechSynthesis.speak(utterance);
+                }, 100);
+            }
+        }
+
+        // Добавляем обработчики для озвучивания слов
+        function attachSoundEvents() {
+            document.querySelectorAll(".word-cell").forEach((cell) => {
+                cell.style.cursor = "pointer";
+                cell.addEventListener("click", function (e) {
+                    e.preventDefault();
+                    const word = this.dataset.word;
+                    this.style.transform = "scale(1.02)";
+                    setTimeout(() => {
+                        this.style.transform = "scale(1)";
+                    }, 200);
+                    playWord(word);
+                });
+            });
+        }
+
+        // Удаление слова
+        function attachDeleteEvents() {
+            document.querySelectorAll(".delete-btn").forEach((btn) => {
+                btn.addEventListener("click", function (e) {
+                    e.stopPropagation();
+                    wordIdToDelete = this.dataset.id;
+                    modal.classList.add("active");
+                });
+            });
+        }
+
+        // Закрыть модальное окно
+        if (cancelBtn) {
+            cancelBtn.addEventListener("click", () => {
+                modal.classList.remove("active");
+                wordIdToDelete = null;
+            });
+        }
+
+        // Закрыть при клике вне модального окна
+        if (modal) {
+            modal.addEventListener("click", (e) => {
+                if (e.target === modal) {
+                    modal.classList.remove("active");
+                    wordIdToDelete = null;
+                }
+            });
+        }
+
+        // Подтвердить удаление
+        if (confirmBtn) {
+            confirmBtn.addEventListener("click", function () {
+                if (wordIdToDelete) {
+                    const xhr = new XMLHttpRequest();
+                    const formData = new FormData();
+                    formData.append("delete_id", wordIdToDelete);
+                    xhr.open("POST", "", true);
+                    xhr.onload = function () {
+                        if (xhr.responseText.trim() === "success") {
+                            const row = document.getElementById("word-" + wordIdToDelete);
+                            if (row) {
+                                row.style.opacity = "0";
+                                row.style.transform = "translateX(-20px)";
+                                setTimeout(() => row.remove(), 300);
+                            }
+                            modal.classList.remove("active");
+                            wordIdToDelete = null;
+                        }
+                    };
+                    xhr.send(formData);
+                }
+            });
+        }
+
+        // Закрытие модалки по ESC
+        document.addEventListener("keydown", function (e) {
+            if (e.key === "Escape" && modal && modal.classList.contains("active")) {
+                modal.classList.remove("active");
+                wordIdToDelete = null;
+            }
+        });
+
+        // Возврат назад
+        function goBack() {
+            window.history.back();
+        }
+
+        // Подключаем события после загрузки
+        document.addEventListener("DOMContentLoaded", function () {
+            attachDeleteEvents();
+            attachSoundEvents();
+        });
+    </script>
 </body>
 </html>
