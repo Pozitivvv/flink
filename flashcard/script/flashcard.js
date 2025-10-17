@@ -128,7 +128,7 @@ function showElement(id) {
 // Получение вариантов ответов
 function getOptionsForIndex(correctIndex) {
   if (mode === "articles") {
-    return ["der", "die", "das", "—"];
+    return ["Der", "Die", "Das", "—"];
   }
 
   const correct = words[correctIndex].translation;

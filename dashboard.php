@@ -91,7 +91,15 @@ $dateDE = $daysDE[$dayName] . ', ' . date('d') . ' ' . $monthsDE[$monthName] . '
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Головна | Німецький словник</title>
-    <link rel="stylesheet" href="assets/dashboard.css?v=0.0.3">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#111C1C">
+
+    <!-- Для iOS -->
+    <link rel="apple-touch-icon" href="assets/icons/icon-512.png">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+
+    <link rel="stylesheet" href="assets/dashboard.css?v=0.0.5">
     <link rel="stylesheet" href="assets/main-style.css">
 </head>
 <body>
@@ -232,6 +240,14 @@ $dateDE = $daysDE[$dayName] . ', ' . date('d') . ' ' . $monthsDE[$monthName] . '
             Профиль
         </a>
     </nav>
+    <script>
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('/sw.js')
+            .then(reg => console.log('✅ Service Worker зарегистрирован:', reg.scope))
+            .catch(err => console.log('❌ SW error:', err));
+        }
+    </script>
+
     <script src="script/voice.js"></script>
     <script>
         // Додавання до словника

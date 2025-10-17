@@ -17,6 +17,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['ajax_add'])) {
     $german = trim($_POST['german'] ?? '');
     $translation = trim($_POST['translation'] ?? '');
 
+    // ✅ Делаем первую букву артикля заглавной
+    if ($article !== '') {
+        $article = ucfirst(mb_strtolower($article, 'UTF-8'));
+    }
+
     if ($german !== '' && $translation !== '') {
         $check = $pdo->prepare("SELECT id FROM words WHERE user_id = ? AND german = ?");
         $check->execute([$user_id, $german]);
@@ -36,6 +41,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['ajax_add'])) {
     }
     exit;
 }
+
 
 // ✅ AJAX видалення слова
 if (isset($_POST['delete_id'])) {
