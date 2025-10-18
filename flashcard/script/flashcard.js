@@ -1,10 +1,12 @@
 // Получение данных из PHP
 const allTranslations = window.phpData.allTranslations;
 let words = [];
+let totalWords = 0;
 let current = 0;
 let score = 0;
 let mode = "normal";
 let answered = false;
+let lastActionRemoved = false; // флаг для режима "errors"
 
 const q = document.getElementById("question");
 const opts = document.getElementById("options");
@@ -23,17 +25,14 @@ document.addEventListener("DOMContentLoaded", function () {
 function showMessage(message, type = "info", duration = 15000) {
   const container = document.getElementById("notifications");
 
-  // Создаём сообщение
   const div = document.createElement("div");
   div.className = `message ${
     type === "error" ? "error" : type === "success" ? "success" : ""
   }`;
   div.textContent = message;
 
-  // Добавляем в контейнер
   container.appendChild(div);
 
-  // Автоудаление
   setTimeout(() => {
     div.style.opacity = "0";
     div.style.transition = "opacity 0.4s";
@@ -97,10 +96,13 @@ function startTest() {
         showMessage("Немає слів для цього тесту", "error");
         return;
       }
+
       words = data;
+      totalWords = words.length;
       current = 0;
       score = 0;
       answered = false;
+      lastActionRemoved = false;
 
       hideElement("menu");
       showElement("quizContainer");
@@ -178,7 +180,13 @@ function removeError(wordId) {
 
 // Показ вопроса
 function showQuestion() {
-  if (words.length === 0 || current >= words.length) {
+  // Проверка на завершение теста
+  if (!words || words.length === 0) {
+    showResults();
+    return;
+  }
+
+  if (current >= words.length) {
     showResults();
     return;
   }
@@ -186,6 +194,7 @@ function showQuestion() {
   answered = false;
   const word = words[current];
   const article = word.article ? word.article + " " : "";
+
   q.textContent = mode === "articles" ? word.german : article + word.german;
 
   const options = getOptionsForIndex(current);
@@ -206,12 +215,14 @@ function showQuestion() {
 function selectOption(div, opt) {
   if (answered) return;
   answered = true;
+  lastActionRemoved = false;
 
   const word = words[current];
   const isCorrect =
     mode === "articles"
       ? opt === (word.article || "—")
       : opt === word.translation;
+
   const buttons = document.querySelectorAll(".option");
   buttons.forEach((b) => (b.onclick = null));
 
@@ -221,10 +232,15 @@ function selectOption(div, opt) {
     removeError(word.id);
 
     if (mode === "errors") {
+      // Удаляем текущее слово
       words.splice(current, 1);
-      answered = false;
-      showQuestion();
-      return;
+      lastActionRemoved = true;
+
+      // Если слов больше нет
+      if (words.length === 0) {
+        setTimeout(() => showResults(), 500);
+        return;
+      }
     }
   } else {
     div.classList.add("wrong");
@@ -243,8 +259,31 @@ function selectOption(div, opt) {
 // Следующий вопрос
 function nextQuestion() {
   if (!answered) return;
-  current++;
-  showQuestion();
+
+  if (mode === "errors") {
+    if (!lastActionRemoved) {
+      current++; // неправильный ответ — идем к следующему
+    }
+    lastActionRemoved = false;
+
+    // Проверка на завершение
+    if (current >= words.length || words.length === 0) {
+      showResults();
+      return;
+    }
+
+    showQuestion();
+  } else {
+    current++;
+
+    // Проверка на завершение
+    if (current >= words.length) {
+      showResults();
+      return;
+    }
+
+    showQuestion();
+  }
 }
 
 // Показ результатов
@@ -252,17 +291,15 @@ function showResults() {
   hideElement("quizContainer");
   showElement("resultsContainer");
 
-  const percentage = Math.round((score / words.length) * 100);
+  const percentage = Math.round((score / totalWords) * 100);
 
-  // Установка текста результатов
   document.getElementById(
     "finalScore"
-  ).textContent = `${score} з ${words.length}`;
+  ).textContent = `${score} з ${totalWords}`;
   document.getElementById(
     "percentageText"
   ).textContent = `${percentage}% правильних відповідей`;
 
-  // Изменение иконки в зависимости от результата
   const icon = document.querySelector(".results-icon");
   if (percentage === 100) {
     icon.textContent = "🏆";

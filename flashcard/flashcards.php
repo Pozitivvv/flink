@@ -130,7 +130,7 @@ $allTranslations = $stmt_trans->fetchAll(PDO::FETCH_COLUMN);
                 <span>📚</span>
                 Словарь
             </a>
-        <a href="#" class="nav-item active">
+        <a href="flashcards.php" class="nav-item active">
             <span>✏️</span>
             Практика
         </a>
