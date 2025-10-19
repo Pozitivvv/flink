@@ -184,7 +184,7 @@ $words = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 <span>📚</span>
                 Словарь
             </a>
-            <a href="flashcard/flashcards.php" class="nav-item">
+            <a href="flashcard/practice.php" class="nav-item">
                 <span>✏️</span>
                 Практика
             </a>

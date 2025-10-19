@@ -23,7 +23,7 @@ $days = $stmt->fetchAll(PDO::FETCH_ASSOC);
 <div class="container">
     <!-- Шапка страницы -->
     <div class="page-header">
-        <a href="flashcards.php" class="back-btn">
+        <a href="practice.php" class="back-btn">
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                 stroke-width="2" stroke-linecap="square" stroke-linejoin="miter">
                 <path d="M15 18l-6-6 6-6"/>
@@ -147,7 +147,7 @@ clearBtn.addEventListener('click', ()=>{
 
 function selectDay(id){
     // Возврат на practice.php с выбранной темой
-    window.location = 'flashcards.php?day_id=' + id;
+    window.location = 'practice.php?day_id=' + id;
 }
 </script>
 </body>

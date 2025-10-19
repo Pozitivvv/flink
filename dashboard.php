@@ -201,7 +201,7 @@ $dateDE = $daysDE[$dayName] . ', ' . date('d') . ' ' . $monthsDE[$monthName] . '
                     <p>Створити урок</p>
                 </div>
             </a>
-            <a href="flashcard/flashcards.php" class="action-card">
+            <a href="flashcard/practice.php" class="action-card">
                 <div class="action-icon">🧠</div>
                 <div class="action-text">
                     <h3>Практика</h3>
@@ -231,7 +231,7 @@ $dateDE = $daysDE[$dayName] . ', ' . date('d') . ' ' . $monthsDE[$monthName] . '
             <span>📚</span>
             Словарь
         </a>
-        <a href="flashcard/flashcards.php" class="nav-item">
+        <a href="flashcard/practice.php" class="nav-item">
             <span>✏️</span>
             Практика
         </a>
