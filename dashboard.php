@@ -99,7 +99,7 @@ $dateDE = $daysDE[$dayName] . ', ' . date('d') . ' ' . $monthsDE[$monthName] . '
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="default">
 
-    <link rel="stylesheet" href="assets/dashboard.css?v=0.0.5">
+    <link rel="stylesheet" href="assets/dashboard.css?v=0.0.6">
     <link rel="stylesheet" href="assets/main-style.css">
 </head>
 <body>
@@ -146,6 +146,18 @@ $dateDE = $daysDE[$dayName] . ', ' . date('d') . ' ' . $monthsDE[$monthName] . '
                 </div>
             </div>
             <?php endif; ?>
+            <a href="function/interactive/" class="widget widget-flashcard">
+                <div class="widget-header">
+                    <div class="widget-title">
+                        <span class="widget-icon">🎴</span>
+                        Флешкарти
+                    </div>
+                </div>
+                <div class="flashcard-preview">
+                    <p>Переглядай слова і переклад та вчи</p>
+                    <div class="flashcard-arrow">→</div>
+                </div>
+            </a>
 
             <!-- Статистика -->
             <div class="widget">
