@@ -1,7 +1,8 @@
 <?php
-// remove_error.php
+//remove_error.php
 session_start();
 require_once '../config.php';
+require_once '../function/achievements/checkAchievements.php'; // ✅ нужно подключить, чтобы использовать checkAchievements()
 
 header('Content-Type: application/json; charset=utf-8');
 
@@ -20,9 +21,22 @@ if ($word_id <= 0) {
 }
 
 try {
+    // ❌ 1. Удаляем из ошибок
     $del = $pdo->prepare("DELETE FROM user_errors WHERE user_id = ? AND word_id = ?");
     $del->execute([$user_id, $word_id]);
-    echo json_encode(['ok'=>true]);
+
+    // ✅ 2. Увеличиваем счетчик исправленных ошибок
+    $pdo->prepare("UPDATE users SET errors_fixed = errors_fixed + 1 WHERE id = ?")
+        ->execute([$user_id]);
+
+    // ✅ 3. Проверяем ачивку
+    $ach = checkAchievements($user_id, 'errors_fixed');
+
+    echo json_encode([
+        'ok'=>true,
+        'achievement' => $ach
+    ]);
+
 } catch (PDOException $e) {
     http_response_code(500);
     echo json_encode(['error'=>$e->getMessage()]);
