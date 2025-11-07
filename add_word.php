@@ -34,6 +34,33 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['ajax_add'])) {
                 VALUES (?, ?, ?, ?, ?)
             ");
             $stmt->execute([$user_id, $selected_day, $article, $german, $translation]);
+
+            // 🧩 Обновляем активность и streak
+            $stmt = $pdo->prepare("SELECT last_active_date, current_streak FROM users WHERE id = ?");
+            $stmt->execute([$user_id]);
+            $user = $stmt->fetch(PDO::FETCH_ASSOC);
+
+            $today = date('Y-m-d');
+            $yesterday = date('Y-m-d', strtotime('-1 day'));
+
+            $streak = 1;
+            if ($user) {
+                $last = $user['last_active_date'];
+                if ($last === $yesterday) $streak = $user['current_streak'] + 1;
+                elseif ($last === $today) $streak = $user['current_streak'];
+                $stmt = $pdo->prepare("UPDATE users SET last_active_date = ?, current_streak = ? WHERE id = ?");
+                $stmt->execute([$today, $streak, $user_id]);
+            }
+
+            // 🏆 Перевіряємо досягнення
+            require_once 'function/achievements/checkAchievements.php';
+            checkAchievements($user_id, 'words_count');
+            checkAchievements($user_id, 'perfect_words');
+            checkAchievements($user_id, 'morning_activity');
+            checkAchievements($user_id, 'night_activity');
+            checkAchievements($user_id, 'streak_days');
+            checkAchievements($user_id, 'first_login');
+
             echo json_encode(['status' => 'success', 'message' => ' Слово додано!']);
         }
     } else {

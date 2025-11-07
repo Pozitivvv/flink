@@ -36,6 +36,56 @@ $themes = $pdo->prepare("SELECT COUNT(*) as total FROM days WHERE user_id = ?");
 $themes->execute([$user_id]);
 $totalThemes = $themes->fetchColumn();
 
+// Получаем рандомное НЕРАЗБЛОКИРОВАННОЕ достижение
+$stmt = $pdo->prepare("
+    SELECT a.* FROM achievements a
+    LEFT JOIN user_achievements ua ON a.id = ua.achievement_id AND ua.user_id = ?
+    WHERE ua.id IS NULL
+    ORDER BY RAND()
+    LIMIT 1
+");
+$stmt->execute([$user_id]);
+$randomAchievement = $stmt->fetch(PDO::FETCH_ASSOC);
+
+// Функция для получения прогресса достижения
+function getAchievementProgress($user_id, $condition_type, $condition_value, $pdo) {
+    $current = 0;
+    $target = $condition_value;
+    $percentage = 0;
+
+    switch ($condition_type) {
+        case 'words_added':
+            $stmt = $pdo->prepare("SELECT COUNT(*) FROM words WHERE user_id = ?");
+            $stmt->execute([$user_id]);
+            $current = (int)$stmt->fetchColumn();
+            break;
+        case 'days_created':
+            $stmt = $pdo->prepare("SELECT COUNT(*) FROM days WHERE user_id = ?");
+            $stmt->execute([$user_id]);
+            $current = (int)$stmt->fetchColumn();
+            break;
+        case 'practice_completed':
+            $stmt = $pdo->prepare("SELECT COUNT(*) FROM practice_history WHERE user_id = ?");
+            $stmt->execute([$user_id]);
+            $current = (int)$stmt->fetchColumn();
+            break;
+        case 'consecutive_days':
+            $stmt = $pdo->prepare("SELECT current_streak FROM users WHERE id = ?");
+            $stmt->execute([$user_id]);
+            $current = (int)$stmt->fetchColumn() ?: 0;
+            break;
+    }
+
+    $current = min($current, $target);
+    $percentage = $target > 0 ? round(($current / $target) * 100) : 0;
+
+    return [
+        'current' => $current,
+        'target' => $target,
+        'percentage' => $percentage
+    ];
+}
+
 // Определяем время суток
 $hour = (int)date('H');
 if ($hour >= 5 && $hour < 12) {
@@ -77,8 +127,8 @@ $monthsDE = [
     'December' => 'Dezember'
 ];
 
-$dayName = date('l'); // день недели на английском
-$monthName = date('F'); // месяц на английском
+$dayName = date('l');
+$monthName = date('F');
 
 $dateDE = $daysDE[$dayName] . ', ' . date('d') . ' ' . $monthsDE[$monthName] . ' ' . date('Y');
 
@@ -146,6 +196,7 @@ $dateDE = $daysDE[$dayName] . ', ' . date('d') . ' ' . $monthsDE[$monthName] . '
                 </div>
             </div>
             <?php endif; ?>
+
             <a href="function/interactive/" class="widget widget-flashcard">
                 <div class="widget-header">
                     <div class="widget-title">
@@ -179,22 +230,25 @@ $dateDE = $daysDE[$dayName] . ', ' . date('d') . ' ' . $monthsDE[$monthName] . '
                 </div>
             </div>
 
-            <!-- Прогресс -->
-            <div class="widget">
+            <!-- Рандомное достижение вместо прогресса -->
+            <?php if ($randomAchievement): ?>
+            <a href="function/achievements/" class="widget widget-achievement">
                 <div class="widget-header">
                     <div class="widget-title">
                         <span class="widget-icon">🎯</span>
-                        Твій прогрес
+                        Дивись усі досягнення
                     </div>
                 </div>
-                <div class="stat-value" style="font-size: 24px; margin-bottom: 8px;">
-                    <?= min(100, round(($totalWords / 100) * 100)) ?>%
+                <div class="achievement-preview">
+                    <div class="achievement-icon"><?= htmlspecialchars($randomAchievement['icon']) ?></div>
+                    <div class="achievement-info">
+                        <div class="achievement-name"><?= htmlspecialchars($randomAchievement['title']) ?></div>
+                        <div class="achievement-desc"><?= htmlspecialchars($randomAchievement['description']) ?></div>
+                    </div>
+                    <div class="achievement-arrow">→</div>
                 </div>
-                <div class="stat-label" style="margin-bottom: 12px;">Ціль: 100 слів</div>
-                <div class="progress-bar">
-                    <div class="progress-fill" style="width: <?= min(100, ($totalWords / 100) * 100) ?>%"></div>
-                </div>
-            </div>
+            </a>
+            <?php endif; ?>
         </div>
 
         <!-- Швидкі дії -->
@@ -231,7 +285,7 @@ $dateDE = $daysDE[$dayName] . ', ' . date('d') . ' ' . $monthsDE[$monthName] . '
     </div>
 
     <nav class="bottom-nav">
-        <a href="dashboard.php" class="nav-item">
+        <a href="dashboard.php" class="nav-item active">
             <span>🏠</span>
             Головна
         </a>
@@ -252,6 +306,7 @@ $dateDE = $daysDE[$dayName] . ', ' . date('d') . ' ' . $monthsDE[$monthName] . '
             Профиль
         </a>
     </nav>
+
     <script>
         if ('serviceWorker' in navigator) {
             navigator.serviceWorker.register('/sw.js')
@@ -265,9 +320,8 @@ $dateDE = $daysDE[$dayName] . ', ' . date('d') . ' ' . $monthsDE[$monthName] . '
         // Додавання до словника
         function toggleFavorite(wordId, btn) {
             const isActive = btn.classList.contains('active');
-            if (isActive) return; // уже добавлено
+            if (isActive) return;
 
-            // Показать процесс
             btn.disabled = true;
             btn.innerHTML = '⏳ Додаємо...';
 
@@ -283,19 +337,10 @@ $dateDE = $daysDE[$dayName] . ', ' . date('d') . ' ' . $monthsDE[$monthName] . '
                         btn.innerHTML = '❤️ У словнику';
                         btn.disabled = false;
 
-                        // Обновляем статистику на странице без перезагрузки
                         const totalWordsElem = document.querySelector('.stat-card .stat-value');
                         if (totalWordsElem) {
                             let count = parseInt(totalWordsElem.textContent) || 0;
                             totalWordsElem.textContent = count + 1;
-                        }
-
-                        // Можно обновить прогресс
-                        const progressFill = document.querySelector('.progress-fill');
-                        if (progressFill) {
-                            let total = parseInt(totalWordsElem.textContent) || 0;
-                            let percent = Math.min(100, (total / 100) * 100);
-                            progressFill.style.width = percent + '%';
                         }
                     } else {
                         btn.innerHTML = '🤍 Додати';
@@ -312,7 +357,6 @@ $dateDE = $daysDE[$dayName] . ', ' . date('d') . ' ' . $monthsDE[$monthName] . '
             };
             xhr.send('word_id=' + wordId);
         }
-
     </script>
 </body>
 </html>

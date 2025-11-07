@@ -28,13 +28,13 @@ if (empty($words)) {
 }
 ?>
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="ua">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
 <meta name="theme-color" content="#1a1a2e">
-<title>Флешкарты</title>
-<link rel="stylesheet" href="style/flashcard.css?v=0.0.1">
+<title>Флешкарти - Wortly DE</title>
+<link rel="stylesheet" href="style/flashcard.css">
 </head>
 <body>
 <div class="container">
@@ -52,20 +52,20 @@ if (empty($words)) {
             <span id="currentCard">1</span>/<span id="totalCards"><?= count($words) ?></span>
         </div>
     </div>
-
+    <div class="card-hint">Клік або тягніть ← → для перевороту - ↑ Наступне слово</div>
     <!-- Контейнер карточки -->
     <div class="card-container" id="cardContainer">
         <div class="swipe-indicator" id="swipeIndicator">↑</div>
         
         <div class="card-wrapper" id="cardWrapper">
             <div class="card card-front">
-                <button class="sound-btn" onclick="playCurrentWord(event)">🔊</button>
+                <button class="sound-btn" id="frontSoundBtn">🔊</button>
                 <div class="card-article" id="frontArticle"></div>
                 <div class="card-word" id="frontWord"></div>
-                <div class="card-hint">Клик или тяните ← → для переворота • ↑ Следующее слово</div>
+                
             </div>
             <div class="card card-back">
-                <button class="sound-btn sound-btn-back" onclick="playCurrentWord(event)">🔊</button>
+                <button class="sound-btn sound-btn-back" id="backSoundBtn">🔊</button>
                 <div class="card-article" id="backArticle"></div>
                 <div class="card-word" id="backWord"></div>
                 <div class="card-translation" id="backTranslation"></div>
@@ -95,6 +95,7 @@ if (empty($words)) {
         </button>
     </div>
 </div>
+<script src="../../script/voice.js"></script>
 <script>
     const words = <?= json_encode($words) ?>;
     let currentIndex = 0;
@@ -179,6 +180,10 @@ if (empty($words)) {
     cardContainer.addEventListener('mouseleave', handleEnd);
 
     function handleStart(e) {
+
+        if (e.target.closest('.sound-btn')) {
+            return;
+        }
         if (isAnimating) return;
         e.preventDefault();
         isDragging = true;
@@ -334,10 +339,30 @@ if (empty($words)) {
         playWord(fullWord);
     }
 
+    // Обработчики для кнопок звука
+    const frontSoundBtn = document.getElementById('frontSoundBtn');
+    const backSoundBtn = document.getElementById('backSoundBtn');
+
+    // Click для desktop
+    frontSoundBtn.addEventListener('click', playCurrentWord);
+    backSoundBtn.addEventListener('click', playCurrentWord);
+
+    // Touchend для мобильных (приоритетнее чем click)
+    frontSoundBtn.addEventListener('touchend', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        playCurrentWord(e);
+    });
+
+    backSoundBtn.addEventListener('touchend', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        playCurrentWord(e);
+    });
     // Инициализация
     loadCard();
 </script>
 
-<script src="../../script/voice.js"></script>
+
 </body>
 </html>

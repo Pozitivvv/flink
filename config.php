@@ -1,11 +1,23 @@
 <?php
-/**
- * config.php — підключення до бази даних з правильними параметрами
- */
+
+$session_lifetime = 60 * 60 * 24 * 10;
+
+ini_set('session.gc_maxlifetime', $session_lifetime);
+session_set_cookie_params([
+    'lifetime' => $session_lifetime,
+    'path' => '/',
+    'secure' => true,
+    'httponly' => true,
+    'samesite' => 'Lax',
+]);
+
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 
 $DB_HOST = 'localhost';          // або хост з панелі (іноді не localhost)
 $DB_NAME = 'flink';   // назва бази
-$DB_USER = 'root';   // ім’я користувача MySQL
+$DB_USER = 'root';   // ім'я користувача MySQL
 $DB_PASS = 'root';        // ✅ це твій пароль
 
 try {
@@ -26,10 +38,6 @@ try {
 
 } catch (PDOException $e) {
     die("❌ Помилка підключення до БД: " . $e->getMessage());
-}
-
-if (session_status() === PHP_SESSION_NONE) {
-    session_start();
 }
 
 function require_login() {
