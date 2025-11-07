@@ -236,7 +236,7 @@ $dateDE = $daysDE[$dayName] . ', ' . date('d') . ' ' . $monthsDE[$monthName] . '
                 <div class="widget-header">
                     <div class="widget-title">
                         <span class="widget-icon">🎯</span>
-                        Дивись усі досягнення
+                        Виконай досягнення
                     </div>
                 </div>
                 <div class="achievement-preview">
