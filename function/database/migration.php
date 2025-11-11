@@ -144,6 +144,44 @@ try {
     ");
     echo "🎯 Таблиця 'user_achievements' створена або вже існує.<br>";
 
+    // 📦 Модулі
+    $db->exec("
+        CREATE TABLE IF NOT EXISTS modules (
+            id INT AUTO_INCREMENT PRIMARY KEY,
+            title VARCHAR(255) NOT NULL,
+            description TEXT,
+            image VARCHAR(255),
+            created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+        ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+    ");
+    echo "📦 Таблиця 'modules' створена або вже існує.<br>";
+
+    // 📝 Слова модулів
+    $db->exec("
+        CREATE TABLE IF NOT EXISTS module_words (
+            id INT AUTO_INCREMENT PRIMARY KEY,
+            module_id INT NOT NULL,
+            article VARCHAR(20),
+            german VARCHAR(255) NOT NULL,
+            translation VARCHAR(255) NOT NULL,
+            type VARCHAR(50),
+            created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+            FOREIGN KEY (module_id) REFERENCES modules(id) ON DELETE CASCADE
+        ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+    ");
+    echo "📝 Таблиця 'module_words' створена або вже існує.<br>";
+
+    $db->exec("
+        CREATE TABLE IF NOT EXISTS user_modules (
+            id INT AUTO_INCREMENT PRIMARY KEY,
+            user_id INT NOT NULL,
+            module_id INT NOT NULL,
+            added_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+            UNIQUE KEY uq_user_module (user_id, module_id),
+            FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE,
+            FOREIGN KEY (module_id) REFERENCES modules(id) ON DELETE CASCADE
+        ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+    ")
     // Повертаємо перевірку зовнішніх ключів
     $db->exec("SET FOREIGN_KEY_CHECKS=1;");
 

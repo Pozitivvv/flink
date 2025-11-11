@@ -1,0 +1,132 @@
+[
+  {
+    "article": "der",
+    "german": "Apfel",
+    "translation": "яблуко",
+    "type": "noun"
+  },
+  {
+    "article": "die",
+    "german": "Banane",
+    "translation": "банан",
+    "type": "noun"
+  },
+  { "article": "das", "german": "Brot", "translation": "хліб", "type": "noun" },
+  {
+    "article": "die",
+    "german": "Milch",
+    "translation": "молоко",
+    "type": "noun"
+  },
+  { "article": "der", "german": "Käse", "translation": "сир", "type": "noun" },
+  { "article": "das", "german": "Ei", "translation": "яйце", "type": "noun" },
+  {
+    "article": "die",
+    "german": "Kartoffel",
+    "translation": "картопля",
+    "type": "noun"
+  },
+  {
+    "article": "der",
+    "german": "Fisch",
+    "translation": "риба",
+    "type": "noun"
+  },
+  {
+    "article": "das",
+    "german": "Fleisch",
+    "translation": "м'ясо",
+    "type": "noun"
+  },
+  {
+    "article": "die",
+    "german": "Tomate",
+    "translation": "помідор",
+    "type": "noun"
+  },
+  {
+    "article": "der",
+    "german": "Salat",
+    "translation": "салат",
+    "type": "noun"
+  },
+  {
+    "article": "die",
+    "german": "Karotte",
+    "translation": "морква",
+    "type": "noun"
+  },
+  {
+    "article": "das",
+    "german": "Wasser",
+    "translation": "вода",
+    "type": "noun"
+  },
+  { "article": "der", "german": "Saft", "translation": "сік", "type": "noun" },
+  { "article": "die", "german": "Suppe", "translation": "суп", "type": "noun" },
+  {
+    "article": "das",
+    "german": "Brötchen",
+    "translation": "булочка",
+    "type": "noun"
+  },
+  {
+    "article": "der",
+    "german": "Kuchen",
+    "translation": "пиріг",
+    "type": "noun"
+  },
+  {
+    "article": "die",
+    "german": "Schokolade",
+    "translation": "шоколад",
+    "type": "noun"
+  },
+  {
+    "article": "das",
+    "german": "Obst",
+    "translation": "фрукти",
+    "type": "noun"
+  },
+  {
+    "article": "das",
+    "german": "Gemüse",
+    "translation": "овочі",
+    "type": "noun"
+  },
+  { "article": "der", "german": "Reis", "translation": "рис", "type": "noun" },
+  {
+    "article": "die",
+    "german": "Pasta",
+    "translation": "паста",
+    "type": "noun"
+  },
+  {
+    "article": "der",
+    "german": "Zucker",
+    "translation": "цукор",
+    "type": "noun"
+  },
+  { "article": "das", "german": "Salz", "translation": "сіль", "type": "noun" },
+  { "article": "der", "german": "Honig", "translation": "мед", "type": "noun" },
+  {
+    "article": "die",
+    "german": "Butter",
+    "translation": "масло",
+    "type": "noun"
+  },
+  {
+    "article": "das",
+    "german": "Joghurt",
+    "translation": "йогурт",
+    "type": "noun"
+  },
+  { "article": "der", "german": "Tee", "translation": "чай", "type": "noun" },
+  {
+    "article": "der",
+    "german": "Kaffee",
+    "translation": "кава",
+    "type": "noun"
+  },
+  { "article": "das", "german": "Essen", "translation": "їжа", "type": "noun" }
+]

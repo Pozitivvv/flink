@@ -19,29 +19,88 @@ body {
   padding: 20px 16px;
 }
 
-h1 {
-  font-size: 24px;
-  margin-bottom: 24px;
-  color: #fff;
-  font-weight: 600;
+.page-header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 28px;
 }
 
-.message {
-  background: rgba(239, 68, 68, 0.15);
-  border: 1px solid rgba(239, 68, 68, 0.3);
-  color: #fca5a5;
-  padding: 12px 16px;
+.back-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
   border-radius: 12px;
-  margin-bottom: 20px;
-  font-size: 14px;
+  background: #1a1a1a;
+  border: 1px solid #2a2a2a;
+  color: #e4e4e4;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+  -webkit-tap-highlight-color: transparent;
+  cursor: pointer;
 }
 
-form {
+.back-btn:active {
+  transform: scale(0.95);
+  background: #2a2a2a;
+}
+
+.page-header h1 {
+  margin: 0;
+  font-size: 24px;
+  font-weight: 700;
+  color: #fff;
+  line-height: 1.2;
+}
+
+/* ========================================
+   СЕКЦІЇ
+   ======================================== */
+
+.section {
+  margin-bottom: 32px;
+}
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+  gap: 12px;
+}
+
+.section-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: #fff;
+  margin-bottom: 0;
+}
+
+.view-all-link {
+  font-size: 12px;
+  color: #3b82f6;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.view-all-link:active {
+  opacity: 0.7;
+}
+
+/* ========================================
+   ФОРМА
+   ======================================== */
+
+.form {
   background: #1a1a1a;
   padding: 20px;
   border-radius: 16px;
-  margin-bottom: 32px;
   border: 1px solid #2a2a2a;
+  margin-bottom: 12px;
 }
 
 input[type="text"] {
@@ -54,6 +113,7 @@ input[type="text"] {
   font-size: 16px;
   margin-bottom: 16px;
   transition: all 0.3s ease;
+  -webkit-appearance: none;
 }
 
 input[type="text"]:focus {
@@ -66,33 +126,163 @@ input[type="text"]::placeholder {
   color: #6b6b6b;
 }
 
-button[type="submit"] {
-  width: 100%;
-  padding: 14px;
-  background: linear-gradient(135deg, #3b82f6, #2563eb);
-  color: white;
+/* ========================================
+   ПОДСКАЗКА О МОДУЛЯХ
+   ======================================== */
+
+.section-hint {
+  background: rgba(59, 130, 246, 0.08);
+  border: 1px solid rgba(59, 130, 246, 0.2);
+  border-radius: 12px;
+  padding: 14px 16px;
+  margin-top: 12px;
+}
+
+.section-hint p {
+  font-size: 13px;
+  color: #9ca3af;
+  margin: 0;
+  text-align: center;
+}
+
+.hint-link {
+  color: #3b82f6;
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.3s ease;
+}
+
+.hint-link:active {
+  opacity: 0.7;
+}
+
+/* ========================================
+   КНОПКИ
+   ======================================== */
+
+.btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 16px;
   border: none;
   border-radius: 12px;
-  font-size: 16px;
+  font-size: 14px;
   font-weight: 600;
   cursor: pointer;
   transition: all 0.3s ease;
+  -webkit-appearance: none;
+  text-decoration: none;
+  color: white;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.btn-primary {
+  width: 100%;
+  padding: 14px;
+  background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
   box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
 }
 
-button[type="submit"]:active {
+.btn-primary:active {
   transform: scale(0.98);
 }
-button[type="submit"]:hover {
-  background: linear-gradient(135deg, #3b83f6e3, #174ab7);
+
+.btn-mini {
+  width: 100%;
+  padding: 10px 12px;
+  font-size: 12px;
+  background: #3b82f6;
+  box-shadow: 0 2px 8px rgba(59, 130, 246, 0.2);
 }
 
-h3 {
-  font-size: 18px;
-  margin-bottom: 16px;
-  color: #fff;
-  font-weight: 600;
+.btn-mini:active {
+  transform: scale(0.96);
 }
+
+/* ========================================
+   МОДУЛІ КАРУСЕЛЬ
+   ======================================== */
+
+.modules-carousel {
+  display: flex;
+  gap: 12px;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  padding-bottom: 8px;
+  margin-bottom: 8px;
+}
+
+.modules-carousel::-webkit-scrollbar {
+  display: none;
+}
+
+.mini-module-card {
+  flex-shrink: 0;
+  width: 160px;
+  background: linear-gradient(135deg, #1a1a1a 0%, #151515 100%);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 14px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.mini-module-card:active {
+  transform: scale(0.95);
+}
+
+.mini-module-img {
+  width: 100%;
+  height: 100px;
+  overflow: hidden;
+  background: #0f0f0f;
+}
+
+.mini-module-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.mini-module-card:active .mini-module-img img {
+  transform: scale(1.05);
+}
+
+.mini-module-content {
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex-grow: 1;
+}
+
+.mini-module-content h3 {
+  font-size: 13px;
+  font-weight: 600;
+  color: #fff;
+  line-height: 1.2;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  margin: 0;
+}
+
+.words-count {
+  font-size: 12px;
+  color: #9ca3af;
+  margin: 0;
+}
+
+/* ========================================
+   СПИСОК ТЕМ
+   ======================================== */
 
 .theme-list {
   list-style: none;
@@ -102,82 +292,84 @@ h3 {
 }
 
 .theme-item {
-  background: #1a1a1a;
-  border: 1px solid #2a2a2a;
-  border-radius: 16px;
+  background: linear-gradient(135deg, #1a1a1a 0%, #151515 100%);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 14px;
   padding: 16px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   transition: all 0.3s ease;
   cursor: pointer;
+  gap: 12px;
 }
 
 .theme-item:active {
   transform: scale(0.98);
-  background: #1f1f1f;
+  background: linear-gradient(135deg, #1f1f1f 0%, #1a1a1a 100%);
 }
 
-.theme-item strong {
+.theme-info {
+  flex-grow: 1;
+  min-width: 0;
+}
+
+.theme-info strong {
   color: #fff;
-  font-size: 16px;
+  font-size: 15px;
   display: block;
   margin-bottom: 6px;
+  word-break: break-word;
 }
 
-.theme-item small {
-  color: #6b6b6b;
-  font-size: 13px;
-}
-
-.theme-item > div {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  flex-shrink: 0;
-  margin-left: 12px;
-}
-
-.theme-item a,
-.delete-btn {
-  padding: 8px 14px;
-  border-radius: 8px;
-  font-size: 13px;
-  text-decoration: none;
-  text-align: center;
-  white-space: nowrap;
-  transition: all 0.3s ease;
-  font-weight: 500;
-}
-
-.theme-item a {
-  background: #10b981;
-  color: white;
+.theme-info small {
+  color: #6b7280;
+  font-size: 12px;
   display: block;
 }
 
-.theme-item a:active {
-  background: #059669;
-}
-
 .delete-btn {
-  background: rgba(239, 68, 68, 0.15);
+  background: rgba(239, 68, 68, 0.1);
+  border: 1px solid rgba(239, 68, 68, 0.2);
   color: #ef4444;
-  border: 1px solid rgba(239, 68, 68, 0.3);
+  padding: 8px 12px;
+  border-radius: 8px;
   cursor: pointer;
+  font-size: 16px;
+  transition: all 0.3s ease;
+  -webkit-tap-highlight-color: transparent;
+  flex-shrink: 0;
+  height: 36px;
+  width: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .delete-btn:active {
-  background: rgba(239, 68, 68, 0.25);
+  background: rgba(239, 68, 68, 0.2);
+  transform: scale(0.95);
 }
+
+/* ========================================
+   EMPTY STATE
+   ======================================== */
 
 .empty-state {
   text-align: center;
   padding: 40px 20px;
-  color: #6b6b6b;
+  color: #6b7280;
 }
 
-/* Модальне вікно */
+.empty-state p {
+  font-size: 14px;
+  margin: 0;
+}
+
+/* ========================================
+   МОДАЛЬНЕ ВІКНО
+   ======================================== */
+
 .modal-overlay {
   display: none;
   position: fixed;
@@ -209,7 +401,7 @@ h3 {
 
 .modal-header {
   text-align: center;
-  margin-bottom: 16px;
+  margin-bottom: 20px;
 }
 
 .modal-icon {
@@ -227,12 +419,12 @@ h3 {
   color: #9ca3af;
   font-size: 14px;
   line-height: 1.5;
+  margin: 0;
 }
 
 .modal-buttons {
   display: flex;
   gap: 12px;
-  margin-top: 24px;
 }
 
 .modal-btn {
@@ -244,6 +436,7 @@ h3 {
   font-weight: 600;
   cursor: pointer;
   transition: all 0.2s ease;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .modal-btn-cancel {
@@ -253,6 +446,7 @@ h3 {
 
 .modal-btn-cancel:active {
   background: #333;
+  transform: scale(0.98);
 }
 
 .modal-btn-delete {
@@ -264,6 +458,10 @@ h3 {
   background: #dc2626;
   transform: scale(0.98);
 }
+
+/* ========================================
+   АНІМАЦІЇ
+   ======================================== */
 
 @keyframes fadeIn {
   from {
@@ -285,6 +483,66 @@ h3 {
   }
 }
 
+@keyframes slideOut {
+  to {
+    opacity: 0;
+    transform: translateX(-100%);
+  }
+}
+
+/* ========================================
+   НИЖНЄ МЕНЮ
+   ======================================== */
+
+.bottom-nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #1a1a1a;
+  border-top: 1px solid #2a2a2a;
+  display: flex;
+  justify-content: space-around;
+  padding: 12px 0 max(12px, env(safe-area-inset-bottom));
+  box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+}
+
+.nav-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  text-decoration: none;
+  color: #6b6b6b;
+  font-size: 12px;
+  padding: 8px 16px;
+  border-radius: 12px;
+  transition: all 0.3s ease;
+  min-width: 70px;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.nav-item span {
+  font-size: 24px;
+  transition: all 0.3s ease;
+}
+
+.nav-item.active {
+  color: #3b82f6;
+  background: rgba(59, 130, 246, 0.15);
+}
+
+.nav-item:active {
+  background: rgba(59, 130, 246, 0.15);
+  transform: scale(0.97);
+}
+
+/* ========================================
+   ДЕСКТОП
+   ======================================== */
+
 @media (min-width: 768px) {
   body {
     padding-bottom: 0;
@@ -295,21 +553,39 @@ h3 {
     margin-bottom: 40px;
   }
 
-  h1 {
+  .page-header h1 {
     font-size: 32px;
   }
 
-  .theme-item > div {
-    flex-direction: row;
+  .section-title {
+    font-size: 18px;
+  }
+
+  .view-all-link:hover {
+    color: #2563eb;
+  }
+
+  .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(59, 130, 246, 0.4);
+  }
+
+  .theme-item:hover {
+    background: linear-gradient(135deg, #2a2a2a 0%, #1f1f1f 100%);
+    border-color: rgba(59, 130, 246, 0.2);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  }
+
+  .mini-module-card:hover {
+    border-color: rgba(59, 130, 246, 0.3);
+    box-shadow: 0 4px 16px rgba(59, 130, 246, 0.15);
+    transform: translateY(-4px);
   }
 
   .delete-btn:hover {
-    background: rgba(255, 36, 36, 0.43);
-    color: white;
-  }
-
-  .theme-item a:hover {
-    background: #059669;
+    background: rgba(239, 68, 68, 0.2);
+    border-color: rgba(239, 68, 68, 0.3);
   }
 
   .modal-btn-cancel:hover {
@@ -319,22 +595,8 @@ h3 {
   .modal-btn-delete:hover {
     background: #dc2626;
   }
-}
 
-.theme-item {
-  cursor: pointer;
-  padding: 12px 16px;
-  border: 1px solid #3c3c3c;
-  border-radius: 8px;
-  margin-bottom: 8px;
-  transition: background-color 0.2s, box-shadow 0.2s;
-}
-
-.theme-item:hover {
-  background-color: #2f2f2f;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-}
-
-.actions {
-  float: right;
+  .hint-link:hover {
+    color: #2563eb;
+  }
 }
