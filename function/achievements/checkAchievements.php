@@ -1,14 +1,6 @@
 <?php
 // checkAchievements.php
-// ⚙️ config.php уже подключен в основном файле, поэтому здесь НЕ подключаем его повторно
 
-/**
- * Перевіряє, чи користувач заробив нові ачивки
- * @param int $user_id ID користувача
- * @param string $type Тип умови
- * @param mixed $value Додаткове значення (опціонально)
- * @return array Результат з інформацією про отримане досягнення
- */
 function checkAchievements($user_id, $type, $value = null) {
     global $pdo;
 
@@ -78,25 +70,30 @@ function checkAchievements($user_id, $type, $value = null) {
 
             // ✅ Перше відвідування (НА СТАРТІ)
             case 'first_login':
-                $stmt = $pdo->prepare("SELECT first_login_done FROM users WHERE id = ?");
-                $stmt->execute([$user_id]);
-                $done = (int)($stmt->fetchColumn() ?: 0);
-                if (!$done) {
+                // ✅ ИСПРАВЛЕНО: Правильная проверка
+                $stmt = $pdo->prepare("SELECT COUNT(*) FROM user_achievements WHERE user_id = ? AND achievement_id = ?");
+                $stmt->execute([$user_id, $ach_id]);
+                $already_has = $stmt->fetchColumn();
+                
+                if ($already_has == 0) {  // Если еще НЕ получил это достижение
                     $achieved = true;
-                    $pdo->prepare("UPDATE users SET first_login_done = 1 WHERE id = ?")->execute([$user_id]);
                 }
                 break;
         }
 
         if ($achieved) {
-            $stmt = $pdo->prepare("INSERT INTO user_achievements (user_id, achievement_id) VALUES (?, ?)");
-            $stmt->execute([$user_id, $ach_id]);
+            try {
+                $stmt = $pdo->prepare("INSERT IGNORE INTO user_achievements (user_id, achievement_id) VALUES (?, ?)");
+                $stmt->execute([$user_id, $ach_id]);
 
-            return [
-                "success" => true,
-                "achievement" => $ach['title'],
-                "icon" => $ach['icon']
-            ];
+                return [
+                    "success" => true,
+                    "achievement" => $ach['title'],
+                    "icon" => $ach['icon']
+                ];
+            } catch (Exception $e) {
+                error_log("Ошибка при добавлении достижения: " . $e->getMessage());
+            }
         }
     }
 
@@ -133,12 +130,20 @@ function getAchievementProgress($user_id, $type, $condition_value) {
             $stmt->execute([$user_id]);
             $current = $stmt->fetchColumn();
             break;
+        case 'first_login':
+            // ✅ Для first_login прогрес всегда 1/1 если не получено, или 1/1 если получено
+            $current = 1;
+            break;
     }
     
+    $target = (int)$condition_value;
+    $percentage = $target > 0 ? round(($current / $target) * 100, 0) : 0;
+    
     return [
-        'current' => min($current, $condition_value),
-        'target' => $condition_value,
-        'percentage' => round(($current / $condition_value) * 100, 0)
+        'current' => min($current, $target),
+        'target' => $target,
+        'percentage' => min($percentage, 100)
     ];
 }
+
 ?>

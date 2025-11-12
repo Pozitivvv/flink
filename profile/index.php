@@ -18,7 +18,7 @@ $success_message = '';
 try {
     // Отримуємо дані користувача
     $stmt = $pdo->prepare("
-        SELECT id, name, login, email, created_at 
+        SELECT id, name, login, email, created_at, is_admin
         FROM users 
         WHERE id = ?
     ");
@@ -139,187 +139,7 @@ try {
     <title>Профіль</title>
     <link rel="stylesheet" href="style/profile.css">
     <link rel="stylesheet" href="../../assets/main-style.css">
-    <style>
-        .modal-overlay {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(0, 0, 0, 0.8);
-            z-index: 2000;
-            align-items: center;
-            justify-content: center;
-            padding: 20px;
-            animation: fadeIn 0.2s ease;
-        }
 
-        .modal-overlay.active {
-            display: flex;
-        }
-
-        .modal {
-            background: #1a1a1a;
-            border: 1px solid #2a2a2a;
-            border-radius: 20px;
-            padding: 24px;
-            max-width: 400px;
-            width: 100%;
-            animation: slideUp 0.3s ease;
-            max-height: 90vh;
-            overflow-y: auto;
-        }
-
-        .modal-header {
-            text-align: center;
-            margin-bottom: 16px;
-        }
-
-        .modal-icon {
-            font-size: 48px;
-            margin-bottom: 12px;
-        }
-
-        .modal h2 {
-            font-size: 20px;
-            color: #fff;
-            margin-bottom: 8px;
-        }
-
-        .modal p {
-            color: #9ca3af;
-            font-size: 14px;
-            line-height: 1.5;
-        }
-
-        .modal-buttons {
-            display: flex;
-            gap: 12px;
-            margin-top: 24px;
-        }
-
-        .modal-btn {
-            flex: 1;
-            padding: 12px;
-            border: none;
-            border-radius: 12px;
-            font-size: 15px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.2s ease;
-        }
-
-        .modal-btn-cancel {
-            background: #2a2a2a;
-            color: #e4e4e4;
-        }
-
-        .modal-btn-cancel:active {
-            background: #333;
-        }
-
-        .modal-btn-delete {
-            background: #ef4444;
-            color: white;
-        }
-
-        .modal-btn-delete:active {
-            background: #dc2626;
-            transform: scale(0.98);
-        }
-
-        .modal-form {
-            display: flex;
-            flex-direction: column;
-            gap: 16px;
-        }
-
-        .form-group {
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-        }
-
-        .form-group label {
-            font-size: 14px;
-            font-weight: 600;
-            color: #fff;
-        }
-
-        .form-group input {
-            padding: 12px;
-            background: #0f0f0f;
-            border: 1px solid #2a2a2a;
-            border-radius: 12px;
-            color: #e4e4e4;
-            font-size: 14px;
-            transition: all 0.2s ease;
-        }
-
-        .form-group input:focus {
-            outline: none;
-            border-color: #3b82f6;
-            background: #1a1a1a;
-        }
-
-        .alert-box {
-            padding: 12px;
-            border-radius: 12px;
-            margin-bottom: 16px;
-            font-size: 14px;
-            display: none;
-        }
-
-        .alert-box.show {
-            display: block;
-        }
-
-        .alert-success {
-            background: rgba(16, 185, 129, 0.1);
-            border: 1px solid rgba(16, 185, 129, 0.3);
-            color: #10b981;
-        }
-
-        .alert-error {
-            background: rgba(239, 68, 68, 0.1);
-            border: 1px solid rgba(239, 68, 68, 0.3);
-            color: #ef4444;
-        }
-
-        .modal-btn-submit {
-            background: linear-gradient(135deg, #3b82f6, #2563eb);
-            color: #fff;
-            border: 1px solid rgba(59, 130, 246, 0.3);
-        }
-
-        .modal-btn-submit:active {
-            background: linear-gradient(135deg, #2563eb, #1d4ed8);
-            transform: scale(0.98);
-        }
-
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes slideUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-    </style>
 </head>
 <body>
     <div class="container">
@@ -387,6 +207,17 @@ try {
                 <span class="widget-icon">⚙️</span>
                 Дії
             </div>
+            <?php if (!empty($user['is_admin']) && $user['is_admin'] == 1): ?>
+                <div class="widget">
+                    <div class="widget-title">
+                        <span class="widget-icon">🛠️</span>
+                        Адмін панель
+                    </div>
+                    <div class="button-group">
+                        <a href="../admin/dashboard.php" class="btn btn-primary" style="grid-column: 1 / -1;">Перейти в адмінку</a>
+                    </div>
+                </div>
+            <?php endif; ?>
             <div class="button-group">
                 <button onclick="openEditModal()" class="btn btn-secondary">✏️ Редагувати профіль</button>
                 <button onclick="openPasswordModal()" class="btn btn-secondary">🔐 Змінити пароль</button>
@@ -419,7 +250,10 @@ try {
             <span>👤</span>
             Профіль
         </a>
+        
     </nav>
+    
+
 
     <!-- МОДАЛКА РЕДАГУВАННЯ ПРОФІЛЯ -->
     <div id="editModal" class="modal-overlay">

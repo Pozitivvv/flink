@@ -240,6 +240,20 @@ function getLevel($words_count) {
     var urlParams = new URLSearchParams(window.location.search);
     var filter = urlParams.get('filter') || 'available';
 
+
+    document.querySelectorAll('.module-card').forEach(card => {
+      card.addEventListener('click', function(e) {
+        // Не срабатывает, если клик по кнопке внутри карточки
+        if (e.target.closest('a')) return;
+
+        const id = this.getAttribute('data-id');
+        if (id) {
+          window.location.href = 'module_view.php?id=' + id;
+        }
+      });
+    });
+
+
     if (searchInput) {
       searchInput.addEventListener('input', function(e) {
         var query = this.value.toLowerCase();

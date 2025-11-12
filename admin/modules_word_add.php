@@ -1,4 +1,5 @@
 <?php
+// modules_word_add.php
 session_start();
 require_once '../config.php';
 
