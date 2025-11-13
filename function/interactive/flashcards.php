@@ -34,7 +34,7 @@ if (empty($words)) {
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
 <meta name="theme-color" content="#1a1a2e">
 <title>Флешкарти - Wortly DE</title>
-<link rel="stylesheet" href="style/flashcard.css">
+<link rel="stylesheet" href="style/flashcard.css?v=0.0.1">
 </head>
 <body>
 <div class="container">

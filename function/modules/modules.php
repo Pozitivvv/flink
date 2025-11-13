@@ -72,8 +72,9 @@ function getLevel($words_count) {
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Маркет модулів для вивчення німецької мови">
   <title>Маркет модулів</title>
+  <meta name="theme-color" content="#0F0F0F">
   <link rel="stylesheet" href="../../assets/main-style.css">
-  <link rel="stylesheet" href="assets/modules.css">
+  <link rel="stylesheet" href="assets/modules.css?v=0.0.6">
 </head>
 <body>
 

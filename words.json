@@ -1,4724 +1,568 @@
-{
-  "words": [
-    {
-      "german": "wie",
-      "transcription": "[viː]",
-      "ukrainian": "як"
-    },
-    {
-      "german": "ich",
-      "transcription": "[ɪç]",
-      "ukrainian": "я"
-    },
-    {
-      "german": "seine",
-      "transcription": "[ˈzaɪ̯nə]",
-      "ukrainian": "його"
-    },
-    {
-      "german": "dass",
-      "transcription": "[das]",
-      "ukrainian": "що"
-    },
-    {
-      "german": "er",
-      "transcription": "[eːɐ̯]",
-      "ukrainian": "він"
-    },
-    {
-      "german": "war",
-      "transcription": "[vaːɐ̯]",
-      "ukrainian": "був"
-    },
-    {
-      "german": "für",
-      "transcription": "[fyːɐ̯]",
-      "ukrainian": "для"
-    },
-    {
-      "german": "auf",
-      "transcription": "[aʊ̯f]",
-      "ukrainian": "на"
-    },
-    {
-      "german": "sind",
-      "transcription": "[zɪnt]",
-      "ukrainian": "є"
-    },
-    {
-      "german": "mit",
-      "transcription": "[mɪt]",
-      "ukrainian": "з"
-    },
-    {
-      "german": "sie",
-      "transcription": "[ziː]",
-      "ukrainian": "вони"
-    },
-    {
-      "german": "sein",
-      "transcription": "[zaɪ̯n]",
-      "ukrainian": "бути"
-    },
-    {
-      "german": "bei",
-      "transcription": "[baɪ̯]",
-      "ukrainian": "при"
-    },
-    {
-      "german": "ein",
-      "transcription": "[aɪ̯n]",
-      "ukrainian": "один"
-    },
-    {
-      "german": "haben",
-      "transcription": "[ˈhaːbən]",
-      "ukrainian": "мати"
-    },
-    {
-      "german": "dies",
-      "transcription": "[diːs]",
-      "ukrainian": "це"
-    },
-    {
-      "german": "aus",
-      "transcription": "[aʊ̯s]",
-      "ukrainian": "з"
-    },
-    {
-      "german": "durch",
-      "transcription": "[dʊʁç]",
-      "ukrainian": "через"
-    },
-    {
-      "german": "heiß",
-      "transcription": "[haɪ̯s]",
-      "ukrainian": "гарячий"
-    },
-    {
-      "german": "das Wort",
-      "transcription": "[das vɔʁt]",
-      "ukrainian": "слово"
-    },
-    {
-      "german": "aber",
-      "transcription": "[ˈaːbɐ]",
-      "ukrainian": "але"
-    },
-    {
-      "german": "was",
-      "transcription": "[vas]",
-      "ukrainian": "що"
-    },
-    {
-      "german": "einige",
-      "transcription": "[ˈaɪ̯nɪgə]",
-      "ukrainian": "деякі"
-    },
-    {
-      "german": "ist",
-      "transcription": "[ɪst]",
-      "ukrainian": "є"
-    },
-    {
-      "german": "es",
-      "transcription": "[ɛs]",
-      "ukrainian": "воно"
-    },
-    {
-      "german": "Sie",
-      "transcription": "[ziː]",
-      "ukrainian": "ви"
-    },
-    {
-      "german": "oder",
-      "transcription": "[ˈoːdɐ]",
-      "ukrainian": "або"
-    },
-    {
-      "german": "hatte",
-      "transcription": "[ˈhatə]",
-      "ukrainian": "мав"
-    },
-    {
-      "german": "die",
-      "transcription": "[diː]",
-      "ukrainian": "в"
-    },
-    {
-      "german": "von",
-      "transcription": "[fɔn]",
-      "ukrainian": "від"
-    },
-    {
-      "german": "zu",
-      "transcription": "[t͡suː]",
-      "ukrainian": "до"
-    },
-    {
-      "german": "und",
-      "transcription": "[ʊnt]",
-      "ukrainian": "і"
-    },
-    {
-      "german": "ein",
-      "transcription": "[aɪ̯n]",
-      "ukrainian": "а"
-    },
-    {
-      "german": "bei",
-      "transcription": "[baɪ̯]",
-      "ukrainian": "в"
-    },
-    {
-      "german": "wir",
-      "transcription": "[viːɐ̯]",
-      "ukrainian": "ми"
-    },
-    {
-      "german": "können",
-      "transcription": "[ˈkœnən]",
-      "ukrainian": "можемо"
-    },
-    {
-      "german": "aus",
-      "transcription": "[aʊ̯s]",
-      "ukrainian": "вихід"
-    },
-    {
-      "german": "andere",
-      "transcription": "[ˈandəʁə]",
-      "ukrainian": "інші"
-    },
-    {
-      "german": "waren",
-      "transcription": "[ˈvaːʁən]",
-      "ukrainian": "були"
-    },
-    {
-      "german": "die",
-      "transcription": "[diː]",
-      "ukrainian": "який"
-    },
-    {
-      "german": "tun",
-      "transcription": "[tuːn]",
-      "ukrainian": "робити"
-    },
-    {
-      "german": "ihre",
-      "transcription": "[ˈiːʁə]",
-      "ukrainian": "їх"
-    },
-    {
-      "german": "die Zeit",
-      "transcription": "[diː tsaɪ̯t]",
-      "ukrainian": "час"
-    },
-    {
-      "german": "wenn",
-      "transcription": "[vɛn]",
-      "ukrainian": "якщо"
-    },
-    {
-      "german": "werden",
-      "transcription": "[ˈveːɐ̯dən]",
-      "ukrainian": "буде"
-    },
-    {
-      "german": "wie",
-      "transcription": "[viː]",
-      "ukrainian": "як"
-    },
-    {
-      "german": "sagte",
-      "transcription": "[ˈzaːktə]",
-      "ukrainian": "сказав"
-    },
-    {
-      "german": "ein",
-      "transcription": "[aɪ̯n]",
-      "ukrainian": "an"
-    },
-    {
-      "german": "jeder",
-      "transcription": "[ˈjeːdɐ]",
-      "ukrainian": "кожен"
-    },
-    {
-      "german": "sagen",
-      "transcription": "[ˈzaːgən]",
-      "ukrainian": "сказати"
-    },
-    {
-      "german": "tut",
-      "transcription": "[tuːt]",
-      "ukrainian": "робить"
-    },
-    {
-      "german": "der Satz",
-      "transcription": "[deːɐ̯ zats]",
-      "ukrainian": "набір"
-    },
-    {
-      "german": "drei",
-      "transcription": "[dʁaɪ̯]",
-      "ukrainian": "три"
-    },
-    {
-      "german": "wollen",
-      "transcription": "[ˈvɔlən]",
-      "ukrainian": "хотіти"
-    },
-    {
-      "german": "die Luft",
-      "transcription": "[diː lʊft]",
-      "ukrainian": "повітря"
-    },
-    {
-      "german": "gut",
-      "transcription": "[guːt]",
-      "ukrainian": "добре"
-    },
-    {
-      "german": "auch",
-      "transcription": "[aʊ̯x]",
-      "ukrainian": "також"
-    },
-    {
-      "german": "spielen",
-      "transcription": "[ˈʃpiːlən]",
-      "ukrainian": "грати"
-    },
-    {
-      "german": "klein",
-      "transcription": "[klaɪ̯n]",
-      "ukrainian": "маленький"
-    },
-    {
-      "german": "das Ende",
-      "transcription": "[das ˈɛndə]",
-      "ukrainian": "кінець"
-    },
-    {
-      "german": "setzen",
-      "transcription": "[ˈzɛt͡sən]",
-      "ukrainian": "поставити"
-    },
-    {
-      "german": "das Zuhause",
-      "transcription": "[das ˈt͡suːhaʊ̯zə]",
-      "ukrainian": "дім"
-    },
-    {
-      "german": "lesen",
-      "transcription": "[ˈleːzən]",
-      "ukrainian": "читати"
-    },
-    {
-      "german": "die Seits",
-      "transcription": "[diː zaɪ̯ts]",
-      "ukrainian": "рука"
-    },
-    {
-      "german": "der Hafen",
-      "transcription": "[deːɐ̯ ˈhaːfən]",
-      "ukrainian": "порт"
-    },
-    {
-      "german": "groß",
-      "transcription": "[gʁoːs]",
-      "ukrainian": "великий"
-    },
-    {
-      "german": "buchstabieren",
-      "transcription": "[buxʃtaˈbiːʁən]",
-      "ukrainian": "заклинання"
-    },
-    {
-      "german": "hinzufügen",
-      "transcription": "[ˈhɪn.t͡suˌfyːgən]",
-      "ukrainian": "додати"
-    },
-    {
-      "german": "auch",
-      "transcription": "[aʊ̯x]",
-      "ukrainian": "навіть"
-    },
-    {
-      "german": "das Lande",
-      "transcription": "[das ˈlandə]",
-      "ukrainian": "земля"
-    },
-    {
-      "german": "hier",
-      "transcription": "[hiːɐ̯]",
-      "ukrainian": "тут"
-    },
-    {
-      "german": "muss",
-      "transcription": "[mʊs]",
-      "ukrainian": "повинен"
-    },
-    {
-      "german": "groß",
-      "transcription": "[gʁoːs]",
-      "ukrainian": "великий"
-    },
-    {
-      "german": "hoch",
-      "transcription": "[hoːx]",
-      "ukrainian": "високий"
-    },
-    {
-      "german": "so",
-      "transcription": "[zoː]",
-      "ukrainian": "такий"
-    },
-    {
-      "german": "folgen",
-      "transcription": "[ˈfɔlgən]",
-      "ukrainian": "слідувати"
-    },
-    {
-      "german": "der Akt",
-      "transcription": "[deːɐ̯ akt]",
-      "ukrainian": "діяти"
-    },
-    {
-      "german": "warum",
-      "transcription": "[vaˈʁʊm]",
-      "ukrainian": "чому"
-    },
-    {
-      "german": "fragen",
-      "transcription": "[ˈfʁaːgən]",
-      "ukrainian": "запитати"
-    },
-    {
-      "german": "die Männer",
-      "transcription": "[diː ˈmɛnɐ]",
-      "ukrainian": "чоловіки"
-    },
-    {
-      "german": "die Veränderung",
-      "transcription": "[diː fɛɐ̯ˈɛndəʁʊŋ]",
-      "ukrainian": "зміна"
-    },
-    {
-      "german": "ging",
-      "transcription": "[gɪŋ]",
-      "ukrainian": "пішов"
-    },
-    {
-      "german": "das Licht",
-      "transcription": "[das lɪçt]",
-      "ukrainian": "світло"
-    },
-    {
-      "german": "die Art",
-      "transcription": "[diː aːɐ̯t]",
-      "ukrainian": "вид"
-    },
-    {
-      "german": "aus",
-      "transcription": "[aʊ̯s]",
-      "ukrainian": "вимкнено"
-    },
-    {
-      "german": "müssen",
-      "transcription": "[ˈmʏsən]",
-      "ukrainian": "потрібно"
-    },
-    {
-      "german": "das Haus",
-      "transcription": "[das haʊ̯s]",
-      "ukrainian": "будинок"
-    },
-    {
-      "german": "das Bild",
-      "transcription": "[das bɪlt]",
-      "ukrainian": "картина"
-    },
-    {
-      "german": "versuchen",
-      "transcription": "[fɛɐ̯ˈzuːxən]",
-      "ukrainian": "спробувати"
-    },
-    {
-      "german": "uns",
-      "transcription": "[ʊns]",
-      "ukrainian": "нас"
-    },
-    {
-      "german": "wieder",
-      "transcription": "[ˈviːdɐ]",
-      "ukrainian": "знову"
-    },
-    {
-      "german": "das Tier",
-      "transcription": "[das tiːɐ̯]",
-      "ukrainian": "тварина"
-    },
-    {
-      "german": "der Punkt",
-      "transcription": "[deːɐ̯ pʊŋkt]",
-      "ukrainian": "точка"
-    },
-    {
-      "german": "die Mutter",
-      "transcription": "[diː ˈmʊtɐ]",
-      "ukrainian": "мати"
-    },
-    {
-      "german": "die Welt",
-      "transcription": "[diː vɛlt]",
-      "ukrainian": "світ"
-    },
-    {
-      "german": "in der Nähe von",
-      "transcription": "[ɪn deːɐ̯ ˈneːə fɔn]",
-      "ukrainian": "біля"
-    },
-    {
-      "german": "bauen",
-      "transcription": "[ˈbaʊ̯ən]",
-      "ukrainian": "будувати"
-    },
-    {
-      "german": "selbst",
-      "transcription": "[zɛlpst]",
-      "ukrainian": "себе"
-    },
-    {
-      "german": "die Erde",
-      "transcription": "[diː ˈeːɐ̯də]",
-      "ukrainian": "земля"
-    },
-    {
-      "german": "der Vater",
-      "transcription": "[deːɐ̯ ˈfaːtɐ]",
-      "ukrainian": "батько"
-    },
-    {
-      "german": "jeder",
-      "transcription": "[ˈjeːdɐ]",
-      "ukrainian": "будь-який"
-    },
-    {
-      "german": "neu",
-      "transcription": "[nɔʏ̯]",
-      "ukrainian": "новий"
-    },
-    {
-      "german": "die Arbeit",
-      "transcription": "[diː ˈaːɐ̯baɪ̯t]",
-      "ukrainian": "робота"
-    },
-    {
-      "german": "der Teil",
-      "transcription": "[deːɐ̯ taɪ̯l]",
-      "ukrainian": "частина"
-    },
-    {
-      "german": "nehmen",
-      "transcription": "[ˈneːmən]",
-      "ukrainian": "взяти"
-    },
-    {
-      "german": "erhalten",
-      "transcription": "[ɛɐ̯ˈhaltən]",
-      "ukrainian": "отримати"
-    },
-    {
-      "german": "der Ort",
-      "transcription": "[deːɐ̯ ɔʁt]",
-      "ukrainian": "місце"
-    },
-    {
-      "german": "gemacht",
-      "transcription": "[gəˈmaxt]",
-      "ukrainian": "зроблений"
-    },
-    {
-      "german": "leben",
-      "transcription": "[ˈleːbən]",
-      "ukrainian": "жити"
-    },
-    {
-      "german": "wo",
-      "transcription": "[voː]",
-      "ukrainian": "де"
-    },
-    {
-      "german": "nach",
-      "transcription": "[naːx]",
-      "ukrainian": "після"
-    },
-    {
-      "german": "zurück",
-      "transcription": "[t͡suˈʁʏk]",
-      "ukrainian": "назад"
-    },
-    {
-      "german": "wenig",
-      "transcription": "[ˈveːnɪç]",
-      "ukrainian": "маленький"
-    },
-    {
-      "german": "nur",
-      "transcription": "[nuːɐ̯]",
-      "ukrainian": "тільки"
-    },
-    {
-      "german": "die Runde",
-      "transcription": "[diː ˈʁʊndə]",
-      "ukrainian": "круглий"
-    },
-    {
-      "german": "der Mann",
-      "transcription": "[deːɐ̯ man]",
-      "ukrainian": "чоловік"
-    },
-    {
-      "german": "das Jahr",
-      "transcription": "[das jaːɐ̯]",
-      "ukrainian": "рік"
-    },
-    {
-      "german": "kam",
-      "transcription": "[kaːm]",
-      "ukrainian": "прийшов"
-    },
-    {
-      "german": "zeigen",
-      "transcription": "[ˈt͡saɪ̯gən]",
-      "ukrainian": "показати"
-    },
-    {
-      "german": "jeder",
-      "transcription": "[ˈjeːdɐ]",
-      "ukrainian": "кожен"
-    },
-    {
-      "german": "gut",
-      "transcription": "[guːt]",
-      "ukrainian": "добрий"
-    },
-    {
-      "german": "mir",
-      "transcription": "[miːɐ̯]",
-      "ukrainian": "мені"
-    },
-    {
-      "german": "geben",
-      "transcription": "[ˈgeːbən]",
-      "ukrainian": "дати"
-    },
-    {
-      "german": "unsere",
-      "transcription": "[ˈʊnzəʁə]",
-      "ukrainian": "наш"
-    },
-    {
-      "german": "unter",
-      "transcription": "[ˈʊntɐ]",
-      "ukrainian": "під"
-    },
-    {
-      "german": "der Name",
-      "transcription": "[deːɐ̯ ˈnaːmə]",
-      "ukrainian": "ім'я"
-    },
-    {
-      "german": "sehr",
-      "transcription": "[zeːɐ̯]",
-      "ukrainian": "дуже"
-    },
-    {
-      "german": "durch",
-      "transcription": "[dʊʁç]",
-      "ukrainian": "через"
-    },
-    {
-      "german": "nur",
-      "transcription": "[nuːɐ̯]",
-      "ukrainian": "просто"
-    },
-    {
-      "german": "das Formular",
-      "transcription": "[das fɔʁmuˈlaːɐ̯]",
-      "ukrainian": "форма"
-    },
-    {
-      "german": "der Satz",
-      "transcription": "[deːɐ̯ zats]",
-      "ukrainian": "речення"
-    },
-    {
-      "german": "groß",
-      "transcription": "[gʁoːs]",
-      "ukrainian": "великий"
-    },
-    {
-      "german": "denken",
-      "transcription": "[ˈdɛŋkən]",
-      "ukrainian": "думати"
-    },
-    {
-      "german": "sagen",
-      "transcription": "[ˈzaːgən]",
-      "ukrainian": "сказати"
-    },
-    {
-      "german": "die Hilfe",
-      "transcription": "[diː ˈhɪlfə]",
-      "ukrainian": "допомога"
-    },
-    {
-      "german": "niedrig",
-      "transcription": "[ˈniːdʁɪç]",
-      "ukrainian": "низький"
-    },
-    {
-      "german": "die Linie",
-      "transcription": "[diː ˈliːniə]",
-      "ukrainian": "лінія"
-    },
-    {
-      "german": "abweichen",
-      "transcription": "[ˈapvaɪ̯çən]",
-      "ukrainian": "відрізнятися"
-    },
-    {
-      "german": "wiederum",
-      "transcription": "[ˈviːdəʁʊm]",
-      "ukrainian": "поворот"
-    },
-    {
-      "german": "die Ursache",
-      "transcription": "[diː ˈʊʁzaxə]",
-      "ukrainian": "причина"
-    },
-    {
-      "german": "viel",
-      "transcription": "[fiːl]",
-      "ukrainian": "багато"
-    },
-    {
-      "german": "bedeuten",
-      "transcription": "[bəˈdɔʏ̯tən]",
-      "ukrainian": "означати"
-    },
-    {
-      "german": "vor",
-      "transcription": "[foːɐ̯]",
-      "ukrainian": "перед"
-    },
-    {
-      "german": "der Umzug",
-      "transcription": "[deːɐ̯ ˈʊmt͡suːk]",
-      "ukrainian": "рух"
-    },
-    {
-      "german": "das Recht",
-      "transcription": "[das ʁɛçt]",
-      "ukrainian": "правильно"
-    },
-    {
-      "german": "der Junge",
-      "transcription": "[deːɐ̯ ˈjʊŋə]",
-      "ukrainian": "хлопчик"
-    },
-    {
-      "german": "alt",
-      "transcription": "[alt]",
-      "ukrainian": "старий"
-    },
-    {
-      "german": "zu",
-      "transcription": "[t͡suː]",
-      "ukrainian": "занадто"
-    },
-    {
-      "german": "gleich",
-      "transcription": "[glaɪ̯ç]",
-      "ukrainian": "однаковий"
-    },
-    {
-      "german": "sie",
-      "transcription": "[ziː]",
-      "ukrainian": "вона"
-    },
-    {
-      "german": "alle",
-      "transcription": "[ˈalə]",
-      "ukrainian": "всі"
-    },
-    {
-      "german": "da",
-      "transcription": "[daː]",
-      "ukrainian": "там"
-    },
-    {
-      "german": "wenn",
-      "transcription": "[vɛn]",
-      "ukrainian": "коли"
-    },
-    {
-      "german": "nach oben",
-      "transcription": "[naːx ˈoːbən]",
-      "ukrainian": "вгору"
-    },
-    {
-      "german": "die Verwendung",
-      "transcription": "[diː fɛɐ̯ˈvɛndʊŋ]",
-      "ukrainian": "використовувати"
-    },
-    {
-      "german": "Ihre",
-      "transcription": "[ˈiːʁə]",
-      "ukrainian": "ваш"
-    },
-    {
-      "german": "der Weg",
-      "transcription": "[deːɐ̯ veːk]",
-      "ukrainian": "шлях"
-    },
-    {
-      "german": "über",
-      "transcription": "[ˈyːbɐ]",
-      "ukrainian": "про"
-    },
-    {
-      "german": "viele",
-      "transcription": "[ˈfiːlə]",
-      "ukrainian": "багато"
-    },
-    {
-      "german": "dann",
-      "transcription": "[dan]",
-      "ukrainian": "потім"
-    },
-    {
-      "german": "sie",
-      "transcription": "[ziː]",
-      "ukrainian": "їх"
-    },
-    {
-      "german": "schreiben",
-      "transcription": "[ˈʃʁaɪ̯bən]",
-      "ukrainian": "писати"
-    },
-    {
-      "german": "würde",
-      "transcription": "[ˈvʏʁdə]",
-      "ukrainian": "би"
-    },
-    {
-      "german": "wie",
-      "transcription": "[viː]",
-      "ukrainian": "як"
-    },
-    {
-      "german": "so",
-      "transcription": "[zoː]",
-      "ukrainian": "так"
-    },
-    {
-      "german": "diese",
-      "transcription": "[ˈdiːzə]",
-      "ukrainian": "ці"
-    },
-    {
-      "german": "sie",
-      "transcription": "[ziː]",
-      "ukrainian": "її"
-    },
-    {
-      "german": "lange",
-      "transcription": "[ˈlaŋə]",
-      "ukrainian": "довгий"
-    },
-    {
-      "german": "machen",
-      "transcription": "[ˈmaxən]",
-      "ukrainian": "зробити"
-    },
-    {
-      "german": "die Sache",
-      "transcription": "[diː ˈzaxə]",
-      "ukrainian": "річ"
-    },
-    {
-      "german": "sehen",
-      "transcription": "[ˈzeːən]",
-      "ukrainian": "бачити"
-    },
-    {
-      "german": "ihm",
-      "transcription": "[iːm]",
-      "ukrainian": "йому"
-    },
-    {
-      "german": "zwei",
-      "transcription": "[t͡svaɪ̯]",
-      "ukrainian": "два"
-    },
-    {
-      "german": "hat",
-      "transcription": "[hat]",
-      "ukrainian": "має"
-    },
-    {
-      "german": "suchen",
-      "transcription": "[ˈzuːxən]",
-      "ukrainian": "дивитися"
-    },
-    {
-      "german": "mehr",
-      "transcription": "[meːɐ̯]",
-      "ukrainian": "більше"
-    },
-    {
-      "german": "der Tag",
-      "transcription": "[deːɐ̯ taːk]",
-      "ukrainian": "день"
-    },
-    {
-      "german": "könnte",
-      "transcription": "[ˈkœntə]",
-      "ukrainian": "міг"
-    },
-    {
-      "german": "gehen",
-      "transcription": "[ˈgeːən]",
-      "ukrainian": "йти"
-    },
-    {
-      "german": "kommen",
-      "transcription": "[ˈkɔmən]",
-      "ukrainian": "прийти"
-    },
-    {
-      "german": "tat",
-      "transcription": "[taːt]",
-      "ukrainian": "зробив"
-    },
-    {
-      "german": "die Anzahl",
-      "transcription": "[diː ˈant͡saːl]",
-      "ukrainian": "число"
-    },
-    {
-      "german": "klingen",
-      "transcription": "[ˈklɪŋən]",
-      "ukrainian": "звук"
-    },
-    {
-      "german": "nicht",
-      "transcription": "[nɪçt]",
-      "ukrainian": "ні"
-    },
-    {
-      "german": "am meisten",
-      "transcription": "[am ˈmaɪ̯stən]",
-      "ukrainian": "більшість"
-    },
-    {
-      "german": "die Menschen",
-      "transcription": "[diː ˈmɛnʃən]",
-      "ukrainian": "люди"
-    },
-    {
-      "german": "meine",
-      "transcription": "[ˈmaɪ̯nə]",
-      "ukrainian": "мій"
-    },
-    {
-      "german": "über",
-      "transcription": "[ˈyːbɐ]",
-      "ukrainian": "над"
-    },
-    {
-      "german": "wissen",
-      "transcription": "[ˈvɪsən]",
-      "ukrainian": "знати"
-    },
-    {
-      "german": "das Wasser",
-      "transcription": "[das ˈvasɐ]",
-      "ukrainian": "вода"
-    },
-    {
-      "german": "als",
-      "transcription": "[als]",
-      "ukrainian": "ніж"
-    },
-    {
-      "german": "der Anruf",
-      "transcription": "[deːɐ̯ ˈanʁuːf]",
-      "ukrainian": "дзвінок"
-    },
-    {
-      "german": "erste",
-      "transcription": "[ˈeːɐ̯stə]",
-      "ukrainian": "перший"
-    },
-    {
-      "german": "die",
-      "transcription": "[diː]",
-      "ukrainian": "хто"
-    },
-    {
-      "german": "können",
-      "transcription": "[ˈkœnən]",
-      "ukrainian": "може"
-    },
-    {
-      "german": "nach unten",
-      "transcription": "[naːx ˈʊntən]",
-      "ukrainian": "вниз"
-    },
-    {
-      "german": "die Seite",
-      "transcription": "[diː ˈzaɪ̯tə]",
-      "ukrainian": "сторона"
-    },
-    {
-      "german": "gewesen",
-      "transcription": "[gəˈveːzən]",
-      "ukrainian": "був"
-    },
-    {
-      "german": "jetzt",
-      "transcription": "[jɛt͡st]",
-      "ukrainian": "зараз"
-    },
-    {
-      "german": "finden",
-      "transcription": "[ˈfɪndən]",
-      "ukrainian": "знайти"
-    },
-    {
-      "german": "der Kopf",
-      "transcription": "[deːɐ̯ kɔpf]",
-      "ukrainian": "голова"
-    },
-    {
-      "german": "stehen",
-      "transcription": "[ˈʃteːən]",
-      "ukrainian": "стояти"
-    },
-    {
-      "german": "besitzen",
-      "transcription": "[bəˈzɪt͡sən]",
-      "ukrainian": "володіти"
-    },
-    {
-      "german": "die Seite",
-      "transcription": "[diː ˈzaɪ̯tə]",
-      "ukrainian": "сторінка"
-    },
-    {
-      "german": "sollte",
-      "transcription": "[ˈzɔltə]",
-      "ukrainian": "повинен"
-    },
-    {
-      "german": "das Land",
-      "transcription": "[das lant]",
-      "ukrainian": "країна"
-    },
-    {
-      "german": "gefunden",
-      "transcription": "[gəˈfʊndən]",
-      "ukrainian": "знайдений"
-    },
-    {
-      "german": "die Antwort",
-      "transcription": "[diː ˈantvɔʁt]",
-      "ukrainian": "відповідь"
-    },
-    {
-      "german": "die Schule",
-      "transcription": "[diː ˈʃuːlə]",
-      "ukrainian": "школа"
-    },
-    {
-      "german": "wachsen",
-      "transcription": "[ˈvaksən]",
-      "ukrainian": "рости"
-    },
-    {
-      "german": "die Studie",
-      "transcription": "[diː ˈʃtuːdiː]",
-      "ukrainian": "вивчення"
-    },
-    {
-      "german": "noch",
-      "transcription": "[nɔx]",
-      "ukrainian": "все ще"
-    },
-    {
-      "german": "lernen",
-      "transcription": "[ˈlɛʁnən]",
-      "ukrainian": "вчитися"
-    },
-    {
-      "german": "die Anlage",
-      "transcription": "[diː ˈanlaːgə]",
-      "ukrainian": "рослина"
-    },
-    {
-      "german": "die Abdeckung",
-      "transcription": "[diː ˈapdɛkʊŋ]",
-      "ukrainian": "обкладинка"
-    },
-    {
-      "german": "das Lebensmittel",
-      "transcription": "[das ˈleːbənsmɪtəl]",
-      "ukrainian": "їжа"
-    },
-    {
-      "german": "die Sonne",
-      "transcription": "[diː ˈzɔnə]",
-      "ukrainian": "сонце"
-    },
-    {
-      "german": "vier",
-      "transcription": "[fiːɐ̯]",
-      "ukrainian": "чотири"
-    },
-    {
-      "german": "zwischen",
-      "transcription": "[ˈt͡svɪʃən]",
-      "ukrainian": "між"
-    },
-    {
-      "german": "der Zustand",
-      "transcription": "[deːɐ̯ ˈt͡suːʃtant]",
-      "ukrainian": "стан"
-    },
-    {
-      "german": "halten",
-      "transcription": "[ˈhaltən]",
-      "ukrainian": "тримати"
-    },
-    {
-      "german": "das Auge",
-      "transcription": "[das ˈaʊ̯gə]",
-      "ukrainian": "око"
-    },
-    {
-      "german": "nie",
-      "transcription": "[niː]",
-      "ukrainian": "ніколи"
-    },
-    {
-      "german": "letzte",
-      "transcription": "[ˈlɛt͡stə]",
-      "ukrainian": "останній"
-    },
-    {
-      "german": "lassen",
-      "transcription": "[ˈlasən]",
-      "ukrainian": "нехай"
-    },
-    {
-      "german": "die Gedanken",
-      "transcription": "[diː gəˈdaŋkən]",
-      "ukrainian": "думка"
-    },
-    {
-      "german": "die Stadt",
-      "transcription": "[diː ʃtat]",
-      "ukrainian": "місто"
-    },
-    {
-      "german": "der Baum",
-      "transcription": "[deːɐ̯ baʊ̯m]",
-      "ukrainian": "дерево"
-    },
-    {
-      "german": "überqueren",
-      "transcription": "[yːbɐˈkveːʁən]",
-      "ukrainian": "перетинати"
-    },
-    {
-      "german": "der Bauernhof",
-      "transcription": "[deːɐ̯ ˈbaʊ̯ɐ̯nhoːf]",
-      "ukrainian": "ферма"
-    },
-    {
-      "german": "schwer",
-      "transcription": "[ʃveːɐ̯]",
-      "ukrainian": "важкий"
-    },
-    {
-      "german": "der Beginn",
-      "transcription": "[deːɐ̯ bəˈgɪn]",
-      "ukrainian": "початок"
-    },
-    {
-      "german": "die Macht",
-      "transcription": "[diː maxt]",
-      "ukrainian": "може"
-    },
-    {
-      "german": "die Geschichte",
-      "transcription": "[diː gəˈʃɪçtə]",
-      "ukrainian": "історія"
-    },
-    {
-      "german": "die Säge",
-      "transcription": "[diː ˈzeːgə]",
-      "ukrainian": "пила"
-    },
-    {
-      "german": "weit",
-      "transcription": "[vaɪ̯t]",
-      "ukrainian": "далеко"
-    },
-    {
-      "german": "das Meer",
-      "transcription": "[das meːɐ̯]",
-      "ukrainian": "море"
-    },
-    {
-      "german": "ziehen",
-      "transcription": "[ˈt͡siːən]",
-      "ukrainian": "малювати"
-    },
-    {
-      "german": "links",
-      "transcription": "[lɪŋks]",
-      "ukrainian": "лівий"
-    },
-    {
-      "german": "spät",
-      "transcription": "[ʃpeːt]",
-      "ukrainian": "пізно"
-    },
-    {
-      "german": "laufen",
-      "transcription": "[ˈlaʊ̯fən]",
-      "ukrainian": "бігти"
-    },
-    {
-      "german": "unterlassen Sie",
-      "transcription": "[ʊntɐˈlasən ziː]",
-      "ukrainian": "не"
-    },
-    {
-      "german": "während",
-      "transcription": "[ˈvɛːʁənt]",
-      "ukrainian": "поки"
-    },
-    {
-      "german": "die Presse",
-      "transcription": "[diː ˈpʁɛsə]",
-      "ukrainian": "прес"
-    },
-    {
-      "german": "Schließen",
-      "transcription": "[ˈʃliːsən]",
-      "ukrainian": "близько"
-    },
-    {
-      "german": "die Nacht",
-      "transcription": "[diː naxt]",
-      "ukrainian": "ніч"
-    },
-    {
-      "german": "realen",
-      "transcription": "[ʁeˈaːlən]",
-      "ukrainian": "реальний"
-    },
-    {
-      "german": "das Leben",
-      "transcription": "[das ˈleːbən]",
-      "ukrainian": "життя"
-    },
-    {
-      "german": "wenige",
-      "transcription": "[ˈveːnɪgə]",
-      "ukrainian": "мало"
-    },
-    {
-      "german": "der Norden",
-      "transcription": "[deːɐ̯ ˈnɔʁdən]",
-      "ukrainian": "північ"
-    },
-    {
-      "german": "das Buch",
-      "transcription": "[das buːx]",
-      "ukrainian": "книга"
-    },
-    {
-      "german": "tragen",
-      "transcription": "[ˈtʁaːgən]",
-      "ukrainian": "нести"
-    },
-    {
-      "german": "nahm",
-      "transcription": "[naːm]",
-      "ukrainian": "узяв"
-    },
-    {
-      "german": "die Wissenschaft",
-      "transcription": "[diː ˈvɪsənʃaft]",
-      "ukrainian": "наука"
-    },
-    {
-      "german": "essen",
-      "transcription": "[ˈɛsən]",
-      "ukrainian": "їсти"
-    },
-    {
-      "german": "das Zimmer",
-      "transcription": "[das ˈt͡sɪmɐ]",
-      "ukrainian": "кімната"
-    },
-    {
-      "german": "der Freund",
-      "transcription": "[deːɐ̯ fʁɔʏ̯nt]",
-      "ukrainian": "друг"
-    },
-    {
-      "german": "begann",
-      "transcription": "[bəˈgan]",
-      "ukrainian": "почався"
-    },
-    {
-      "german": "die Idee",
-      "transcription": "[diː iˈdeː]",
-      "ukrainian": "ідея"
-    },
-    {
-      "german": "der Fisch",
-      "transcription": "[deːɐ̯ fɪʃ]",
-      "ukrainian": "риба"
-    },
-    {
-      "german": "der Berg",
-      "transcription": "[deːɐ̯ bɛʁk]",
-      "ukrainian": "гора"
-    },
-    {
-      "german": "der Stopp",
-      "transcription": "[deːɐ̯ ʃtɔp]",
-      "ukrainian": "стоп"
-    },
-    {
-      "german": "einmal",
-      "transcription": "[ˈaɪ̯nmaːl]",
-      "ukrainian": "один раз"
-    },
-    {
-      "german": "die Basis",
-      "transcription": "[diː ˈbaːzɪs]",
-      "ukrainian": "база"
-    },
-    {
-      "german": "hören",
-      "transcription": "[ˈhøːʁən]",
-      "ukrainian": "чути"
-    },
-    {
-      "german": "das Pferd",
-      "transcription": "[das pfeːɐ̯t]",
-      "ukrainian": "кінь"
-    },
-    {
-      "german": "der Schnitt",
-      "transcription": "[deːɐ̯ ʃnɪt]",
-      "ukrainian": "розрізати"
-    },
-    {
-      "german": "sicher",
-      "transcription": "[ˈzɪçɐ]",
-      "ukrainian": "впевнений"
-    },
-    {
-      "german": "beobachten",
-      "transcription": "[bəˈoːbaxtən]",
-      "ukrainian": "дивитися"
-    },
-    {
-      "german": "die Farbe",
-      "transcription": "[diː ˈfaʁbə]",
-      "ukrainian": "колір"
-    },
-    {
-      "german": "das Gesicht",
-      "transcription": "[das gəˈzɪçt]",
-      "ukrainian": "обличчя"
-    },
-    {
-      "german": "das Holz",
-      "transcription": "[das hɔlt͡s]",
-      "ukrainian": "дерево"
-    },
-    {
-      "german": "Haupt-",
-      "transcription": "[haʊ̯pt]",
-      "ukrainian": "головний"
-    },
-    {
-      "german": "geöffnet",
-      "transcription": "[gəˈøːfnət]",
-      "ukrainian": "відкритий"
-    },
-    {
-      "german": "scheinen",
-      "transcription": "[ˈʃaɪ̯nən]",
-      "ukrainian": "здаватися"
-    },
-    {
-      "german": "zusammen",
-      "transcription": "[t͡suˈzamən]",
-      "ukrainian": "разом"
-    },
-    {
-      "german": "nächste",
-      "transcription": "[ˈnɛːçstə]",
-      "ukrainian": "наступний"
-    },
-    {
-      "german": "weiß",
-      "transcription": "[vaɪ̯s]",
-      "ukrainian": "білий"
-    },
-    {
-      "german": "die Kinder",
-      "transcription": "[diː ˈkɪndɐ]",
-      "ukrainian": "діти"
-    },
-    {
-      "german": "Start",
-      "transcription": "[ʃtaːɐ̯t]",
-      "ukrainian": "початок"
-    },
-    {
-      "german": "bekam",
-      "transcription": "[bəˈkaːm]",
-      "ukrainian": "отримав"
-    },
-    {
-      "german": "gehen",
-      "transcription": "[ˈgeːən]",
-      "ukrainian": "ходити"
-    },
-    {
-      "german": "das Beispiel",
-      "transcription": "[das ˈbaɪ̯ʃpiːl]",
-      "ukrainian": "приклад"
-    },
-    {
-      "german": "erleichtern",
-      "transcription": "[ɛɐ̯ˈlaɪ̯çtəʁn]",
-      "ukrainian": "полегшити"
-    },
-    {
-      "german": "das Papier",
-      "transcription": "[das paˈpiːɐ̯]",
-      "ukrainian": "папір"
-    },
-    {
-      "german": "die Gruppe",
-      "transcription": "[diː ˈgʁʊpə]",
-      "ukrainian": "група"
-    },
-    {
-      "german": "immer",
-      "transcription": "[ˈɪmɐ]",
-      "ukrainian": "завжди"
-    },
-    {
-      "german": "die Musik",
-      "transcription": "[diː muˈziːk]",
-      "ukrainian": "музика"
-    },
-    {
-      "german": "diejenigen",
-      "transcription": "[diːˈjeːnɪgən]",
-      "ukrainian": "ті"
-    },
-    {
-      "german": "beide",
-      "transcription": "[ˈbaɪ̯də]",
-      "ukrainian": "обидва"
-    },
-    {
-      "german": "die Marke",
-      "transcription": "[diː ˈmaʁkə]",
-      "ukrainian": "позначка"
-    },
-    {
-      "german": "oft",
-      "transcription": "[ɔft]",
-      "ukrainian": "часто"
-    },
-    {
-      "german": "der Schreiben",
-      "transcription": "[deːɐ̯ ˈʃʁaɪ̯bən]",
-      "ukrainian": "лист"
-    },
-    {
-      "german": "bis",
-      "transcription": "[bɪs]",
-      "ukrainian": "до"
-    },
-    {
-      "german": "die Meile",
-      "transcription": "[diː ˈmaɪ̯lə]",
-      "ukrainian": "миля"
-    },
-    {
-      "german": "der Fluss",
-      "transcription": "[deːɐ̯ flʊs]",
-      "ukrainian": "річка"
-    },
-    {
-      "german": "das Auto",
-      "transcription": "[das ˈaʊ̯to]",
-      "ukrainian": "автомобіль"
-    },
-    {
-      "german": "die Füße",
-      "transcription": "[diː fyːsə]",
-      "ukrainian": "ноги"
-    },
-    {
-      "german": "die Pflege",
-      "transcription": "[diː ˈpfl eːgə]",
-      "ukrainian": "догляд"
-    },
-    {
-      "german": "zweite",
-      "transcription": "[ˈt͡svaɪ̯tə]",
-      "ukrainian": "другий"
-    },
-    {
-      "german": "genug",
-      "transcription": "[gəˈnuːk]",
-      "ukrainian": "достатньо"
-    },
-    {
-      "german": "die Ebene",
-      "transcription": "[diː ˈeːbənə]",
-      "ukrainian": "рівнина"
-    },
-    {
-      "german": "das Mädchen",
-      "transcription": "[das ˈmɛːtçən]",
-      "ukrainian": "дівчина"
-    },
-    {
-      "german": "üblich",
-      "transcription": "[ˈyːplɪç]",
-      "ukrainian": "звичайний"
-    },
-    {
-      "german": "jung",
-      "transcription": "[jʊŋ]",
-      "ukrainian": "молодий"
-    },
-    {
-      "german": "bereit",
-      "transcription": "[bəˈʁaɪ̯t]",
-      "ukrainian": "готовий"
-    },
-    {
-      "german": "oben",
-      "transcription": "[ˈoːbən]",
-      "ukrainian": "вище"
-    },
-    {
-      "german": "je",
-      "transcription": "[jeː]",
-      "ukrainian": "коли-небудь"
-    },
-    {
-      "german": "rot",
-      "transcription": "[ʁoːt]",
-      "ukrainian": "червоний"
-    },
-    {
-      "german": "die Liste",
-      "transcription": "[diː ˈlɪstə]",
-      "ukrainian": "список"
-    },
-    {
-      "german": "obwohl",
-      "transcription": "[ɔpˈvoːl]",
-      "ukrainian": "хоча"
-    },
-    {
-      "german": "fühlen",
-      "transcription": "[ˈfyːlən]",
-      "ukrainian": "відчувати"
-    },
-    {
-      "german": "der Vortrag",
-      "transcription": "[deːɐ̯ ˈfɔʁtʁaːk]",
-      "ukrainian": "розмова"
-    },
-    {
-      "german": "der Vogel",
-      "transcription": "[deːɐ̯ ˈfoːgəl]",
-      "ukrainian": "птах"
-    },
-    {
-      "german": "bald",
-      "transcription": "[balt]",
-      "ukrainian": "скоро"
-    },
-    {
-      "german": "der Körper",
-      "transcription": "[deːɐ̯ ˈkœʁpɐ]",
-      "ukrainian": "тіло"
-    },
-    {
-      "german": "der Hund",
-      "transcription": "[deːɐ̯ hʊnt]",
-      "ukrainian": "собака"
-    },
-    {
-      "german": "die Familie",
-      "transcription": "[diː faˈmiːliə]",
-      "ukrainian": "сім'я"
-    },
-    {
-      "german": "direkt",
-      "transcription": "[diˈʁɛkt]",
-      "ukrainian": "прямий"
-    },
-    {
-      "german": "die Pose",
-      "transcription": "[diː ˈpoːzə]",
-      "ukrainian": "поза"
-    },
-    {
-      "german": "verlassen",
-      "transcription": "[fɛɐ̯ˈlasən]",
-      "ukrainian": "залишити"
-    },
-    {
-      "german": "das Lied",
-      "transcription": "[das liːt]",
-      "ukrainian": "пісня"
-    },
-    {
-      "german": "messen",
-      "transcription": "[ˈmɛsən]",
-      "ukrainian": "вимірювати"
-    },
-    {
-      "german": "die Tür",
-      "transcription": "[diː tyːɐ̯]",
-      "ukrainian": "двері"
-    },
-    {
-      "german": "das Produkt",
-      "transcription": "[das pʁoˈdʊkt]",
-      "ukrainian": "продукт"
-    },
-    {
-      "german": "schwarz",
-      "transcription": "[ʃvaʁt͡s]",
-      "ukrainian": "чорний"
-    },
-    {
-      "german": "kurz",
-      "transcription": "[kʊʁt͡s]",
-      "ukrainian": "короткий"
-    },
-    {
-      "german": "die Zahl",
-      "transcription": "[diː tsaːl]",
-      "ukrainian": "нумерал"
-    },
-    {
-      "german": "die Klasse",
-      "transcription": "[diː ˈklasə]",
-      "ukrainian": "клас"
-    },
-    {
-      "german": "der Wind",
-      "transcription": "[deːɐ̯ vɪnt]",
-      "ukrainian": "вітер"
-    },
-    {
-      "german": "die Frage",
-      "transcription": "[diː ˈfʁaːgə]",
-      "ukrainian": "питання"
-    },
-    {
-      "german": "passieren",
-      "transcription": "[paˈsiːʁən]",
-      "ukrainian": "відбуватися"
-    },
-    {
-      "german": "vollständig",
-      "transcription": "[fɔlˈʃtɛndɪç]",
-      "ukrainian": "повний"
-    },
-    {
-      "german": "das Schiff",
-      "transcription": "[das ʃɪf]",
-      "ukrainian": "корабель"
-    },
-    {
-      "german": "der Bereich",
-      "transcription": "[deːɐ̯ bəˈʁaɪ̯ç]",
-      "ukrainian": "область"
-    },
-    {
-      "german": "die Hälfte",
-      "transcription": "[diː ˈhɛlf tə]",
-      "ukrainian": "половина"
-    },
-    {
-      "german": "der Stein",
-      "transcription": "[deːɐ̯ ʃtaɪ̯n]",
-      "ukrainian": "рок"
-    },
-    {
-      "german": "bestellen",
-      "transcription": "[bəˈʃtɛlən]",
-      "ukrainian": "замовити"
-    },
-    {
-      "german": "das Feuer",
-      "transcription": "[das ˈfɔʏ̯ɐ]",
-      "ukrainian": "вогонь"
-    },
-    {
-      "german": "der Süden",
-      "transcription": "[deːɐ̯ ˈzyːdən]",
-      "ukrainian": "південь"
-    },
-    {
-      "german": "das Problem",
-      "transcription": "[das pʁoˈbleːm]",
-      "ukrainian": "проблема"
-    },
-    {
-      "german": "das Stück",
-      "transcription": "[das ʃtyːk]",
-      "ukrainian": "шматок"
-    },
-    {
-      "german": "sagte",
-      "transcription": "[ˈzaːktə]",
-      "ukrainian": "сказав"
-    },
-    {
-      "german": "wusste",
-      "transcription": "[ˈvʊstə]",
-      "ukrainian": "знав"
-    },
-    {
-      "german": "passieren",
-      "transcription": "[paˈsiːʁən]",
-      "ukrainian": "проходити"
-    },
-    {
-      "german": "seit",
-      "transcription": "[zaɪ̯t]",
-      "ukrainian": "з"
-    },
-    {
-      "german": "obere",
-      "transcription": "[ˈoːbəʁə]",
-      "ukrainian": "верх"
-    },
-    {
-      "german": "ganze",
-      "transcription": "[ˈgant͡sə]",
-      "ukrainian": "цілий"
-    },
-    {
-      "german": "der König",
-      "transcription": "[deːɐ̯ ˈkøːnɪç]",
-      "ukrainian": "король"
-    },
-    {
-      "german": "die Straße",
-      "transcription": "[diː ˈʃtraːsə]",
-      "ukrainian": "вулиця"
-    },
-    {
-      "german": "der Zoll",
-      "transcription": "[deːɐ̯ t͡sɔl]",
-      "ukrainian": "дюйм"
-    },
-    {
-      "german": "multiplizieren",
-      "transcription": "[mʊltɪpliˈt͡siːʁən]",
-      "ukrainian": "множити"
-    },
-    {
-      "german": "nichts",
-      "transcription": "[nɪçt͡s]",
-      "ukrainian": "нічого"
-    },
-    {
-      "german": "der Kurs",
-      "transcription": "[deːɐ̯ kʊʁs]",
-      "ukrainian": "курс"
-    },
-    {
-      "german": "bleiben",
-      "transcription": "[ˈblaɪ̯bən]",
-      "ukrainian": "залишатися"
-    },
-    {
-      "german": "das Rad",
-      "transcription": "[das ʁaːt]",
-      "ukrainian": "колесо"
-    },
-    {
-      "german": "voll",
-      "transcription": "[fɔl]",
-      "ukrainian": "повний"
-    },
-    {
-      "german": "die Kraft",
-      "transcription": "[diː kʁaft]",
-      "ukrainian": "сила"
-    },
-    {
-      "german": "blau",
-      "transcription": "[blaʊ̯]",
-      "ukrainian": "синій"
-    },
-    {
-      "german": "das Objekt",
-      "transcription": "[das ɔpˈjɛkt]",
-      "ukrainian": "об'єкт"
-    },
-    {
-      "german": "entscheiden",
-      "transcription": "[ɛntˈʃaɪ̯dən]",
-      "ukrainian": "вирішити"
-    },
-    {
-      "german": "die Oberfläche",
-      "transcription": "[diː ˈoːbɐflɛçə]",
-      "ukrainian": "поверхня"
-    },
-    {
-      "german": "tief",
-      "transcription": "[tiːf]",
-      "ukrainian": "глибокий"
-    },
-    {
-      "german": "der Mond",
-      "transcription": "[deːɐ̯ moːnt]",
-      "ukrainian": "місяць"
-    },
-    {
-      "german": "die Insel",
-      "transcription": "[diː ˈɪnzəl]",
-      "ukrainian": "острів"
-    },
-    {
-      "german": "der Fuß",
-      "transcription": "[deːɐ̯ fuːs]",
-      "ukrainian": "нога"
-    },
-    {
-      "german": "das System",
-      "transcription": "[das zʏsˈteːm]",
-      "ukrainian": "система"
-    },
-    {
-      "german": "beschäftigt",
-      "transcription": "[bəˈʃɛftɪçt]",
-      "ukrainian": "зайнятий"
-    },
-    {
-      "german": "die Prüfung",
-      "transcription": "[diː ˈpʁyːfʊŋ]",
-      "ukrainian": "тест"
-    },
-    {
-      "german": "der Rekord",
-      "transcription": "[deːɐ̯ ʁeˈkɔʁt]",
-      "ukrainian": "запис"
-    },
-    {
-      "german": "das Boot",
-      "transcription": "[das boːt]",
-      "ukrainian": "човен"
-    },
-    {
-      "german": "gemeinsam",
-      "transcription": "[gəˈmaɪ̯nzaːm]",
-      "ukrainian": "спільний"
-    },
-    {
-      "german": "goldenen",
-      "transcription": "[ˈgɔldənən]",
-      "ukrainian": "золото"
-    },
-    {
-      "german": "möglich",
-      "transcription": "[ˈmøːklɪç]",
-      "ukrainian": "можливий"
-    },
-    {
-      "german": "das Flugzeug",
-      "transcription": "[das ˈfluːkt͡sɔʏ̯k]",
-      "ukrainian": "літак"
-    },
-    {
-      "german": "statt",
-      "transcription": "[ʃtat]",
-      "ukrainian": "замість"
-    },
-    {
-      "german": "trocken",
-      "transcription": "[ˈtʁɔkən]",
-      "ukrainian": "сухий"
-    },
-    {
-      "german": "das Wunder",
-      "transcription": "[das ˈvʊndɐ]",
-      "ukrainian": "диво"
-    },
-    {
-      "german": "das Lachen",
-      "transcription": "[das ˈlaxən]",
-      "ukrainian": "сміх"
-    },
-    {
-      "german": "tausend",
-      "transcription": "[ˈtaʊ̯zənt]",
-      "ukrainian": "тисяча"
-    },
-    {
-      "german": "vor",
-      "transcription": "[foːɐ̯]",
-      "ukrainian": "тому"
-    },
-    {
-      "german": "lief",
-      "transcription": "[liːf]",
-      "ukrainian": "біг"
-    },
-    {
-      "german": "überprüfen",
-      "transcription": "[yːbɐˈpʁyːfən]",
-      "ukrainian": "перевірити"
-    },
-    {
-      "german": "das Spiel",
-      "transcription": "[das ʃpiːl]",
-      "ukrainian": "гра"
-    },
-    {
-      "german": "die Form",
-      "transcription": "[diː fɔʁm]",
-      "ukrainian": "форма"
-    },
-    {
-      "german": "gleichsetzen",
-      "transcription": "[ˈglaɪ̯çzɛt͡sən]",
-      "ukrainian": "рівняти"
-    },
-    {
-      "german": "heiß",
-      "transcription": "[haɪ̯s]",
-      "ukrainian": "гарячий"
-    },
-    {
-      "german": "das Fehl",
-      "transcription": "[das feːl]",
-      "ukrainian": "пропустити"
-    },
-    {
-      "german": "gebracht",
-      "transcription": "[gəˈbʁaxt]",
-      "ukrainian": "принесений"
-    },
-    {
-      "german": "die Wärme",
-      "transcription": "[diː ˈvɛʁmə]",
-      "ukrainian": "тепло"
-    },
-    {
-      "german": "der Schnee",
-      "transcription": "[deːɐ̯ ʃneː]",
-      "ukrainian": "сніг"
-    },
-    {
-      "german": "der Reifen",
-      "transcription": "[deːɐ̯ ˈʁaɪ̯fən]",
-      "ukrainian": "шина"
-    },
-    {
-      "german": "bringen",
-      "transcription": "[ˈbʁɪŋən]",
-      "ukrainian": "принести"
-    },
-    {
-      "german": "ja",
-      "transcription": "[jaː]",
-      "ukrainian": "так"
-    },
-    {
-      "german": "entfernt",
-      "transcription": "[ɛntˈfɛʁnt]",
-      "ukrainian": "віддалений"
-    },
-    {
-      "german": "füllen",
-      "transcription": "[ˈfʏlən]",
-      "ukrainian": "заповнити"
-    },
-    {
-      "german": "der Osten",
-      "transcription": "[deːɐ̯ ˈɔstən]",
-      "ukrainian": "схід"
-    },
-    {
-      "german": "malen",
-      "transcription": "[ˈmaːlən]",
-      "ukrainian": "малювати"
-    },
-    {
-      "german": "die Sprache",
-      "transcription": "[diː ˈʃpʁaːxə]",
-      "ukrainian": "мова"
-    },
-    {
-      "german": "unter",
-      "transcription": "[ˈʊntɐ]",
-      "ukrainian": "серед"
-    },
-    {
-      "german": "die Einheit",
-      "transcription": "[diː ˈaɪ̯nhaɪ̯t]",
-      "ukrainian": "одиниця"
-    },
-    {
-      "german": "die Macht",
-      "transcription": "[diː maxt]",
-      "ukrainian": "потужність"
-    },
-    {
-      "german": "die Stadt",
-      "transcription": "[diː ʃtat]",
-      "ukrainian": "місто"
-    },
-    {
-      "german": "fein",
-      "transcription": "[faɪ̯n]",
-      "ukrainian": "добре"
-    },
-    {
-      "german": "sicher",
-      "transcription": "[ˈzɪçɐ]",
-      "ukrainian": "певний"
-    },
-    {
-      "german": "fliegen",
-      "transcription": "[ˈfliːgən]",
-      "ukrainian": "літати"
-    },
-    {
-      "german": "fallen",
-      "transcription": "[ˈfalən]",
-      "ukrainian": "падати"
-    },
-    {
-      "german": "führen",
-      "transcription": "[ˈfyːʁən]",
-      "ukrainian": "вести"
-    },
-    {
-      "german": "der Schrei",
-      "transcription": "[deːɐ̯ ʃʁaɪ̯]",
-      "ukrainian": "крик"
-    },
-    {
-      "german": "dunkel",
-      "transcription": "[ˈdʊŋkəl]",
-      "ukrainian": "темний"
-    },
-    {
-      "german": "die Maschine",
-      "transcription": "[diː maˈʃiːnə]",
-      "ukrainian": "машина"
-    },
-    {
-      "german": "die Note",
-      "transcription": "[diː ˈnoːtə]",
-      "ukrainian": "примітка"
-    },
-    {
-      "german": "warten",
-      "transcription": "[ˈvaʁtən]",
-      "ukrainian": "чекати"
-    },
-    {
-      "german": "der Plan",
-      "transcription": "[deːɐ̯ plaːn]",
-      "ukrainian": "план"
-    },
-    {
-      "german": "die Abbildung",
-      "transcription": "[diː ˈapbɪldʊŋ]",
-      "ukrainian": "фігура"
-    },
-    {
-      "german": "der Stern",
-      "transcription": "[deːɐ̯ ʃtɛʁn]",
-      "ukrainian": "зірка"
-    },
-    {
-      "german": "der Kasten",
-      "transcription": "[deːɐ̯ ˈkastən]",
-      "ukrainian": "коробка"
-    },
-    {
-      "german": "das Nomen",
-      "transcription": "[das ˈnoːmən]",
-      "ukrainian": "іменник"
-    },
-    {
-      "german": "das Feld",
-      "transcription": "[das fɛlt]",
-      "ukrainian": "поле"
-    },
-    {
-      "german": "der Rest",
-      "transcription": "[deːɐ̯ ʁɛst]",
-      "ukrainian": "відпочинок"
-    },
-    {
-      "german": "richtig",
-      "transcription": "[ˈʁɪçtɪç]",
-      "ukrainian": "правильний"
-    },
-    {
-      "german": "fähig",
-      "transcription": "[ˈfɛːɪç]",
-      "ukrainian": "здатний"
-    },
-    {
-      "german": "das Pfund",
-      "transcription": "[das pfʊnt]",
-      "ukrainian": "фунт"
-    },
-    {
-      "german": "getan",
-      "transcription": "[gəˈtaːn]",
-      "ukrainian": "готово"
-    },
-    {
-      "german": "die Schönheit",
-      "transcription": "[diː ˈʃøːnhaɪ̯t]",
-      "ukrainian": "краса"
-    },
-    {
-      "german": "der Antriebs",
-      "transcription": "[deːɐ̯ ˈantʁiːps]",
-      "ukrainian": "диск"
-    },
-    {
-      "german": "stand",
-      "transcription": "[ʃtant]",
-      "ukrainian": "стояв"
-    },
-    {
-      "german": "enthalten",
-      "transcription": "[ɛntˈhaltən]",
-      "ukrainian": "містити"
-    },
-    {
-      "german": "die Front",
-      "transcription": "[diː fʁɔnt]",
-      "ukrainian": "перед"
-    },
-    {
-      "german": "lehren",
-      "transcription": "[ˈleːʁən]",
-      "ukrainian": "викладати"
-    },
-    {
-      "german": "die Woche",
-      "transcription": "[diː ˈvɔxə]",
-      "ukrainian": "тиждень"
-    },
-    {
-      "german": "die Finale",
-      "transcription": "[diː fiˈnaːlə]",
-      "ukrainian": "фінальний"
-    },
-    {
-      "german": "gab",
-      "transcription": "[gaːp]",
-      "ukrainian": "дав"
-    },
-    {
-      "german": "grün",
-      "transcription": "[gʁyːn]",
-      "ukrainian": "зелений"
-    },
-    {
-      "german": "oh",
-      "transcription": "[oː]",
-      "ukrainian": "о"
-    },
-    {
-      "german": "schnell",
-      "transcription": "[ʃnɛl]",
-      "ukrainian": "швидкий"
-    },
-    {
-      "german": "entwickeln",
-      "transcription": "[ɛntˈvɪklən]",
-      "ukrainian": "розвивати"
-    },
-    {
-      "german": "der Ozean",
-      "transcription": "[deːɐ̯ oˈt͡seːaːn]",
-      "ukrainian": "океан"
-    },
-    {
-      "german": "warme",
-      "transcription": "[ˈvaʁmə]",
-      "ukrainian": "теплий"
-    },
-    {
-      "german": "kostenlos",
-      "transcription": "[ˈkɔstənloːs]",
-      "ukrainian": "безкоштовно"
-    },
-    {
-      "german": "die Minute",
-      "transcription": "[diː miˈnuːtə]",
-      "ukrainian": "хвилина"
-    },
-    {
-      "german": "stark",
-      "transcription": "[ʃtaʁk]",
-      "ukrainian": "сильний"
-    },
-    {
-      "german": "besondere",
-      "transcription": "[bəˈzɔndəʁə]",
-      "ukrainian": "спеціальний"
-    },
-    {
-      "german": "der Geist",
-      "transcription": "[deːɐ̯ gaɪ̯st]",
-      "ukrainian": "розум"
-    },
-    {
-      "german": "hinter",
-      "transcription": "[ˈhɪntɐ]",
-      "ukrainian": "поза"
-    },
-    {
-      "german": "klar",
-      "transcription": "[klaːɐ̯]",
-      "ukrainian": "ясний"
-    },
-    {
-      "german": "der Schwanz",
-      "transcription": "[deːɐ̯ ʃvant͡s]",
-      "ukrainian": "хвіст"
-    },
-    {
-      "german": "produzieren",
-      "transcription": "[pʁoduˈt͡siːʁən]",
-      "ukrainian": "виробляти"
-    },
-    {
-      "german": "die Tatsache",
-      "transcription": "[diː ˈtatzaːxə]",
-      "ukrainian": "факт"
-    },
-    {
-      "german": "der Raum",
-      "transcription": "[deːɐ̯ ʁaʊ̯m]",
-      "ukrainian": "простір"
-    },
-    {
-      "german": "gehört",
-      "transcription": "[gəˈhøːɐ̯t]",
-      "ukrainian": "почутий"
-    },
-    {
-      "german": "beste",
-      "transcription": "[ˈbɛstə]",
-      "ukrainian": "найкращий"
-    },
-    {
-      "german": "die Stunde",
-      "transcription": "[diː ˈʃtʊndə]",
-      "ukrainian": "година"
-    },
-    {
-      "german": "besser",
-      "transcription": "[ˈbɛsɐ]",
-      "ukrainian": "краще"
-    },
-    {
-      "german": "wahr",
-      "transcription": "[vaːɐ̯]",
-      "ukrainian": "правда"
-    },
-    {
-      "german": "während",
-      "transcription": "[ˈvɛːʁənt]",
-      "ukrainian": "під час"
-    },
-    {
-      "german": "hundert",
-      "transcription": "[ˈhʊndɐt]",
-      "ukrainian": "сто"
-    },
-    {
-      "german": "fünf",
-      "transcription": "[fʏnf]",
-      "ukrainian": "п'ять"
-    },
-    {
-      "german": "merken",
-      "transcription": "[ˈmɛʁkən]",
-      "ukrainian": "пам'ятати"
-    },
-    {
-      "german": "der Schritt",
-      "transcription": "[deːɐ̯ ʃʁɪt]",
-      "ukrainian": "крок"
-    },
-    {
-      "german": "früh",
-      "transcription": "[fʁyː]",
-      "ukrainian": "рано"
-    },
-    {
-      "german": "halten",
-      "transcription": "[ˈhaltən]",
-      "ukrainian": "тримайте"
-    },
-    {
-      "german": "der Westen",
-      "transcription": "[deːɐ̯ ˈvɛstən]",
-      "ukrainian": "захід"
-    },
-    {
-      "german": "der Boden",
-      "transcription": "[deːɐ̯ ˈboːdən]",
-      "ukrainian": "земля"
-    },
-    {
-      "german": "das Interesse",
-      "transcription": "[das ɪntəˈʁɛsə]",
-      "ukrainian": "інтерес"
-    },
-    {
-      "german": "erreichen",
-      "transcription": "[ɛɐ̯ˈʁaɪ̯çən]",
-      "ukrainian": "досягти"
-    },
-    {
-      "german": "schnell",
-      "transcription": "[ʃnɛl]",
-      "ukrainian": "швидко"
-    },
-    {
-      "german": "das Verbum",
-      "transcription": "[das ˈvɛʁbʊm]",
-      "ukrainian": "дієслово"
-    },
-    {
-      "german": "singen",
-      "transcription": "[ˈzɪŋən]",
-      "ukrainian": "співати"
-    },
-    {
-      "german": "hören",
-      "transcription": "[ˈhøːʁən]",
-      "ukrainian": "слухати"
-    },
-    {
-      "german": "sechs",
-      "transcription": "[zɛks]",
-      "ukrainian": "шість"
-    },
-    {
-      "german": "der Tabelle",
-      "transcription": "[deːɐ̯ taˈbɛlə]",
-      "ukrainian": "стіл"
-    },
-    {
-      "german": "die Reise",
-      "transcription": "[diː ˈʁaɪ̯zə]",
-      "ukrainian": "подорож"
-    },
-    {
-      "german": "weniger",
-      "transcription": "[ˈveːnɪgɐ]",
-      "ukrainian": "менше"
-    },
-    {
-      "german": "der Morgen",
-      "transcription": "[deːɐ̯ ˈmɔʁgən]",
-      "ukrainian": "ранок"
-    },
-    {
-      "german": "zehn",
-      "transcription": "[t͡seːn]",
-      "ukrainian": "десять"
-    },
-    {
-      "german": "einfach",
-      "transcription": "[ˈaɪ̯nfax]",
-      "ukrainian": "простий"
-    },
-    {
-      "german": "mehrere",
-      "transcription": "[ˈmeːʁəʁə]",
-      "ukrainian": "декілька"
-    },
-    {
-      "german": "der Vokal",
-      "transcription": "[deːɐ̯ voˈkaːl]",
-      "ukrainian": "голосний"
-    },
-    {
-      "german": "auf",
-      "transcription": "[aʊ̯f]",
-      "ukrainian": "до"
-    },
-    {
-      "german": "der Krieg",
-      "transcription": "[deːɐ̯ kʁiːk]",
-      "ukrainian": "війна"
-    },
-    {
-      "german": "legen",
-      "transcription": "[ˈleːgən]",
-      "ukrainian": "класти"
-    },
-    {
-      "german": "gegen",
-      "transcription": "[ˈgeːgən]",
-      "ukrainian": "проти"
-    },
-    {
-      "german": "das Muster",
-      "transcription": "[das ˈmʊstɐ]",
-      "ukrainian": "шаблон"
-    },
-    {
-      "german": "schleppend",
-      "transcription": "[ˈʃlɛpənt]",
-      "ukrainian": "повільний"
-    },
-    {
-      "german": "das Zentrum",
-      "transcription": "[das ˈt͡sɛntʁʊm]",
-      "ukrainian": "центр"
-    },
-    {
-      "german": "die Liebe",
-      "transcription": "[diː ˈliːbə]",
-      "ukrainian": "любов"
-    },
-    {
-      "german": "die Person",
-      "transcription": "[diː pɛʁˈzoːn]",
-      "ukrainian": "особа"
-    },
-    {
-      "german": "das Geld",
-      "transcription": "[das gɛlt]",
-      "ukrainian": "гроші"
-    },
-    {
-      "german": "dienen",
-      "transcription": "[ˈdiːnən]",
-      "ukrainian": "подавати"
-    },
-    {
-      "german": "erscheinen",
-      "transcription": "[ɛɐ̯ˈʃaɪ̯nən]",
-      "ukrainian": "з'являтися"
-    },
-    {
-      "german": "die Straße",
-      "transcription": "[diː ˈʃtraːsə]",
-      "ukrainian": "дорога"
-    },
-    {
-      "german": "die Karte",
-      "transcription": "[diː ˈkaʁtə]",
-      "ukrainian": "карта"
-    },
-    {
-      "german": "regen",
-      "transcription": "[ˈʁeːgən]",
-      "ukrainian": "дощ"
-    },
-    {
-      "german": "die Regel",
-      "transcription": "[diː ˈʁeːgəl]",
-      "ukrainian": "правило"
-    },
-    {
-      "german": "regieren",
-      "transcription": "[ʁeˈgiːʁən]",
-      "ukrainian": "керувати"
-    },
-    {
-      "german": "ziehen",
-      "transcription": "[ˈt͡siːən]",
-      "ukrainian": "тягнути"
-    },
-    {
-      "german": "die Kälte",
-      "transcription": "[diː ˈkɛltə]",
-      "ukrainian": "холод"
-    },
-    {
-      "german": "der Hinweis",
-      "transcription": "[deːɐ̯ ˈhɪnvaɪ̯s]",
-      "ukrainian": "повідомлення"
-    },
-    {
-      "german": "die Stimme",
-      "transcription": "[diː ˈʃtɪmə]",
-      "ukrainian": "голос"
-    },
-    {
-      "german": "die Energie",
-      "transcription": "[diː ɛnɛʁˈgiː]",
-      "ukrainian": "енергія"
-    },
-    {
-      "german": "die Jagd",
-      "transcription": "[diː jaːkt]",
-      "ukrainian": "полювання"
-    },
-    {
-      "german": "wahrscheinlich",
-      "transcription": "[vaːɐ̯ˈʃaɪ̯nlɪç]",
-      "ukrainian": "ймовірний"
-    },
-    {
-      "german": "das Bett",
-      "transcription": "[das bɛt]",
-      "ukrainian": "ліжко"
-    },
-    {
-      "german": "der Bruder",
-      "transcription": "[deːɐ̯ ˈbʁuːdɐ]",
-      "ukrainian": "брат"
-    },
-    {
-      "german": "das Ei",
-      "transcription": "[das aɪ̯]",
-      "ukrainian": "яйце"
-    },
-    {
-      "german": "die Fahrt",
-      "transcription": "[diː faːɐ̯t]",
-      "ukrainian": "їзда"
-    },
-    {
-      "german": "die Zelle",
-      "transcription": "[diː ˈt͡sɛlə]",
-      "ukrainian": "клітина"
-    },
-    {
-      "german": "glauben",
-      "transcription": "[ˈglaʊ̯bən]",
-      "ukrainian": "вірити"
-    },
-    {
-      "german": "vielleicht",
-      "transcription": "[fiːˈlaɪ̯çt]",
-      "ukrainian": "можливо"
-    },
-    {
-      "german": "pflücken",
-      "transcription": "[ˈpflʏkən]",
-      "ukrainian": "вибирати"
-    },
-    {
-      "german": "plötzlich",
-      "transcription": "[ˈplœt͡slɪç]",
-      "ukrainian": "раптовий"
-    },
-    {
-      "german": "zählen",
-      "transcription": "[ˈt͡seːlən]",
-      "ukrainian": "рахувати"
-    },
-    {
-      "german": "der Platz",
-      "transcription": "[deːɐ̯ plats]",
-      "ukrainian": "квадрат"
-    },
-    {
-      "german": "der Grund",
-      "transcription": "[deːɐ̯ gʁʊnt]",
-      "ukrainian": "причина"
-    },
-    {
-      "german": "die Dauer",
-      "transcription": "[diː ˈdaʊ̯ɐ]",
-      "ukrainian": "довжина"
-    },
-    {
-      "german": "vertreten",
-      "transcription": "[fɛɐ̯ˈtʁeːtən]",
-      "ukrainian": "представляти"
-    },
-    {
-      "german": "die Kunst",
-      "transcription": "[diː kʊnst]",
-      "ukrainian": "мистецтво"
-    },
-    {
-      "german": "das Thema",
-      "transcription": "[das ˈteːma]",
-      "ukrainian": "предмет"
-    },
-    {
-      "german": "die Region",
-      "transcription": "[diː ʁeˈgiːoːn]",
-      "ukrainian": "регіон"
-    },
-    {
-      "german": "die Größe",
-      "transcription": "[diː ˈgʁøːsə]",
-      "ukrainian": "розмір"
-    },
-    {
-      "german": "variieren",
-      "transcription": "[vaʁiˈiːʁən]",
-      "ukrainian": "змінюватися"
-    },
-    {
-      "german": "regeln",
-      "transcription": "[ˈʁeːgəln]",
-      "ukrainian": "врегулювати"
-    },
-    {
-      "german": "sprechen",
-      "transcription": "[ˈʃpʁɛçən]",
-      "ukrainian": "говорити"
-    },
-    {
-      "german": "das Gewicht",
-      "transcription": "[das gəˈvɪçt]",
-      "ukrainian": "вага"
-    },
-    {
-      "german": "allgemein",
-      "transcription": "[al gəˈmaɪ̯n]",
-      "ukrainian": "загальний"
-    },
-    {
-      "german": "das Eis",
-      "transcription": "[das aɪ̯s]",
-      "ukrainian": "лід"
-    },
-    {
-      "german": "die Materie",
-      "transcription": "[diː maˈteːʁiə]",
-      "ukrainian": "матерія"
-    },
-    {
-      "german": "der Kreis",
-      "transcription": "[deːɐ̯ kʁaɪ̯s]",
-      "ukrainian": "коло"
-    },
-    {
-      "german": "das Paar",
-      "transcription": "[das paːɐ̯]",
-      "ukrainian": "пара"
-    },
-    {
-      "german": "umfassen",
-      "transcription": "[ʊmˈfasən]",
-      "ukrainian": "включати"
-    },
-    {
-      "german": "die Kluft",
-      "transcription": "[diː klʊft]",
-      "ukrainian": "розділити"
-    },
-    {
-      "german": "die Silbe",
-      "transcription": "[diː ˈzɪlbə]",
-      "ukrainian": "склад"
-    },
-    {
-      "german": "der Filz",
-      "transcription": "[deːɐ̯ fɪlt͡s]",
-      "ukrainian": "відчував"
-    },
-    {
-      "german": "groß",
-      "transcription": "[gʁoːs]",
-      "ukrainian": "grand"
-    },
-    {
-      "german": "die Kugel",
-      "transcription": "[diː ˈkuːgəl]",
-      "ukrainian": "м'яч"
-    },
-    {
-      "german": "noch",
-      "transcription": "[nɔx]",
-      "ukrainian": "ще"
-    },
-    {
-      "german": "die Welle",
-      "transcription": "[diː ˈvɛlə]",
-      "ukrainian": "хвиля"
-    },
-    {
-      "german": "fallen",
-      "transcription": "[ˈfalən]",
-      "ukrainian": "падіння"
-    },
-    {
-      "german": "das Herz",
-      "transcription": "[das hɛʁt͡s]",
-      "ukrainian": "серце"
-    },
-    {
-      "german": "Uhr",
-      "transcription": "[uːɐ̯]",
-      "ukrainian": "am"
-    },
-    {
-      "german": "vorhanden",
-      "transcription": "[foːɐ̯ˈhandən]",
-      "ukrainian": "присутній"
-    },
-    {
-      "german": "schwer",
-      "transcription": "[ʃveːɐ̯]",
-      "ukrainian": "важкий"
-    },
-    {
-      "german": "der Tanz",
-      "transcription": "[deːɐ̯ tants]",
-      "ukrainian": "танець"
-    },
-    {
-      "german": "der Motor",
-      "transcription": "[deːɐ̯ moˈtoːɐ̯]",
-      "ukrainian": "двигун"
-    },
-    {
-      "german": "die Position",
-      "transcription": "[diː poziˈt͡siːoːn]",
-      "ukrainian": "позиція"
-    },
-    {
-      "german": "der Arm",
-      "transcription": "[deːɐ̯ aʁm]",
-      "ukrainian": "рука"
-    },
-    {
-      "german": "breit",
-      "transcription": "[bʁaɪ̯t]",
-      "ukrainian": "широкий"
-    },
-    {
-      "german": "das Segel",
-      "transcription": "[das ˈzeːgəl]",
-      "ukrainian": "вітрило"
-    },
-    {
-      "german": "das Material",
-      "transcription": "[das ma te ʁiˈaːl]",
-      "ukrainian": "матеріал"
-    },
-    {
-      "german": "die Fraktion",
-      "transcription": "[diː fʁakˈt͡siːoːn]",
-      "ukrainian": "дріб"
-    },
-    {
-      "german": "der Wald",
-      "transcription": "[deːɐ̯ valt]",
-      "ukrainian": "ліс"
-    },
-    {
-      "german": "sitzen",
-      "transcription": "[ˈzɪt͡sən]",
-      "ukrainian": "сидіти"
-    },
-    {
-      "german": "das Rennen",
-      "transcription": "[das ˈʁɛnən]",
-      "ukrainian": "гонка"
-    },
-    {
-      "german": "das Fenster",
-      "transcription": "[das ˈfɛnstɐ]",
-      "ukrainian": "вікно"
-    },
-    {
-      "german": "der Speicher",
-      "transcription": "[deːɐ̯ ˈʃpaɪ̯çɐ]",
-      "ukrainian": "магазин"
-    },
-    {
-      "german": "der Sommer",
-      "transcription": "[deːɐ̯ ˈzɔmɐ]",
-      "ukrainian": "літо"
-    },
-    {
-      "german": "der Zug",
-      "transcription": "[deːɐ̯ t͡suːk]",
-      "ukrainian": "потяг"
-    },
-    {
-      "german": "der Schlaf",
-      "transcription": "[deːɐ̯ ʃlaːf]",
-      "ukrainian": "сон"
-    },
-    {
-      "german": "beweisen",
-      "transcription": "[bəˈvaɪ̯zən]",
-      "ukrainian": "довести"
-    },
-    {
-      "german": "einsam",
-      "transcription": "[ˈaɪ̯nzaːm]",
-      "ukrainian": "самотній"
-    },
-    {
-      "german": "das Bein",
-      "transcription": "[das baɪ̯n]",
-      "ukrainian": "нога"
-    },
-    {
-      "german": "die Übung",
-      "transcription": "[diː ˈyːbʊŋ]",
-      "ukrainian": "вправа"
-    },
-    {
-      "german": "die Wand",
-      "transcription": "[diː vant]",
-      "ukrainian": "стіна"
-    },
-    {
-      "german": "der Fang",
-      "transcription": "[deːɐ̯ faŋ]",
-      "ukrainian": "ловити"
-    },
-    {
-      "german": "der Berg",
-      "transcription": "[deːɐ̯ bɛʁk]",
-      "ukrainian": "гора"
-    },
-    {
-      "german": "wünschen",
-      "transcription": "[ˈvʏnʃən]",
-      "ukrainian": "бажати"
-    },
-    {
-      "german": "der Himmel",
-      "transcription": "[deːɐ̯ ˈhɪməl]",
-      "ukrainian": "небо"
-    },
-    {
-      "german": "das Board",
-      "transcription": "[das boːɐ̯t]",
-      "ukrainian": "дошка"
-    },
-    {
-      "german": "die Freude",
-      "transcription": "[diː ˈfʁɔʏ̯də]",
-      "ukrainian": "радість"
-    },
-    {
-      "german": "der Winter",
-      "transcription": "[deːɐ̯ ˈvɪntɐ]",
-      "ukrainian": "зима"
-    },
-    {
-      "german": "sa",
-      "transcription": "[zaː]",
-      "ukrainian": "сидів"
-    },
-    {
-      "german": "geschrieben",
-      "transcription": "[gəˈʃʁiːbən]",
-      "ukrainian": "написаний"
-    },
-    {
-      "german": "wilden",
-      "transcription": "[ˈvɪldən]",
-      "ukrainian": "дикий"
-    },
-    {
-      "german": "das Instrument",
-      "transcription": "[das ɪnstʁuˈmɛnt]",
-      "ukrainian": "інструмент"
-    },
-    {
-      "german": "gehalten",
-      "transcription": "[gəˈhaltən]",
-      "ukrainian": "тримається"
-    },
-    {
-      "german": "das Glas",
-      "transcription": "[das glaːs]",
-      "ukrainian": "скло"
-    },
-    {
-      "german": "das Gras",
-      "transcription": "[das gʁaːs]",
-      "ukrainian": "трава"
-    },
-    {
-      "german": "die Kuh",
-      "transcription": "[diː kuː]",
-      "ukrainian": "корова"
-    },
-    {
-      "german": "die Arbeit",
-      "transcription": "[diː ˈaːɐ̯baɪ̯t]",
-      "ukrainian": "робота"
-    },
-    {
-      "german": "der Rand",
-      "transcription": "[deːɐ̯ ʁant]",
-      "ukrainian": "край"
-    },
-    {
-      "german": "das Zeichen",
-      "transcription": "[das ˈt͡saɪ̯çən]",
-      "ukrainian": "знак"
-    },
-    {
-      "german": "der Besuch",
-      "transcription": "[deːɐ̯ bəˈzuːx]",
-      "ukrainian": "відвідування"
-    },
-    {
-      "german": "die Vergangenheit",
-      "transcription": "[diː fɛɐ̯ˈgaŋənhaɪ̯t]",
-      "ukrainian": "минулий"
-    },
-    {
-      "german": "weich",
-      "transcription": "[vaɪ̯ç]",
-      "ukrainian": "м'який"
-    },
-    {
-      "german": "der Spaß",
-      "transcription": "[deːɐ̯ ʃpaːs]",
-      "ukrainian": "весело"
-    },
-    {
-      "german": "hell",
-      "transcription": "[hɛl]",
-      "ukrainian": "яскравий"
-    },
-    {
-      "german": "das Gas",
-      "transcription": "[das gaːs]",
-      "ukrainian": "газ"
-    },
-    {
-      "german": "das Wetter",
-      "transcription": "[das ˈvɛtɐ]",
-      "ukrainian": "погода"
-    },
-    {
-      "german": "der Monat",
-      "transcription": "[deːɐ̯ ˈmoːnat]",
-      "ukrainian": "місяць"
-    },
-    {
-      "german": "Million",
-      "transcription": "[mɪˈli̯oːn]",
-      "ukrainian": "мільйон"
-    },
-    {
-      "german": "tragen",
-      "transcription": "[ˈtʁaːgən]",
-      "ukrainian": "нести"
-    },
-    {
-      "german": "Finish",
-      "transcription": "[ˈfɪnɪʃ]",
-      "ukrainian": "фініш"
-    },
-    {
-      "german": "glücklich",
-      "transcription": "[ˈglyːklɪç]",
-      "ukrainian": "щасливий"
-    },
-    {
-      "german": "hoffen",
-      "transcription": "[ˈhɔfən]",
-      "ukrainian": "сподіватися"
-    },
-    {
-      "german": "die Blume",
-      "transcription": "[diː ˈbluːmə]",
-      "ukrainian": "квітка"
-    },
-    {
-      "german": "kleiden",
-      "transcription": "[ˈklaɪ̯dən]",
-      "ukrainian": "одягати"
-    },
-    {
-      "german": "seltsam",
-      "transcription": "[ˈzɛltzaːm]",
-      "ukrainian": "дивний"
-    },
-    {
-      "german": "Vorbei",
-      "transcription": "[fɔʁˈbaɪ̯]",
-      "ukrainian": "пішов"
-    },
-    {
-      "german": "der Handel",
-      "transcription": "[deːɐ̯ ˈhandəl]",
-      "ukrainian": "торгівля"
-    },
-    {
-      "german": "die Melodie",
-      "transcription": "[diː me loˈdiː]",
-      "ukrainian": "мелодія"
-    },
-    {
-      "german": "die Reise",
-      "transcription": "[diː ˈʁaɪ̯zə]",
-      "ukrainian": "поїздка"
-    },
-    {
-      "german": "das Büro",
-      "transcription": ["das byˈʁoː"],
-      "ukrainian": "офіс"
-    },
-    {
-      "german": "empfangen",
-      "transcription": "[ɛmpˈfaŋən]",
-      "ukrainian": "отримати"
-    },
-    {
-      "german": "die Reihe",
-      "transcription": "[diː ˈʁaɪ̯ə]",
-      "ukrainian": "ряд"
-    },
-    {
-      "german": "der Mund",
-      "transcription": "[deːɐ̯ mʊnt]",
-      "ukrainian": "рот"
-    },
-    {
-      "german": "genau",
-      "transcription": "[gəˈnaʊ̯]",
-      "ukrainian": "точний"
-    },
-    {
-      "german": "das Zeichen",
-      "transcription": "[das ˈt͡saɪ̯çən]",
-      "ukrainian": "символ"
-    },
-    {
-      "german": "sterben",
-      "transcription": "[ˈʃtɛʁbən]",
-      "ukrainian": "померти"
-    },
-    {
-      "german": "am wenigsten",
-      "transcription": "[am ˈveːnɪkstən]",
-      "ukrainian": "найменше"
-    },
-    {
-      "german": "der Ärger",
-      "transcription": "[deːɐ̯ ˈɛʁgɐ]",
-      "ukrainian": "біда"
-    },
-    {
-      "german": "der Schrei",
-      "transcription": "[deːɐ̯ ʃʁaɪ̯]",
-      "ukrainian": "кричати"
-    },
-    {
-      "german": "außer",
-      "transcription": "[ˈaʊ̯sɐ]",
-      "ukrainian": "крім"
-    },
-    {
-      "german": "schrieb",
-      "transcription": ["ʃʁiːp"],
-      "ukrainian": "писав"
-    },
-    {
-      "german": "der Samen",
-      "transcription": "[deːɐ̯ ˈzaːmən]",
-      "ukrainian": "насіння"
-    },
-    {
-      "german": "der Ton",
-      "transcription": "[deːɐ̯ toːn]",
-      "ukrainian": "тон"
-    },
-    {
-      "german": "beitreten",
-      "transcription": "[ˈbaɪ̯tʁeːtən]",
-      "ukrainian": "приєднатися"
-    },
-    {
-      "german": "vorschlagen",
-      "transcription": "[fɔɐ̯ˈʃlaːgən]",
-      "ukrainian": "пропонувати"
-    },
-    {
-      "german": "sauber",
-      "transcription": "[ˈzaʊ̯bɐ]",
-      "ukrainian": "чистий"
-    },
-    {
-      "german": "die Pause",
-      "transcription": "[diː ˈpaʊ̯zə]",
-      "ukrainian": "перерва"
-    },
-    {
-      "german": "die Dame",
-      "transcription": "[diː ˈdaːmə]",
-      "ukrainian": "леді"
-    },
-    {
-      "german": "der Hof",
-      "transcription": "[deːɐ̯ hoːf]",
-      "ukrainian": "подвір'я"
-    },
-    {
-      "german": "steigen",
-      "transcription": "[ˈʃtaɪ̯gən]",
-      "ukrainian": "підйом"
-    },
-    {
-      "german": "schlecht",
-      "transcription": "[ʃlɛçt]",
-      "ukrainian": "поганий"
-    },
-    {
-      "german": "wachsen",
-      "transcription": "[ˈvaksən]",
-      "ukrainian": "ростити"
-    },
-    {
-      "german": "das Tausend",
-      "transcription": "[das ˈtaʊ̯zənt]",
-      "ukrainian": "тисяча"
-    },
-    {
-      "german": "müde",
-      "transcription": "[ˈmyːdə]",
-      "ukrainian": "втомлений"
-    },
-    {
-      "german": "der Fuß",
-      "transcription": "[deːɐ̯ fuːs]",
-      "ukrainian": "нога"
-    },
-    {
-      "german": "das Gesetz",
-      "transcription": "[das gəˈzɛt͡s]",
-      "ukrainian": "закон"
-    },
-    {
-      "german": "das Ohr",
-      "transcription": "[das oːɐ̯]",
-      "ukrainian": "вухо"
-    },
-    {
-      "german": "die Reihe",
-      "transcription": "[diː ˈʁaɪ̯ə]",
-      "ukrainian": "ряд"
-    },
-    {
-      "german": "ganz",
-      "transcription": "[gant͡s]",
-      "ukrainian": "цілком"
-    },
-    {
-      "german": "mais",
-      "transcription": "[maɪ̯s]",
-      "ukrainian": "кукурудза"
-    },
-    {
-      "german": "entscheiden",
-      "transcription": "[ɛntˈʃaɪ̯dən]",
-      "ukrainian": "вирішити"
-    },
-    {
-      "german": "wir",
-      "transcription": "[viːɐ̯]",
-      "ukrainian": "ми"
-    },
-    {
-      "german": "laut",
-      "transcription": "[laʊ̯t]",
-      "ukrainian": "гучний"
-    },
-    {
-      "german": "warten",
-      "transcription": "[ˈvaʁtən]",
-      "ukrainian": "чекати"
-    },
-    {
-      "german": "die Ebene",
-      "transcription": "[diː ˈeːbənə]",
-      "ukrainian": "план"
-    },
-    {
-      "german": "Zeitalter",
-      "transcription": "[ˈt͡saɪ̯taːltɐ]",
-      "ukrainian": "вік"
-    },
-    {
-      "german": "der Abschnitt",
-      "transcription": "[deːɐ̯ ˈapʃnɪt]",
-      "ukrainian": "розділ"
-    },
-    {
-      "german": "der See",
-      "transcription": "[deːɐ̯ zeː]",
-      "ukrainian": "озеро"
-    },
-    {
-      "german": "der Eisen",
-      "transcription": "[deːɐ̯ ˈaɪ̯zən]",
-      "ukrainian": "залізо"
-    },
-    {
-      "german": "glauben",
-      "transcription": "[ˈglaʊ̯bən]",
-      "ukrainian": "вірити"
-    },
-    {
-      "german": "öl",
-      "transcription": "[øːl]",
-      "ukrainian": "масло"
-    },
-    {
-      "german": "die Situation",
-      "transcription": "[diː zɪtu aˈt͡siːoːn]",
-      "ukrainian": "ситуація"
-    },
-    {
-      "german": "variieren",
-      "transcription": "[vaʁiˈiːʁən]",
-      "ukrainian": "змінюватися"
-    },
-    {
-      "german": "berühren",
-      "transcription": "[bəˈʁyːʁən]",
-      "ukrainian": "торкатися"
-    },
-    {
-      "german": "der Sohn",
-      "transcription": "[deːɐ̯ zoːn]",
-      "ukrainian": "син"
-    },
-    {
-      "german": "die Geist",
-      "transcription": "[diː gaɪ̯st]",
-      "ukrainian": "дух"
-    },
-    {
-      "german": "ruhig",
-      "transcription": "[ˈʁuːɪç]",
-      "ukrainian": "тихо"
-    },
-    {
-      "german": "groß",
-      "transcription": "[gʁoːs]",
-      "ukrainian": "високий"
-    },
-    {
-      "german": "der Sand",
-      "transcription": "[deːɐ̯ zant]",
-      "ukrainian": "піщаний"
-    },
-    {
-      "german": "der Boden",
-      "transcription": "[deːɐ̯ ˈboːdən]",
-      "ukrainian": "грунт"
-    },
-    {
-      "german": "die Rolle",
-      "transcription": "[diː ˈʁɔlə]",
-      "ukrainian": "котити"
-    },
-    {
-      "german": "die Temperatur",
-      "transcription": "[diː tɛmpəʁaˈtuːɐ̯]",
-      "ukrainian": "температура"
-    },
-    {
-      "german": "der Finger",
-      "transcription": "[deːɐ̯ ˈfɪŋɐ]",
-      "ukrainian": "палець"
-    },
-    {
-      "german": "die Industrie",
-      "transcription": "[diː ɪndʊsˈtʁiː]",
-      "ukrainian": "промисловість"
-    },
-    {
-      "german": "der Wert",
-      "transcription": "[deːɐ̯ veːɐ̯t]",
-      "ukrainian": "значення"
-    },
-    {
-      "german": "kämpfen",
-      "transcription": "[ˈkɛmpfən]",
-      "ukrainian": "боротися"
-    },
-    {
-      "german": "lügen",
-      "transcription": "[ˈlyːgən]",
-      "ukrainian": "брехати"
-    },
-    {
-      "german": "schlagen",
-      "transcription": "[ˈʃlaːgən]",
-      "ukrainian": "бити"
-    },
-    {
-      "german": "erregen",
-      "transcription": "[ɛɐ̯ˈʁeːgən]",
-      "ukrainian": "збуджувати"
-    },
-    {
-      "german": "natürlich",
-      "transcription": "[naˈtyːɐ̯lɪç]",
-      "ukrainian": "природний"
-    },
-    {
-      "german": "der Sinn",
-      "transcription": "[deːɐ̯ zɪn]",
-      "ukrainian": "сенс"
-    },
-    {
-      "german": "die Hauptstadt",
-      "transcription": "[diː ˈhaʊ̯ptʃtat]",
-      "ukrainian": "столиця"
-    },
-    {
-      "german": "wird nicht",
-      "transcription": "[vɪʁt nɪçt]",
-      "ukrainian": "не буде"
-    },
-    {
-      "german": "der Stahl",
-      "transcription": "[deːɐ̯ ʃtaːl]",
-      "ukrainian": "сталь"
-    },
-    {
-      "german": "der Stoff",
-      "transcription": "[deːɐ̯ ʃtɔf]",
-      "ukrainian": "матеріал"
-    },
-    {
-      "german": "ist",
-      "transcription": "[ɪst]",
-      "ukrainian": "є"
-    },
-    {
-      "german": "größe",
-      "transcription": "[ˈgʁøːsə]",
-      "ukrainian": "розмір"
-    },
-    {
-      "german": "füllen",
-      "transcription": "[ˈfʏlən]",
-      "ukrainian": "заповнювати"
-    },
-    {
-      "german": "vorwärts",
-      "transcription": "[ˈfoːɐ̯vɛʁt͡s]",
-      "ukrainian": "вперед"
-    },
-    {
-      "german": "ähnlich",
-      "transcription": "[ˈɛːnlɪç]",
-      "ukrainian": "подібний"
-    },
-    {
-      "german": "fliegen",
-      "transcription": "[ˈfliːgən]",
-      "ukrainian": "муха"
-    },
-    {
-      "german": "die Erfahrung",
-      "transcription": "[diː ɛɐ̯ˈfaːʁʊŋ]",
-      "ukrainian": "досвід"
-    },
-    {
-      "german": "rose",
-      "transcription": "[ˈʁoːzə]",
-      "ukrainian": "троянда"
-    },
-    {
-      "german": "erlauben",
-      "transcription": "[ɛɐ̯ˈlaʊ̯bən]",
-      "ukrainian": "дозволити"
-    },
-    {
-      "german": "die Angst",
-      "transcription": "[diː aŋst]",
-      "ukrainian": "страх"
-    },
-    {
-      "german": "die Sicht",
-      "transcription": "[diː zɪçt]",
-      "ukrainian": "погляд"
-    },
-    {
-      "german": "dünn",
-      "transcription": "[dʏn]",
-      "ukrainian": "тонкий"
-    },
-    {
-      "german": "das Dreieck",
-      "transcription": "[das ˈdʁaɪ̯ɛk]",
-      "ukrainian": "трикутник"
-    },
-    {
-      "german": "eilen",
-      "transcription": "[ˈaɪ̯lən]",
-      "ukrainian": "поспішати"
-    },
-    {
-      "german": "der Chef",
-      "transcription": "[deːɐ̯ ʃɛf]",
-      "ukrainian": "начальник"
-    },
-    {
-      "german": "die Periode",
-      "transcription": "[diː peˈʁiːoːdə]",
-      "ukrainian": "період"
-    },
-    {
-      "german": "während",
-      "transcription": "[ˈvɛːʁənt]",
-      "ukrainian": "під час"
-    },
-    {
-      "german": "die Struktur",
-      "transcription": "[diː ʃtʁʊkˈtuːɐ̯]",
-      "ukrainian": "структура"
-    },
-    {
-      "german": "der Sommer",
-      "transcription": "[deːɐ̯ ˈzɔmɐ]",
-      "ukrainian": "літо"
-    },
-    {
-      "german": "wollen",
-      "transcription": "[ˈvɔlən]",
-      "ukrainian": "бажати"
-    },
-    {
-      "german": "gemeinsam",
-      "transcription": "[gəˈmaɪ̯nzaːm]",
-      "ukrainian": "спільний"
-    },
-    {
-      "german": "der Tropfen",
-      "transcription": "[deːɐ̯ ˈtʁɔpfən]",
-      "ukrainian": "крапля"
-    },
-    {
-      "german": "das Amt",
-      "transcription": "[das amt]",
-      "ukrainian": "офіс"
-    },
-    {
-      "german": "andere",
-      "transcription": "[ˈandəʁə]",
-      "ukrainian": "інший"
-    },
-    {
-      "german": "das Fett",
-      "transcription": "[das fɛt]",
-      "ukrainian": "жир"
-    },
-    {
-      "german": "froh",
-      "transcription": "[fʁoː]",
-      "ukrainian": "радий"
-    },
-    {
-      "german": "original",
-      "transcription": "[oʁi giˈnaːl]",
-      "ukrainian": "оригінальний"
-    },
-    {
-      "german": "die Aktie",
-      "transcription": "[diː ˈak t͡siː]",
-      "ukrainian": "частка"
-    },
-    {
-      "german": "tot",
-      "transcription": "[toːt]",
-      "ukrainian": "мертвий"
-    },
-    {
-      "german": "der Sand",
-      "transcription": "[deːɐ̯ zant]",
-      "ukrainian": "піску"
-    },
-    {
-      "german": "ist nicht",
-      "transcription": "[ɪst nɪçt]",
-      "ukrainian": "не"
-    },
-    {
-      "german": "die Kuh",
-      "transcription": "[diː kuː]",
-      "ukrainian": "корова"
-    },
-    {
-      "german": "die Seite",
-      "transcription": "[diː ˈzaɪ̯tə]",
-      "ukrainian": "сторінка"
-    },
-    {
-      "german": "sauber",
-      "transcription": "[ˈzaʊ̯bɐ]",
-      "ukrainian": "чистий"
-    },
-    {
-      "german": "die Haut",
-      "transcription": "[diː haʊ̯t]",
-      "ukrainian": "шкіра"
-    },
-    {
-      "german": "die Insel",
-      "transcription": "[diː ˈɪnzəl]",
-      "ukrainian": "острів"
-    },
-    {
-      "german": "der Handel",
-      "transcription": "[deːɐ̯ ˈhandəl]",
-      "ukrainian": "торгівля"
-    },
-    {
-      "german": "die Vergangenheit",
-      "transcription": "[diː fɛɐ̯ˈgaŋənhaɪ̯t]",
-      "ukrainian": "минуле"
-    },
-    {
-      "german": "die Besucher",
-      "transcription": "[diː bəˈzuːxɐ]",
-      "ukrainian": "відвідувач"
-    },
-    {
-      "german": "die Kunst",
-      "transcription": "[diː kʊnst]",
-      "ukrainian": "мистецтво"
-    },
-    {
-      "german": "haben",
-      "transcription": "[ˈhaːbən]",
-      "ukrainian": "мали"
-    },
-    {
-      "german": "gegen",
-      "transcription": "[ˈgeːgən]",
-      "ukrainian": "проти"
-    },
-    {
-      "german": "das Fenster",
-      "transcription": "[das ˈfɛnstɐ]",
-      "ukrainian": "вікно"
-    },
-    {
-      "german": "zäh",
-      "transcription": "[t͡seː]",
-      "ukrainian": "міцний"
-    },
-    {
-      "german": "die Geschichte",
-      "transcription": "[diː gəˈʃɪçtə]",
-      "ukrainian": "історія"
-    },
-    {
-      "german": "waschen",
-      "transcription": "[ˈvaʃən]",
-      "ukrainian": "мити"
-    },
-    {
-      "german": "obwohl",
-      "transcription": "[ɔpˈvoːl]",
-      "ukrainian": "хоча"
-    },
-    {
-      "german": "die Menge",
-      "transcription": "[diː ˈmɛŋə]",
-      "ukrainian": "натовп"
-    },
-    {
-      "german": "die Beschreibung",
-      "transcription": ["diː bəˈʃʁaɪ̯bʊŋ"],
-      "ukrainian": "опис"
-    },
-    {
-      "german": "dreizehn",
-      "transcription": "[ˈdʁaɪ̯t͡seːn]",
-      "ukrainian": "тринадцять"
-    },
-    {
-      "german": "die Haut",
-      "transcription": "[diː haʊ̯t]",
-      "ukrainian": "шкіра"
-    },
-    {
-      "german": "die Spitze",
-      "transcription": "[diː ˈʃpɪt͡sə]",
-      "ukrainian": "верх"
-    },
-    {
-      "german": "die gesamte",
-      "transcription": "[diː gəˈzam tə]",
-      "ukrainian": "цілий"
-    },
-    {
-      "german": "das Blatt",
-      "transcription": "[das blat]",
-      "ukrainian": "лист"
-    },
-    {
-      "german": "die moderne",
-      "transcription": "[diː moˈdɛʁnə]",
-      "ukrainian": "сучасний"
-    },
-    {
-      "german": "existieren",
-      "transcription": "[ɛksɪsˈtiːʁən]",
-      "ukrainian": "існувати"
-    },
-    {
-      "german": "grün",
-      "transcription": "[gʁyːn]",
-      "ukrainian": "зелений"
-    },
-    {
-      "german": "ist nicht",
-      "transcription": "[ɪst nɪçt]",
-      "ukrainian": "не"
-    },
-    {
-      "german": "die Geschichte",
-      "transcription": "[diː gəˈʃɪçtə]",
-      "ukrainian": "історія"
-    },
-    {
-      "german": "silber",
-      "transcription": "[ˈzɪlbɐ]",
-      "ukrainian": "срібло"
-    },
-    {
-      "german": "das Büro",
-      "transcription": ["das byˈʁoː"],
-      "ukrainian": "офіс"
-    },
-    {
-      "german": "vorwärts",
-      "transcription": "[ˈfoːɐ̯vɛʁt͡s]",
-      "ukrainian": "вперед"
-    },
-    {
-      "german": "fünf",
-      "transcription": "[fʏnf]",
-      "ukrainian": "п'ять"
-    },
-    {
-      "german": "sechs",
-      "transcription": "[zɛks]",
-      "ukrainian": "шість"
-    },
-    {
-      "german": "sieben",
-      "transcription": "[ˈziːbən]",
-      "ukrainian": "сім"
-    },
-    {
-      "german": "die Bank",
-      "transcription": "[diː baŋk]",
-      "ukrainian": "банк"
-    },
-    {
-      "german": "des",
-      "transcription": "[dɛs]",
-      "ukrainian": "des"
-    },
-    {
-      "german": "gewöhnlich",
-      "transcription": "[gəˈvøːnlɪç]",
-      "ukrainian": "зазвичай"
-    },
-    {
-      "german": "sehr",
-      "transcription": "[zeːɐ̯]",
-      "ukrainian": "дуже"
-    },
-    {
-      "german": "tote",
-      "transcription": "[ˈtoːtə]",
-      "ukrainian": "мертвий"
-    },
-    {
-      "german": "mindestens",
-      "transcription": "[ˈmɪndəstəns]",
-      "ukrainian": "найменше"
-    },
-    {
-      "german": "außer",
-      "transcription": "[ˈaʊ̯sɐ]",
-      "ukrainian": "крім"
-    },
-    {
-      "german": "grün",
-      "transcription": "[gʁyːn]",
-      "ukrainian": "зелений"
-    },
-    {
-      "german": "ja",
-      "transcription": "[jaː]",
-      "ukrainian": "так"
-    },
-    {
-      "german": "Ereignisse",
-      "transcription": "[ɛˈʁaɪ̯gnɪsə]",
-      "ukrainian": "подія"
-    },
-    {
-      "german": "besondere",
-      "transcription": "[bəˈzɔndəʁə]",
-      "ukrainian": "особливий"
-    },
-    {
-      "german": "Schwimmen",
-      "transcription": "[ʃvɪmən]",
-      "ukrainian": "плавати"
-    },
-    {
-      "german": "Bedingungen",
-      "transcription": "[bəˈdɪŋʊŋən]",
-      "ukrainian": "термін"
-    },
-    {
-      "german": "aktuell",
-      "transcription": ["akˈtuːɛl"],
-      "ukrainian": "поточний"
-    },
-    {
-      "german": "der Park",
-      "transcription": "[deːɐ̯ paːk]",
-      "ukrainian": "парк"
-    },
-    {
-      "german": "verkaufen",
-      "transcription": "[fɛɐ̯ˈkaʊ̯fən]",
-      "ukrainian": "продавати"
-    },
-    {
-      "german": "die Schulter",
-      "transcription": "[diː ˈʃʊltɐ]",
-      "ukrainian": "плече"
-    },
-    {
-      "german": "die Industrie",
-      "transcription": "[diː ɪndʊsˈtʁiː]",
-      "ukrainian": "промисловість"
-    },
-    {
-      "german": "waschen",
-      "transcription": "[ˈvaʃən]",
-      "ukrainian": "мити"
-    },
-    {
-      "german": "Block",
-      "transcription": "[blɔk]",
-      "ukrainian": "блокувати"
-    },
-    {
-      "german": "die Ausbreitung",
-      "transcription": "[diː ˈaʊ̯s bʁaɪ̯tʊŋ]",
-      "ukrainian": "поширення"
-    },
-    {
-      "german": "das Vieh",
-      "transcription": ["das fiː"],
-      "ukrainian": "худоба"
-    },
-    {
-      "german": "die Frau",
-      "transcription": "[diː fʁaʊ̯]",
-      "ukrainian": "дружина"
-    },
-    {
-      "german": "scharf",
-      "transcription": "[ʃaʁf]",
-      "ukrainian": "гострий"
-    },
-    {
-      "german": "das Unternehmen",
-      "transcription": "[das ʊn tɐˈneːmən]",
-      "ukrainian": "компанія"
-    },
-    {
-      "german": "Radio",
-      "transcription": "[ˈʁaːdio]",
-      "ukrainian": "радіо"
-    },
-    {
-      "german": "gut",
-      "transcription": "[guːt]",
-      "ukrainian": "добре"
-    },
-    {
-      "german": "die Aktion",
-      "transcription": "[diː akˈt͡siːoːn]",
-      "ukrainian": "дія"
-    },
-    {
-      "german": "das Kapital",
-      "transcription": "[das kapiˈtaːl]",
-      "ukrainian": "капітал"
-    },
-    {
-      "german": "Fabriken",
-      "transcription": "[faˈbʁiːkən]",
-      "ukrainian": "фабрика"
-    },
-    {
-      "german": "geregelt",
-      "transcription": "[gəˈʁeːgəlt]",
-      "ukrainian": "врегульований"
-    },
-    {
-      "german": "gelb",
-      "transcription": "[gɛlp]",
-      "ukrainian": "жовтий"
-    },
-    {
-      "german": "ist nicht",
-      "transcription": "[ɪst nɪçt]",
-      "ukrainian": "не"
-    },
-    {
-      "german": "südlich",
-      "transcription": ["ˈzyːtlɪç"],
-      "ukrainian": "південний"
-    },
-    {
-      "german": "der LKW",
-      "transcription": "[deːɐ̯ ɛl kaː ˈveː]",
-      "ukrainian": "вантажівка"
-    },
-    {
-      "german": "fair",
-      "transcription": "[feːɐ̯]",
-      "ukrainian": "справедливий"
-    },
-    {
-      "german": "gedruckt",
-      "transcription": "[gəˈdʁʊkt]",
-      "ukrainian": "друкований"
-    },
-    {
-      "german": "würde nicht",
-      "transcription": "[ˈvʏʁdə nɪçt]",
-      "ukrainian": "не би"
-    },
-    {
-      "german": "vor",
-      "transcription": "[foːɐ̯]",
-      "ukrainian": "попереду"
-    },
-    {
-      "german": "recht",
-      "transcription": "[ʁɛçt]",
-      "ukrainian": "правильно"
-    },
-    {
-      "german": "bekannt",
-      "transcription": "[bəˈkant]",
-      "ukrainian": "відомий"
-    },
-    {
-      "german": "es wird",
-      "transcription": "[ɛs vɪʁt]",
-      "ukrainian": "буде"
-    },
-    {
-      "german": "Englisch",
-      "transcription": "[ˈɛŋlɪʃ]",
-      "ukrainian": "англійська"
-    },
-    {
-      "german": "die Straße",
-      "transcription": "[diː ˈʃtraːsə]",
-      "ukrainian": "дорога"
-    },
-    {
-      "german": "halt",
-      "transcription": "[halt]",
-      "ukrainian": "стоп"
-    },
-    {
-      "german": "fliegen",
-      "transcription": "[ˈfliːgən]",
-      "ukrainian": "літати"
-    },
-    {
-      "german": "gab",
-      "transcription": "[gaːp]",
-      "ukrainian": "дав"
-    },
-    {
-      "german": "die Box",
-      "transcription": "[diː bɔks]",
-      "ukrainian": "коробка"
-    },
-    {
-      "german": "endlich",
-      "transcription": "[ˈɛntlɪç]",
-      "ukrainian": "нарешті"
-    },
-    {
-      "german": "warten",
-      "transcription": "[ˈvaʁtən]",
-      "ukrainian": "чекати"
-    },
-    {
-      "german": "richtig",
-      "transcription": "[ˈʁɪçtɪç]",
-      "ukrainian": "правильний"
-    },
-    {
-      "german": "oh",
-      "transcription": "[oː]",
-      "ukrainian": "о"
-    },
-    {
-      "german": "schnell",
-      "transcription": "[ʃnɛl]",
-      "ukrainian": "швидко"
-    },
-    {
-      "german": "Person",
-      "transcription": "[pɛʁˈzoːn]",
-      "ukrainian": "особа"
-    },
-    {
-      "german": "wurde",
-      "transcription": "[ˈvʊʁdə]",
-      "ukrainian": "став"
-    },
-    {
-      "german": "zeigt",
-      "transcription": "[t͡saɪ̯kt]",
-      "ukrainian": "показати"
-    },
-    {
-      "german": "sechs",
-      "transcription": "[zɛks]",
-      "ukrainian": "шість"
-    },
-    {
-      "german": "bauen",
-      "transcription": "[ˈbaʊ̯ən]",
-      "ukrainian": "будувати"
-    },
-    {
-      "german": "Mitte",
-      "transcription": "[ˈmɪtə]",
-      "ukrainian": "середина"
-    },
-    {
-      "german": "Liebe",
-      "transcription": "[ˈliːbə]",
-      "ukrainian": "любов"
-    },
-    {
-      "german": "erhöhen",
-      "transcription": "[ɛɐ̯ˈhøːən]",
-      "ukrainian": "підвищення"
-    },
-    {
-      "german": "Arms",
-      "transcription": "[aʁms]",
-      "ukrainian": "бідний"
-    },
-    {
-      "german": "ob",
-      "transcription": "[ɔp]",
-      "ukrainian": "чи"
-    },
-    {
-      "german": "das Boot",
-      "transcription": "[das boːt]",
-      "ukrainian": "човен"
-    },
-    {
-      "german": "noch",
-      "transcription": "[nɔx]",
-      "ukrainian": "ще"
-    },
-    {
-      "german": "Tier",
-      "transcription": "[tiːɐ̯]",
-      "ukrainian": "тварина"
-    },
-    {
-      "german": "über",
-      "transcription": "[ˈyːbɐ]",
-      "ukrainian": "над"
-    },
-    {
-      "german": "Mark",
-      "transcription": "[maʁk]",
-      "ukrainian": "марка"
-    },
-    {
-      "german": "die Glocke",
-      "transcription": "[diː ˈglɔkə]",
-      "ukrainian": "дзвін"
-    },
-    {
-      "german": "Fleisch",
-      "transcription": "[flaɪ̯ʃ]",
-      "ukrainian": "м'ясо"
-    },
-    {
-      "german": "gerieben",
-      "transcription": "[gəˈʁiːbən]",
-      "ukrainian": "терти"
-    },
-    {
-      "german": "Sauerstoff",
-      "transcription": "[ˈzaʊ̯ɐʃtɔf]",
-      "ukrainian": "кисень"
-    },
-    {
-      "german": "Plural",
-      "transcription": ["pluˈʁaːl"],
-      "ukrainian": "множина"
-    },
-    {
-      "german": "verschiedene",
-      "transcription": "[fɛɐ̯ˈʃiːdənə]",
-      "ukrainian": "різний"
-    },
-    {
-      "german": "nervös",
-      "transcription": ["nɛʁˈvøːs"],
-      "ukrainian": "нервовий"
-    },
-    {
-      "german": "berühmt",
-      "transcription": ["bəˈʁyːmt"],
-      "ukrainian": "відомий"
-    },
-    {
-      "german": "schön",
-      "transcription": "[ʃøːn]",
-      "ukrainian": "красивий"
-    },
-    {
-      "german": "Reichtum",
-      "transcription": "[ˈʁaɪ̯çtuːm]",
-      "ukrainian": "багатство"
-    },
-    {
-      "german": "das Zeichen",
-      "transcription": "[das ˈt͡saɪ̯çən]",
-      "ukrainian": "знак"
-    },
-    {
-      "german": "einfach",
-      "transcription": "[ˈaɪ̯nfax]",
-      "ukrainian": "простий"
-    },
-    {
-      "german": "Zustand",
-      "transcription": "[ˈt͡suːʃtant]",
-      "ukrainian": "стан"
-    },
-    {
-      "german": "Wunsch",
-      "transcription": "[vʊnʃ]",
-      "ukrainian": "бажання"
-    },
-    {
-      "german": "Blase",
-      "transcription": "[ˈblaːzə]",
-      "ukrainian": "бульбашка"
-    },
-    {
-      "german": "laut",
-      "transcription": "[laʊ̯t]",
-      "ukrainian": "гучний"
-    },
-    {
-      "german": "demokratisch",
-      "transcription": ["demoˈkʁaːtɪʃ"],
-      "ukrainian": "демократичний"
-    },
-    {
-      "german": "Subjekt",
-      "transcription": "[zʊpˈjɛkt]",
-      "ukrainian": "суб'єкт"
-    },
-    {
-      "german": "Verb",
-      "transcription": "[vɛʁp]",
-      "ukrainian": "дієслово"
-    },
-    {
-      "german": "Zelle",
-      "transcription": "[ˈt͡sɛlə]",
-      "ukrainian": "клітина"
-    },
-    {
-      "german": "Handel",
-      "transcription": "[ˈhandəl]",
-      "ukrainian": "торгівля"
-    },
-    {
-      "german": "Geschichte",
-      "transcription": "[gəˈʃɪçtə]",
-      "ukrainian": "історія"
-    },
-    {
-      "german": "Effekt",
-      "transcription": "[ɛˈfɛkt]",
-      "ukrainian": "ефект"
-    },
-    {
-      "german": "erwarten",
-      "transcription": "[ɛɐ̯ˈvaʁtən]",
-      "ukrainian": "чекати"
-    },
-    {
-      "german": "Knochen",
-      "transcription": "[ˈknoːxən]",
-      "ukrainian": "кістка"
-    },
-    {
-      "german": "Schiene",
-      "transcription": "[ˈʃiːnə]",
-      "ukrainian": "рейка"
-    },
-    {
-      "german": "vorstellen",
-      "transcription": "[foːɐ̯ˈʃtɛlən]",
-      "ukrainian": "уявити"
-    },
-    {
-      "german": "flach",
-      "transcription": "[flaːx]",
-      "ukrainian": "плоский"
-    },
-    {
-      "german": "sieben",
-      "transcription": "[ˈziːbən]",
-      "ukrainian": "сім"
-    },
-    {
-      "german": "interessant",
-      "transcription": ["ɪntəʁɛˈsant"],
-      "ukrainian": "цікавий"
-    },
-    {
-      "german": "Sinn",
-      "transcription": "[zɪn]",
-      "ukrainian": "почуття"
-    },
-    {
-      "german": "String",
-      "transcription": "[ʃtʁɪŋ]",
-      "ukrainian": "рядок"
-    },
-    {
-      "german": "Schlag",
-      "transcription": ["ʃlaːk"],
-      "ukrainian": "удар"
-    },
-    {
-      "german": "berühmt",
-      "transcription": ["bəˈʁyːmt"],
-      "ukrainian": "відомий"
-    },
-    {
-      "german": "Dollar",
-      "transcription": "[ˈdɔlaɐ̯]",
-      "ukrainian": "долар"
-    },
-    {
-      "german": "Strom",
-      "transcription": ["ʃtʁoːm"],
-      "ukrainian": "потік"
-    },
-    {
-      "german": "Angst",
-      "transcription": "[aŋst]",
-      "ukrainian": "страх"
-    },
-    {
-      "german": "Sicht",
-      "transcription": "[zɪçt]",
-      "ukrainian": "погляд"
-    },
-    {
-      "german": "dünn",
-      "transcription": "[dʏn]",
-      "ukrainian": "тонкий"
-    },
-    {
-      "german": "Dreieck",
-      "transcription": "[ˈdʁaɪ̯ɛk]",
-      "ukrainian": "трикутник"
-    },
-    {
-      "german": "Planet",
-      "transcription": ["plaˈneːt"],
-      "ukrainian": "планета"
-    },
-    {
-      "german": "eilen",
-      "transcription": ["ˈaɪ̯lən"],
-      "ukrainian": "поспішати"
-    },
-    {
-      "german": "Chef",
-      "transcription": ["ʃɛf"],
-      "ukrainian": "начальник"
-    },
-    {
-      "german": "Kolonie",
-      "transcription": ["ko loˈniː"],
-      "ukrainian": "колонія"
-    },
-    {
-      "german": "Uhr",
-      "transcription": "[uːɐ̯]",
-      "ukrainian": "годинник"
-    },
-    {
-      "german": "Mine",
-      "transcription": ["ˈmiːnə"],
-      "ukrainian": "шахта"
-    },
-    {
-      "german": "Krawatte",
-      "transcription": ["kʁaˈvatə"],
-      "ukrainian": "краватка"
-    },
-    {
-      "german": "eingeben",
-      "transcription": ["aɪ̯nˈgeːbən"],
-      "ukrainian": "ввести"
-    },
-    {
-      "german": "Dur",
-      "transcription": "[duːɐ̯]",
-      "ukrainian": "основний"
-    },
-    {
-      "german": "frisch",
-      "transcription": ["fʁɪʃ"],
-      "ukrainian": "свіжий"
-    },
-    {
-      "german": "Suchen",
-      "transcription": ["ˈzuːxən"],
-      "ukrainian": "пошук"
-    },
-    {
-      "german": "senden",
-      "transcription": ["ˈzɛndən"],
-      "ukrainian": "відправити"
-    },
-    {
-      "german": "gelb",
-      "transcription": ["gɛlp"],
-      "ukrainian": "жовтий"
-    },
-    {
-      "german": "Pistole",
-      "transcription": ["pɪsˈtoːlə"],
-      "ukrainian": "гармата"
-    },
-    {
-      "german": "erlauben",
-      "transcription": ["ɛɐ̯ˈlaʊ̯bən"],
-      "ukrainian": "дозволити"
-    },
-    {
-      "german": "Drucken",
-      "transcription": ["ˈdʁʊkən"],
-      "ukrainian": "друк"
-    },
-    {
-      "german": "tot",
-      "transcription": ["toːt"],
-      "ukrainian": "мертвий"
-    },
-    {
-      "german": "Spot",
-      "transcription": ["spɔt"],
-      "ukrainian": "пляма"
-    },
-    {
-      "german": "Wüste",
-      "transcription": ["ˈvyːstə"],
-      "ukrainian": "пустеля"
-    },
-    {
-      "german": "Anzug",
-      "transcription": ["ˈant͡suːk"],
-      "ukrainian": "костюм"
-    },
-    {
-      "german": "aktuell",
-      "transcription": ["akˈtuːɛl"],
-      "ukrainian": "поточний"
-    },
-    {
-      "german": "Aufzug",
-      "transcription": ["ˈaʊ̯ft͡suːk"],
-      "ukrainian": "ліфт"
-    },
-    {
-      "german": "rose",
-      "transcription": ["ˈʁoːzə"],
-      "ukrainian": "піднявся"
-    },
-    {
-      "german": "eintreffen",
-      "transcription": ["aɪ̯nˈtʁɛfən"],
-      "ukrainian": "прибути"
-    },
-    {
-      "german": "Meister",
-      "transcription": ["ˈmaɪ̯stɐ"],
-      "ukrainian": "майстер"
-    },
-    {
-      "german": "Spur",
-      "transcription": ["ʃpuːɐ̯"],
-      "ukrainian": "трек"
-    },
-    {
-      "german": "Elternteil",
-      "transcription": ["ˈɛltɐntaɪ̯l"],
-      "ukrainian": "батько"
-    },
-    {
-      "german": "Ufer",
-      "transcription": ["ˈuːfɐ"],
-      "ukrainian": "берег"
-    },
-    {
-      "german": "Teilung",
-      "transcription": ["ˈtaɪ̯lʊŋ"],
-      "ukrainian": "поділ"
-    },
-    {
-      "german": "Blatt",
-      "transcription": ["blat"],
-      "ukrainian": "аркуш"
-    },
-    {
-      "german": "Substanz",
-      "transcription": ["zʊpˈstants"],
-      "ukrainian": "речовина"
-    },
-    {
-      "german": "begünstigen",
-      "transcription": ["bəˈgʏnstɪgən"],
-      "ukrainian": "сприяти"
-    },
-    {
-      "german": "verbinden",
-      "transcription": ["fɛɐ̯ˈbɪndən"],
-      "ukrainian": "підключити"
-    },
-    {
-      "german": "Post",
-      "transcription": ["pɔst"],
-      "ukrainian": "пошта"
-    },
-    {
-      "german": "verbringen",
-      "transcription": ["fɛɐ̯ˈbʁɪŋən"],
-      "ukrainian": "витрачати"
-    },
-    {
-      "german": "Akkord",
-      "transcription": ["aˈkɔʁt"],
-      "ukrainian": "акорд"
-    },
-    {
-      "german": "Fett",
-      "transcription": ["fɛt"],
-      "ukrainian": "жир"
-    },
-    {
-      "german": "froh",
-      "transcription": ["fʁoː"],
-      "ukrainian": "радий"
-    },
-    {
-      "german": "original",
-      "transcription": ["oʁi giˈnaːl"],
-      "ukrainian": "оригінальний"
-    },
-    {
-      "german": "Aktie",
-      "transcription": ["ˈak t͡siː"],
-      "ukrainian": "частка"
-    },
-    {
-      "german": "Station",
-      "transcription": ["ʃtaˈt͡siːoːn"],
-      "ukrainian": "станція"
-    },
-    {
-      "german": "Papa",
-      "transcription": ["ˈpaːpaː"],
-      "ukrainian": "тато"
-    },
-    {
-      "german": "Brot",
-      "transcription": ["bʁoːt"],
-      "ukrainian": "хліб"
-    },
-    {
-      "german": "Ladung",
-      "transcription": ["ˈlaːdʊŋ"],
-      "ukrainian": "заряд"
-    },
-    {
-      "german": "richtig",
-      "transcription": ["ˈʁɪçtɪç"],
-      "ukrainian": "правильний"
-    },
-    {
-      "german": "Bar",
-      "transcription": ["baːɐ̯"],
-      "ukrainian": "бар"
-    },
-    {
-      "german": "Angebot",
-      "transcription": ["an gəˈboːt"],
-      "ukrainian": "пропозиція"
-    },
-    {
-      "german": "Segment",
-      "transcription": ["zɛgˈmɛnt"],
-      "ukrainian": "сегмент"
-    },
-    {
-      "german": "Sklave",
-      "transcription": ["sklaːvə"],
-      "ukrainian": "раб"
-    },
-    {
-      "german": "Ente",
-      "transcription": ["ˈɛntə"],
-      "ukrainian": "качка"
-    },
-    {
-      "german": "sofort",
-      "transcription": ["zoˈfɔʁt"],
-      "ukrainian": "миттєвий"
-    },
-    {
-      "german": "Markt",
-      "transcription": ["maʁkt"],
-      "ukrainian": "ринок"
-    },
-    {
-      "german": "Grad",
-      "transcription": ["gʁaːt"],
-      "ukrainian": "ступінь"
-    },
-    {
-      "german": "bevölkern",
-      "transcription": ["bəˈfœlkɐn"],
-      "ukrainian": "населити"
-    },
-    {
-      "german": "Chick",
-      "transcription": ["t͡ʃɪk"],
-      "ukrainian": "курча"
-    },
-    {
-      "german": "lieb",
-      "transcription": ["liːp"],
-      "ukrainian": "дорогий"
-    },
-    {
-      "german": "Feind",
-      "transcription": ["faɪ̯nt"],
-      "ukrainian": "ворог"
-    },
-    {
-      "german": "antworten",
-      "transcription": ["antˈvɔʁtən"],
-      "ukrainian": "відповісти"
-    },
-    {
-      "german": "Getränk",
-      "transcription": ["gəˈtʁɛŋk"],
-      "ukrainian": "напій"
-    },
-    {
-      "german": "vorkommen",
-      "transcription": ["foːɐ̯ˈkɔmən"],
-      "ukrainian": "відбуватися"
-    },
-    {
-      "german": "Unterstützung",
-      "transcription": ["ʊn tɐˈʃtʏt͡sʊŋ"],
-      "ukrainian": "підтримка"
-    },
-    {
-      "german": "Rede",
-      "transcription": ["ˈʁeːdə"],
-      "ukrainian": "мова"
-    },
-    {
-      "german": "Natur",
-      "transcription": ["naˈtuːɐ̯"],
-      "ukrainian": "природа"
-    },
-    {
-      "german": "Bereich",
-      "transcription": ["bəˈʁaɪ̯ç"],
-      "ukrainian": "діапазон"
-    },
-    {
-      "german": "Dampf",
-      "transcription": ["dampf"],
-      "ukrainian": "пара"
-    },
-    {
-      "german": "Bewegung",
-      "transcription": ["bəˈveːgʊŋ"],
-      "ukrainian": "рух"
-    },
-    {
-      "german": "Pfad",
-      "transcription": ["pfaːt"],
-      "ukrainian": "шлях"
-    },
-    {
-      "german": "Flüssigkeit",
-      "transcription": ["ˈflʏsɪçkaɪ̯t"],
-      "ukrainian": "рідина"
-    },
-    {
-      "german": "protokollieren",
-      "transcription": ["pʁoto kɔˈliːʁən"],
-      "ukrainian": "журнал"
-    },
-    {
-      "german": "Bewegung",
-      "transcription": ["bəˈveːgʊŋ"],
-      "ukrainian": "рух"
-    },
-    {
-      "german": "Richtung",
-      "transcription": ["ˈʁɪçtʊŋ"],
-      "ukrainian": "напрямок"
-    },
-    {
-      "german": "Junge",
-      "transcription": ["ˈjʊŋə"],
-      "ukrainian": "хлопчик"
-    },
-    {
-      "german": "alt",
-      "transcription": ["alt"],
-      "ukrainian": "старий"
-    },
-    {
-      "german": "Film",
-      "transcription": ["fɪlm"],
-      "ukrainian": "фільм"
-    },
-    {
-      "german": "Zunge",
-      "transcription": ["ˈt͡sʊŋə"],
-      "ukrainian": "мова"
-    },
-    {
-      "german": "Proportion",
-      "transcription": ["pʁopoʁˈt͡siːoːn"],
-      "ukrainian": "пропорція"
-    },
-    {
-      "german": "Verb",
-      "transcription": ["vɛʁp"],
-      "ukrainian": "дієслово"
-    },
-    {
-      "german": "lösen",
-      "transcription": ["ˈløːzən"],
-      "ukrainian": "вирішити"
-    },
-    {
-      "german": "Noun",
-      "transcription": ["naʊ̯n"],
-      "ukrainian": "іменник"
-    },
-    {
-      "german": "Rad",
-      "transcription": ["ʁaːt"],
-      "ukrainian": "колесо"
-    },
-    {
-      "german": "Materie",
-      "transcription": ["maˈteːʁiə"],
-      "ukrainian": "матерія"
-    },
-    {
-      "german": "Formel",
-      "transcription": ["fɔʁməl"],
-      "ukrainian": "формула"
-    },
-    {
-      "german": "Oberfläche",
-      "transcription": ["oːbɐflɛçə"],
-      "ukrainian": "поверхня"
-    },
-    {
-      "german": "ausdehnen",
-      "transcription": ["aʊ̯sd eːnən"],
-      "ukrainian": "розтягнути"
-    },
-    {
-      "german": "Instrument",
-      "transcription": ["ɪnstʁuˈmɛnt"],
-      "ukrainian": "інструмент"
-    },
-    {
-      "german": "Ball",
-      "transcription": ["bal"],
-      "ukrainian": "м'яч"
-    },
-    {
-      "german": "Haus",
-      "transcription": ["haʊ̯s"],
-      "ukrainian": "будинок"
-    },
-    {
-      "german": "Farbe",
-      "transcription": ["faʁbə"],
-      "ukrainian": "колір"
-    },
-    {
-      "german": "kein",
-      "transcription": ["kaɪ̯n"],
-      "ukrainian": "ні"
-    },
-    {
-      "german": "Methode",
-      "transcription": ["meˈtoːdə"],
-      "ukrainian": "метод"
-    },
-    {
-      "german": "Abschnitt",
-      "transcription": ["apʃnɪt"],
-      "ukrainian": "розділ"
-    },
-    {
-      "german": "Motor",
-      "transcription": ["moˈtoːɐ̯"],
-      "ukrainian": "двигун"
-    },
-    {
-      "german": "Form",
-      "transcription": ["fɔʁm"],
-      "ukrainian": "форма"
-    },
-    {
-      "german": "Größe",
-      "transcription": ["gʁøːsə"],
-      "ukrainian": "розмір"
-    },
-    {
-      "german": "dunkel",
-      "transcription": ["dʊŋkəl"],
-      "ukrainian": "темний"
-    },
-    {
-      "german": "Macht",
-      "transcription": ["maxt"],
-      "ukrainian": "потужність"
-    },
-    {
-      "german": "Material",
-      "transcription": ["ma te ʁiˈaːl"],
-      "ukrainian": "матеріал"
-    },
-    {
-      "german": "Blume",
-      "transcription": ["bluːmə"],
-      "ukrainian": "квітка"
-    },
-    {
-      "german": "Kurs",
-      "transcription": ["kʊʁs"],
-      "ukrainian": "курс"
-    },
-    {
-      "german": "Hund",
-      "transcription": ["hʊnt"],
-      "ukrainian": "собака"
-    },
-    {
-      "german": "Familie",
-      "transcription": ["faˈmiːliə"],
-      "ukrainian": "сім'я"
-    },
-    {
-      "german": "elf",
-      "transcription": ["ɛlf"],
-      "ukrainian": "одинадцять"
-    },
-    {
-      "german": "verlassen",
-      "transcription": ["fɛɐ̯ˈlasən"],
-      "ukrainian": "залишити"
-    }
-  ]
-}
+[
+  {
+    "article": "die",
+    "german": "Familie",
+    "translation": "сім'я",
+    "type": "noun"
+  },
+  {
+    "article": "der",
+    "german": "Vater",
+    "translation": "батько",
+    "type": "noun"
+  },
+  {
+    "article": "die",
+    "german": "Mutter",
+    "translation": "мати",
+    "type": "noun"
+  },
+  {
+    "article": "die",
+    "german": "Eltern",
+    "translation": "батьки",
+    "type": "noun"
+  },
+  { "article": "der", "german": "Sohn", "translation": "син", "type": "noun" },
+  {
+    "article": "die",
+    "german": "Tochter",
+    "translation": "дочка",
+    "type": "noun"
+  },
+  {
+    "article": "die",
+    "german": "Kinder",
+    "translation": "діти",
+    "type": "noun"
+  },
+  {
+    "article": "der",
+    "german": "Bruder",
+    "translation": "брат",
+    "type": "noun"
+  },
+  {
+    "article": "die",
+    "german": "Schwester",
+    "translation": "сестра",
+    "type": "noun"
+  },
+  {
+    "article": "die",
+    "german": "Geschwister",
+    "translation": "брати і сестри",
+    "type": "noun"
+  },
+  {
+    "article": "der",
+    "german": "Großvater",
+    "translation": "дідусь",
+    "type": "noun"
+  },
+  {
+    "article": "die",
+    "german": "Großmutter",
+    "translation": "бабуся",
+    "type": "noun"
+  },
+  {
+    "article": "die",
+    "german": "Großeltern",
+    "translation": "дідусь і бабуся",
+    "type": "noun"
+  },
+  {
+    "article": "der",
+    "german": "Opa",
+    "translation": "дідусь (розм.)",
+    "type": "noun"
+  },
+  {
+    "article": "die",
+    "german": "Oma",
+    "translation": "бабуся (розм.)",
+    "type": "noun"
+  },
+  {
+    "article": "der",
+    "german": "Enkel",
+    "translation": "онук",
+    "type": "noun"
+  },
+  {
+    "article": "die",
+    "german": "Enkelin",
+    "translation": "онучка",
+    "type": "noun"
+  },
+  {
+    "article": "der",
+    "german": "Ehemann",
+    "translation": "чоловік (у шлюбі)",
+    "type": "noun"
+  },
+  {
+    "article": "die",
+    "german": "Ehefrau",
+    "translation": "дружина",
+    "type": "noun"
+  },
+  {
+    "article": "der",
+    "german": "Mann",
+    "translation": "чоловік",
+    "type": "noun"
+  },
+  {
+    "article": "die",
+    "german": "Frau",
+    "translation": "жінка, дружина",
+    "type": "noun"
+  },
+  {
+    "article": "der",
+    "german": "Partner",
+    "translation": "партнер",
+    "type": "noun"
+  },
+  {
+    "article": "die",
+    "german": "Partnerin",
+    "translation": "партнерка",
+    "type": "noun"
+  },
+  {
+    "article": "der",
+    "german": "Onkel",
+    "translation": "дядько",
+    "type": "noun"
+  },
+  {
+    "article": "die",
+    "german": "Tante",
+    "translation": "тітка",
+    "type": "noun"
+  },
+  {
+    "article": "der",
+    "german": "Neffe",
+    "translation": "племінник",
+    "type": "noun"
+  },
+  {
+    "article": "die",
+    "german": "Nichte",
+    "translation": "племінниця",
+    "type": "noun"
+  },
+  {
+    "article": "der",
+    "german": "Cousin",
+    "translation": "двоюрідний брат",
+    "type": "noun"
+  },
+  {
+    "article": "die",
+    "german": "Cousine",
+    "translation": "двоюрідна сестра",
+    "type": "noun"
+  },
+  {
+    "article": "der",
+    "german": "Schwiegervater",
+    "translation": "тесть/свекор",
+    "type": "noun"
+  },
+  {
+    "article": "die",
+    "german": "Schwiegermutter",
+    "translation": "теща/свекруха",
+    "type": "noun"
+  },
+  {
+    "article": "die",
+    "german": "Schwiegereltern",
+    "translation": "батьки чоловіка/дружини",
+    "type": "noun"
+  },
+  {
+    "article": "der",
+    "german": "Schwiegersohn",
+    "translation": "зять",
+    "type": "noun"
+  },
+  {
+    "article": "die",
+    "german": "Schwiegertochter",
+    "translation": "невістка",
+    "type": "noun"
+  },
+  {
+    "article": "der",
+    "german": "Schwager",
+    "translation": "шурин/зять",
+    "type": "noun"
+  },
+  {
+    "article": "die",
+    "german": "Schwägerin",
+    "translation": "своячениця/невістка",
+    "type": "noun"
+  },
+  {
+    "article": "der",
+    "german": "Stiefvater",
+    "translation": "вітчим",
+    "type": "noun"
+  },
+  {
+    "article": "die",
+    "german": "Stiefmutter",
+    "translation": "мачуха",
+    "type": "noun"
+  },
+  {
+    "article": "der",
+    "german": "Stiefsohn",
+    "translation": "пасинок",
+    "type": "noun"
+  },
+  {
+    "article": "die",
+    "german": "Stieftochter",
+    "translation": "падчерка",
+    "type": "noun"
+  },
+  {
+    "article": "der",
+    "german": "Halbbruder",
+    "translation": "зведений брат",
+    "type": "noun"
+  },
+  {
+    "article": "die",
+    "german": "Halbschwester",
+    "translation": "зведена сестра",
+    "type": "noun"
+  },
+  {
+    "article": "das",
+    "german": "Baby",
+    "translation": "немовля",
+    "type": "noun"
+  },
+  {
+    "article": "das",
+    "german": "Kleinkind",
+    "translation": "маленька дитина",
+    "type": "noun"
+  },
+  {
+    "article": "der",
+    "german": "Teenager",
+    "translation": "підліток",
+    "type": "noun"
+  },
+  {
+    "article": "der",
+    "german": "Erwachsene",
+    "translation": "дорослий",
+    "type": "noun"
+  },
+  { "article": "das", "german": "Alter", "translation": "вік", "type": "noun" },
+  { "article": "das", "german": "Jahr", "translation": "рік", "type": "noun" },
+  {
+    "article": "der",
+    "german": "Monat",
+    "translation": "місяць",
+    "type": "noun"
+  },
+  { "article": "der", "german": "Tag", "translation": "день", "type": "noun" },
+  {
+    "article": "der",
+    "german": "Geburtstag",
+    "translation": "день народження",
+    "type": "noun"
+  },
+  {
+    "article": "das",
+    "german": "Geburtsdatum",
+    "translation": "дата народження",
+    "type": "noun"
+  },
+  {
+    "article": "der",
+    "german": "Geburtsort",
+    "translation": "місце народження",
+    "type": "noun"
+  },
+  {
+    "article": "die",
+    "german": "Staatsangehörigkeit",
+    "translation": "громадянство",
+    "type": "noun"
+  },
+  {
+    "article": "die",
+    "german": "Nationalität",
+    "translation": "національність",
+    "type": "noun"
+  },
+  {
+    "article": "die",
+    "german": "Adresse",
+    "translation": "адреса",
+    "type": "noun"
+  },
+  {
+    "article": "die",
+    "german": "Straße",
+    "translation": "вулиця",
+    "type": "noun"
+  },
+  {
+    "article": "die",
+    "german": "Hausnummer",
+    "translation": "номер будинку",
+    "type": "noun"
+  },
+  {
+    "article": "die",
+    "german": "Wohnung",
+    "translation": "квартира",
+    "type": "noun"
+  },
+  {
+    "article": "die",
+    "german": "Postleitzahl",
+    "translation": "поштовий індекс",
+    "type": "noun"
+  },
+  {
+    "article": "die",
+    "german": "Stadt",
+    "translation": "місто",
+    "type": "noun"
+  },
+  { "article": "das", "german": "Dorf", "translation": "село", "type": "noun" },
+  {
+    "article": "das",
+    "german": "Land",
+    "translation": "країна",
+    "type": "noun"
+  },
+  {
+    "article": "die",
+    "german": "Telefonnummer",
+    "translation": "номер телефону",
+    "type": "noun"
+  },
+  {
+    "article": "die",
+    "german": "Handynummer",
+    "translation": "номер мобільного",
+    "type": "noun"
+  },
+  {
+    "article": "die",
+    "german": "Vorwahl",
+    "translation": "телефонний код",
+    "type": "noun"
+  },
+  {
+    "article": "die",
+    "german": "E-Mail",
+    "translation": "електронна пошта",
+    "type": "noun"
+  },
+  {
+    "article": "die",
+    "german": "E-Mail-Adresse",
+    "translation": "адреса електронної пошти",
+    "type": "noun"
+  },
+  {
+    "article": "der",
+    "german": "Beruf",
+    "translation": "професія",
+    "type": "noun"
+  },
+  {
+    "article": "die",
+    "german": "Arbeit",
+    "translation": "робота",
+    "type": "noun"
+  },
+  {
+    "article": "der",
+    "german": "Arbeitsplatz",
+    "translation": "робоче місце",
+    "type": "noun"
+  },
+  {
+    "article": "die",
+    "german": "Schule",
+    "translation": "школа",
+    "type": "noun"
+  },
+  {
+    "article": "die",
+    "german": "Universität",
+    "translation": "університет",
+    "type": "noun"
+  },
+  {
+    "article": "der",
+    "german": "Student",
+    "translation": "студент",
+    "type": "noun"
+  },
+  {
+    "article": "die",
+    "german": "Studentin",
+    "translation": "студентка",
+    "type": "noun"
+  },
+  {
+    "article": "der",
+    "german": "Schüler",
+    "translation": "учень",
+    "type": "noun"
+  },
+  {
+    "article": "die",
+    "german": "Schülerin",
+    "translation": "учениця",
+    "type": "noun"
+  },
+  {
+    "article": "das",
+    "german": "Hobby",
+    "translation": "хобі",
+    "type": "noun"
+  },
+  {
+    "article": "das",
+    "german": "Interesse",
+    "translation": "інтерес",
+    "type": "noun"
+  },
+  {
+    "article": "der",
+    "german": "Familienstand",
+    "translation": "сімейний стан",
+    "type": "noun"
+  },
+  { "article": "die", "german": "Ehe", "translation": "шлюб", "type": "noun" },
+  {
+    "article": "die",
+    "german": "Hochzeit",
+    "translation": "весілля",
+    "type": "noun"
+  },
+  {
+    "article": "die",
+    "german": "Scheidung",
+    "translation": "розлучення",
+    "type": "noun"
+  },
+  {
+    "article": "der",
+    "german": "Personalausweis",
+    "translation": "посвідчення особи",
+    "type": "noun"
+  },
+  {
+    "article": "der",
+    "german": "Reisepass",
+    "translation": "паспорт",
+    "type": "noun"
+  },
+  {
+    "article": "die",
+    "german": "Ausweisnummer",
+    "translation": "номер посвідчення",
+    "type": "noun"
+  },
+  {
+    "article": "das",
+    "german": "Geschlecht",
+    "translation": "стать",
+    "type": "noun"
+  },
+  {
+    "article": "",
+    "german": "männlich",
+    "translation": "чоловічий",
+    "type": "adjective"
+  },
+  {
+    "article": "",
+    "german": "weiblich",
+    "translation": "жіночий",
+    "type": "adjective"
+  },
+  {
+    "article": "",
+    "german": "verheiratet",
+    "translation": "одружений/заміжня",
+    "type": "adjective"
+  },
+  {
+    "article": "",
+    "german": "ledig",
+    "translation": "неодружений",
+    "type": "adjective"
+  },
+  {
+    "article": "",
+    "german": "geschieden",
+    "translation": "розлучений",
+    "type": "adjective"
+  },
+  {
+    "article": "",
+    "german": "verwitwet",
+    "translation": "овдовілий",
+    "type": "adjective"
+  },
+  {
+    "article": "",
+    "german": "jung",
+    "translation": "молодий",
+    "type": "adjective"
+  },
+  {
+    "article": "",
+    "german": "alt",
+    "translation": "старий",
+    "type": "adjective"
+  },
+  {
+    "article": "",
+    "german": "älter",
+    "translation": "старший",
+    "type": "adjective"
+  },
+  {
+    "article": "",
+    "german": "jünger",
+    "translation": "молодший",
+    "type": "adjective"
+  },
+  { "article": "", "german": "haben", "translation": "мати", "type": "verb" },
+  {
+    "article": "",
+    "german": "wohnen",
+    "translation": "мешкати, жити",
+    "type": "verb"
+  },
+  { "article": "", "german": "leben", "translation": "жити", "type": "verb" },
+  {
+    "article": "",
+    "german": "arbeiten",
+    "translation": "працювати",
+    "type": "verb"
+  }
+]

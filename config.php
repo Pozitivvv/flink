@@ -1,23 +1,17 @@
 <?php
 
-// ✅ 10 дней в секундах
-$session_lifetime = 60 * 60 * 24 * 10;
+$session_lifetime = 60 * 60 * 24 * 7;
 
-// ✅ Установите ПЕРЕД session_start()
 ini_set('session.gc_maxlifetime', $session_lifetime);
-ini_set('session.cookie_lifetime', $session_lifetime);
-
 session_set_cookie_params([
-    'lifetime' => $session_lifetime,  // ✅ Вот это главное
+    'lifetime' => $session_lifetime,
     'path' => '/',
     'secure' => true,
     'httponly' => true,
     'samesite' => 'Lax',
 ]);
 
-if (session_status() === PHP_SESSION_NONE) {
-    session_start();
-}
+session_start();
 
 $DB_HOST = 'localhost';
 $DB_NAME = 'flink';
