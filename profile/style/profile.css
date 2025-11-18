@@ -1,92 +1,360 @@
+/* ============ PROFILE.CSS - СТИЛІ ДЛЯ ПРОФІЛЮ ============ */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, sans-serif;
+  background: #0f0f0f;
+  color: #e4e4e4;
+  padding-bottom: 80px;
+  min-height: 100vh;
+}
+
+.container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 20px 16px;
+}
+
+/* ============ ПРИВЕТСТВИЕ ============ */
+.greeting {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 32px;
+  padding: 10px;
+  border-radius: 20px;
+  animation: fadeIn 0.6s ease;
+}
+
+.greeting-icon {
+  font-size: 36px;
+  animation: bounce 2s ease-in-out infinite;
+}
+
+.greeting-text h1 {
+  font-size: 24px;
+  font-weight: 600;
+  color: #fff;
+  margin-bottom: 4px;
+}
+
+.greeting-text p {
+  font-size: 14px;
+  color: #9ca3af;
+}
+
+.modal-title {
+  text-align: center;
+  margin-bottom: 12px;
+  font-size: 24px;
+  font-weight: 600;
+  color: #fff;
+  margin-bottom: 4px;
+}
+/* ============ АЛЕРТИ ============ */
+.alert {
+  padding: 16px 20px;
+  border-radius: 12px;
+  margin-bottom: 24px;
+  font-size: 14px;
+  font-weight: 500;
+  animation: fadeIn 0.4s ease;
+}
+
+.alert-success {
+  background: rgba(16, 185, 129, 0.15);
+  border: 1px solid rgba(16, 185, 129, 0.3);
+  color: #10b981;
+}
+
+.alert-error {
+  background: rgba(239, 68, 68, 0.15);
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  color: #ef4444;
+}
+
+/* ============ СТАТИСТИКА ============ */
+.stats-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.stat-card {
+  background: linear-gradient(
+    135deg,
+    rgba(59, 130, 246, 0.1),
+    rgba(16, 185, 129, 0.08)
+  );
+  border: 1px solid rgba(59, 130, 246, 0.2);
+  border-radius: 16px;
+  padding: 20px;
+  text-align: center;
+  transition: all 0.2s ease;
+  animation: fadeIn 0.8s ease;
+}
+
+.stat-card:active {
+  transform: scale(0.98);
+  background: linear-gradient(
+    135deg,
+    rgba(59, 130, 246, 0.15),
+    rgba(16, 185, 129, 0.12)
+  );
+}
+
+.stat-value {
+  font-size: 36px;
+  font-weight: 700;
+  color: #3b82f6;
+  margin-bottom: 8px;
+}
+
+.stat-label {
+  font-size: 14px;
+  color: #9ca3af;
+}
+
+/* ============ ВІДЖЕТИ ============ */
+.widget {
+  background: #1a1a1a;
+  border: 1px solid #2a2a2a;
+  border-radius: 20px;
+  padding: 24px;
+  margin-bottom: 16px;
+  transition: all 0.3s ease;
+  animation: fadeIn 0.8s ease;
+}
+
+.widget-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 16px;
+  font-weight: 600;
+  color: #fff;
+  margin-bottom: 16px;
+}
+
+.widget-icon {
+  font-size: 24px;
+}
+
+/* ============ ІНФОРМАЦІЯ ПРОФІЛЮ ============ */
+.profile-info {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.info-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 0;
+  border-bottom: 1px solid #2a2a2a;
+}
+
+.info-row:last-child {
+  border-bottom: none;
+}
+
+.info-label {
+  font-size: 14px;
+  color: #9ca3af;
+  font-weight: 500;
+}
+
+.info-value {
+  font-size: 14px;
+  color: #fff;
+  font-weight: 600;
+  text-align: right;
+}
+
+/* ============ КНОПКИ ============ */
+.button-group {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.btn {
+  padding: 14px 20px;
+  border-radius: 12px;
+  border: none;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-decoration: none;
+  text-align: center;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, #3b82f6, #2563eb);
+  color: #fff;
+  border: 1px solid rgba(59, 130, 246, 0.3);
+}
+
+.btn-primary:hover {
+  background: linear-gradient(135deg, #2563eb, #1d4ed8);
+  transform: translateY(-2px);
+}
+
+.btn-primary:active {
+  transform: scale(0.98);
+}
+
+.btn-secondary {
+  background: rgba(59, 130, 246, 0.1);
+  border: 1px solid rgba(59, 130, 246, 0.2);
+  color: #3b82f6;
+}
+
+.btn-secondary:hover {
+  background: rgba(59, 130, 246, 0.15);
+  transform: translateY(-2px);
+}
+
+.btn-secondary:active {
+  transform: scale(0.98);
+}
+
+.btn-danger {
+  background: rgba(239, 68, 68, 0.15);
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  color: #ef4444;
+}
+
+.btn-danger:hover {
+  background: rgba(239, 68, 68, 0.2);
+  transform: translateY(-2px);
+}
+
+.btn-danger:active {
+  transform: scale(0.98);
+}
+
+/* ============ НИЖНЯ НАВІГАЦІЯ ============ */
+.bottom-nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #1a1a1a;
+  border-top: 1px solid #2a2a2a;
+  display: flex;
+  justify-content: space-around;
+  padding: 8px 0;
+  z-index: 100;
+}
+
+.nav-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  padding: 8px 12px;
+  text-decoration: none;
+  color: #9ca3af;
+  font-size: 12px;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  border-radius: 12px;
+}
+
+.nav-item span {
+  font-size: 20px;
+}
+
+.nav-item:active {
+  background: rgba(59, 130, 246, 0.1);
+  color: #3b82f6;
+}
+
+.nav-item.active {
+  color: #3b82f6;
+}
+
+/* ============ МОДАЛЬНІ ВІКНА ============ */
 .modal-overlay {
-  display: none;
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
   background: rgba(0, 0, 0, 0.8);
-  z-index: 2000;
+  display: none;
   align-items: center;
   justify-content: center;
+  z-index: 1000;
   padding: 20px;
-  animation: fadeIn 0.2s ease;
+  backdrop-filter: blur(4px);
 }
 
 .modal-overlay.active {
   display: flex;
+  animation: fadeIn 0.3s ease;
 }
 
 .modal {
   background: #1a1a1a;
   border: 1px solid #2a2a2a;
   border-radius: 20px;
-  padding: 24px;
-  max-width: 400px;
+  padding: 28px;
+  max-width: 500px;
   width: 100%;
   animation: slideUp 0.3s ease;
-  max-height: 90vh;
-  overflow-y: auto;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .modal-header {
-  text-align: center;
-  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 20px;
 }
 
 .modal-icon {
-  font-size: 48px;
-  margin-bottom: 12px;
+  font-size: 32px;
 }
 
-.modal h2 {
+.modal-header h2 {
   font-size: 20px;
+  font-weight: 600;
   color: #fff;
-  margin-bottom: 8px;
 }
 
 .modal p {
-  color: #9ca3af;
   font-size: 14px;
+  color: #9ca3af;
+  margin-bottom: 24px;
   line-height: 1.5;
 }
 
-.modal-buttons {
-  display: flex;
-  gap: 12px;
-  margin-top: 24px;
-}
-
-.modal-btn {
-  flex: 1;
-  padding: 12px;
-  border: none;
-  border-radius: 12px;
-  font-size: 15px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.2s ease;
-}
-
-.modal-btn-cancel {
-  background: #2a2a2a;
-  color: #e4e4e4;
-}
-
-.modal-btn-cancel:active {
-  background: #333;
-}
-
-.modal-btn-delete {
-  background: #ef4444;
-  color: white;
-}
-
-.modal-btn-delete:active {
-  background: #dc2626;
-  transform: scale(0.98);
-}
-
+/* ============ ФОРМИ ============ */
 .modal-form {
   display: flex;
   flex-direction: column;
@@ -101,17 +369,17 @@
 
 .form-group label {
   font-size: 14px;
-  font-weight: 600;
-  color: #fff;
+  font-weight: 500;
+  color: #e4e4e4;
 }
 
 .form-group input {
-  padding: 12px;
   background: #0f0f0f;
   border: 1px solid #2a2a2a;
   border-radius: 12px;
-  color: #e4e4e4;
+  padding: 12px 16px;
   font-size: 14px;
+  color: #fff;
   transition: all 0.2s ease;
 }
 
@@ -121,28 +389,64 @@
   background: #1a1a1a;
 }
 
+/* ============ ALERT BOX У МОДАЛКАХ ============ */
 .alert-box {
-  padding: 12px;
+  padding: 12px 16px;
   border-radius: 12px;
   margin-bottom: 16px;
-  font-size: 14px;
+  font-size: 13px;
+  font-weight: 500;
   display: none;
 }
 
 .alert-box.show {
   display: block;
+  animation: fadeIn 0.3s ease;
 }
 
-.alert-success {
-  background: rgba(16, 185, 129, 0.1);
+.alert-box.alert-success {
+  background: rgba(16, 185, 129, 0.15);
   border: 1px solid rgba(16, 185, 129, 0.3);
   color: #10b981;
 }
 
-.alert-error {
-  background: rgba(239, 68, 68, 0.1);
+.alert-box.alert-error {
+  background: rgba(239, 68, 68, 0.15);
   border: 1px solid rgba(239, 68, 68, 0.3);
   color: #ef4444;
+}
+
+/* ============ КНОПКИ МОДАЛОК ============ */
+.modal-buttons {
+  display: flex;
+  gap: 12px;
+  margin-top: 8px;
+}
+
+.modal-btn {
+  flex: 1;
+  padding: 14px 20px;
+  border-radius: 12px;
+  border: none;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.modal-btn-cancel {
+  background: rgba(107, 114, 128, 0.15);
+  border: 1px solid rgba(107, 114, 128, 0.3);
+  color: #9ca3af;
+}
+
+.modal-btn-cancel:hover {
+  background: rgba(107, 114, 128, 0.2);
+  transform: translateY(-2px);
+}
+
+.modal-btn-cancel:active {
+  transform: scale(0.98);
 }
 
 .modal-btn-submit {
@@ -151,11 +455,31 @@
   border: 1px solid rgba(59, 130, 246, 0.3);
 }
 
-.modal-btn-submit:active {
+.modal-btn-submit:hover {
   background: linear-gradient(135deg, #2563eb, #1d4ed8);
+  transform: translateY(-2px);
+}
+
+.modal-btn-submit:active {
   transform: scale(0.98);
 }
 
+.modal-btn-delete {
+  background: rgba(239, 68, 68, 0.15);
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  color: #ef4444;
+}
+
+.modal-btn-delete:hover {
+  background: rgba(239, 68, 68, 0.2);
+  transform: translateY(-2px);
+}
+
+.modal-btn-delete:active {
+  transform: scale(0.98);
+}
+
+/* ============ АНІМАЦІЇ ============ */
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -167,13 +491,81 @@
   }
 }
 
-@keyframes slideUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
+@keyframes bounce {
+  0%,
+  100% {
     transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+/* ============ ДЕСКТОП ============ */
+@media (min-width: 768px) {
+  body {
+    padding-bottom: 40px;
+  }
+
+  .container {
+    padding: 40px 24px;
+  }
+
+  .greeting-text h1 {
+    font-size: 32px;
+  }
+
+  .greeting-icon {
+    font-size: 48px;
+  }
+
+  .stats-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .stat-card:hover {
+    background: linear-gradient(
+      135deg,
+      rgba(59, 130, 246, 0.15),
+      rgba(16, 185, 129, 0.12)
+    );
+    transform: translateY(-2px);
+  }
+
+  .widget:hover {
+    border-color: #3a3a3a;
+  }
+
+  .nav-item:hover {
+    background: rgba(59, 130, 246, 0.1);
+    color: #3b82f6;
+  }
+
+  .bottom-nav {
+    max-width: 1000px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 20px 20px 0 0;
+  }
+}
+
+@media (max-width: 404px) {
+  .info-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+  }
+
+  .info-value {
+    text-align: left;
+  }
+
+  .nav-item {
+    font-size: 11px;
+    padding: 6px 8px;
+  }
+
+  .nav-item span {
+    font-size: 18px;
   }
 }

@@ -12,10 +12,73 @@ if (!isset($_SESSION['user_id'])) {
 }
 
 $user_id = $_SESSION['user_id'];
-$error_message = '';
-$success_message = '';
 
 try {
+    // Обробка AJAX запитів
+    if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action'])) {
+
+        // Обробка редагування профіля
+        if ($_POST['action'] === 'edit_profile') {
+            $new_name = trim($_POST['name'] ?? '');
+            $new_email = trim($_POST['email'] ?? '');
+
+            if (empty($new_name) || empty($new_email)) {
+                $response = ['success' => false, 'message' => 'Заповніть всі поля!'];
+            } else {
+                $stmt = $pdo->prepare("
+                    UPDATE users 
+                    SET name = ?, email = ? 
+                    WHERE id = ?
+                ");
+                if ($stmt->execute([$new_name, $new_email, $user_id])) {
+                    $response = ['success' => true, 'message' => 'Профіль успішно оновлено!'];
+                } else {
+                    $response = ['success' => false, 'message' => 'Помилка при оновленні профіля'];
+                }
+            }
+
+            header('Content-Type: application/json');
+            echo json_encode($response);
+            exit;
+        }
+
+        // Обробка зміни пароля
+        if ($_POST['action'] === 'change_password') {
+            $old_password = $_POST['old_password'] ?? '';
+            $new_password = $_POST['new_password'] ?? '';
+            $confirm_password = $_POST['confirm_password'] ?? '';
+
+            if (empty($old_password) || empty($new_password) || empty($confirm_password)) {
+                $response = ['success' => false, 'message' => 'Заповніть всі поля!'];
+            } elseif ($new_password !== $confirm_password) {
+                $response = ['success' => false, 'message' => 'Новий пароль не збігається з підтвердженням!'];
+            } elseif (strlen($new_password) < 6) {
+                $response = ['success' => false, 'message' => 'Пароль має бути мінімум 6 символів!'];
+            } else {
+                // Перевіримо старий пароль
+                $stmt = $pdo->prepare("SELECT password FROM users WHERE id = ?");
+                $stmt->execute([$user_id]);
+                $stored_password = $stmt->fetchColumn();
+
+                if (!password_verify($old_password, $stored_password)) {
+                    $response = ['success' => false, 'message' => 'Старий пароль невірний!'];
+                } else {
+                    $hashed_password = password_hash($new_password, PASSWORD_DEFAULT);
+                    $stmt = $pdo->prepare("UPDATE users SET password = ? WHERE id = ?");
+                    if ($stmt->execute([$hashed_password, $user_id])) {
+                        $response = ['success' => true, 'message' => 'Пароль успішно змінено!'];
+                    } else {
+                        $response = ['success' => false, 'message' => 'Помилка при зміні пароля'];
+                    }
+                }
+            }
+
+            header('Content-Type: application/json');
+            echo json_encode($response);
+            exit;
+        }
+    }
+
     // Отримуємо дані користувача
     $stmt = $pdo->prepare("
         SELECT id, name, login, email, created_at, is_admin
@@ -28,63 +91,6 @@ try {
     if (!$user) {
         header('Location: login.php');
         exit;
-    }
-
-    // Обробка редагування профіля
-    if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action'])) {
-        if ($_POST['action'] === 'edit_profile') {
-            $new_name = trim($_POST['name'] ?? '');
-            $new_email = trim($_POST['email'] ?? '');
-
-            if (empty($new_name) || empty($new_email)) {
-                $error_message = 'Заповніть всі поля!';
-            } else {
-                $stmt = $pdo->prepare("
-                    UPDATE users 
-                    SET name = ?, email = ? 
-                    WHERE id = ?
-                ");
-                if ($stmt->execute([$new_name, $new_email, $user_id])) {
-                    $success_message = 'Профіль успішно оновлено!';
-                    $user['name'] = $new_name;
-                    $user['email'] = $new_email;
-                } else {
-                    $error_message = 'Помилка при оновленні профіля';
-                }
-            }
-        }
-
-        // Обробка зміни пароля
-        if ($_POST['action'] === 'change_password') {
-            $old_password = $_POST['old_password'] ?? '';
-            $new_password = $_POST['new_password'] ?? '';
-            $confirm_password = $_POST['confirm_password'] ?? '';
-
-            if (empty($old_password) || empty($new_password) || empty($confirm_password)) {
-                $error_message = 'Заповніть всі поля!';
-            } elseif ($new_password !== $confirm_password) {
-                $error_message = 'Новий пароль не збігається з підтвердженням!';
-            } elseif (strlen($new_password) < 6) {
-                $error_message = 'Пароль має бути мінімум 6 символів!';
-            } else {
-                // Перевіримо старий пароль
-                $stmt = $pdo->prepare("SELECT password FROM users WHERE id = ?");
-                $stmt->execute([$user_id]);
-                $stored_password = $stmt->fetchColumn();
-
-                if (!password_verify($old_password, $stored_password)) {
-                    $error_message = 'Старий пароль невірний!';
-                } else {
-                    $hashed_password = password_hash($new_password, PASSWORD_DEFAULT);
-                    $stmt = $pdo->prepare("UPDATE users SET password = ? WHERE id = ?");
-                    if ($stmt->execute([$hashed_password, $user_id])) {
-                        $success_message = 'Пароль успішно змінено!';
-                    } else {
-                        $error_message = 'Помилка при зміні пароля';
-                    }
-                }
-            }
-        }
     }
 
     // Підрахунок всіх слів користувача
@@ -139,7 +145,7 @@ try {
     <title>Профіль</title>
     <link rel="stylesheet" href="style/profile.css">
     <link rel="stylesheet" href="../../assets/main-style.css">
-
+    
 </head>
 <body>
     <div class="container">
@@ -168,14 +174,6 @@ try {
             <div class="stat-card">
                 <div class="stat-value"><?php echo $days_count; ?></div>
                 <div class="stat-label">Днів навчання</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-value"><?php echo $errors_count; ?></div>
-                <div class="stat-label">Помилок</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-value"><?php echo $progress; ?>%</div>
-                <div class="stat-label">Прогрес</div>
             </div>
         </div>
 
@@ -250,10 +248,7 @@ try {
             <span>👤</span>
             Профіль
         </a>
-        
     </nav>
-    
-
 
     <!-- МОДАЛКА РЕДАГУВАННЯ ПРОФІЛЯ -->
     <div id="editModal" class="modal-overlay">
@@ -314,10 +309,7 @@ try {
     <!-- МОДАЛКА ВИХОДУ -->
     <div id="logoutModal" class="modal-overlay">
         <div class="modal">
-            <div class="modal-header">
-                <div class="modal-icon">🚪</div>
-                <h2>Вихід з акаунту</h2>
-            </div>
+            <h2 style="margin-bottom: 10px;" class="modal-title">Вихід з акаунту? 😟</h2>
             <p>Ви впевнені, що хочете вийти? Вам потрібно буде заново увійти у свій акаунт.</p>
             <div class="modal-buttons">
                 <button class="modal-btn modal-btn-cancel" onclick="closeLogoutModal()">Скасувати</button>
@@ -340,28 +332,35 @@ try {
         document.getElementById('editForm').addEventListener('submit', function(e) {
             e.preventDefault();
             const formData = new FormData(this);
-            
+
             fetch(window.location.href, {
                 method: 'POST',
                 body: formData
             })
-            .then(response => response.text())
-            .then(html => {
-                const doc = new DOMParser().parseFromString(html, 'text/html');
-                const successMsg = doc.body.textContent.includes('Профіль успішно оновлено');
+            .then(response => response.json())
+            .then(data => {
                 const alertBox = document.getElementById('editAlert');
-                
-                if (successMsg) {
-                    alertBox.textContent = '✅ Профіль успішно оновлено!';
+
+                if (data.success) {
+                    alertBox.textContent = '✅ ' + data.message;
                     alertBox.classList.add('show', 'alert-success');
                     alertBox.classList.remove('alert-error');
-                    setTimeout(() => closeEditModal(), 1500);
-                    location.reload();
+                    setTimeout(() => {
+                        closeEditModal();
+                        location.reload();
+                    }, 1500);
                 } else {
-                    alertBox.textContent = '❌ Помилка при оновленні профіля';
+                    alertBox.textContent = '❌ ' + data.message;
                     alertBox.classList.add('show', 'alert-error');
                     alertBox.classList.remove('alert-success');
                 }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                const alertBox = document.getElementById('editAlert');
+                alertBox.textContent = '❌ Помилка з\'єднання';
+                alertBox.classList.add('show', 'alert-error');
+                alertBox.classList.remove('alert-success');
             });
         });
 
@@ -379,35 +378,33 @@ try {
         document.getElementById('passwordForm').addEventListener('submit', function(e) {
             e.preventDefault();
             const formData = new FormData(this);
-            
+
             fetch(window.location.href, {
                 method: 'POST',
                 body: formData
             })
-            .then(response => response.text())
-            .then(html => {
+            .then(response => response.json())
+            .then(data => {
                 const alertBox = document.getElementById('passwordAlert');
-                const doc = new DOMParser().parseFromString(html, 'text/html');
-                
-                if (html.includes('Пароль успішно змінено')) {
-                    alertBox.textContent = '✅ Пароль успішно змінено!';
+
+                if (data.success) {
+                    alertBox.textContent = '✅ ' + data.message;
                     alertBox.classList.add('show', 'alert-success');
                     alertBox.classList.remove('alert-error');
                     document.getElementById('passwordForm').reset();
                     setTimeout(() => closePasswordModal(), 1500);
-                } else if (html.includes('Старий пароль невірний')) {
-                    alertBox.textContent = '❌ Старий пароль невірний!';
-                    alertBox.classList.add('show', 'alert-error');
-                    alertBox.classList.remove('alert-success');
-                } else if (html.includes('не збігається')) {
-                    alertBox.textContent = '❌ Паролі не збігаються!';
-                    alertBox.classList.add('show', 'alert-error');
-                    alertBox.classList.remove('alert-success');
-                } else if (html.includes('мінімум 6')) {
-                    alertBox.textContent = '❌ Пароль має бути мінімум 6 символів!';
+                } else {
+                    alertBox.textContent = '❌ ' + data.message;
                     alertBox.classList.add('show', 'alert-error');
                     alertBox.classList.remove('alert-success');
                 }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                const alertBox = document.getElementById('passwordAlert');
+                alertBox.textContent = '❌ Помилка з\'єднання';
+                alertBox.classList.add('show', 'alert-error');
+                alertBox.classList.remove('alert-success');
             });
         });
 
