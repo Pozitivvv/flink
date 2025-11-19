@@ -1,11 +1,15 @@
 <?php
 
-$session_lifetime = 60 * 60 * 24 * 7;
 
-ini_set('session.gc_maxlifetime', $session_lifetime);
+$session_lifetime = 60 * 60 * 24 * 7; // 7 дней
+
+// Пробуем установить
+@ini_set('session.gc_maxlifetime', $session_lifetime);
+
 session_set_cookie_params([
     'lifetime' => $session_lifetime,
     'path' => '/',
+    'domain' => '.wortly.one', // Важно для поддомен!
     'secure' => true,
     'httponly' => true,
     'samesite' => 'Lax',

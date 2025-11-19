@@ -70,6 +70,8 @@ $added_modules = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Додати день / тему | Німецький словник</title>
+    <?php include 'function/tags/icons.html'; ?>
+    <?php include 'function/tags/seo.html'; ?>
     <link rel="stylesheet" href="assets/add-day.css">
     <link rel="stylesheet" href="assets/main-style.css">
 </head>

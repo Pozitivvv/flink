@@ -37,6 +37,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Вхід | Німецький словник</title>
+    <?php include 'function/tags/icons.html'; ?>
+    <?php include 'function/tags/seo.html'; ?>
     <link rel="stylesheet" href="assets/login/login.css">
 </head>
 <body>

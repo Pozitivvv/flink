@@ -89,6 +89,8 @@ $words = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>📚 Мій словник | Німецький словник</title>
+    <?php include 'function/tags/icons.html'; ?>
+    <?php include 'function/tags/seo.html'; ?>
     <link rel="stylesheet" href="assets/dictionary.css?v=0.0.1">
     <link rel="stylesheet" href="assets/main-style.css">
 </head>

@@ -51,6 +51,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <?php include 'function/tags/icons.html'; ?>
+    <?php include 'function/tags/seo.html'; ?>
     <title>Реєстрація | Німецький словник</title>
     <link rel="stylesheet" href="assets/login/login.css">
 </head>

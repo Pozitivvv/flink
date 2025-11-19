@@ -23,6 +23,8 @@ $total_days = (int)$stmt->fetchColumn();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <?php include 'function/tags/icons.html'; ?>
+    <?php include 'function/tags/seo.html'; ?>
     <title>Wortly — Вивчай німецьку мову легко</title>
     <link rel="stylesheet" href="assets/main-page.css">
 

@@ -5,7 +5,7 @@ session_start();
 require_once 'config.php';
 
 if (!isset($_SESSION['user_id'])) {
-    header('Location: index.php');
+    header('Location: login.php');
     exit();
 }
 
@@ -145,6 +145,8 @@ $dateDE = $daysDE[$dayName] . ', ' . date('d') . ' ' . $monthsDE[$monthName] . '
     <title>Головна | Німецький словник</title>
     <link rel="manifest" href="manifest.json">
     <meta name="theme-color" content="#111C1C">
+    <?php include 'function/tags/icons.html'; ?>
+    <?php include 'function/tags/seo.html'; ?>
 
     <!-- Для iOS -->
     <link rel="apple-touch-icon" href="assets/icons/icon-512.png">

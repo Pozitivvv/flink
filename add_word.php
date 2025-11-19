@@ -132,6 +132,8 @@ if ($day_id) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Додати слова | Німецький словник</title>
+    <?php include 'function/tags/icons.html'; ?>
+    <?php include 'function/tags/seo.html'; ?>
     <link rel="stylesheet" href="assets/add-word.css">
     <link rel="stylesheet" href="assets/main-style.css">
 </head>
