@@ -681,3 +681,102 @@ tbody tr:hover .sound-btn {
     font-size: 14px;
   }
 }
+
+/* Добавьте эти правила в dictionary.css */
+
+/* Таблица */
+table {
+  width: 100%;
+  background: #1a1a1a;
+  border: 1px solid #2a2a2a;
+  border-radius: 16px;
+  overflow: hidden;
+  border-collapse: separate;
+  border-spacing: 0;
+  margin-bottom: 60px;
+}
+
+/* Контейнер для таблицы - горизонтальный скролл только если нужен */
+.table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  border-radius: 16px;
+}
+
+.table-wrapper::-webkit-scrollbar {
+  height: 6px;
+}
+
+.table-wrapper::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.table-wrapper::-webkit-scrollbar-thumb {
+  background: rgba(228, 228, 228, 0.2);
+  border-radius: 3px;
+}
+
+.table-wrapper::-webkit-scrollbar-thumb:hover {
+  background: rgba(228, 228, 228, 0.3);
+}
+
+th,
+td {
+  padding: 14px 16px;
+  color: #e4e4e4;
+  font-size: 15px;
+  border-bottom: 1px solid #2a2a2a;
+  white-space: nowrap; /* ← текст не переносится */
+}
+
+/* Колонка со словом - может быть шире, но без переносов */
+td.word-cell {
+  min-width: 200px;
+  white-space: normal; /* ← только в этой колонке разрешаем перенос */
+}
+
+/* Колонка перевода */
+td:nth-child(3) {
+  min-width: 150px;
+}
+
+/* На мобильных */
+@media (max-width: 768px) {
+  th,
+  td {
+    padding: 10px 8px;
+    font-size: 13px;
+  }
+
+  td.word-cell {
+    min-width: 120px;
+  }
+
+  /* На мобильных скрываем столбец "Тема" */
+  th:nth-child(4),
+  td:nth-child(4) {
+    display: none;
+  }
+
+  .delete-cell {
+    width: 50px;
+  }
+}
+
+@media (min-width: 768px) {
+  td.word-cell {
+    min-width: 250px;
+  }
+
+  td:nth-child(3) {
+    min-width: 200px;
+  }
+}
+
+.article-cell {
+  text-align: center;
+  font-weight: 600;
+  color: #3b82f6;
+  font-size: 14px;
+}
