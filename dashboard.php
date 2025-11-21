@@ -3,6 +3,7 @@
 // dashboard.php
 session_start();
 require_once 'config.php';
+require_once 'function/database/version.php';
 
 if (!isset($_SESSION['user_id'])) {
     header('Location: login.php');
@@ -133,7 +134,8 @@ $dayName = date('l');
 $monthName = date('F');
 
 $dateDE = $daysDE[$dayName] . ', ' . date('d') . ' ' . $monthsDE[$monthName] . ' ' . date('Y');
-
+// Получение версии приложения
+$app_version = getAppVersion($pdo);
 ?>
 
 
@@ -153,10 +155,22 @@ $dateDE = $daysDE[$dayName] . ', ' . date('d') . ' ' . $monthsDE[$monthName] . '
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="default">
 
-    <link rel="stylesheet" href="assets/dashboard.css?v=0.0.6">
-    <link rel="stylesheet" href="assets/main-style.css">
+    <link rel="stylesheet" href="assets/dashboard.css?v=<?= htmlspecialchars($app_version) ?>">
+    <link rel="stylesheet" href="assets/main-style.css?v=<?= htmlspecialchars($app_version) ?>">
 </head>
 <body>
+    <!-- PWA Notification -->
+    <div class="pwa-notification" id="pwaNotification">
+        <div class="pwa-icon">📱</div>
+        <div class="pwa-content">
+            <div class="pwa-title">Встановити додаток</div>
+            <div class="pwa-text">Швидкий доступ без браузера</div>
+        </div>
+        <div class="pwa-actions">
+            <button class="pwa-btn pwa-btn-install" id="pwaInstallBtn">Встановити</button>
+            <button class="pwa-btn pwa-btn-close" id="pwaCloseBtn">✕</button>
+        </div>
+    </div>
     <div class="container">
         <!-- Привітання -->
         <div class="greeting">
@@ -320,6 +334,7 @@ $dateDE = $daysDE[$dayName] . ', ' . date('d') . ' ' . $monthsDE[$monthName] . '
     </script>
 
     <script src="script/voice.js"></script>
+    <script src="script/check-pwa.js"></script>
     <script>
         // Додавання до словника
         function toggleFavorite(wordId, btn) {

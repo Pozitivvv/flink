@@ -142,7 +142,9 @@ try {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Профіль</title>
+    <?php include '../function/tags/icons.html'; ?>
+    <?php include '../function/tags/seo.html'; ?>
+    <title>Профіль | Wortly DE</title>
     <link rel="stylesheet" href="style/profile.css">
     <link rel="stylesheet" href="../../assets/main-style.css">
     
@@ -204,6 +206,45 @@ try {
             <div class="widget-title">
                 <span class="widget-icon">⚙️</span>
                 Дії
+            </div>
+            <div class="buttons">
+                <div class="buttons function-buttons-grid">
+                    <a href="../function/achievements/" class="btn btn-function function-overview">
+                        <span class="function-icon">📋</span>
+                        <div class="function-content">
+                            <span class="function-title">Досягнення</span>
+                            <span class="function-description">Порахуємо ваші досягнення.</span>
+                        </div>
+                    </a>
+                    <a href="../add_word.php" class="btn btn-function function-words">
+                        <span class="function-icon">📚</span>
+                        <div class="function-content">
+                            <span class="function-title">Додати слова</span>
+                            <span class="function-description">Додаємо слова до словника.</span>
+                        </div>
+                    </a>
+                    <a href="../function/interactive/" class="btn btn-function function-flashcards">
+                        <span class="function-icon">🎴</span>
+                        <div class="function-content">
+                            <span class="function-title">Флешкарти</span>
+                            <span class="function-description">Вивчаємо слова за допомогою флешкарт.</span>
+                        </div>
+                    </a>
+                    <a href="../flashcard/practice.php" class="btn btn-function function-test">
+                        <span class="function-icon">🧠</span>
+                        <div class="function-content">
+                            <span class="function-title">Тест</span>
+                            <span class="function-description">Вивчаємо слова за допомогою тесту.</span>
+                        </div>
+                    </a>
+                    <a href="../function/modules/" class="btn btn-function function-quiz">
+                        <span class="function-icon">🚀</span>
+                        <div class="function-content">
+                            <span class="function-title">Готові модулі слів</span>
+                            <span class="function-description">Вивчаємо слова за допомогою готових модулів.</span>
+                        </div>
+                    </a>
+                </div>
             </div>
             <?php if (!empty($user['is_admin']) && $user['is_admin'] == 1): ?>
                 <div class="widget">

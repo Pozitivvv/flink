@@ -182,6 +182,14 @@ try {
             FOREIGN KEY (module_id) REFERENCES modules(id) ON DELETE CASCADE
         ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
     ")
+
+    $db->exec("
+        CREATE TABLE IF NOT EXISTS app_metadata (
+            id INT AUTO_INCREMENT PRIMARY KEY,
+            app_version VARCHAR(20),
+            release_notes TEXT
+        ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+    ");
     // Повертаємо перевірку зовнішніх ключів
     $db->exec("SET FOREIGN_KEY_CHECKS=1;");
 

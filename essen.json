@@ -1,29 +1,437 @@
 [
   {
     "article": "der",
-    "german": "Apfel",
-    "translation": "яблуко",
+    "german": "Mann",
+    "translation": "чоловік",
     "type": "noun"
   },
   {
     "article": "die",
-    "german": "Banane",
-    "translation": "банан",
+    "german": "Frau",
+    "translation": "жінка",
+    "type": "noun"
+  },
+  {
+    "article": "das",
+    "german": "Kind",
+    "translation": "дитина",
+    "type": "noun"
+  },
+  {
+    "article": "die",
+    "german": "Familie",
+    "translation": "сім'я",
+    "type": "noun"
+  },
+  {
+    "article": "der",
+    "german": "Vater",
+    "translation": "батько",
+    "type": "noun"
+  },
+  {
+    "article": "die",
+    "german": "Mutter",
+    "translation": "мати",
+    "type": "noun"
+  },
+  {
+    "article": "der",
+    "german": "Junge",
+    "translation": "хлопчик",
+    "type": "noun"
+  },
+  {
+    "article": "das",
+    "german": "Mädchen",
+    "translation": "дівчинка",
+    "type": "noun"
+  },
+  {
+    "article": "der",
+    "german": "Freund",
+    "translation": "друг",
+    "type": "noun"
+  },
+  { "article": "der", "german": "Name", "translation": "ім'я", "type": "noun" },
+  { "article": "", "german": "sein", "translation": "бути", "type": "verb" },
+  {
+    "article": "",
+    "german": "haben",
+    "translation": "мати (володіти)",
+    "type": "verb"
+  },
+  {
+    "article": "",
+    "german": "werden",
+    "translation": "ставати",
+    "type": "verb"
+  },
+  { "article": "", "german": "können", "translation": "могти", "type": "verb" },
+  {
+    "article": "",
+    "german": "müssen",
+    "translation": "мусити",
+    "type": "verb"
+  },
+  { "article": "", "german": "sagen", "translation": "казати", "type": "verb" },
+  {
+    "article": "",
+    "german": "machen",
+    "translation": "робити",
+    "type": "verb"
+  },
+  { "article": "", "german": "geben", "translation": "давати", "type": "verb" },
+  {
+    "article": "",
+    "german": "kommen",
+    "translation": "приходити",
+    "type": "verb"
+  },
+  { "article": "", "german": "gehen", "translation": "йти", "type": "verb" },
+  { "article": "", "german": "sehen", "translation": "бачити", "type": "verb" },
+  { "article": "", "german": "essen", "translation": "їсти", "type": "verb" },
+  { "article": "", "german": "trinken", "translation": "пити", "type": "verb" },
+  {
+    "article": "",
+    "german": "schlafen",
+    "translation": "спати",
+    "type": "verb"
+  },
+  {
+    "article": "",
+    "german": "arbeiten",
+    "translation": "працювати",
+    "type": "verb"
+  },
+  {
+    "article": "",
+    "german": "lernen",
+    "translation": "вчитися",
+    "type": "verb"
+  },
+  {
+    "article": "",
+    "german": "wohnen",
+    "translation": "жити (проживати)",
+    "type": "verb"
+  },
+  {
+    "article": "",
+    "german": "heißen",
+    "translation": "називатися",
+    "type": "verb"
+  },
+  {
+    "article": "",
+    "german": "sprechen",
+    "translation": "говорити",
+    "type": "verb"
+  },
+  {
+    "article": "",
+    "german": "verstehen",
+    "translation": "розуміти",
+    "type": "verb"
+  },
+  { "article": "", "german": "ich", "translation": "я", "type": "pronoun" },
+  { "article": "", "german": "du", "translation": "ти", "type": "pronoun" },
+  { "article": "", "german": "er", "translation": "він", "type": "pronoun" },
+  {
+    "article": "",
+    "german": "sie",
+    "translation": "вона / вони / Ви",
+    "type": "pronoun"
+  },
+  { "article": "", "german": "es", "translation": "воно", "type": "pronoun" },
+  { "article": "", "german": "wir", "translation": "ми", "type": "pronoun" },
+  {
+    "article": "",
+    "german": "ihr",
+    "translation": "ви (множина)",
+    "type": "pronoun"
+  },
+  { "article": "", "german": "mein", "translation": "мій", "type": "pronoun" },
+  { "article": "", "german": "dein", "translation": "твій", "type": "pronoun" },
+  {
+    "article": "",
+    "german": "gut",
+    "translation": "добрий / добре",
+    "type": "adjective"
+  },
+  {
+    "article": "",
+    "german": "schlecht",
+    "translation": "поганий",
+    "type": "adjective"
+  },
+  {
+    "article": "",
+    "german": "groß",
+    "translation": "великий",
+    "type": "adjective"
+  },
+  {
+    "article": "",
+    "german": "klein",
+    "translation": "маленький",
+    "type": "adjective"
+  },
+  {
+    "article": "",
+    "german": "neu",
+    "translation": "новий",
+    "type": "adjective"
+  },
+  {
+    "article": "",
+    "german": "alt",
+    "translation": "старий",
+    "type": "adjective"
+  },
+  {
+    "article": "",
+    "german": "jung",
+    "translation": "молодий",
+    "type": "adjective"
+  },
+  {
+    "article": "",
+    "german": "schön",
+    "translation": "гарний",
+    "type": "adjective"
+  },
+  {
+    "article": "",
+    "german": "teuer",
+    "translation": "дорогий",
+    "type": "adjective"
+  },
+  {
+    "article": "",
+    "german": "billig",
+    "translation": "дешевий",
+    "type": "adjective"
+  },
+  {
+    "article": "",
+    "german": "kalt",
+    "translation": "холодний",
+    "type": "adjective"
+  },
+  {
+    "article": "",
+    "german": "warm",
+    "translation": "теплий",
+    "type": "adjective"
+  },
+  {
+    "article": "",
+    "german": "wichtig",
+    "translation": "важливий",
+    "type": "adjective"
+  },
+  {
+    "article": "",
+    "german": "richtig",
+    "translation": "правильний",
+    "type": "adjective"
+  },
+  {
+    "article": "",
+    "german": "falsch",
+    "translation": "неправильний",
+    "type": "adjective"
+  },
+  { "article": "der", "german": "Tag", "translation": "день", "type": "noun" },
+  { "article": "die", "german": "Nacht", "translation": "ніч", "type": "noun" },
+  {
+    "article": "der",
+    "german": "Morgen",
+    "translation": "ранок",
+    "type": "noun"
+  },
+  {
+    "article": "der",
+    "german": "Abend",
+    "translation": "вечір",
+    "type": "noun"
+  },
+  {
+    "article": "die",
+    "german": "Woche",
+    "translation": "тиждень",
+    "type": "noun"
+  },
+  { "article": "das", "german": "Jahr", "translation": "рік", "type": "noun" },
+  { "article": "die", "german": "Zeit", "translation": "час", "type": "noun" },
+  {
+    "article": "die",
+    "german": "Uhr",
+    "translation": "годинник",
+    "type": "noun"
+  },
+  {
+    "article": "das",
+    "german": "Haus",
+    "translation": "будинок",
+    "type": "noun"
+  },
+  {
+    "article": "die",
+    "german": "Wohnung",
+    "translation": "квартира",
+    "type": "noun"
+  },
+  {
+    "article": "das",
+    "german": "Zimmer",
+    "translation": "кімната",
+    "type": "noun"
+  },
+  { "article": "die", "german": "Tür", "translation": "двері", "type": "noun" },
+  {
+    "article": "das",
+    "german": "Fenster",
+    "translation": "вікно",
+    "type": "noun"
+  },
+  {
+    "article": "der",
+    "german": "Tisch",
+    "translation": "стіл",
+    "type": "noun"
+  },
+  {
+    "article": "der",
+    "german": "Stuhl",
+    "translation": "стілець",
+    "type": "noun"
+  },
+  {
+    "article": "das",
+    "german": "Bett",
+    "translation": "ліжко",
+    "type": "noun"
+  },
+  {
+    "article": "die",
+    "german": "Straße",
+    "translation": "вулиця",
+    "type": "noun"
+  },
+  {
+    "article": "die",
+    "german": "Stadt",
+    "translation": "місто",
+    "type": "noun"
+  },
+  {
+    "article": "das",
+    "german": "Land",
+    "translation": "країна",
+    "type": "noun"
+  },
+  {
+    "article": "das",
+    "german": "Wasser",
+    "translation": "вода",
     "type": "noun"
   },
   { "article": "das", "german": "Brot", "translation": "хліб", "type": "noun" },
+  {
+    "article": "der",
+    "german": "Kaffee",
+    "translation": "кава",
+    "type": "noun"
+  },
+  { "article": "der", "german": "Tee", "translation": "чай", "type": "noun" },
   {
     "article": "die",
     "german": "Milch",
     "translation": "молоко",
     "type": "noun"
   },
-  { "article": "der", "german": "Käse", "translation": "сир", "type": "noun" },
-  { "article": "das", "german": "Ei", "translation": "яйце", "type": "noun" },
+  {
+    "article": "der",
+    "german": "Apfel",
+    "translation": "яблуко",
+    "type": "noun"
+  },
+  {
+    "article": "das",
+    "german": "Geld",
+    "translation": "гроші",
+    "type": "noun"
+  },
   {
     "article": "die",
-    "german": "Kartoffel",
-    "translation": "картопля",
+    "german": "Arbeit",
+    "translation": "робота",
+    "type": "noun"
+  },
+  {
+    "article": "das",
+    "german": "Auto",
+    "translation": "автомобіль",
+    "type": "noun"
+  },
+  {
+    "article": "der",
+    "german": "Bus",
+    "translation": "автобус",
+    "type": "noun"
+  },
+  {
+    "article": "und",
+    "german": "und",
+    "translation": "і",
+    "type": "conjunction"
+  },
+  {
+    "article": "oder",
+    "german": "oder",
+    "translation": "або",
+    "type": "conjunction"
+  },
+  {
+    "article": "aber",
+    "german": "aber",
+    "translation": "але",
+    "type": "conjunction"
+  },
+  { "article": "ja", "german": "ja", "translation": "так", "type": "particle" },
+  {
+    "article": "nein",
+    "german": "nein",
+    "translation": "ні",
+    "type": "particle"
+  },
+  {
+    "article": "hier",
+    "german": "hier",
+    "translation": "тут",
+    "type": "adverb"
+  },
+  {
+    "article": "dort",
+    "german": "dort",
+    "translation": "там",
+    "type": "adverb"
+  },
+  { "article": "wo", "german": "wo", "translation": "де", "type": "adverb" },
+  { "article": "was", "german": "was", "translation": "що", "type": "pronoun" },
+  {
+    "article": "wer",
+    "german": "wer",
+    "translation": "хто",
+    "type": "pronoun"
+  },
+  { "article": "wie", "german": "wie", "translation": "як", "type": "adverb" },
+  {
+    "article": "das",
+    "german": "Fleisch",
+    "translation": "м'ясо",
     "type": "noun"
   },
   {
@@ -34,54 +442,25 @@
   },
   {
     "article": "das",
-    "german": "Fleisch",
-    "translation": "м'ясо",
+    "german": "Hähnchen",
+    "translation": "курка (курча)",
     "type": "noun"
   },
+  { "article": "das", "german": "Ei", "translation": "яйце", "type": "noun" },
+  { "article": "der", "german": "Käse", "translation": "сир", "type": "noun" },
   {
     "article": "die",
-    "german": "Tomate",
-    "translation": "помідор",
+    "german": "Wurst",
+    "translation": "ковбаса",
     "type": "noun"
   },
   {
     "article": "der",
-    "german": "Salat",
-    "translation": "салат",
+    "german": "Zucker",
+    "translation": "цукор",
     "type": "noun"
   },
-  {
-    "article": "die",
-    "german": "Karotte",
-    "translation": "морква",
-    "type": "noun"
-  },
-  {
-    "article": "das",
-    "german": "Wasser",
-    "translation": "вода",
-    "type": "noun"
-  },
-  { "article": "der", "german": "Saft", "translation": "сік", "type": "noun" },
-  { "article": "die", "german": "Suppe", "translation": "суп", "type": "noun" },
-  {
-    "article": "das",
-    "german": "Brötchen",
-    "translation": "булочка",
-    "type": "noun"
-  },
-  {
-    "article": "der",
-    "german": "Kuchen",
-    "translation": "пиріг",
-    "type": "noun"
-  },
-  {
-    "article": "die",
-    "german": "Schokolade",
-    "translation": "шоколад",
-    "type": "noun"
-  },
+  { "article": "das", "german": "Salz", "translation": "сіль", "type": "noun" },
   {
     "article": "das",
     "german": "Obst",
@@ -94,39 +473,1944 @@
     "translation": "овочі",
     "type": "noun"
   },
-  { "article": "der", "german": "Reis", "translation": "рис", "type": "noun" },
   {
     "article": "die",
-    "german": "Pasta",
-    "translation": "паста",
+    "german": "Kartoffel",
+    "translation": "картопля",
+    "type": "noun"
+  },
+  {
+    "article": "die",
+    "german": "Tomate",
+    "translation": "помідор",
+    "type": "noun"
+  },
+  {
+    "article": "die",
+    "german": "Banane",
+    "translation": "банан",
+    "type": "noun"
+  },
+  {
+    "article": "die",
+    "german": "Orange",
+    "translation": "апельсин",
     "type": "noun"
   },
   {
     "article": "der",
-    "german": "Zucker",
-    "translation": "цукор",
+    "german": "Kuchen",
+    "translation": "пиріг / торт",
     "type": "noun"
   },
-  { "article": "das", "german": "Salz", "translation": "сіль", "type": "noun" },
-  { "article": "der", "german": "Honig", "translation": "мед", "type": "noun" },
+  { "article": "die", "german": "Suppe", "translation": "суп", "type": "noun" },
+  { "article": "das", "german": "Bier", "translation": "пиво", "type": "noun" },
+  { "article": "der", "german": "Wein", "translation": "вино", "type": "noun" },
+  { "article": "der", "german": "Saft", "translation": "сік", "type": "noun" },
+  {
+    "article": "das",
+    "german": "Glas",
+    "translation": "склянка",
+    "type": "noun"
+  },
   {
     "article": "die",
-    "german": "Butter",
-    "translation": "масло",
+    "german": "Flasche",
+    "translation": "пляшка",
     "type": "noun"
   },
   {
     "article": "das",
-    "german": "Joghurt",
-    "translation": "йогурт",
+    "german": "Frühstück",
+    "translation": "сніданок",
     "type": "noun"
   },
-  { "article": "der", "german": "Tee", "translation": "чай", "type": "noun" },
+  {
+    "article": "das",
+    "german": "Mittagessen",
+    "translation": "обід",
+    "type": "noun"
+  },
+  {
+    "article": "das",
+    "german": "Abendessen",
+    "translation": "вечеря",
+    "type": "noun"
+  },
+  {
+    "article": "die",
+    "german": "Kleidung",
+    "translation": "одяг",
+    "type": "noun"
+  },
+  {
+    "article": "die",
+    "german": "Hose",
+    "translation": "штани",
+    "type": "noun"
+  },
+  {
+    "article": "das",
+    "german": "Hemd",
+    "translation": "сорочка",
+    "type": "noun"
+  },
+  {
+    "article": "das",
+    "german": "T-Shirt",
+    "translation": "футболка",
+    "type": "noun"
+  },
   {
     "article": "der",
-    "german": "Kaffee",
-    "translation": "кава",
+    "german": "Pullover",
+    "translation": "светр",
     "type": "noun"
   },
-  { "article": "das", "german": "Essen", "translation": "їжа", "type": "noun" }
+  {
+    "article": "die",
+    "german": "Jacke",
+    "translation": "куртка",
+    "type": "noun"
+  },
+  {
+    "article": "der",
+    "german": "Mantel",
+    "translation": "пальто",
+    "type": "noun"
+  },
+  {
+    "article": "das",
+    "german": "Kleid",
+    "translation": "сукня",
+    "type": "noun"
+  },
+  {
+    "article": "der",
+    "german": "Rock",
+    "translation": "спідниця",
+    "type": "noun"
+  },
+  {
+    "article": "der",
+    "german": "Schuh",
+    "translation": "черевик",
+    "type": "noun"
+  },
+  {
+    "article": "die",
+    "german": "Tasche",
+    "translation": "сумка / кишеня",
+    "type": "noun"
+  },
+  {
+    "article": "der",
+    "german": "Hut",
+    "translation": "капелюх",
+    "type": "noun"
+  },
+  {
+    "article": "die",
+    "german": "Brille",
+    "translation": "окуляри",
+    "type": "noun"
+  },
+  {
+    "article": "der",
+    "german": "Körper",
+    "translation": "тіло",
+    "type": "noun"
+  },
+  {
+    "article": "der",
+    "german": "Kopf",
+    "translation": "голова",
+    "type": "noun"
+  },
+  { "article": "das", "german": "Auge", "translation": "око", "type": "noun" },
+  { "article": "das", "german": "Ohr", "translation": "вухо", "type": "noun" },
+  { "article": "der", "german": "Mund", "translation": "рот", "type": "noun" },
+  { "article": "die", "german": "Nase", "translation": "ніс", "type": "noun" },
+  {
+    "article": "das",
+    "german": "Haar",
+    "translation": "волосся",
+    "type": "noun"
+  },
+  {
+    "article": "die",
+    "german": "Hand",
+    "translation": "рука (кисть)",
+    "type": "noun"
+  },
+  {
+    "article": "der",
+    "german": "Finger",
+    "translation": "палець",
+    "type": "noun"
+  },
+  {
+    "article": "der",
+    "german": "Arm",
+    "translation": "рука (від плеча)",
+    "type": "noun"
+  },
+  { "article": "das", "german": "Bein", "translation": "нога", "type": "noun" },
+  { "article": "der", "german": "Fuß", "translation": "стопа", "type": "noun" },
+  {
+    "article": "der",
+    "german": "Bauch",
+    "translation": "живіт",
+    "type": "noun"
+  },
+  {
+    "article": "der",
+    "german": "Rücken",
+    "translation": "спина",
+    "type": "noun"
+  },
+  {
+    "article": "die",
+    "german": "Farbe",
+    "translation": "колір",
+    "type": "noun"
+  },
+  {
+    "article": "",
+    "german": "rot",
+    "translation": "червоний",
+    "type": "adjective"
+  },
+  {
+    "article": "",
+    "german": "blau",
+    "translation": "синій",
+    "type": "adjective"
+  },
+  {
+    "article": "",
+    "german": "grün",
+    "translation": "зелений",
+    "type": "adjective"
+  },
+  {
+    "article": "",
+    "german": "gelb",
+    "translation": "жовтий",
+    "type": "adjective"
+  },
+  {
+    "article": "",
+    "german": "schwarz",
+    "translation": "чорний",
+    "type": "adjective"
+  },
+  {
+    "article": "",
+    "german": "weiß",
+    "translation": "білий",
+    "type": "adjective"
+  },
+  {
+    "article": "",
+    "german": "braun",
+    "translation": "коричневий",
+    "type": "adjective"
+  },
+  {
+    "article": "",
+    "german": "grau",
+    "translation": "сірий",
+    "type": "adjective"
+  },
+  {
+    "article": "",
+    "german": "hell",
+    "translation": "світлий",
+    "type": "adjective"
+  },
+  {
+    "article": "",
+    "german": "dunkel",
+    "translation": "темний",
+    "type": "adjective"
+  },
+  {
+    "article": "",
+    "german": "kochen",
+    "translation": "готувати (їжу)",
+    "type": "verb"
+  },
+  {
+    "article": "",
+    "german": "schmecken",
+    "translation": "смакувати",
+    "type": "verb"
+  },
+  {
+    "article": "",
+    "german": "kaufen",
+    "translation": "купувати",
+    "type": "verb"
+  },
+  {
+    "article": "",
+    "german": "verkaufen",
+    "translation": "продавати",
+    "type": "verb"
+  },
+  {
+    "article": "",
+    "german": "kosten",
+    "translation": "коштувати",
+    "type": "verb"
+  },
+  {
+    "article": "",
+    "german": "bezahlen",
+    "translation": "платити",
+    "type": "verb"
+  },
+  {
+    "article": "",
+    "german": "brauchen",
+    "translation": "потребувати",
+    "type": "verb"
+  },
+  {
+    "article": "",
+    "german": "suchen",
+    "translation": "шукати",
+    "type": "verb"
+  },
+  {
+    "article": "",
+    "german": "finden",
+    "translation": "знаходити",
+    "type": "verb"
+  },
+  {
+    "article": "",
+    "german": "anziehen",
+    "translation": "одягати",
+    "type": "verb"
+  },
+  {
+    "article": "",
+    "german": "tragen",
+    "translation": "носити (одяг)",
+    "type": "verb"
+  },
+  {
+    "article": "",
+    "german": "waschen",
+    "translation": "мити / прати",
+    "type": "verb"
+  },
+  {
+    "article": "",
+    "german": "schnell",
+    "translation": "швидкий",
+    "type": "adjective"
+  },
+  {
+    "article": "",
+    "german": "langsam",
+    "translation": "повільний",
+    "type": "adjective"
+  },
+  {
+    "article": "",
+    "german": "laut",
+    "translation": "гучний",
+    "type": "adjective"
+  },
+  {
+    "article": "",
+    "german": "leise",
+    "translation": "тихий",
+    "type": "adjective"
+  },
+  {
+    "article": "",
+    "german": "krank",
+    "translation": "хворий",
+    "type": "adjective"
+  },
+  {
+    "article": "",
+    "german": "gesund",
+    "translation": "здоровий",
+    "type": "adjective"
+  },
+  {
+    "article": "",
+    "german": "müde",
+    "translation": "втомлений",
+    "type": "adjective"
+  },
+  {
+    "article": "",
+    "german": "hungrig",
+    "translation": "голодний",
+    "type": "adjective"
+  },
+  {
+    "article": "",
+    "german": "durstig",
+    "translation": "спраглий",
+    "type": "adjective"
+  },
+  {
+    "article": "",
+    "german": "viel",
+    "translation": "багато",
+    "type": "adverb"
+  },
+  { "article": "", "german": "wenig", "translation": "мало", "type": "adverb" },
+  { "article": "", "german": "alles", "translation": "все", "type": "pronoun" },
+  {
+    "article": "",
+    "german": "nichts",
+    "translation": "нічого",
+    "type": "pronoun"
+  },
+  { "article": "", "german": "sehr", "translation": "дуже", "type": "adverb" },
+
+  {
+    "article": "die",
+    "german": "Schule",
+    "translation": "школа",
+    "type": "noun"
+  },
+  {
+    "article": "die",
+    "german": "Universität",
+    "translation": "університет",
+    "type": "noun"
+  },
+  {
+    "article": "der",
+    "german": "Lehrer",
+    "translation": "вчитель",
+    "type": "noun"
+  },
+  {
+    "article": "der",
+    "german": "Schüler",
+    "translation": "учень",
+    "type": "noun"
+  },
+  {
+    "article": "der",
+    "german": "Student",
+    "translation": "студент",
+    "type": "noun"
+  },
+  {
+    "article": "die",
+    "german": "Arzt",
+    "translation": "лікар",
+    "type": "noun"
+  },
+  {
+    "article": "der",
+    "german": "Beruf",
+    "translation": "професія",
+    "type": "noun"
+  },
+  {
+    "article": "das",
+    "german": "Büro",
+    "translation": "офіс",
+    "type": "noun"
+  },
+  {
+    "article": "die",
+    "german": "Firma",
+    "translation": "фірма",
+    "type": "noun"
+  },
+  {
+    "article": "der",
+    "german": "Chef",
+    "translation": "начальник",
+    "type": "noun"
+  },
+  {
+    "article": "der",
+    "german": "Kollege",
+    "translation": "колега",
+    "type": "noun"
+  },
+  {
+    "article": "das",
+    "german": "Geschäft",
+    "translation": "магазин",
+    "type": "noun"
+  },
+  {
+    "article": "der",
+    "german": "Markt",
+    "translation": "ринок",
+    "type": "noun"
+  },
+  {
+    "article": "der",
+    "german": "Supermarkt",
+    "translation": "супермаркет",
+    "type": "noun"
+  },
+  {
+    "article": "das",
+    "german": "Krankenhaus",
+    "translation": "лікарня",
+    "type": "noun"
+  },
+  {
+    "article": "die",
+    "german": "Apotheke",
+    "translation": "аптека",
+    "type": "noun"
+  },
+  {
+    "article": "das",
+    "german": "Hotel",
+    "translation": "готель",
+    "type": "noun"
+  },
+  {
+    "article": "das",
+    "german": "Restaurant",
+    "translation": "ресторан",
+    "type": "noun"
+  },
+  {
+    "article": "der",
+    "german": "Bahnhof",
+    "translation": "вокзал",
+    "type": "noun"
+  },
+  {
+    "article": "der",
+    "german": "Flughafen",
+    "translation": "аеропорт",
+    "type": "noun"
+  },
+  {
+    "article": "der",
+    "german": "Zug",
+    "translation": "потяг",
+    "type": "noun"
+  },
+  {
+    "article": "das",
+    "german": "Flugzeug",
+    "translation": "літак",
+    "type": "noun"
+  },
+  {
+    "article": "die",
+    "german": "U-Bahn",
+    "translation": "метро",
+    "type": "noun"
+  },
+  {
+    "article": "das",
+    "german": "Taxi",
+    "translation": "таксі",
+    "type": "noun"
+  },
+  {
+    "article": "das",
+    "german": "Fahrrad",
+    "translation": "велосипед",
+    "type": "noun"
+  },
+  {
+    "article": "das",
+    "german": "Ticket",
+    "translation": "квиток",
+    "type": "noun"
+  },
+  {
+    "article": "der",
+    "german": "Platz",
+    "translation": "місце / площа",
+    "type": "noun"
+  },
+  {
+    "article": "die",
+    "german": "Küche",
+    "translation": "кухня",
+    "type": "noun"
+  },
+  {
+    "article": "das",
+    "german": "Bad",
+    "translation": "ванна кімната",
+    "type": "noun"
+  },
+  {
+    "article": "die",
+    "german": "Toilette",
+    "translation": "туалет",
+    "type": "noun"
+  },
+  {
+    "article": "der",
+    "german": "Garten",
+    "translation": "сад",
+    "type": "noun"
+  },
+  {
+    "article": "der",
+    "german": "Balkon",
+    "translation": "балкон",
+    "type": "noun"
+  },
+  {
+    "article": "der",
+    "german": "Schlüssel",
+    "translation": "ключ",
+    "type": "noun"
+  },
+  {
+    "article": "das",
+    "german": "Telefon",
+    "translation": "телефон",
+    "type": "noun"
+  },
+  {
+    "article": "das",
+    "german": "Handy",
+    "translation": "мобільний телефон",
+    "type": "noun"
+  },
+  {
+    "article": "der",
+    "german": "Computer",
+    "translation": "комп'ютер",
+    "type": "noun"
+  },
+  {
+    "article": "die",
+    "german": "E-Mail",
+    "translation": "електронна пошта",
+    "type": "noun"
+  },
+  {
+    "article": "der",
+    "german": "Brief",
+    "translation": "лист (паперовий)",
+    "type": "noun"
+  },
+  {
+    "article": "das",
+    "german": "Papier",
+    "translation": "папір",
+    "type": "noun"
+  },
+  {
+    "article": "der",
+    "german": "Stift",
+    "translation": "ручка / олівець",
+    "type": "noun"
+  },
+  {
+    "article": "das",
+    "german": "Buch",
+    "translation": "книга",
+    "type": "noun"
+  },
+  {
+    "article": "die",
+    "german": "Zeitung",
+    "translation": "газета",
+    "type": "noun"
+  },
+  {
+    "article": "das",
+    "german": "Wort",
+    "translation": "слово",
+    "type": "noun"
+  },
+  {
+    "article": "der",
+    "german": "Satz",
+    "translation": "речення",
+    "type": "noun"
+  },
+  {
+    "article": "die",
+    "german": "Frage",
+    "translation": "питання",
+    "type": "noun"
+  },
+  {
+    "article": "die",
+    "german": "Antwort",
+    "translation": "відповідь",
+    "type": "noun"
+  },
+  {
+    "article": "",
+    "german": "fahren",
+    "translation": "їхати",
+    "type": "verb"
+  },
+  {
+    "article": "",
+    "german": "fliegen",
+    "translation": "літати",
+    "type": "verb"
+  },
+  {
+    "article": "",
+    "german": "laufen",
+    "translation": "бігти / ходити",
+    "type": "verb"
+  },
+  {
+    "article": "",
+    "german": "stehen",
+    "translation": "стояти",
+    "type": "verb"
+  },
+  {
+    "article": "",
+    "german": "sitzen",
+    "translation": "сидіти",
+    "type": "verb"
+  },
+  {
+    "article": "",
+    "german": "liegen",
+    "translation": "лежати",
+    "type": "verb"
+  },
+  {
+    "article": "",
+    "german": "lesen",
+    "translation": "читати",
+    "type": "verb"
+  },
+  {
+    "article": "",
+    "german": "schreiben",
+    "translation": "писати",
+    "type": "verb"
+  },
+  {
+    "article": "",
+    "german": "hören",
+    "translation": "слухати / чути",
+    "type": "verb"
+  },
+  {
+    "article": "",
+    "german": "fragen",
+    "translation": "питати",
+    "type": "verb"
+  },
+  {
+    "article": "",
+    "german": "antworten",
+    "translation": "відповідати",
+    "type": "verb"
+  },
+  {
+    "article": "",
+    "german": "helfen",
+    "translation": "допомагати",
+    "type": "verb"
+  },
+  {
+    "article": "",
+    "german": "warten",
+    "translation": "чекати",
+    "type": "verb"
+  },
+  {
+    "article": "",
+    "german": "anrufen",
+    "translation": "дзвонити",
+    "type": "verb"
+  },
+  {
+    "article": "",
+    "german": "öffnen",
+    "translation": "відкривати",
+    "type": "verb"
+  },
+  {
+    "article": "",
+    "german": "schließen",
+    "translation": "закривати",
+    "type": "verb"
+  },
+  {
+    "article": "",
+    "german": "heute",
+    "translation": "сьогодні",
+    "type": "adverb"
+  },
+  {
+    "article": "",
+    "german": "gestern",
+    "translation": "вчора",
+    "type": "adverb"
+  },
+  {
+    "article": "",
+    "german": "morgen",
+    "translation": "завтра",
+    "type": "adverb"
+  },
+  {
+    "article": "",
+    "german": "jetzt",
+    "translation": "зараз",
+    "type": "adverb"
+  },
+  {
+    "article": "",
+    "german": "später",
+    "translation": "пізніше",
+    "type": "adverb"
+  },
+  {
+    "article": "",
+    "german": "bald",
+    "translation": "скоро",
+    "type": "adverb"
+  },
+  {
+    "article": "",
+    "german": "immer",
+    "translation": "завжди",
+    "type": "adverb"
+  },
+  {
+    "article": "",
+    "german": "nie",
+    "translation": "ніколи",
+    "type": "adverb"
+  },
+  {
+    "article": "",
+    "german": "oft",
+    "translation": "часто",
+    "type": "adverb"
+  },
+  {
+    "article": "",
+    "german": "manchmal",
+    "translation": "іноді",
+    "type": "adverb"
+  },
+  {
+    "article": "",
+    "german": "vielleicht",
+    "translation": "можливо",
+    "type": "adverb"
+  },
+  {
+    "article": "",
+    "german": "natürlich",
+    "translation": "звісно",
+    "type": "adverb"
+  },
+  {
+    "article": "",
+    "german": "bitte",
+    "translation": "будь ласка",
+    "type": "particle"
+  },
+  {
+    "article": "",
+    "german": "danke",
+    "translation": "дякую",
+    "type": "particle"
+  },
+  {
+    "article": "",
+    "german": "Entschuldigung",
+    "translation": "вибачте",
+    "type": "noun"
+  },
+  {
+    "article": "",
+    "german": "glücklich",
+    "translation": "щасливий",
+    "type": "adjective"
+  },
+  {
+    "article": "",
+    "german": "traurig",
+    "translation": "сумний",
+    "type": "adjective"
+  },
+  {
+    "article": "",
+    "german": "leicht",
+    "translation": "легкий",
+    "type": "adjective"
+  },
+  {
+    "article": "",
+    "german": "schwer",
+    "translation": "важкий",
+    "type": "adjective"
+  },
+  {
+    "article": "",
+    "german": "früh",
+    "translation": "рано",
+    "type": "adjective"
+  },
+  {
+    "article": "",
+    "german": "spät",
+    "translation": "пізно",
+    "type": "adjective"
+  },
+  {
+    "article": "",
+    "german": "voll",
+    "translation": "повний",
+    "type": "adjective"
+  },
+  {
+    "article": "",
+    "german": "leer",
+    "translation": "порожній",
+    "type": "adjective"
+  },
+  {
+    "article": "die",
+    "german": "Natur",
+    "translation": "природа",
+    "type": "noun"
+  },
+  {
+    "article": "die",
+    "german": "Sonne",
+    "translation": "сонце",
+    "type": "noun"
+  },
+  {
+    "article": "der",
+    "german": "Mond",
+    "translation": "місяць (світило)",
+    "type": "noun"
+  },
+  {
+    "article": "der",
+    "german": "Stern",
+    "translation": "зірка",
+    "type": "noun"
+  },
+  {
+    "article": "die",
+    "german": "Luft",
+    "translation": "повітря",
+    "type": "noun"
+  },
+  { "article": "der", "german": "Regen", "translation": "дощ", "type": "noun" },
+  {
+    "article": "der",
+    "german": "Schnee",
+    "translation": "сніг",
+    "type": "noun"
+  },
+  {
+    "article": "der",
+    "german": "Wind",
+    "translation": "вітер",
+    "type": "noun"
+  },
+  {
+    "article": "das",
+    "german": "Wetter",
+    "translation": "погода",
+    "type": "noun"
+  },
+  {
+    "article": "der",
+    "german": "Baum",
+    "translation": "дерево",
+    "type": "noun"
+  },
+  {
+    "article": "die",
+    "german": "Blume",
+    "translation": "квітка",
+    "type": "noun"
+  },
+  { "article": "der", "german": "Wald", "translation": "ліс", "type": "noun" },
+  { "article": "der", "german": "Berg", "translation": "гора", "type": "noun" },
+  {
+    "article": "der",
+    "german": "Fluss",
+    "translation": "річка",
+    "type": "noun"
+  },
+  { "article": "das", "german": "Meer", "translation": "море", "type": "noun" },
+  { "article": "der", "german": "See", "translation": "озеро", "type": "noun" },
+  {
+    "article": "das",
+    "german": "Tier",
+    "translation": "тварина",
+    "type": "noun"
+  },
+  {
+    "article": "der",
+    "german": "Hund",
+    "translation": "собака",
+    "type": "noun"
+  },
+  {
+    "article": "die",
+    "german": "Katze",
+    "translation": "кішка",
+    "type": "noun"
+  },
+  { "article": "die", "german": "Maus", "translation": "миша", "type": "noun" },
+  {
+    "article": "der",
+    "german": "Vogel",
+    "translation": "птах",
+    "type": "noun"
+  },
+  {
+    "article": "das",
+    "german": "Pferd",
+    "translation": "кінь",
+    "type": "noun"
+  },
+  {
+    "article": "die",
+    "german": "Kuh",
+    "translation": "корова",
+    "type": "noun"
+  },
+  {
+    "article": "das",
+    "german": "Schwein",
+    "translation": "свиня",
+    "type": "noun"
+  },
+  {
+    "article": "",
+    "german": "in",
+    "translation": "в / у",
+    "type": "preposition"
+  },
+  {
+    "article": "",
+    "german": "an",
+    "translation": "на (вертикально) / біля",
+    "type": "preposition"
+  },
+  {
+    "article": "",
+    "german": "auf",
+    "translation": "на (горизонтально)",
+    "type": "preposition"
+  },
+  { "article": "", "german": "mit", "translation": "з", "type": "preposition" },
+  {
+    "article": "",
+    "german": "ohne",
+    "translation": "без",
+    "type": "preposition"
+  },
+  {
+    "article": "",
+    "german": "für",
+    "translation": "для / за",
+    "type": "preposition"
+  },
+  {
+    "article": "",
+    "german": "gegen",
+    "translation": "проти",
+    "type": "preposition"
+  },
+  {
+    "article": "",
+    "german": "über",
+    "translation": "над / про",
+    "type": "preposition"
+  },
+  {
+    "article": "",
+    "german": "unter",
+    "translation": "під",
+    "type": "preposition"
+  },
+  {
+    "article": "",
+    "german": "vor",
+    "translation": "перед",
+    "type": "preposition"
+  },
+  {
+    "article": "",
+    "german": "hinter",
+    "translation": "позаду",
+    "type": "preposition"
+  },
+  {
+    "article": "",
+    "german": "neben",
+    "translation": "поруч",
+    "type": "preposition"
+  },
+  {
+    "article": "",
+    "german": "zwischen",
+    "translation": "між",
+    "type": "preposition"
+  },
+  {
+    "article": "",
+    "german": "aus",
+    "translation": "з (звідкись)",
+    "type": "preposition"
+  },
+  { "article": "", "german": "zu", "translation": "до", "type": "preposition" },
+  {
+    "article": "",
+    "german": "von",
+    "translation": "від / про",
+    "type": "preposition"
+  },
+  {
+    "article": "",
+    "german": "bei",
+    "translation": "у / при",
+    "type": "preposition"
+  },
+  {
+    "article": "",
+    "german": "bis",
+    "translation": "до (часові рамки)",
+    "type": "preposition"
+  },
+  {
+    "article": "",
+    "german": "durch",
+    "translation": "через",
+    "type": "preposition"
+  },
+  {
+    "article": "",
+    "german": "seit",
+    "translation": "з (якогось часу)",
+    "type": "preposition"
+  },
+  { "article": "", "german": "warum", "translation": "чому", "type": "adverb" },
+  { "article": "", "german": "wann", "translation": "коли", "type": "adverb" },
+  {
+    "article": "",
+    "german": "weil",
+    "translation": "тому що",
+    "type": "conjunction"
+  },
+  {
+    "article": "",
+    "german": "dass",
+    "translation": "що (сполучник)",
+    "type": "conjunction"
+  },
+  {
+    "article": "",
+    "german": "wenn",
+    "translation": "якщо / коли",
+    "type": "conjunction"
+  },
+  {
+    "article": "",
+    "german": "lieben",
+    "translation": "любити",
+    "type": "verb"
+  },
+  {
+    "article": "",
+    "german": "lachen",
+    "translation": "сміятися",
+    "type": "verb"
+  },
+  {
+    "article": "",
+    "german": "weinen",
+    "translation": "плакати",
+    "type": "verb"
+  },
+  {
+    "article": "",
+    "german": "leben",
+    "translation": "жити (існувати)",
+    "type": "verb"
+  },
+  {
+    "article": "",
+    "german": "sterben",
+    "translation": "помирати",
+    "type": "verb"
+  },
+  {
+    "article": "",
+    "german": "glauben",
+    "translation": "вірити / вважати",
+    "type": "verb"
+  },
+  {
+    "article": "",
+    "german": "denken",
+    "translation": "думати",
+    "type": "verb"
+  },
+  { "article": "", "german": "wissen", "translation": "знати", "type": "verb" },
+  {
+    "article": "",
+    "german": "kennen",
+    "translation": "знати (бути знайомим)",
+    "type": "verb"
+  },
+  {
+    "article": "",
+    "german": "bringen",
+    "translation": "приносити",
+    "type": "verb"
+  },
+  { "article": "", "german": "nehmen", "translation": "брати", "type": "verb" },
+  {
+    "article": "",
+    "german": "bekommen",
+    "translation": "отримувати",
+    "type": "verb"
+  },
+  {
+    "article": "",
+    "german": "verlieren",
+    "translation": "губити / програвати",
+    "type": "verb"
+  },
+  {
+    "article": "",
+    "german": "spielen",
+    "translation": "грати",
+    "type": "verb"
+  },
+  {
+    "article": "",
+    "german": "singen",
+    "translation": "співати",
+    "type": "verb"
+  },
+  {
+    "article": "",
+    "german": "tanzen",
+    "translation": "танцювати",
+    "type": "verb"
+  },
+  {
+    "article": "",
+    "german": "reisen",
+    "translation": "подорожувати",
+    "type": "verb"
+  },
+  {
+    "article": "",
+    "german": "schwimmen",
+    "translation": "плавати",
+    "type": "verb"
+  },
+  {
+    "article": "",
+    "german": "beginnen",
+    "translation": "починати",
+    "type": "verb"
+  },
+  {
+    "article": "",
+    "german": "enden",
+    "translation": "закінчуватися",
+    "type": "verb"
+  },
+  {
+    "article": "",
+    "german": "heiß",
+    "translation": "гарячий",
+    "type": "adjective"
+  },
+  {
+    "article": "",
+    "german": "kühl",
+    "translation": "прохолодний",
+    "type": "adjective"
+  },
+  {
+    "article": "",
+    "german": "trocken",
+    "translation": "сухий",
+    "type": "adjective"
+  },
+  {
+    "article": "",
+    "german": "nass",
+    "translation": "мокрий",
+    "type": "adjective"
+  },
+  {
+    "article": "",
+    "german": "stark",
+    "translation": "сильний",
+    "type": "adjective"
+  },
+  {
+    "article": "",
+    "german": "schwach",
+    "translation": "слабкий",
+    "type": "adjective"
+  },
+  {
+    "article": "",
+    "german": "sauber",
+    "translation": "чистий",
+    "type": "adjective"
+  },
+  {
+    "article": "",
+    "german": "schmutzig",
+    "translation": "брудний",
+    "type": "adjective"
+  },
+  {
+    "article": "",
+    "german": "frei",
+    "translation": "вільний",
+    "type": "adjective"
+  },
+  {
+    "article": "",
+    "german": "besetzt",
+    "translation": "зайнятий",
+    "type": "adjective"
+  },
+  {
+    "article": "",
+    "german": "klar",
+    "translation": "ясний / зрозумілий",
+    "type": "adjective"
+  },
+  {
+    "article": "",
+    "german": "dumm",
+    "translation": "дурний",
+    "type": "adjective"
+  },
+  {
+    "article": "",
+    "german": "klug",
+    "translation": "розумний",
+    "type": "adjective"
+  },
+  {
+    "article": "",
+    "german": "nett",
+    "translation": "милий / люб'язний",
+    "type": "adjective"
+  },
+  {
+    "article": "",
+    "german": "freundlich",
+    "translation": "дружній",
+    "type": "adjective"
+  },
+  {
+    "article": "",
+    "german": "böse",
+    "translation": "злий",
+    "type": "adjective"
+  },
+  {
+    "article": "",
+    "german": "anders",
+    "translation": "інший",
+    "type": "adverb"
+  },
+  { "article": "", "german": "schon", "translation": "вже", "type": "adverb" },
+  { "article": "", "german": "noch", "translation": "ще", "type": "adverb" },
+  {
+    "article": "",
+    "german": "wieder",
+    "translation": "знову",
+    "type": "adverb"
+  },
+  {
+    "article": "",
+    "german": "zusammen",
+    "translation": "разом",
+    "type": "adverb"
+  },
+  {
+    "article": "",
+    "german": "allein",
+    "translation": "один (на самоті)",
+    "type": "adverb"
+  },
+  { "article": "", "german": "alle", "translation": "всі", "type": "pronoun" },
+  {
+    "article": "",
+    "german": "jeder",
+    "translation": "кожен",
+    "type": "pronoun"
+  },
+  {
+    "article": "",
+    "german": "jemand",
+    "translation": "хтось",
+    "type": "pronoun"
+  },
+  {
+    "article": "",
+    "german": "niemand",
+    "translation": "ніхто",
+    "type": "pronoun"
+  },
+  {
+    "article": "die",
+    "german": "Minute",
+    "translation": "хвилина",
+    "type": "noun"
+  },
+  {
+    "article": "die",
+    "german": "Stunde",
+    "translation": "година",
+    "type": "noun"
+  },
+  {
+    "article": "der",
+    "german": "Montag",
+    "translation": "понеділок",
+    "type": "noun"
+  },
+  {
+    "article": "der",
+    "german": "Dienstag",
+    "translation": "вівторок",
+    "type": "noun"
+  },
+  {
+    "article": "der",
+    "german": "Mittwoch",
+    "translation": "середа",
+    "type": "noun"
+  },
+  {
+    "article": "der",
+    "german": "Donnerstag",
+    "translation": "четвер",
+    "type": "noun"
+  },
+  {
+    "article": "der",
+    "german": "Freitag",
+    "translation": "п'ятниця",
+    "type": "noun"
+  },
+  {
+    "article": "der",
+    "german": "Samstag",
+    "translation": "субота",
+    "type": "noun"
+  },
+  {
+    "article": "der",
+    "german": "Sonntag",
+    "translation": "неділя",
+    "type": "noun"
+  },
+  {
+    "article": "das",
+    "german": "Wochenende",
+    "translation": "вихідні",
+    "type": "noun"
+  },
+  {
+    "article": "der",
+    "german": "Monat",
+    "translation": "місяць (календарний)",
+    "type": "noun"
+  },
+  {
+    "article": "der",
+    "german": "Januar",
+    "translation": "січень",
+    "type": "noun"
+  },
+  {
+    "article": "der",
+    "german": "Februar",
+    "translation": "лютий",
+    "type": "noun"
+  },
+  {
+    "article": "der",
+    "german": "März",
+    "translation": "березень",
+    "type": "noun"
+  },
+  {
+    "article": "der",
+    "german": "April",
+    "translation": "квітень",
+    "type": "noun"
+  },
+  {
+    "article": "der",
+    "german": "Mai",
+    "translation": "травень",
+    "type": "noun"
+  },
+  {
+    "article": "der",
+    "german": "Juni",
+    "translation": "червень",
+    "type": "noun"
+  },
+  {
+    "article": "der",
+    "german": "Juli",
+    "translation": "липень",
+    "type": "noun"
+  },
+  {
+    "article": "der",
+    "german": "August",
+    "translation": "серпень",
+    "type": "noun"
+  },
+  {
+    "article": "der",
+    "german": "September",
+    "translation": "вересень",
+    "type": "noun"
+  },
+  {
+    "article": "der",
+    "german": "Oktober",
+    "translation": "жовтень",
+    "type": "noun"
+  },
+  {
+    "article": "der",
+    "german": "November",
+    "translation": "листопад",
+    "type": "noun"
+  },
+  {
+    "article": "der",
+    "german": "Dezember",
+    "translation": "грудень",
+    "type": "noun"
+  },
+  {
+    "article": "der",
+    "german": "Frühling",
+    "translation": "весна",
+    "type": "noun"
+  },
+  {
+    "article": "der",
+    "german": "Sommer",
+    "translation": "літо",
+    "type": "noun"
+  },
+  {
+    "article": "der",
+    "german": "Herbst",
+    "translation": "осінь",
+    "type": "noun"
+  },
+  {
+    "article": "der",
+    "german": "Winter",
+    "translation": "зима",
+    "type": "noun"
+  },
+  {
+    "article": "das",
+    "german": "Fest",
+    "translation": "свято",
+    "type": "noun"
+  },
+  {
+    "article": "der",
+    "german": "Geburtstag",
+    "translation": "день народження",
+    "type": "noun"
+  },
+  {
+    "article": "das",
+    "german": "Geschenk",
+    "translation": "подарунок",
+    "type": "noun"
+  },
+  {
+    "article": "die",
+    "german": "Party",
+    "translation": "вечірка",
+    "type": "noun"
+  },
+  {
+    "article": "die",
+    "german": "Musik",
+    "translation": "музика",
+    "type": "noun"
+  },
+  {
+    "article": "der",
+    "german": "Film",
+    "translation": "фільм",
+    "type": "noun"
+  },
+  {
+    "article": "das",
+    "german": "Bild",
+    "translation": "картина / фото",
+    "type": "noun"
+  },
+  {
+    "article": "die",
+    "german": "Seite",
+    "translation": "сторінка / бік",
+    "type": "noun"
+  },
+  {
+    "article": "der",
+    "german": "Teil",
+    "translation": "частина",
+    "type": "noun"
+  },
+  {
+    "article": "das",
+    "german": "Stück",
+    "translation": "шматок / штука",
+    "type": "noun"
+  },
+  {
+    "article": "die",
+    "german": "Nummer",
+    "translation": "номер",
+    "type": "noun"
+  },
+  {
+    "article": "die",
+    "german": "Zahl",
+    "translation": "число",
+    "type": "noun"
+  },
+  {
+    "article": "der",
+    "german": "Preis",
+    "translation": "ціна",
+    "type": "noun"
+  },
+  {
+    "article": "die",
+    "german": "Rechnung",
+    "translation": "рахунок (чек)",
+    "type": "noun"
+  },
+  { "article": "der", "german": "Euro", "translation": "євро", "type": "noun" },
+  {
+    "article": "das",
+    "german": "Problem",
+    "translation": "проблема",
+    "type": "noun"
+  },
+  { "article": "die", "german": "Idee", "translation": "ідея", "type": "noun" },
+  {
+    "article": "der",
+    "german": "Spaß",
+    "translation": "задоволення / жарт",
+    "type": "noun"
+  },
+  {
+    "article": "das",
+    "german": "Glück",
+    "translation": "щастя / удача",
+    "type": "noun"
+  },
+  {
+    "article": "die",
+    "german": "Angst",
+    "translation": "страх",
+    "type": "noun"
+  },
+  {
+    "article": "die",
+    "german": "Ruhe",
+    "translation": "спокій / тиша",
+    "type": "noun"
+  },
+  {
+    "article": "die",
+    "german": "Hilfe",
+    "translation": "допомога",
+    "type": "noun"
+  },
+  {
+    "article": "",
+    "german": "feiern",
+    "translation": "святкувати",
+    "type": "verb"
+  },
+  {
+    "article": "",
+    "german": "gratulieren",
+    "translation": "вітати",
+    "type": "verb"
+  },
+  {
+    "article": "",
+    "german": "einladen",
+    "translation": "запрошувати",
+    "type": "verb"
+  },
+  {
+    "article": "",
+    "german": "besuchen",
+    "translation": "відвідувати",
+    "type": "verb"
+  },
+  {
+    "article": "",
+    "german": "treffen",
+    "translation": "зустрічати",
+    "type": "verb"
+  },
+  {
+    "article": "",
+    "german": "telefonieren",
+    "translation": "говорити по телефону",
+    "type": "verb"
+  },
+  {
+    "article": "",
+    "german": "bestellen",
+    "translation": "замовляти",
+    "type": "verb"
+  },
+  {
+    "article": "",
+    "german": "zeigen",
+    "translation": "показувати",
+    "type": "verb"
+  },
+  {
+    "article": "",
+    "german": "erklären",
+    "translation": "пояснювати",
+    "type": "verb"
+  },
+  {
+    "article": "",
+    "german": "erzählen",
+    "translation": "розповідати",
+    "type": "verb"
+  },
+  {
+    "article": "",
+    "german": "versuchen",
+    "translation": "спробувати",
+    "type": "verb"
+  },
+  {
+    "article": "",
+    "german": "benutzen",
+    "translation": "використовувати",
+    "type": "verb"
+  },
+  {
+    "article": "",
+    "german": "reparieren",
+    "translation": "ремонтувати",
+    "type": "verb"
+  },
+  {
+    "article": "",
+    "german": "wechseln",
+    "translation": "міняти",
+    "type": "verb"
+  },
+  {
+    "article": "",
+    "german": "links",
+    "translation": "ліворуч",
+    "type": "adverb"
+  },
+  {
+    "article": "",
+    "german": "rechts",
+    "translation": "праворуч",
+    "type": "adverb"
+  },
+  { "article": "", "german": "oben", "translation": "вгорі", "type": "adverb" },
+  {
+    "article": "",
+    "german": "unten",
+    "translation": "внизу",
+    "type": "adverb"
+  },
+  {
+    "article": "",
+    "german": "vorn",
+    "translation": "попереду",
+    "type": "adverb"
+  },
+  {
+    "article": "",
+    "german": "hinten",
+    "translation": "ззаду",
+    "type": "adverb"
+  },
+  {
+    "article": "",
+    "german": "geradeaus",
+    "translation": "прямо",
+    "type": "adverb"
+  },
+  {
+    "article": "",
+    "german": "weit",
+    "translation": "далеко",
+    "type": "adjective"
+  },
+  {
+    "article": "",
+    "german": "nah",
+    "translation": "близько",
+    "type": "adjective"
+  },
+  {
+    "article": "",
+    "german": "hoch",
+    "translation": "високий",
+    "type": "adjective"
+  },
+  {
+    "article": "",
+    "german": "tief",
+    "translation": "глибокий",
+    "type": "adjective"
+  },
+  {
+    "article": "",
+    "german": "kurz",
+    "translation": "короткий",
+    "type": "adjective"
+  },
+  {
+    "article": "",
+    "german": "lang",
+    "translation": "довгий",
+    "type": "adjective"
+  },
+  {
+    "article": "",
+    "german": "fertig",
+    "translation": "готовий",
+    "type": "adjective"
+  },
+  {
+    "article": "",
+    "german": "bereit",
+    "translation": "готовий (до чогось)",
+    "type": "adjective"
+  },
+  {
+    "article": "",
+    "german": "einfach",
+    "translation": "простий",
+    "type": "adjective"
+  },
+  {
+    "article": "",
+    "german": "möglich",
+    "translation": "можливий",
+    "type": "adjective"
+  },
+  {
+    "article": "",
+    "german": "wirklich",
+    "translation": "дійсно",
+    "type": "adverb"
+  },
+  {
+    "article": "",
+    "german": "genau",
+    "translation": "точно",
+    "type": "adverb"
+  },
+  {
+    "article": "",
+    "german": "etwas",
+    "translation": "щось / трохи",
+    "type": "pronoun"
+  },
+  {
+    "article": "",
+    "german": "genug",
+    "translation": "достатньо",
+    "type": "adverb"
+  },
+  {
+    "article": "",
+    "german": "zu viel",
+    "translation": "занадто багато",
+    "type": "adverb"
+  },
+  {
+    "article": "",
+    "german": "ein bisschen",
+    "translation": "трішки",
+    "type": "adverb"
+  },
+  {
+    "article": "",
+    "german": "erste",
+    "translation": "перший",
+    "type": "adjective"
+  },
+  {
+    "article": "",
+    "german": "zweite",
+    "translation": "другий",
+    "type": "adjective"
+  },
+  {
+    "article": "",
+    "german": "letzte",
+    "translation": "останній",
+    "type": "adjective"
+  },
+  {
+    "article": "",
+    "german": "nächste",
+    "translation": "наступний",
+    "type": "adjective"
+  },
+  {
+    "article": "",
+    "german": "andere",
+    "translation": "інший",
+    "type": "adjective"
+  }
 ]
