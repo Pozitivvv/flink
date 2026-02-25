@@ -97,7 +97,7 @@ function startTest() {
         return;
       }
 
-      words = data;
+      words = shuffle(data).slice(0, 30);
       totalWords = words.length;
       current = 0;
       score = 0;
@@ -325,12 +325,10 @@ function showResults() {
 
   const percentage = Math.round((score / totalWords) * 100);
 
-  document.getElementById(
-    "finalScore"
-  ).textContent = `${score} з ${totalWords}`;
-  document.getElementById(
-    "percentageText"
-  ).textContent = `${percentage}% правильних відповідей`;
+  document.getElementById("finalScore").textContent =
+    `${score} з ${totalWords}`;
+  document.getElementById("percentageText").textContent =
+    `${percentage}% правильних відповідей`;
 
   const icon = document.querySelector(".results-icon");
   if (percentage === 100) {
