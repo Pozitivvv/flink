@@ -244,6 +244,13 @@ try {
                             <span class="function-description">Вивчаємо слова за допомогою готових модулів.</span>
                         </div>
                     </a>
+                    <a href="https://t.me/ksibee" target="_blank" class="btn btn-function function-quiz">
+                        <span class="function-icon">📨</span>
+                        <div class="function-content">
+                            <span class="function-title">Потрібна допомога?</span>
+                            <span class="function-description">Зв'яжіться з нами.</span>
+                        </div>
+                    </a>
                 </div>
             </div>
             <?php if (!empty($user['is_admin']) && $user['is_admin'] == 1): ?>
@@ -304,10 +311,6 @@ try {
                 <div class="form-group">
                     <label for="name">Ім'я:</label>
                     <input type="text" id="name" name="name" value="<?php echo htmlspecialchars($user['name']); ?>" required>
-                </div>
-                <div class="form-group">
-                    <label for="email">Email:</label>
-                    <input type="email" id="email" name="email" value="<?php echo htmlspecialchars($user['email']); ?>" required>
                 </div>
                 <div class="modal-buttons">
                     <button type="button" class="modal-btn modal-btn-cancel" onclick="closeEditModal()">Скасувати</button>
