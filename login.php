@@ -10,11 +10,12 @@ if (isset($_SESSION['user_id'])) {
 
 $message = '';
 $error = false;
+$login = ''; // Инициализируем переменную, чтобы избежать notice при первой загрузке
 
 // 🔐 Обработка входа
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $login = trim($_POST['login']);
-    $password = trim($_POST['password']);
+    $login = trim($_POST['login'] ?? '');
+    $password = trim($_POST['password'] ?? '');
 
     $stmt = $pdo->prepare("SELECT id, password FROM users WHERE login = ?");
     $stmt->execute([$login]);
@@ -40,6 +41,29 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <?php include 'function/tags/icons.html'; ?>
     <?php include 'function/tags/seo.html'; ?>
     <link rel="stylesheet" href="assets/login/login.css">
+    
+    <style>
+        .input-group {
+            position: relative;
+        }
+        .toggle-password {
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            cursor: pointer;
+            user-select: none;
+            opacity: 0.7;
+            transition: opacity 0.2s;
+        }
+        .toggle-password:hover {
+            opacity: 1;
+        }
+        .input-group input[type="password"],
+        .input-group input[type="text"].password-visible {
+            padding-right: 40px; 
+        }
+    </style>
 </head>
 <body>
     <div class="auth-box">
@@ -50,17 +74,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </div>
 
         <?php if ($message): ?>
-            <div class="message"><?= htmlspecialchars($message) ?></div>
+            <div class="message <?php echo $error ? 'error' : ''; ?>">
+                <?= htmlspecialchars($message) ?>
+            </div>
         <?php endif; ?>
 
         <form method="POST">
             <div class="input-group">
                 <span class="input-icon">👤</span>
-                <input type="text" name="login" placeholder="Логін" required autocomplete="username">
+                <input type="text" name="login" placeholder="Логін" required autocomplete="username" value="<?= htmlspecialchars($login) ?>">
             </div>
             <div class="input-group">
                 <span class="input-icon">🔒</span>
-                <input type="password" name="password" placeholder="Пароль" required autocomplete="current-password">
+                <input type="password" id="password" name="password" placeholder="Пароль" required autocomplete="current-password">
+                <span class="toggle-password" id="togglePassword" title="Показати/Сховати пароль">👁️</span>
             </div>
             <button type="submit">Увійти</button>
         </form>
@@ -69,6 +96,27 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         <a href="register.php" class="button-link">Створити новий акаунт</a>
     </div>
+    
     <script src="script/alerts.js"></script>
+    
+    <script>
+        const togglePassword = document.getElementById('togglePassword');
+        const passwordInput = document.getElementById('password');
+
+        if (togglePassword && passwordInput) {
+            togglePassword.addEventListener('click', function () {
+                const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+                passwordInput.setAttribute('type', type);
+                
+                if (type === 'text') {
+                    passwordInput.classList.add('password-visible');
+                } else {
+                    passwordInput.classList.remove('password-visible');
+                }
+
+                this.textContent = type === 'password' ? '👁️' : '🙈';
+            });
+        }
+    </script>
 </body>
 </html>

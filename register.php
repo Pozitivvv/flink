@@ -77,6 +77,30 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <?php include 'function/tags/seo.html'; ?>
     <title>Реєстрація | Німецький словник</title>
     <link rel="stylesheet" href="assets/login/login.css">
+    
+    <style>
+        .input-group {
+            position: relative; /* Убеждаемся, что глазок позиционируется относительно поля ввода */
+        }
+        .toggle-password {
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            cursor: pointer;
+            user-select: none;
+            opacity: 0.7;
+            transition: opacity 0.2s;
+        }
+        .toggle-password:hover {
+            opacity: 1;
+        }
+        /* Чтобы текст пароля не залезал под глазок */
+        .input-group input[type="password"],
+        .input-group input[type="text"].password-visible {
+            padding-right: 40px; 
+        }
+    </style>
 </head>
 <body>
     <div class="register-box">
@@ -107,7 +131,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             </div>
             <div class="input-group">
                 <span class="input-icon">🔒</span>
-                <input type="password" name="password" placeholder="Пароль" required minlength="6" autocomplete="new-password">
+                <input type="password" id="password" name="password" placeholder="Пароль" required minlength="6" autocomplete="new-password">
+                <span class="toggle-password" id="togglePassword" title="Показати/Сховати пароль">👁️</span>
             </div>
             <button type="submit">Створити акаунт</button>
         </form>
@@ -116,6 +141,28 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             Вже маєте акаунт? <a href="login.php">Увійти</a>
         </p>
     </div>
+    
     <script src="script/alerts.js"></script>
+    
+    <script>
+        const togglePassword = document.getElementById('togglePassword');
+        const passwordInput = document.getElementById('password');
+
+        togglePassword.addEventListener('click', function () {
+            // Переключаем тип атрибута: если password, то делаем text, и наоборот
+            const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+            passwordInput.setAttribute('type', type);
+            
+            // Добавляем класс для паддинга, если тип text (чтобы текст не наезжал на глазок)
+            if(type === 'text') {
+                passwordInput.classList.add('password-visible');
+            } else {
+                passwordInput.classList.remove('password-visible');
+            }
+
+            // Переключаем иконку
+            this.textContent = type === 'password' ? '👁️' : '🙈';
+        });
+    </script>
 </body>
 </html>
