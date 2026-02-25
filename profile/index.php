@@ -237,7 +237,7 @@ try {
                             <span class="function-description">Вивчаємо слова за допомогою тесту.</span>
                         </div>
                     </a>
-                    <a href="../function/modules/" class="btn btn-function function-quiz">
+                    <a href="../function/modules/modules.php" class="btn btn-function function-quiz">
                         <span class="function-icon">🚀</span>
                         <div class="function-content">
                             <span class="function-title">Готові модулі слів</span>

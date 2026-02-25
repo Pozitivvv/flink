@@ -1,38 +1,58 @@
 <?php
 
-// --- НАСТРОЙКИ СЕССИИ (Начало) ---
+// --- НАСТРОЙКИ СЕССИИ ---
 $session_lifetime = 60 * 60 * 24 * 7; // 7 дней
+$custom_sess_path = __DIR__ . '/sessions';
 
-// 1. Определяем папку для хранения сессий рядом со скриптом
-$sess_save_path = __DIR__ . '/sessions';
-
-// 2. Если папки нет — создаем её автоматически (права 0755)
-if (!file_exists($sess_save_path)) {
-    mkdir($sess_save_path, 0755, true);
+// Создаем папку для сессий
+if (!file_exists($custom_sess_path)) {
+    mkdir($custom_sess_path, 0777, true);
+    chmod($custom_sess_path, 0777);
 }
 
-// 3. Говорим PHP сохранять файлы именно сюда
-session_save_path($sess_save_path);
+// Устанавливаем параметры куки ДО session_start()
+if (isset($_COOKIE[session_name()])) {
+    setcookie(
+        session_name(),
+        $_COOKIE[session_name()],
+        [
+            'expires'  => time() + $session_lifetime,
+            'path'     => '/',
+            'domain'   => '',
+            'secure'   => false, // true если есть HTTPS
+            'httponly' => true,
+            'samesite' => 'Lax'
+        ]
+    );
+}
 
-// 4. Настраиваем время жизни и сборщик мусора (GC)
-// Теперь PHP будет сам чистить эту папку, удаляя файлы старше 7 дней
-ini_set('session.gc_maxlifetime', $session_lifetime);
-ini_set('session.gc_probability', 1);
-ini_set('session.gc_divisor', 100);
-
-session_set_cookie_params([
-    'lifetime' => $session_lifetime,
-    'path'     => '/',
-    'domain'   => '.wortly.one', 
-    'secure'   => true,
-    'httponly' => true,
-    'samesite' => 'Lax',
-]);
-
+// Запускаем сессию
 session_start();
-// --- НАСТРОЙКИ СЕССИИ (Конец) ---
 
+// Если это новая сессия - устанавливаем куку
+if (!isset($_COOKIE[session_name()]) || $_COOKIE[session_name()] !== session_id()) {
+    setcookie(
+        session_name(),
+        session_id(),
+        [
+            'expires'  => time() + $session_lifetime,
+            'path'     => '/',
+            'domain'   => '',
+            'secure'   => false,
+            'httponly' => true,
+            'samesite' => 'Lax'
+        ]
+    );
+}
 
+// Копируем файл сессии в нашу папку (для резервного хранения)
+$system_sess_file = session_save_path() . '/sess_' . session_id();
+$custom_sess_file = $custom_sess_path . '/sess_' . session_id();
+if (file_exists($system_sess_file)) {
+    @copy($system_sess_file, $custom_sess_file);
+}
+
+// --- ПОДКЛЮЧЕНИЕ К БД ---
 $DB_HOST = 'localhost';
 $DB_NAME = 'flink';
 $DB_USER = 'root';
@@ -48,12 +68,6 @@ try {
             PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8mb4 COLLATE utf8mb4_unicode_ci"
         ]
     );
-
-    // Эти команды дублируют MYSQL_ATTR_INIT_COMMAND, но для надежности можно оставить
-    $pdo->exec("SET NAMES utf8mb4");
-    $pdo->exec("SET CHARACTER SET utf8mb4");
-    $pdo->exec("SET COLLATION_CONNECTION = utf8mb4_unicode_ci");
-
 } catch (PDOException $e) {
     die("❌ Помилка підключення до БД: " . $e->getMessage());
 }

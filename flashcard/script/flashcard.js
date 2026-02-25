@@ -1,4 +1,4 @@
-// Получение данных из PHP
+// Получение данных из PHP flashcard.js
 const allTranslations = window.phpData.allTranslations;
 let words = [];
 let totalWords = 0;
@@ -179,6 +179,7 @@ function removeError(wordId) {
 }
 
 // Показ вопроса
+// Показ вопроса
 function showQuestion() {
   // Проверка на завершение теста
   if (!words || words.length === 0) {
@@ -195,8 +196,39 @@ function showQuestion() {
   const word = words[current];
   const article = word.article ? word.article + " " : "";
 
-  q.textContent = mode === "articles" ? word.german : article + word.german;
+  // Формуємо текст для відображення
+  const displayText = mode === "articles" ? word.german : article + word.german;
 
+  // Формуємо текст для озвучки (завжди краще озвучувати з артиклем, якщо він є)
+  const textToSpeak = article + word.german;
+
+  // Очищаємо контейнер питання
+  q.innerHTML = "";
+
+  // 1. Створюємо елемент тексту
+  const textSpan = document.createElement("span");
+  textSpan.textContent = displayText;
+  q.appendChild(textSpan);
+
+  // 2. Створюємо кнопку озвучки (SVG іконка)
+  const audioBtn = document.createElement("button");
+  audioBtn.className = "audio-btn";
+  audioBtn.innerHTML = `
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+            <path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path>
+        </svg>
+    `;
+
+  // Додаємо подію кліку
+  audioBtn.onclick = (e) => {
+    e.stopPropagation(); // Щоб клік не впливав на інші елементи, якщо такі будуть
+    playWord(textToSpeak); // Викликаємо функцію з voice.js
+  };
+
+  q.appendChild(audioBtn);
+
+  // Оновлюємо варіанти відповідей
   const options = getOptionsForIndex(current);
   opts.innerHTML = "";
 

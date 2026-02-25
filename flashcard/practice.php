@@ -148,6 +148,7 @@ window.phpData = {
     selectedDayId: <?= $selectedDayId ? $selectedDayId : '0' ?>
 };
 </script>
+<script src="/script/voice.js"></script>
 <script src="script/flashcard.js"></script>
 
 </body>

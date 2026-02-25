@@ -181,7 +181,7 @@ $total_days = (int)$stmt->fetchColumn();
         </div>
     </div>
 
-    <form id="logoutForm" method="POST" action="auth/logout.php" style="display:none;"></form>
+    <form id="logoutForm" method="POST" action="profile/logout.php" style="display:none;"></form>
 
     <script>
         function openLogoutModal() { document.getElementById('logoutModal').classList.add('active'); }

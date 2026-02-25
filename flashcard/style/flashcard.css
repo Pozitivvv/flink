@@ -600,3 +600,35 @@ h1 {
     transparent 70%
   );
 }
+
+/* Стиль для кнопки озвучки */
+.audio-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #4a90e2; /* Колір під вашу тему */
+  margin-left: 10px;
+  vertical-align: middle;
+  padding: 5px;
+  transition: transform 0.2s;
+  display: inline-flex;
+  align-items: center;
+}
+
+.audio-btn:hover {
+  transform: scale(1.1);
+  color: #357abd;
+}
+
+.audio-btn svg {
+  width: 24px;
+  height: 24px;
+}
+
+/* Вирівнювання тексту питання */
+.question {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+}

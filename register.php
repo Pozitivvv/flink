@@ -17,10 +17,32 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $email = trim($_POST['email'] ?? '');
     $password = trim($_POST['password'] ?? '');
 
+    // 1. Проверка на пустые поля
     if ($name === '' || $login === '' || $email === '' || $password === '') {
         $message = 'Заповніть усі поля';
         $error = true;
-    } else {
+    } 
+    // 2. Валидация имени (от 2 до 50 символов)
+    elseif (mb_strlen($name) < 2 || mb_strlen($name) > 50) {
+        $message = 'Ім\'я має містити від 2 до 50 символів';
+        $error = true;
+    } 
+    // 3. Валидация логина (только латиница, цифры, подчеркивание, от 3 до 20 символов)
+    elseif (!preg_match('/^[a-zA-Z0-9_]{3,20}$/', $login)) {
+        $message = 'Логін має бути від 3 до 20 символів і містити лише латинські літери, цифри та _';
+        $error = true;
+    } 
+    // 4. Валидация Email
+    elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        $message = 'Введіть коректну email адресу';
+        $error = true;
+    } 
+    // 5. Валидация пароля (минимум 6 символов)
+    elseif (mb_strlen($password) < 6) {
+        $message = 'Пароль має містити щонайменше 6 символів';
+        $error = true;
+    } 
+    else {
         // Проверяем, есть ли уже такой логин или email
         $stmt = $pdo->prepare("SELECT id FROM users WHERE email = ? OR login = ?");
         $stmt->execute([$email, $login]);
@@ -65,25 +87,27 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </div>
 
         <?php if ($message): ?>
-            <div class="message"><?= htmlspecialchars($message) ?></div>
+            <div class="message <?php echo $error ? 'error' : 'success'; ?>">
+                <?= htmlspecialchars($message) ?>
+            </div>
         <?php endif; ?>
 
         <form method="POST">
             <div class="input-group">
                 <span class="input-icon">🧍</span>
-                <input type="text" name="name" placeholder="Ім’я" required autocomplete="name">
+                <input type="text" name="name" placeholder="Ім’я" required minlength="2" maxlength="50" autocomplete="name" value="<?= htmlspecialchars($name ?? '') ?>">
             </div>
             <div class="input-group">
                 <span class="input-icon">👤</span>
-                <input type="text" name="login" placeholder="Логін" required autocomplete="username">
+                <input type="text" name="login" placeholder="Логін" required pattern="[a-zA-Z0-9_]{3,20}" title="Тільки латинські літери, цифри та _, від 3 до 20 символів" autocomplete="username" value="<?= htmlspecialchars($login ?? '') ?>">
             </div>
             <div class="input-group">
                 <span class="input-icon">📧</span>
-                <input type="email" name="email" placeholder="Email" required autocomplete="email">
+                <input type="email" name="email" placeholder="Email" required autocomplete="email" value="<?= htmlspecialchars($email ?? '') ?>">
             </div>
             <div class="input-group">
                 <span class="input-icon">🔒</span>
-                <input type="password" name="password" placeholder="Пароль" required autocomplete="new-password">
+                <input type="password" name="password" placeholder="Пароль" required minlength="6" autocomplete="new-password">
             </div>
             <button type="submit">Створити акаунт</button>
         </form>
