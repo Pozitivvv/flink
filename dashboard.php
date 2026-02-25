@@ -172,8 +172,7 @@ $app_version = getAppVersion($pdo);
         </div>
     </div>
     <div class="container">
-        <!-- Привітання -->
-        <div class="greeting">
+        <div class="greeting" id="parallaxGreeting">
             <div class="greeting-icon"><?= $icon ?></div>
             <div class="greeting-text">
                 <h1><?= $greeting ?>, <?= htmlspecialchars($userName) ?>!</h1>
@@ -181,125 +180,122 @@ $app_version = getAppVersion($pdo);
             </div>
         </div>
 
-        <!-- Виджеты -->
-        <div class="widgets">
-            <!-- Слово дня -->
-            <?php if ($randomWord): ?>
-            <div class="widget word-widget">
-                <div class="widget-header">
-                    <div class="widget-title">
-                        <span class="widget-icon">✨</span>
-                        Слово дня
+        <div class="content-wrapper">
+            
+            <div class="widgets">
+                <?php if ($randomWord): ?>
+                <div class="widget word-widget">
+                    <div class="widget-header">
+                        <div class="widget-title">
+                            <span class="widget-icon">✨</span>
+                            Слово дня
+                        </div>
+                    </div>
+                    <div class="word-of-day">
+                        <?php if ($randomWord['article']): ?>
+                            <div class="word-article"><?= htmlspecialchars($randomWord['article']) ?></div>
+                        <?php endif; ?>
+                        <div class="word-german" onclick="playWord('<?= htmlspecialchars(($randomWord['article'] ? $randomWord['article'] . ' ' : '') . $randomWord['german']) ?>')" data-word="<?= htmlspecialchars(($randomWord['article'] ? $randomWord['article'] . ' ' : '') . $randomWord['german']) ?>">
+                            <?= htmlspecialchars($randomWord['german']) ?>
+                        </div>
+                        <?php if ($randomWord['transcription']): ?>
+                            <div class="word-transcription"><?= htmlspecialchars($randomWord['transcription']) ?></div>
+                        <?php endif; ?>
+                        <div class="word-translation"><?= htmlspecialchars($randomWord['translation']) ?></div>
+                        <div class="word-actions">
+                            <button class="btn-sound" onclick="playWord('<?= htmlspecialchars(($randomWord['article'] ? $randomWord['article'] . ' ' : '') . $randomWord['german']) ?>')">
+                                🔊 Озвучити
+                            </button>
+                            <button class="btn-favorite <?= $inDictionary ? 'active' : '' ?>" onclick="toggleFavorite(<?= $randomWord['id'] ?>, this)">
+                                <?= $inDictionary ? '❤️ У словнику' : '🤍 Додати' ?>
+                            </button>
+                        </div>
                     </div>
                 </div>
-                <div class="word-of-day">
-                    <?php if ($randomWord['article']): ?>
-                        <div class="word-article"><?= htmlspecialchars($randomWord['article']) ?></div>
-                    <?php endif; ?>
-                    <div class="word-german" onclick="playWord('<?= htmlspecialchars(($randomWord['article'] ? $randomWord['article'] . ' ' : '') . $randomWord['german']) ?>')" data-word="<?= htmlspecialchars(($randomWord['article'] ? $randomWord['article'] . ' ' : '') . $randomWord['german']) ?>">
-                        <?= htmlspecialchars($randomWord['german']) ?>
+                <?php endif; ?>
+
+                <a href="function/interactive/" class="widget widget-flashcard">
+                    <div class="widget-header">
+                        <div class="widget-title">
+                            <span class="widget-icon">🎴</span>
+                            Флешкарти
+                        </div>
                     </div>
-                    <?php if ($randomWord['transcription']): ?>
-                        <div class="word-transcription"><?= htmlspecialchars($randomWord['transcription']) ?></div>
-                    <?php endif; ?>
-                    <div class="word-translation"><?= htmlspecialchars($randomWord['translation']) ?></div>
-                    <div class="word-actions">
-                        <button class="btn-sound" onclick="playWord('<?= htmlspecialchars(($randomWord['article'] ? $randomWord['article'] . ' ' : '') . $randomWord['german']) ?>')">
-                            🔊 Озвучити
-                        </button>
-                        <button class="btn-favorite <?= $inDictionary ? 'active' : '' ?>" onclick="toggleFavorite(<?= $randomWord['id'] ?>, this)">
-                            <?= $inDictionary ? '❤️ У словнику' : '🤍 Додати' ?>
-                        </button>
+                    <div class="flashcard-preview">
+                        <p>Переглядай слова і переклад та вчи</p>
+                        <div class="flashcard-arrow">→</div>
+                    </div>
+                </a>
+
+                <div class="widget">
+                    <div class="widget-header">
+                        <div class="widget-title">
+                            <span class="widget-icon">📊</span>
+                            Статистика
+                        </div>
+                    </div>
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <div class="stat-value"><?= $totalWords ?></div>
+                            <div class="stat-label">Слів </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-value"><?= $totalThemes ?></div>
+                            <div class="stat-label">Тем створено</div>
+                        </div>
                     </div>
                 </div>
+
+                <?php if ($randomAchievement): ?>
+                <a href="function/achievements/" class="widget widget-achievement">
+                    <div class="widget-header">
+                        <div class="widget-title">
+                            <span class="widget-icon">🎯</span>
+                            Виконай досягнення
+                        </div>
+                    </div>
+                    <div class="achievement-preview">
+                        <div class="achievement-icon"><?= htmlspecialchars($randomAchievement['icon']) ?></div>
+                        <div class="achievement-info">
+                            <div class="achievement-name"><?= htmlspecialchars($randomAchievement['title']) ?></div>
+                            <div class="achievement-desc"><?= htmlspecialchars($randomAchievement['description']) ?></div>
+                        </div>
+                        <div class="achievement-arrow">→</div>
+                    </div>
+                </a>
+                <?php endif; ?>
             </div>
-            <?php endif; ?>
 
-            <a href="function/interactive/" class="widget widget-flashcard">
-                <div class="widget-header">
-                    <div class="widget-title">
-                        <span class="widget-icon">🎴</span>
-                        Флешкарти
+            <div class="action-grid">
+                <a href="add_word.php" class="action-card">
+                    <div class="action-icon">✍️</div>
+                    <div class="action-text">
+                        <h3>Додати слово</h3>
+                        <p>Швидке додавання</p>
                     </div>
-                </div>
-                <div class="flashcard-preview">
-                    <p>Переглядай слова і переклад та вчи</p>
-                    <div class="flashcard-arrow">→</div>
-                </div>
-            </a>
-
-            <!-- Статистика -->
-            <div class="widget">
-                <div class="widget-header">
-                    <div class="widget-title">
-                        <span class="widget-icon">📊</span>
-                        Статистика
+                </a>
+                <a href="add_day.php" class="action-card">
+                    <div class="action-icon">📘</div>
+                    <div class="action-text">
+                        <h3>Нова тема</h3>
+                        <p>Створити урок</p>
                     </div>
-                </div>
-                <div class="stats-grid">
-                    <div class="stat-card">
-                        <div class="stat-value"><?= $totalWords ?></div>
-                        <div class="stat-label">Слів </div>
+                </a>
+                <a href="flashcard/practice.php" class="action-card">
+                    <div class="action-icon">🧠</div>
+                    <div class="action-text">
+                        <h3>Практика</h3>
+                        <p>Тестування</p>
                     </div>
-                    <div class="stat-card">
-                        <div class="stat-value"><?= $totalThemes ?></div>
-                        <div class="stat-label">Тем створено</div>
+                </a>
+                <a href="dictionary.php" class="action-card">
+                    <div class="action-icon">📚</div>
+                    <div class="action-text">
+                        <h3>Словник</h3>
+                        <p>Всі слова</p>
                     </div>
-                </div>
+                </a>
             </div>
-
-            <!-- Рандомное достижение вместо прогресса -->
-            <?php if ($randomAchievement): ?>
-            <a href="function/achievements/" class="widget widget-achievement">
-                <div class="widget-header">
-                    <div class="widget-title">
-                        <span class="widget-icon">🎯</span>
-                        Виконай досягнення
-                    </div>
-                </div>
-                <div class="achievement-preview">
-                    <div class="achievement-icon"><?= htmlspecialchars($randomAchievement['icon']) ?></div>
-                    <div class="achievement-info">
-                        <div class="achievement-name"><?= htmlspecialchars($randomAchievement['title']) ?></div>
-                        <div class="achievement-desc"><?= htmlspecialchars($randomAchievement['description']) ?></div>
-                    </div>
-                    <div class="achievement-arrow">→</div>
-                </div>
-            </a>
-            <?php endif; ?>
-        </div>
-
-        <!-- Швидкі дії -->
-        <div class="action-grid">
-            <a href="add_word.php" class="action-card">
-                <div class="action-icon">✍️</div>
-                <div class="action-text">
-                    <h3>Додати слово</h3>
-                    <p>Швидке додавання</p>
-                </div>
-            </a>
-            <a href="add_day.php" class="action-card">
-                <div class="action-icon">📘</div>
-                <div class="action-text">
-                    <h3>Нова тема</h3>
-                    <p>Створити урок</p>
-                </div>
-            </a>
-            <a href="flashcard/practice.php" class="action-card">
-                <div class="action-icon">🧠</div>
-                <div class="action-text">
-                    <h3>Практика</h3>
-                    <p>Тестування</p>
-                </div>
-            </a>
-            <a href="dictionary.php" class="action-card">
-                <div class="action-icon">📚</div>
-                <div class="action-text">
-                    <h3>Словник</h3>
-                    <p>Всі слова</p>
-                </div>
-            </a>
-        </div>
     </div>
 
     <nav class="bottom-nav">
@@ -324,58 +320,8 @@ $app_version = getAppVersion($pdo);
             Профиль
         </a>
     </nav>
-
-    <script>
-        if ('serviceWorker' in navigator) {
-            navigator.serviceWorker.register('/sw.js')
-            .then(reg => console.log('✅ Service Worker зарегистрирован:', reg.scope))
-            .catch(err => console.log('❌ SW error:', err));
-        }
-    </script>
-
+    <script src="script/dashboard/dashboardMain.js"></script>
     <script src="script/voice.js"></script>
     <script src="script/check-pwa.js"></script>
-    <script>
-        // Додавання до словника
-        function toggleFavorite(wordId, btn) {
-            const isActive = btn.classList.contains('active');
-            if (isActive) return;
-
-            btn.disabled = true;
-            btn.innerHTML = '⏳ Додаємо...';
-
-            const xhr = new XMLHttpRequest();
-            xhr.open('POST', 'function/add_base_word.php', true);
-            xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-            xhr.onload = function() {
-                if (xhr.status === 200) {
-                    const response = xhr.responseText.trim();
-
-                    if (response === 'success' || response === 'exists') {
-                        btn.classList.add('active');
-                        btn.innerHTML = '❤️ У словнику';
-                        btn.disabled = false;
-
-                        const totalWordsElem = document.querySelector('.stat-card .stat-value');
-                        if (totalWordsElem) {
-                            let count = parseInt(totalWordsElem.textContent) || 0;
-                            totalWordsElem.textContent = count + 1;
-                        }
-                    } else {
-                        btn.innerHTML = '🤍 Додати';
-                        btn.disabled = false;
-                    }
-                } else {
-                    btn.innerHTML = '🤍 Додати';
-                    btn.disabled = false;
-                }
-            };
-            xhr.onerror = function() {
-                btn.innerHTML = '🤍 Додати';
-                btn.disabled = false;
-            };
-            xhr.send('word_id=' + wordId);
-        }
-    </script>
 </body>
 </html>
