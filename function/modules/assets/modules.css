@@ -9,22 +9,13 @@
 }
 
 body {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
-    Ubuntu, Cantarell, sans-serif;
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu,
+    Cantarell, sans-serif;
   background: #0f0f0f;
   color: #e4e4e4;
   padding-bottom: 80px;
   min-height: 100vh;
-}
-
-/* ========================================
-   КОНТЕЙНЕР
-   ======================================== */
-
-.container {
-  max-width: 1000px;
-  margin: 0 auto;
-  padding: 20px 16px;
 }
 
 /* ========================================
@@ -58,14 +49,6 @@ body {
 .back-btn:active {
   transform: scale(0.95);
   background: #2a2a2a;
-}
-
-.page-header h1 {
-  margin: 0;
-  font-size: 24px;
-  font-weight: 700;
-  color: #fff;
-  line-height: 1.2;
 }
 
 /* ========================================
@@ -450,21 +433,24 @@ body {
 
 /* СТАТИСТИКА */
 
+/* СТАТИСТИКА */
 .module-stats {
   display: flex;
-  gap: 12px;
-  margin-bottom: 12px;
+  flex-wrap: wrap; /* Разрешаем перенос на новую строку */
+  gap: 8px; /* Делаем отступ чуть меньше */
+  margin-bottom: 16px;
 }
 
 .stat {
   display: flex;
   align-items: center;
   gap: 6px;
-  padding: 8px 12px;
+  padding: 6px 10px; /* Делаем плашки немного компактнее */
   background: rgba(59, 130, 246, 0.08);
   border-radius: 8px;
   font-size: 12px;
   color: #6b7280;
+  white-space: nowrap; /* Запрещаем тексту ломаться внутри плашки */
 }
 
 .module-card--added .stat {
@@ -566,56 +552,6 @@ body {
 }
 
 /* ========================================
-   НИЖНЯ НАВІГАЦІЯ
-   ======================================== */
-
-.bottom-nav {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background: #1a1a1a;
-  border-top: 1px solid #2a2a2a;
-  display: flex;
-  justify-content: space-around;
-  padding: 12px 0 max(12px, env(safe-area-inset-bottom));
-  box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.5);
-  z-index: 1000;
-  transition: all 0.3s ease;
-}
-
-.nav-item {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 4px;
-  text-decoration: none;
-  color: #6b6b6b;
-  font-size: 12px;
-  padding: 8px 16px;
-  border-radius: 12px;
-  transition: all 0.3s ease;
-  min-width: 70px;
-  cursor: pointer;
-  -webkit-tap-highlight-color: transparent;
-}
-
-.nav-item span {
-  font-size: 24px;
-  transition: all 0.3s ease;
-}
-
-.nav-item.active {
-  color: #3b82f6;
-  background: rgba(59, 130, 246, 0.15);
-}
-
-.nav-item:active {
-  background: rgba(59, 130, 246, 0.15);
-  transform: scale(0.97);
-}
-
-/* ========================================
    АНІМАЦІЇ
    ======================================== */
 
@@ -648,10 +584,6 @@ body {
     font-size: 16px;
   }
 
-  .page-header h1 {
-    font-size: 28px;
-  }
-
   .container {
     padding: 24px 16px;
   }
@@ -677,10 +609,6 @@ body {
 
   .page-header {
     margin-bottom: 24px;
-  }
-
-  .page-header h1 {
-    font-size: 32px;
   }
 
   .container {
@@ -719,44 +647,20 @@ body {
     }
   }
 
-  /* macOS DOCK СТИЛЬ */
-  .bottom-nav {
-    bottom: 16px;
-    left: 50%;
-    right: auto;
-    transform: translateX(-50%);
-    width: auto;
-    max-width: 400px;
-    background: rgba(26, 26, 26, 0.7);
-    backdrop-filter: blur(20px) saturate(180%);
-    -webkit-backdrop-filter: blur(20px) saturate(180%);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 20px;
-    padding: 8px 16px;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4),
-      inset 0 1px 0 rgba(255, 255, 255, 0.1);
-    flex-direction: row;
-    justify-content: center;
-    gap: 8px;
-  }
-
-  .nav-item:hover {
-    transform: translateY(-8px) scale(1.1);
-  }
-
-  .nav-item:hover span {
-    transform: scale(1.2);
+  .modules-grid {
+    grid-template-columns: repeat(2, 1fr); /* Делаем 2 колонки вместо 3 */
+    gap: 16px;
+    max-width: 800px; /* Ограничиваем ширину, чтобы не были слишком огромными */
+    margin: 0 auto; /* Центрируем сетку на экране */
   }
 }
 
 @media (min-width: 1024px) {
   .modules-grid {
-    grid-template-columns: repeat(4, 1fr);
-    gap: 18px;
-  }
-
-  .page-header h1 {
-    font-size: 36px;
+    grid-template-columns: repeat(2, 1fr); /* Делаем 2 колонки вместо 4 */
+    gap: 24px;
+    max-width: 900px; /* Чуть шире для больших экранов */
+    margin: 0 auto; /* Центрируем сетку */
   }
 
   .container {

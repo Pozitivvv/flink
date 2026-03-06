@@ -55,7 +55,7 @@ $days = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 <h2 class="empty-title">Ще немає тем</h2>
                 <p class="empty-text">Створіть свою першу тему для вивчення слів</p>
                 <a href="add_day.php" class="empty-btn">
-                    ➕ Створити тему
+                    Створити тему
                 </a>
             </div>
         <?php else: ?>
