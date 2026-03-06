@@ -73,23 +73,30 @@ if ($user_id) {
                 </div>
 
                 <!-- КНОПКА ДОДАВАННЯ -->
-                <?php if ($user_id): ?>
-                    <?php if ($is_added): ?>
-                        <button class="btn btn-added" disabled>
-                            <span>✅ Вже додано</span>
-                        </button>
+                <div class="module-actions">
+                    <?php if ($user_id): ?>
+                        <?php if ($is_added): ?>
+                            <button class="btn btn-added" disabled>
+                                <span>✅ Вже додано</span>
+                            </button>
+                        <?php else: ?>
+                            <button class="btn btn-primary" onclick="addModuleToDict()">
+                                <span>Додати у словник</span>
+                                <span class="btn-icon">→</span>
+                            </button>
+                        <?php endif; ?>
                     <?php else: ?>
-                        <button class="btn btn-primary" onclick="addModuleToDict()">
-                            <span>+ Додати у словник</span>
+                        <a href="../../" class="btn btn-primary">
+                            <span>Увійти щоб додати</span>
                             <span class="btn-icon">→</span>
-                        </button>
+                        </a>
                     <?php endif; ?>
-                <?php else: ?>
-                    <a href="/login" class="btn btn-primary">
-                        <span>Увійти щоб додати</span>
-                        <span class="btn-icon">→</span>
-                    </a>
-                <?php endif; ?>
+
+                    <button class="btn btn-secondary" onclick="openShareModal()">
+                        <span>Поділитися</span>
+                        <span class="btn-icon">🔗</span>
+                    </button>
+                </div>
             </div>
         </div>
 
@@ -143,7 +150,7 @@ if ($user_id) {
         </a>
         <a href="../../dictionary.php" class="nav-item">
             <span>📚</span>
-            Словарь
+            Словник
         </a>
         <a href="../../flashcard/practice.php" class="nav-item">
             <span>✏️</span>
@@ -154,110 +161,41 @@ if ($user_id) {
             Профіль
         </a>
     </nav>
+    <div class="share-overlay" id="shareOverlay" onclick="closeShareModal(event)">
+        <div class="share-modal" id="shareModal" onclick="event.stopPropagation()">
+            <div class="share-header">
+                <h3>Поділитися модулем</h3>
+                <button class="share-close" onclick="closeShareModal()">✕</button>
+            </div>
+            
+            <div class="share-networks">
+                <a href="#" class="share-network tg" onclick="shareTo('telegram', event)">
+                    <span class="network-icon"><img src="../../assets/icon/telegram.svg" alt=""></span>
+                    <span class="network-name">Telegram</span>
+                </a>
+                <a href="#" class="share-network wa" onclick="shareTo('whatsapp', event)">
+                    <span class="network-icon"><img src="../../assets/icon/whatsapp.svg" alt=""></span>
+                    <span class="network-name">WhatsApp</span>
+                </a>
+                <a href="#" class="share-network fb" onclick="shareTo('facebook', event)">
+                    <span class="network-icon"><img src="../../assets/icon/facebook.svg" alt=""></span>
+                    <span class="network-name">Facebook</span>
+                </a>
+            </div>
 
+            <div class="share-copy-box">
+                <input type="text" id="shareLinkInput" readonly value="">
+                <button class="btn-copy" onclick="copyShareLink()">Копіювати</button>
+            </div>
+        </div>
+    </div>
     <script>
-        const moduleId = <?= $id ?>;
-        const isAdded = <?= $is_added ? 'true' : 'false' ?>;
-
-        // Функция для показа тостов
-        function showToast(message, type = 'success', duration = 4000) {
-            const container = document.getElementById('toastContainer');
-            const toast = document.createElement('div');
-            
-            toast.className = `toast toast-${type}`;
-            toast.innerHTML = `
-                <div class="toast-content">
-                    <span class="toast-icon">${type === 'success' ? '✅' : type === 'error' ? '❌' : '⏳'}</span>
-                    <span class="toast-message">${message}</span>
-                </div>
-                <button class="toast-close" onclick="this.parentElement.remove()">×</button>
-            `;
-            
-            container.appendChild(toast);
-            
-            // Анімація входу
-            setTimeout(() => toast.classList.add('toast-show'), 10);
-            
-            // Автоматичне видалення
-            setTimeout(() => {
-                toast.classList.remove('toast-show');
-                setTimeout(() => toast.remove(), 300);
-            }, duration);
-        }
-
-        // Пошук слів
-        document.getElementById('wordSearch').addEventListener('input', (e) => {
-            const query = e.target.value.toLowerCase();
-            document.querySelectorAll('.word-item').forEach(item => {
-                const german = item.dataset.german;
-                const translation = item.dataset.translation;
-                
-                if (german.includes(query) || translation.includes(query)) {
-                    item.style.display = 'grid';
-                } else {
-                    item.style.display = 'none';
-                }
-            });
-        });
-
-        // Додавання модуля
-        function addModuleToDict() {
-            const btn = event.target.closest('button');
-            btn.disabled = true;
-            btn.innerHTML = '<span>⏳ Додавання...</span>';
-
-            const formData = new FormData();
-            formData.append('module_id', moduleId);
-
-            // Отримуємо поточний шлях і будуємо правильний шлях до add_module.php
-            const currentPath = window.location.pathname;
-            const paths = [
-                './add_module.php',
-                '../add_module.php',
-                'add_module.php',
-                window.location.pathname.replace(/module_view\.php/, 'add_module.php')
-            ];
-
-            function tryFetch(index) {
-                if (index >= paths.length) {
-                    btn.disabled = false;
-                    btn.innerHTML = '<span>+ Додати у словник</span><span class="btn-icon">→</span>';
-                    showToast('❌ Помилка з\'єднання. Спробуйте оновити сторінку.', 'error', 4000);
-                    return;
-                }
-
-                const path = paths[index];
-                
-                fetch(path, {
-                    method: 'POST',
-                    body: formData
-                })
-                .then(response => {
-                    if (!response.ok) throw new Error('HTTP ' + response.status);
-                    return response.json();
-                })
-                .then(data => {
-                    if (data.success) {
-                        btn.classList.remove('btn-primary');
-                        btn.classList.add('btn-added');
-                        btn.innerHTML = '<span>✅ Додано!</span>';
-                        btn.disabled = true;
-                        
-                        setTimeout(() => {
-                            btn.innerHTML = `<span>✅ ${data.words_added} слів додано</span>`;
-                        }, 500);
-                    } else {
-                        throw new Error(data.message);
-                    }
-                })
-                .catch(err => {
-                    console.log('Try path ' + path + ':', err.message);
-                    tryFetch(index + 1);
-                });
-            }
-
-            tryFetch(0);
-        }
+        // Передаємо дані з PHP в зовнішній JavaScript файл
+        window.MODULE_CONFIG = {
+            id: <?= $id ?>,
+            isAdded: <?= $is_added ? 'true' : 'false' ?>
+        };
     </script>
+    <script src="script/moduleView.js"></script>
 </body>
 </html>

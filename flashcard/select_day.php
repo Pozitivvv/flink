@@ -94,7 +94,7 @@ $days = $stmt->fetchAll(PDO::FETCH_ASSOC);
         </a>
         <a href="../dictionary.php" class="nav-item">
                 <span>📚</span>
-                Словарь
+                Словник
             </a>
         <a href="#" class="nav-item active">
             <span>✏️</span>

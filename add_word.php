@@ -192,7 +192,7 @@ if ($day_id) {
         </a>
         <a href="dictionary.php" class="nav-item active">
             <span>📚</span>
-            Словарь
+            Словник
         </a>
         <a href="flashcard/practice.php" class="nav-item">
             <span>✏️</span>

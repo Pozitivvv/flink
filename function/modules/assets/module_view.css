@@ -115,16 +115,49 @@
 }
 
 /* МОБИЛЬНОЕ */
+/* МОБИЛЬНОЕ */
 @media (max-width: 640px) {
   .toast-container {
-    top: 10px;
-    right: 10px;
-    left: 10px;
+    top: 16px;
+    left: 16px;
+    right: 16px;
     max-width: none;
+    display: flex;
+    align-items: center; /* Центрируем уведомление по горизонтали */
   }
 
   .toast {
-    width: 100%;
+    width: auto; /* Делаем размер по контенту, а не на весь экран */
+    min-width: 280px;
+    max-width: 100%;
+    border-radius: 100px; /* Делаем форму стильной "таблетки" */
+    padding: 12px 20px;
+
+    /* Меняем анимацию: выезд сверху вниз с легким пружинящим эффектом */
+    transform: translateY(-100px) scale(0.9);
+    animation: toastSlideDown 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+  }
+
+  /* Переопределяем класс показа для мобилок */
+  .toast-show {
+    transform: translateY(0) scale(1) !important;
+  }
+
+  @keyframes toastSlideDown {
+    from {
+      opacity: 0;
+      transform: translateY(-100px) scale(0.9);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+  }
+
+  /* Скрываем крестик на телефоне, так как "таблетка" сама исчезнет, 
+     а крестик ломает симметрию круглого дизайна */
+  .toast-close {
+    display: none;
   }
 }
 
@@ -139,8 +172,9 @@
 }
 
 body {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
-    Ubuntu, Cantarell, sans-serif;
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu,
+    Cantarell, sans-serif;
   background: #0f0f0f;
   color: #e4e4e4;
   padding-bottom: 80px;
@@ -581,7 +615,8 @@ body {
     border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 20px;
     padding: 8px 16px;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4),
+    box-shadow:
+      0 8px 32px rgba(0, 0, 0, 0.4),
       inset 0 1px 0 rgba(255, 255, 255, 0.1);
     flex-direction: row;
     justify-content: center;
@@ -597,5 +632,284 @@ body {
   * {
     transition: none !important;
     animation: none !important;
+  }
+}
+/* ========================================
+   ТИПИ ТОСТОВ (ГЛАСМОРФІЗМ)
+   ======================================== */
+
+.toast-success {
+  background: rgba(16, 185, 129, 0.25); /* Трохи збільшили заливку кольором */
+  border: 1px solid rgba(16, 185, 129, 0.4);
+  backdrop-filter: blur(16px) saturate(180%); /* Саме це створює ефект скла */
+  -webkit-backdrop-filter: blur(16px) saturate(180%); /* Для підтримки на iPhone */
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4); /* Глибока тінь для відриву від фону */
+}
+
+.toast-error {
+  background: rgba(239, 68, 68, 0.25);
+  border: 1px solid rgba(239, 68, 68, 0.4);
+  backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+}
+
+.toast-loading {
+  background: rgba(59, 130, 246, 0.25);
+  border: 1px solid rgba(59, 130, 246, 0.4);
+  backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+}
+/* ========================================
+   КНОПКИ ДІЙ (ACTION BUTTONS)
+   ======================================== */
+.module-actions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.module-actions .btn {
+  flex: 1;
+  min-width: max-content;
+}
+
+.btn-secondary {
+  background: #1a1a1a;
+  border: 1px solid #2a2a2a;
+  color: #e4e4e4;
+}
+
+@media (hover: hover) {
+  .btn-secondary:hover {
+    background: #2a2a2a;
+    border-color: #3a3a3a;
+  }
+}
+
+/* ========================================
+   SHARE MODAL (ПОДІЛИТИСЯ)
+   ======================================== */
+.share-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  z-index: 2000;
+  display: flex;
+  align-items: flex-end; /* На телефоне прижато вниз */
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  transition:
+    opacity 0.3s ease,
+    visibility 0.3s ease;
+}
+
+.share-overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.share-modal {
+  background: #1a1a1a;
+  width: 100%;
+  max-width: 420px;
+  border-radius: 24px 24px 0 0;
+  padding: 24px;
+  transform: translateY(100%);
+  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1); /* Плавный пружинящий эффект */
+  box-shadow: 0 -10px 40px rgba(0, 0, 0, 0.5);
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.share-overlay.active .share-modal {
+  transform: translateY(0);
+}
+
+.share-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.share-header h3 {
+  font-size: 18px;
+  font-weight: 600;
+  margin: 0;
+}
+
+.share-close {
+  background: #2a2a2a;
+  border: none;
+  color: #9ca3af;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  font-size: 16px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.share-close:hover {
+  background: #3a3a3a;
+  color: #fff;
+  transform: scale(1.05);
+}
+
+/* Соцсети */
+.share-networks {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.share-network {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  padding: 16px 8px;
+  background: #111;
+  border: 1px solid #222;
+  border-radius: 16px;
+  transition: all 0.2s ease;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.share-network:active {
+  transform: scale(0.95);
+}
+
+.network-icon {
+  font-size: 28px;
+}
+
+.network-name {
+  font-size: 13px;
+  color: #9ca3af;
+  font-weight: 500;
+}
+
+/* Цвета при наведении */
+@media (hover: hover) {
+  .share-network.tg:hover {
+    border-color: #2aabee;
+    background: rgba(42, 171, 238, 0.1);
+  }
+  .share-network.wa:hover {
+    border-color: #25d366;
+    background: rgba(37, 211, 102, 0.1);
+  }
+  .share-network.fb:hover {
+    border-color: #1877f2;
+    background: rgba(24, 119, 242, 0.1);
+  }
+}
+
+/* Копирование ссылки */
+.share-copy-box {
+  display: flex;
+  gap: 8px;
+  background: #111;
+  padding: 6px;
+  border-radius: 14px;
+  border: 1px solid #222;
+}
+
+#shareLinkInput {
+  flex: 1;
+  background: transparent;
+  border: none;
+  color: #9ca3af;
+  padding: 8px 12px;
+  font-size: 14px;
+  outline: none;
+  min-width: 0;
+}
+
+.btn-copy {
+  background: #3b82f6;
+  color: #fff;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 10px;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.btn-copy:active {
+  transform: scale(0.95);
+}
+
+@media (hover: hover) {
+  .btn-copy:hover {
+    background: #2563eb;
+  }
+}
+
+/* Адаптив для ПК */
+@media (min-width: 640px) {
+  .share-overlay {
+    align-items: center; /* Центрируем по центру экрана на ПК */
+  }
+
+  .share-modal {
+    border-radius: 24px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    transform: scale(0.9) translateY(20px);
+  }
+
+  .share-overlay.active .share-modal {
+    transform: scale(1) translateY(0);
+  }
+}
+
+.network-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* Убрали font-size, так как теперь тут картинка-вектор */
+}
+
+/* Добавляем легкий эффект при наведении, чтобы логотип казался живым */
+.share-network:active .network-icon svg {
+  transform: scale(0.9);
+}
+.network-icon svg {
+  transition: transform 0.2s ease;
+}
+
+.network-icon img {
+  width: 28px;
+  height: 28px;
+  /* Делаем картинку полностью белой, но с прозрачностью 50%, 
+     чтобы на темном фоне она выглядела серой */
+  filter: brightness(0) invert(1);
+  opacity: 0.5;
+  transition: all 0.2s ease;
+}
+
+@media (hover: hover) {
+  /* При наведении делаем иконку 100% непрозрачной (чисто белой) и чуть увеличиваем */
+  .share-network:hover .network-icon img {
+    opacity: 1;
+    transform: scale(1.1);
+  }
+
+  /* Чтобы сама карточка соцсети тоже красиво подсвечивалась белым */
+  .share-network:hover {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(255, 255, 255, 0.2);
   }
 }

@@ -101,7 +101,7 @@ function isUnlocked($id, $user_achievements) {
             </a>
             <a href="../../dictionary.php" class="nav-item">
                 <span>📚</span>
-                Словарь
+                Словник
             </a>
             <a href="../../flashcard/practice.php" class="nav-item">
                 <span>✏️</span>

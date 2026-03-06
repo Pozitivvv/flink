@@ -209,7 +209,7 @@ $totalWords = $stmt->fetch(PDO::FETCH_ASSOC)['total'];
         </a>
         <a href="../../dictionary.php" class="nav-item">
                 <span>📚</span>
-                Словарь
+                Словник
             </a>
         <a href="../../flashcard/practice.php" class="nav-item">
             <span>✏️</span>

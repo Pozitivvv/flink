@@ -157,7 +157,7 @@ if (isset($_GET['ajax']) && $_GET['ajax'] === '1') {
 <nav class="bottom-nav">
     <a href="dashboard.php" class="nav-item"><span>🏠</span>Головна</a>
     <a href="add_day.php" class="nav-item"><span>📘</span>Теми</a>
-    <a href="dictionary.php" class="nav-item active"><span>📚</span>Словарь</a>
+    <a href="dictionary.php" class="nav-item active"><span>📚</span>Словник</a>
     <a href="flashcard/practice.php" class="nav-item"><span>✏️</span>Практика</a>
     <a href="profile/" class="nav-item"><span>👤</span>Профиль</a>
 </nav>
