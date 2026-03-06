@@ -87,7 +87,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <div class="input-group">
                 <span class="input-icon">🔒</span>
                 <input type="password" id="password" name="password" placeholder="Пароль" required autocomplete="current-password">
-                <span class="toggle-password" id="togglePassword" title="Показати/Сховати пароль">👁️</span>
+                <span class="toggle-password" id="togglePassword" title="Показати/Сховати пароль">🙉</span>
             </div>
             <button type="submit">Увійти</button>
         </form>
