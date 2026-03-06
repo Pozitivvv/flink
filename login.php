@@ -114,7 +114,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     passwordInput.classList.remove('password-visible');
                 }
 
-                this.textContent = type === 'password' ? '👁️' : '🙈';
+                this.textContent = type === 'password' ? '🙉' : '🙈';
             });
         }
     </script>
