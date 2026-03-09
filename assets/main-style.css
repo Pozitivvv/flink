@@ -376,3 +376,188 @@
     margin-bottom: 40px;
   }
 }
+
+/* ========================================
+   SMART PASTE MODAL (BOTTOM SHEET)
+   ======================================== */
+
+.sp-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  z-index: 2000;
+  display: flex;
+  align-items: flex-end; /* На телефоне прижато вниз */
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  transition:
+    opacity 0.3s ease,
+    visibility 0.3s ease;
+}
+
+.sp-overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.sp-modal {
+  background: #1a1a1a;
+  width: 100%;
+  max-width: 420px;
+  border-radius: 24px 24px 0 0;
+  padding: 24px;
+  transform: translateY(100%);
+  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1); /* Пружинящий эффект */
+  box-shadow: 0 -10px 40px rgba(0, 0, 0, 0.5);
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.sp-overlay.active .sp-modal {
+  transform: translateY(0);
+}
+
+.sp-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.sp-header h3 {
+  font-size: 18px;
+  font-weight: 600;
+  color: #fff;
+  margin: 0;
+}
+
+.sp-close {
+  background: #2a2a2a;
+  border: none;
+  color: #9ca3af;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  font-size: 18px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.sp-close:hover {
+  background: #3a3a3a;
+  color: #fff;
+  transform: scale(1.05);
+}
+
+/* Блок с распознанным текстом */
+.sp-content-box {
+  background: #111;
+  padding: 16px;
+  border-radius: 12px;
+  border: 1px solid #222;
+  margin-bottom: 20px;
+}
+
+.sp-text-hint {
+  color: #9ca3af;
+  font-size: 14px;
+  margin-bottom: 16px;
+  line-height: 1.5;
+}
+
+/* Кнопки */
+.sp-buttons {
+  display: flex;
+  gap: 12px;
+}
+
+.sp-btn {
+  flex: 1;
+  padding: 12px;
+  border: none;
+  border-radius: 12px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.sp-btn-cancel {
+  background: #2a2a2a;
+  color: #e4e4e4;
+}
+
+.sp-btn-cancel:hover {
+  background: #3a3a3a;
+}
+
+.sp-btn-apply {
+  background: linear-gradient(135deg, #3b82f6, #2563eb);
+  color: #fff;
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+}
+
+.sp-btn-apply:active {
+  transform: scale(0.95);
+}
+/* Стилі для кнопки вставки всередині інпута */
+.input-wrapper {
+  position: relative;
+  display: block; /* Змінили з flex на block для стабільності */
+  width: 100%;
+  margin-bottom: 15px; /* Задаємо відступ тут, такий же як у ваших інпутів */
+}
+.input-wrapper input {
+  width: 100%;
+  padding-right: 48px; /* Трохи більше місця, щоб текст не наїжджав на кнопку */
+  margin-bottom: 0 !important; /* Прибираємо відступ у самого інпута, щоб не ламалося центрування */
+}
+.quick-paste-btn {
+  position: absolute;
+  right: 8px;
+  top: 50%; /* Чітке центрування по вертикалі */
+  transform: translateY(-50%); /* Відцентровує візуально ідеально рівно */
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  color: #9ca3af;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  padding: 0;
+  z-index: 2; /* Щоб кнопка була активною і не перекривалася рамкою */
+}
+.quick-paste-btn:hover {
+  color: #fff;
+  background: rgba(59, 130, 246, 0.2);
+  border-color: rgba(59, 130, 246, 0.4);
+}
+.quick-paste-btn:active {
+  transform: translateY(-50%) scale(0.9); /* Зберігаємо центрування під час кліку */
+}
+
+/* Адаптив для ПК */
+@media (min-width: 640px) {
+  .sp-overlay {
+    align-items: center; /* На ПК по центру экрана */
+  }
+
+  .sp-modal {
+    border-radius: 24px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    transform: scale(0.9) translateY(20px);
+  }
+
+  .sp-overlay.active .sp-modal {
+    transform: scale(1) translateY(0);
+  }
+}

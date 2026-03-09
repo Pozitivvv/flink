@@ -83,7 +83,8 @@ try {
             errors INT DEFAULT 0,
             created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
             FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE,
-            FOREIGN KEY (day_id) REFERENCES days(id) ON DELETE SET NULL
+            FOREIGN KEY (day_id) REFERENCES days(id) ON DELETE SET NULL,
+            description TEXT NULL;
         ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
     ");
     echo "🗣️ Таблиця 'words' створена або вже існує.<br>";

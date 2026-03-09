@@ -5,8 +5,9 @@
 }
 
 body {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
-    Ubuntu, Cantarell, sans-serif;
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu,
+    Cantarell, sans-serif;
   background: #0f0f0f;
   color: #e4e4e4;
   padding-bottom: 80px;
@@ -62,7 +63,9 @@ p[style*="#7f8c8d"] {
   margin-top: 20px;
 }
 
-/* Форма */
+/* ========================================
+   ФОРМА (Сбитый, единый дизайн)
+   ======================================== */
 form {
   background: #1a1a1a;
   padding: 20px;
@@ -153,7 +156,104 @@ button[type="submit"]:hover {
   background: linear-gradient(135deg, #3b83f6e3, #174ab7);
 }
 
-/* Таблица слов */
+/* --- Стили для меню "Додатково" (Новый сбитый дизайн) --- */
+.advanced-toggle {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 14px 16px;
+  background: rgba(59, 130, 246, 0.05); /* Легкая синяя заливка */
+  border: 1px dashed rgba(59, 130, 246, 0.4); /* Пунктирная граница */
+  border-radius: 12px;
+  color: #3b82f6;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  margin-bottom: 16px;
+  transition: all 0.2s ease;
+}
+
+.advanced-toggle:hover {
+  background: rgba(59, 130, 246, 0.1);
+  border-color: rgba(59, 130, 246, 0.6);
+}
+
+.advanced-toggle span {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.advanced-toggle svg {
+  transition: transform 0.3s ease;
+}
+
+/* Состояние, когда аккордеон ОТКРЫТ */
+.advanced-toggle.open {
+  background: transparent;
+  border-style: solid; /* Пунктир становится сплошной линией */
+  border-color: #2a2a2a; /* Становится серым, как обычный инпут */
+  color: #9ca3af;
+}
+
+.advanced-toggle.open svg {
+  transform: rotate(180deg);
+}
+
+/* Плавное открытие через Grid */
+.advanced-content {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.3s ease;
+}
+
+.advanced-content.open {
+  grid-template-rows: 1fr;
+}
+
+.advanced-inner {
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+/* 👈 Вот тут мы жестко задаем отступ, чтобы поля БОЛЬШЕ НЕ СЛИПАЛИСЬ */
+.advanced-inner select {
+  margin-bottom: 16px !important;
+}
+
+/* Текстовое поле (textarea) 1 в 1 как input */
+textarea.smart-input {
+  width: 100%;
+  padding: 14px 16px;
+  background: #0f0f0f;
+  border: 1px solid #2a2a2a;
+  border-radius: 12px;
+  color: #e4e4e4;
+  font-size: 16px;
+  font-family: inherit;
+  resize: vertical;
+  min-height: 100px;
+  margin-bottom: 16px;
+  transition: all 0.3s ease;
+  min-height: 50px;
+  max-height: 250px;
+}
+
+textarea.smart-input:focus {
+  outline: none;
+  border-color: #3b82f6;
+  background: #141414;
+}
+
+textarea.smart-input::placeholder {
+  color: #6b6b6b;
+}
+
+/* ========================================
+   ТАБЛИЦА СЛОВ
+   ======================================== */
 table {
   width: 100%;
   background: #1a1a1a;
@@ -213,7 +313,9 @@ table td b {
   transform: scale(0.95);
 }
 
-/* Модальное окно */
+/* ========================================
+   МОДАЛЬНОЕ ОКНО
+   ======================================== */
 .modal-overlay {
   display: none;
   position: fixed;
@@ -321,60 +423,38 @@ table td b {
   }
 }
 
-/* Адаптивность */
-@media (max-width: 768px) {
-  table {
-    font-size: 13px;
-  }
-
-  table th,
-  table td {
-    padding: 10px 8px;
-  }
-
-  /* НЕ скрываем артикль на мобильных */
-  table th:last-child,
-  table td:last-child {
-    padding: 10px 4px;
-    width: 40px;
-  }
+/* ========================================
+   ПОДСКАЗКА О МОДУЛЯХ
+   ======================================== */
+.section-hint {
+  background: rgba(59, 130, 246, 0.08);
+  border: 1px solid rgba(59, 130, 246, 0.2);
+  border-radius: 12px;
+  padding: 14px 16px;
+  margin-top: 12px;
 }
 
-@media (min-width: 768px) {
-  body {
-    padding-bottom: 0;
-  }
-
-  .container {
-    padding: 40px 24px;
-    margin-bottom: 40px;
-  }
-
-  h1 {
-    font-size: 32px;
-  }
-
-  select:hover {
-    border-color: #3a3a3a;
-  }
-
-  .delete-btn:hover {
-    background: rgba(239, 68, 68, 0.25);
-    color: white;
-  }
-
-  .modal-btn-cancel:hover {
-    background: #333;
-  }
-
-  .modal-btn-delete:hover {
-    background: #dc2626;
-  }
+.section-hint p {
+  font-size: 13px;
+  color: #9ca3af;
+  margin: 0;
+  text-align: center;
 }
 
-/* Додайте ці стилі в кінець вашого add-word.css */
+.hint-link {
+  color: #3b82f6;
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.3s ease;
+}
 
-/* Підказка про озвучування */
+.hint-link:active {
+  opacity: 0.7;
+}
+
+/* ========================================
+   ОСТАЛЬНЫЕ ЭЛЕМЕНТЫ (Подсказки, ошибки)
+   ======================================== */
 .audio-hint {
   display: flex;
   align-items: center;
@@ -385,8 +465,8 @@ table td b {
   border-radius: 12px;
   color: #6b7280;
   font-size: 13px;
-  margin-bottom: 16px;
   margin-top: 16px;
+  margin-bottom: 20px;
 }
 
 .audio-hint svg {
@@ -394,7 +474,6 @@ table td b {
   stroke: #6b7280;
 }
 
-/* Комірка зі словом - озвучування */
 .word-cell {
   cursor: pointer !important;
   transition: all 0.2s ease;
@@ -409,66 +488,6 @@ table td b {
   background-color: rgba(59, 130, 246, 0.15) !important;
 }
 
-/* Мобільна адаптація */
-@media (max-width: 768px) {
-  .audio-hint {
-    font-size: 12px;
-    padding: 10px 14px;
-  }
-
-  .audio-hint svg {
-    width: 12px;
-    height: 12px;
-  }
-}
-
-/* Десктоп */
-@media (min-width: 769px) {
-  .audio-hint {
-    font-size: 14px;
-  }
-}
-.audio-hint {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  padding: 12px 16px;
-  background: rgba(59, 130, 246, 0.08);
-  border: 1px solid rgba(59, 130, 246, 0.15);
-  border-radius: 12px;
-  color: #6b7280;
-  font-size: 13px;
-  margin-bottom: 20px;
-}
-
-.audio-hint svg {
-  flex-shrink: 0;
-  stroke: #6b7280;
-}
-/* Мобільна адаптація */
-@media (max-width: 768px) {
-  .audio-hint {
-    font-size: 12px;
-    padding: 10px 14px;
-  }
-
-  .audio-hint svg {
-    width: 12px;
-    height: 12px;
-  }
-
-  .sound-btn {
-    font-size: 13px;
-    padding: 3px 7px;
-  }
-}
-
-/* Десктоп */
-@media (min-width: 769px) {
-  .audio-hint {
-    font-size: 14px;
-  }
-}
 /* 🔴 Ошибка */
 .message.error {
   background: rgba(239, 68, 68, 0.15);
@@ -505,31 +524,188 @@ table td b {
 }
 
 /* ========================================
-   ПОДСКАЗКА О МОДУЛЯХ
+   АДАПТИВНОСТЬ
    ======================================== */
+@media (max-width: 768px) {
+  table {
+    font-size: 13px;
+  }
 
-.section-hint {
-  background: rgba(59, 130, 246, 0.08);
-  border: 1px solid rgba(59, 130, 246, 0.2);
-  border-radius: 12px;
+  table th,
+  table td {
+    padding: 10px 8px;
+  }
+
+  table th:last-child,
+  table td:last-child {
+    padding: 10px 4px;
+    width: 40px;
+  }
+
+  .audio-hint {
+    font-size: 12px;
+    padding: 10px 14px;
+  }
+
+  .audio-hint svg {
+    width: 12px;
+    height: 12px;
+  }
+}
+
+@media (min-width: 768px) {
+  body {
+    padding-bottom: 0;
+  }
+
+  .container {
+    padding: 40px 24px;
+    margin-bottom: 40px;
+  }
+
+  h1 {
+    font-size: 32px;
+  }
+
+  select:hover {
+    border-color: #3a3a3a;
+  }
+
+  .delete-btn:hover {
+    background: rgba(239, 68, 68, 0.25);
+    color: white;
+  }
+
+  .modal-btn-cancel:hover {
+    background: #333;
+  }
+
+  .modal-btn-delete:hover {
+    background: #dc2626;
+  }
+
+  .audio-hint {
+    font-size: 14px;
+  }
+}
+
+/* ========================================
+   КАСТОМНЫЙ SELECT
+   ======================================== */
+.custom-select-wrapper {
+  position: relative;
+  width: 100%;
+  margin-bottom: 16px;
+  user-select: none;
+}
+
+/* Кнопка на которую нажимаем */
+.custom-select-trigger {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
   padding: 14px 16px;
-  margin-top: 12px;
+  background: #0f0f0f;
+  border: 1px solid #2a2a2a;
+  border-radius: 12px;
+  color: #e4e4e4;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.3s ease;
 }
 
-.section-hint p {
-  font-size: 13px;
-  color: #9ca3af;
-  margin: 0;
-  text-align: center;
+.custom-select-trigger:hover,
+.custom-select-wrapper.open .custom-select-trigger {
+  border-color: #3b82f6;
+  background: #141414;
 }
 
-.hint-link {
+.custom-select-trigger span {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding-right: 10px;
+}
+
+.custom-select-trigger svg {
+  transition: transform 0.3s ease;
+  stroke: #9ca3af;
+  flex-shrink: 0;
+}
+
+.custom-select-wrapper.open .custom-select-trigger svg {
+  transform: rotate(180deg);
+}
+
+/* Выпадающий список */
+.custom-select-options {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: #1a1a1a;
+  border: 1px solid #3b82f6;
+  border-radius: 12px;
+  margin-top: 6px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+  z-index: 999;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-10px);
+  transition: all 0.2s ease;
+  max-height: 220px;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Открытое состояние списка */
+.custom-select-wrapper.open .custom-select-options {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+/* Отдельные элементы списка */
+.custom-option {
+  padding: 12px 16px;
+  color: #e4e4e4;
+  font-size: 15px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+}
+
+.custom-option:last-child {
+  border-bottom: none;
+}
+
+.custom-option:hover {
+  background: rgba(59, 130, 246, 0.1);
+  color: #fff;
+}
+
+.custom-option.selected {
   color: #3b82f6;
-  text-decoration: none;
   font-weight: 600;
-  transition: color 0.3s ease;
+  background: rgba(59, 130, 246, 0.05);
 }
 
-.hint-link:active {
-  opacity: 0.7;
+/* === КАСТОМНЫЙ СКРОЛЛБАР ДЛЯ СПИСКОВ === */
+.custom-select-options::-webkit-scrollbar {
+  width: 6px;
+}
+
+.custom-select-options::-webkit-scrollbar-track {
+  background: transparent;
+  margin: 8px 0;
+}
+
+.custom-select-options::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 10px;
+}
+
+.custom-select-options::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.3);
 }
