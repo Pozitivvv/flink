@@ -5,16 +5,24 @@ function playWord(word) {
   const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
 
   if (isIOS) {
-    // Для iOS: сначала пробуем Wikimedia, потом встроенный
-    playWithWikimedia(word);
+    const wordWithoutArticle = stripArticle(word);
+
+    // Если это связка слов (есть пробел внутри), сразу используем встроенный голос.
+    // Это критически важно для iOS, иначе асинхронный фолбэк заблокируется браузером.
+    if (wordWithoutArticle.includes(" ")) {
+      fallbackPlayWord(word);
+    } else {
+      // Для одиночных слов пробуем Wikimedia
+      playWithWikimedia(word, wordWithoutArticle);
+    }
   } else {
-    // Для Android: встроенный синтез
+    // Для Android/ПК всегда встроенный синтез
     fallbackPlayWord(word);
   }
 }
 
-function playWithWikimedia(word) {
-  // Отделяем артикль от слова (der, die, das, den, dem, des, etc.)
+// Вынесли удаление артиклей в отдельную функцию для удобства
+function stripArticle(word) {
   const articles = [
     "der",
     "die",
@@ -25,41 +33,43 @@ function playWithWikimedia(word) {
     "denen",
     "einen",
     "einem",
-    "einen",
-    "eines",
     "einer",
+    "eines",
+    "ein",
   ];
-  let wordWithoutArticle = word;
+  let cleanedWord = word.trim();
+  const lowerWord = cleanedWord.toLowerCase();
 
   for (let article of articles) {
-    if (word.toLowerCase().startsWith(article + " ")) {
-      wordWithoutArticle = word.substring(article.length + 1);
+    if (lowerWord.startsWith(article + " ")) {
+      cleanedWord = cleanedWord.substring(article.length + 1).trim();
       break;
     }
   }
+  return cleanedWord;
+}
 
+function playWithWikimedia(originalWord, wordWithoutArticle) {
   const encodedWord = encodeURIComponent(wordWithoutArticle);
-  // Пытаемся найти озвучку в Wikimedia Commons
   const audioUrl = `https://commons.wikimedia.org/wiki/Special:FilePath/De-${encodedWord}.ogg`;
 
   const audio = new Audio(audioUrl);
   audio.volume = 1.0;
 
-  // Если файл не найден или ошибка - переходим на встроенный синтез
   audio.onerror = () => {
-    fallbackPlayWord(word);
+    fallbackPlayWord(originalWord);
   };
 
-  // Таймаут на случай зависания
   const timeout = setTimeout(() => {
     audio.pause();
     audio.currentTime = 0;
-    fallbackPlayWord(word);
+    fallbackPlayWord(originalWord);
   }, 3000);
 
   audio.onplay = () => clearTimeout(timeout);
+
   audio.play().catch(() => {
-    fallbackPlayWord(word);
+    fallbackPlayWord(originalWord);
   });
 }
 
@@ -74,19 +84,23 @@ function fallbackPlayWord(word) {
 
     const voices = window.speechSynthesis.getVoices();
     const germanVoice = voices.find(
-      (v) => v.lang === "de-DE" || v.lang === "de" || v.lang.startsWith("de-")
+      (v) => v.lang === "de-DE" || v.lang === "de" || v.lang.startsWith("de-"),
     );
 
     if (germanVoice) {
       utterance.voice = germanVoice;
     }
 
-    setTimeout(() => window.speechSynthesis.speak(utterance), 100);
+    // ВАЖНО: убрали setTimeout. На iOS Safari вызов speak() через таймер
+    // часто расценивается как программный (без клика) и блокируется.
+    window.speechSynthesis.speak(utterance);
   }
 }
 
-// Загружаем голоса при загрузке
+// Загружаем голоса при инициализации страницы
 if ("speechSynthesis" in window) {
+  // Safari/iOS иногда требует "пнуть" синтез речи для инициализации голосов
+  window.speechSynthesis.getVoices();
   window.speechSynthesis.onvoiceschanged = () => {
     window.speechSynthesis.getVoices();
   };

@@ -583,10 +583,6 @@ body {
   .module-title {
     font-size: 16px;
   }
-
-  .container {
-    padding: 24px 16px;
-  }
 }
 
 @media (min-width: 768px) {
@@ -609,10 +605,6 @@ body {
 
   .page-header {
     margin-bottom: 24px;
-  }
-
-  .container {
-    padding: 32px 24px;
   }
 
   /* HOVER ЕФЕКТИ */
@@ -661,10 +653,6 @@ body {
     gap: 24px;
     max-width: 900px; /* Чуть шире для больших экранов */
     margin: 0 auto; /* Центрируем сетку */
-  }
-
-  .container {
-    padding: 40px 24px;
   }
 }
 
