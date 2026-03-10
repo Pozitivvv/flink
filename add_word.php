@@ -2,7 +2,7 @@
 //add_word.php 
 session_start();
 require_once 'config.php';
-
+require_once 'function/database/version.php';
 if (!isset($_SESSION['user_id'])) {
     header('Location: index.php');
     exit();
@@ -145,6 +145,7 @@ foreach ($days as $day) {
         break;
     }
 }
+$app_version = getAppVersion($pdo);
 ?>
 
 <!DOCTYPE html>
@@ -155,8 +156,8 @@ foreach ($days as $day) {
     <title>Додати слова | Німецький словник</title>
     <?php include 'function/tags/icons.html'; ?>
     <?php include 'function/tags/seo.html'; ?>
-    <link rel="stylesheet" href="assets/add-word.css?v=1">
-    <link rel="stylesheet" href="assets/main-style.css?v=1">
+    <link rel="stylesheet" href="assets/add-word.css?v=<?= htmlspecialchars($app_version) ?>">
+    <link rel="stylesheet" href="assets/main-style.css?v=<?= htmlspecialchars($app_version) ?>">
 </head>
 <body>
     <div class="container">
@@ -193,10 +194,10 @@ foreach ($days as $day) {
                 <input type="hidden" name="day_id" value="<?= htmlspecialchars((string)($day_id ?? '')) ?>">
             </div>
 
-            <input type="text" name="article" class="smart-input" placeholder="Артикль (der / die / das)">
+            <input type="text" maxlength="10" name="article" class="smart-input" placeholder="Артикль (der / die / das)">
             
             <div class="input-wrapper">
-                <input type="text" name="german" class="smart-input" placeholder="Німецьке слово" required>
+                <input type="text" maxlength="50" name="german" class="smart-input" placeholder="Німецьке слово" required>
                 <button type="button" id="quickPasteBtn" class="quick-paste-btn" title="Вставити з буфера">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                         <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path>
@@ -205,7 +206,7 @@ foreach ($days as $day) {
                 </button>
             </div>
 
-            <input type="text" name="translation" class="smart-input" placeholder="Переклад" required>
+            <input  type="text" maxlength="100" name="translation" class="smart-input" placeholder="Переклад" required>
             
             <button type="button" class="advanced-toggle" id="advancedToggleBtn">
                 <span>Додати тип та опис (необов'язково)</span>
