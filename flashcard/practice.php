@@ -50,7 +50,7 @@ $allTranslations = $stmt_trans->fetchAll(PDO::FETCH_COLUMN);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>🧠 Тест на слова</title>
     <link rel="stylesheet" href="../assets/main-style.css">
-    <link rel="stylesheet" href="style/flashcard.css">
+    <link rel="stylesheet" href="style/flashcard.css?v=1.0.1">
     
 </head>
 <body>
@@ -87,6 +87,7 @@ $allTranslations = $stmt_trans->fetchAll(PDO::FETCH_COLUMN);
             <button class="mode-btn active" data-mode="normal">🌍 Звичайний</button>
             <button class="mode-btn" data-mode="errors">❌ Повтор помилок</button>
             <button class="mode-btn" data-mode="articles">🧱 Артиклі</button>
+            <button class="mode-btn" data-mode="voice">🎤 Вимова</button>
         </div>
     </div>
 
@@ -149,7 +150,7 @@ window.phpData = {
 };
 </script>
 <script src="/script/voice.js"></script>
-<script src="script/flashcard.js"></script>
+<script src="script/flashcard.js?v=1.0.1"></script>
 
 </body>
 </html>
