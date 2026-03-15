@@ -581,13 +581,13 @@ tbody tr:hover .sound-btn {
 }
 /* Додайте ці стилі в кінець вашого dictionary.css */
 
-/* Підказка про озвучування */
+/* Підказки над таблицею */
 .audio-hint {
   display: flex;
-  align-items: center;
-  gap: 8px;
+  flex-direction: column;
+  gap: 6px;
   padding: 12px 16px;
-  background: rgba(59, 130, 246, 0.08);
+  background: rgba(59, 130, 246, 0.06);
   border: 1px solid rgba(59, 130, 246, 0.15);
   border-radius: 12px;
   color: #6b7280;
@@ -595,9 +595,24 @@ tbody tr:hover .sound-btn {
   margin-bottom: 20px;
 }
 
+.audio-hint .hint-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
 .audio-hint svg {
   flex-shrink: 0;
   stroke: #6b7280;
+}
+
+@media (min-width: 769px) {
+  .audio-hint {
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 4px 24px;
+  }
 }
 
 /* Комірка зі словом */
@@ -724,18 +739,45 @@ td {
   color: #e4e4e4;
   font-size: 15px;
   border-bottom: 1px solid #2a2a2a;
-  white-space: nowrap; /* ← текст не переносится */
+  white-space: nowrap;
 }
 
-/* Колонка со словом - может быть шире, но без переносов */
+/* Артикль — фіксована вузька колонка */
+.article-cell {
+  width: 52px;
+  min-width: 52px;
+  max-width: 52px;
+  text-align: center;
+  font-weight: 600;
+  color: #3b82f6;
+  font-size: 14px;
+  white-space: nowrap;
+}
+
+/* Колонка зі словом — обмежена ширина, текст не ріжеться */
 td.word-cell {
-  min-width: 200px;
-  white-space: normal; /* ← только в этой колонке разрешаем перенос */
+  max-width: 180px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
-/* Колонка перевода */
+/* Переклад — теж обмежений */
 td:nth-child(3) {
-  min-width: 150px;
+  max-width: 160px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Тема */
+.day-cell {
+  max-width: 120px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: #9ca3af;
+  font-size: 13px;
 }
 
 /* На мобильных */
@@ -747,10 +789,14 @@ td:nth-child(3) {
   }
 
   td.word-cell {
-    min-width: 120px;
+    max-width: 120px;
   }
 
-  /* На мобильных скрываем столбец "Тема" */
+  td:nth-child(3) {
+    max-width: 110px;
+  }
+
+  /* На мобільних ховаємо стовпець "Тема" */
   th:nth-child(4),
   td:nth-child(4) {
     display: none;
@@ -763,17 +809,254 @@ td:nth-child(3) {
 
 @media (min-width: 768px) {
   td.word-cell {
-    min-width: 250px;
+    max-width: 240px;
   }
 
   td:nth-child(3) {
-    min-width: 200px;
+    max-width: 220px;
+  }
+
+  .day-cell {
+    max-width: 160px;
   }
 }
 
-.article-cell {
-  text-align: center;
-  font-weight: 600;
+/* ================= EDIT MODAL & BUTTONS ================= */
+
+/* Кнопки в таблиці (Редагувати та Видалити) */
+.action-cell {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  justify-content: flex-end; /* Вирівнюємо по правому краю */
+}
+
+.edit-btn {
+  background: none;
+  border: none;
+  font-size: 18px;
+  cursor: pointer;
+  opacity: 0.7;
+  transition: all 0.2s ease;
+  padding: 4px;
+}
+
+.edit-btn:hover {
+  opacity: 1;
+  transform: scale(1.15);
+}
+
+/* Іконка наявності опису біля слова */
+.has-desc {
+  font-size: 12px;
+  opacity: 0.8;
+  margin-left: 6px;
+  vertical-align: middle;
+  cursor: help;
+  filter: drop-shadow(0 0 4px rgba(255, 255, 255, 0.2));
+}
+
+/* --- Стилі для полів форми у модальному вікні --- */
+#editForm .form-group {
+  margin-bottom: 12px;
+}
+
+#editForm input,
+#editForm select,
+#editForm textarea {
+  width: 100%;
+  background: #111; /* Темний фон під інпут, як у sp-content-box */
+  border: 1px solid #2a2a2a;
+  border-radius: 12px;
+  color: #fff;
+  padding: 12px 14px;
+  font-size: 15px;
+  outline: none;
+  transition: all 0.2s ease;
+  box-sizing: border-box;
+}
+
+#editForm input:focus,
+#editForm select:focus,
+#editForm textarea:focus {
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15);
+}
+
+#editForm textarea {
+  resize: vertical;
+  min-height: 80px;
+}
+
+/* Кнопка збереження (використовуємо ваш градієнт з sp-btn-apply) */
+.modal-btn-save {
+  background: linear-gradient(135deg, #3b82f6, #2563eb);
+  color: #fff;
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+}
+
+.modal-btn-save:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px rgba(59, 130, 246, 0.4);
+}
+
+.modal-btn-save:active {
+  transform: scale(0.96);
+}
+
+/* ================= ACCORDION ================= */
+
+/* Кнопка розгортання */
+.expand-btn {
+  background: none;
+  border: none;
+  font-size: 18px;
+  cursor: pointer;
+  color: #6b7280;
+  padding: 4px 6px;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+  line-height: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.expand-btn:hover {
+  color: #e4e4e4;
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.expand-btn.open {
+  transform: rotate(180deg);
   color: #3b82f6;
+}
+
+/* Рядок-акордеон */
+.accordion-row {
+  display: none;
+}
+
+.accordion-row.open {
+  display: table-row;
+}
+
+.accordion-cell {
+  padding: 0 !important;
+  border-bottom: 2px solid #3b82f6 !important;
+  background: #111 !important;
+}
+
+/* Внутрішній контент акордеону */
+.accordion-content {
+  padding: 16px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  animation: accOpen 0.2s ease;
+}
+
+@keyframes accOpen {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Повне слово великим */
+.acc-full-word {
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.acc-article {
+  color: #3b82f6;
+}
+
+.acc-german {
+  color: #fff;
+}
+
+/* Переклад */
+.acc-translation {
+  font-size: 16px;
+  color: #c4c4c4;
+  line-height: 1.4;
+}
+
+/* Мета (тема) */
+.acc-meta {
+  font-size: 13px;
+  color: #9ca3af;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* Опис */
+.acc-description {
+  background: rgba(59, 130, 246, 0.06);
+  border-left: 3px solid #3b82f6;
+  border-radius: 0 8px 8px 0;
+  padding: 10px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.acc-description p {
   font-size: 14px;
+  color: #d1d5db;
+  line-height: 1.6;
+  margin: 0;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.acc-label {
+  font-size: 12px;
+  font-weight: 600;
+  color: #6b7280;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* Підсвічування рядка коли відкрито */
+.word-row.expanded {
+  background: #161616 !important;
+}
+
+.word-row.expanded td {
+  border-bottom-color: transparent !important;
+}
+
+/* Мобільна адаптація */
+@media (max-width: 768px) {
+  .accordion-content {
+    padding: 14px 16px;
+    gap: 8px;
+  }
+  .acc-full-word {
+    font-size: 18px;
+  }
+  .acc-translation {
+    font-size: 15px;
+  }
+}
+/* Виправляємо кастомний селект всередині форми фільтрів */
+.filter .custom-select-wrapper {
+  margin-bottom: 0; /* Прибираємо відступ, бо форма використовує gap */
+}
+
+@media (min-width: 768px) {
+  /* На ПК жорстко обмежуємо ширину, щоб інпут пошуку міг розтягнутися */
+  .filter .custom-select-wrapper {
+    width: 250px;
+    flex-shrink: 0;
+  }
 }

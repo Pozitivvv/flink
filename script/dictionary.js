@@ -64,7 +64,7 @@ function fallbackPlayWord(word) {
 
     const voices = window.speechSynthesis.getVoices();
     const germanVoice = voices.find(
-      (v) => v.lang === "de-DE" || v.lang.startsWith("de-")
+      (v) => v.lang === "de-DE" || v.lang.startsWith("de-"),
     );
     if (germanVoice) utterance.voice = germanVoice;
 
@@ -73,6 +73,9 @@ function fallbackPlayWord(word) {
 }
 
 // Функция назначения событий на новые элементы
+// Глобальная переменная для предотвращения аудио при долгом нажатии
+let preventAudioPlay = false;
+
 function attachEvents() {
   // Клик по слову для озвучки
   document
@@ -81,8 +84,11 @@ function attachEvents() {
       cell.classList.add("event-attached");
       cell.style.cursor = "pointer";
       cell.addEventListener("click", function (e) {
+        if (preventAudioPlay) {
+          preventAudioPlay = false; // Сбрасываем флаг, если это был лонг-пресс
+          return;
+        }
         const word = this.dataset.word;
-        // Визуальный эффект
         const textSpan = this.querySelector(".word-text");
         if (textSpan) {
           textSpan.style.opacity = "0.5";
@@ -99,10 +105,42 @@ function attachEvents() {
       btn.classList.add("event-attached");
       btn.addEventListener("click", function () {
         wordIdToDelete = this.dataset.id;
-        const modal = document.getElementById("deleteModal");
-        modal.classList.add("active");
+        document.getElementById("deleteModal").classList.add("active");
       });
     });
+
+  // Логика редактирования (Кнопка + Long Press на телефоне)
+  document.querySelectorAll(".word-row:not(.edit-attached)").forEach((row) => {
+    row.classList.add("edit-attached");
+
+    let pressTimer;
+
+    // Функция открытия модалки
+    const triggerEdit = () => {
+      preventAudioPlay = true; // Отключаем звук для этого клика
+      openEditModal(row);
+    };
+
+    // Слушатель для мобильных (Long Press)
+    row.addEventListener(
+      "touchstart",
+      (e) => {
+        if (e.target.closest(".delete-btn") || e.target.closest(".edit-btn"))
+          return;
+        pressTimer = setTimeout(triggerEdit, 600); // 600мс удержания
+      },
+      { passive: true },
+    );
+
+    row.addEventListener("touchend", () => clearTimeout(pressTimer));
+    row.addEventListener("touchmove", () => clearTimeout(pressTimer));
+
+    // Клик по кнопке для ПК
+    const editBtn = row.querySelector(".edit-btn");
+    if (editBtn) {
+      editBtn.addEventListener("click", triggerEdit);
+    }
+  });
 }
 
 // ================= LOAD DATA LOGIC =================
@@ -199,8 +237,27 @@ document.getElementById("daySelect").addEventListener("change", function () {
 });
 
 document.getElementById("clearBtn").addEventListener("click", function () {
+  // Очищаємо стандартні поля
   document.getElementById("searchInput").value = "";
   document.getElementById("daySelect").value = "";
+
+  // Скидаємо візуальну частину кастомного селекта
+  const wrapper = document.getElementById("filterDaySelectWrapper");
+  if (wrapper) {
+    const triggerSpan = wrapper.querySelector(".custom-select-trigger span");
+    const options = wrapper.querySelectorAll(".custom-option");
+    const defaultOption = wrapper.querySelector(
+      '.custom-option[data-value=""]',
+    );
+
+    // Повертаємо початковий текст
+    if (triggerSpan) triggerSpan.textContent = "Оберіть тему";
+
+    // Знімаємо виділення з усіх опцій і ставимо на дефолтну
+    options.forEach((opt) => opt.classList.remove("selected"));
+    if (defaultOption) defaultOption.classList.add("selected");
+  }
+
   loadWords(true);
 });
 
@@ -236,7 +293,7 @@ confirmBtn.addEventListener("click", function () {
           deleteModal.classList.remove("active");
           // Удаляем строку из DOM без перезагрузки всего списка
           const btn = document.querySelector(
-            `.delete-btn[data-id="${wordIdToDelete}"]`
+            `.delete-btn[data-id="${wordIdToDelete}"]`,
           );
           if (btn) {
             const row = btn.closest("tr");
@@ -260,3 +317,142 @@ document.addEventListener("DOMContentLoaded", () => {
       window.speechSynthesis.getVoices();
   }
 });
+// ================= EDIT LOGIC =================
+const editModal = document.getElementById("editModal");
+const editForm = document.getElementById("editForm");
+
+function openEditModal(row) {
+  document.getElementById("editId").value = row.dataset.id;
+  document.getElementById("editArticle").value = row.dataset.article;
+  document.getElementById("editGerman").value = row.dataset.german;
+  document.getElementById("editTranslation").value = row.dataset.translation;
+  document.getElementById("editDayId").value = row.dataset.dayId;
+  document.getElementById("editDescription").value = row.dataset.description;
+
+  editModal.classList.add("active");
+}
+
+// Закрытие окна
+document
+  .getElementById("cancelEdit")
+  .addEventListener("click", () => editModal.classList.remove("active"));
+editModal.addEventListener("click", (e) => {
+  if (e.target === editModal) editModal.classList.remove("active");
+});
+
+// Сохранение изменений без перезагрузки (AJAX)
+editForm.addEventListener("submit", function (e) {
+  e.preventDefault();
+  const formData = new FormData(this);
+
+  fetch("", {
+    method: "POST",
+    body: formData,
+  })
+    .then((res) => res.text())
+    .then((res) => {
+      if (res.trim() === "success") {
+        editModal.classList.remove("active");
+
+        // Обновляем строку в таблице визуально
+        const id = formData.get("edit_id");
+        const row = document.querySelector(`.word-row[data-id="${id}"]`);
+        if (row) {
+          // Обновляем data-атрибуты
+          row.dataset.article = formData.get("article");
+          row.dataset.german = formData.get("german");
+          row.dataset.translation = formData.get("translation");
+          row.dataset.dayId = formData.get("day_id");
+          row.dataset.description = formData.get("description");
+
+          // Обновляем текст
+          row.querySelector(".article-cell").textContent =
+            formData.get("article");
+
+          row.children[3].textContent = formData.get("translation"); // ячейка перевода
+
+          // Название темы из селекта
+          const daySelect = document.getElementById("editDayId");
+          const dayText = daySelect.options[daySelect.selectedIndex].text;
+          row.querySelector(".day-cell").textContent = formData.get("day_id")
+            ? dayText
+            : "—";
+
+          // Обновляем слово для озвучки
+          const fullWord =
+            (formData.get("article") ? formData.get("article") + " " : "") +
+            formData.get("german");
+          row.querySelector(".word-cell").dataset.word = fullWord;
+        }
+      } else {
+        alert("Помилка збереження!");
+      }
+    });
+});
+/**
+ * dictionary-accordion.js
+ * Розгортає/згортає рядок деталей при кліку на рядок таблиці або кнопку ▾
+ * Сумісний з існуючим dictionary.js (longpress → edit, click word → звук)
+ */
+
+(function () {
+  // Делегуємо на tbody щоб працювало з динамічно доданими рядками (infinite scroll)
+  const table = document.getElementById("wordsTable");
+  if (!table) return;
+
+  table.addEventListener("click", function (e) {
+    const target = e.target;
+
+    // Ігноруємо кліки по edit/delete — вони мають свій обробник
+    if (target.closest(".edit-btn") || target.closest(".delete-btn")) return;
+
+    // Ігноруємо кліки по слову — там озвучування (обробляється в dictionary.js)
+    // Але якщо клік на ▾ — завжди розгортаємо
+    const isExpandBtn = target.closest(".expand-btn");
+    const row = target.closest(".word-row");
+    if (!row) return;
+
+    // Якщо клік саме на word-cell і це не кнопка expand — нехай dictionary.js обробить звук,
+    // але ТАКОЖ розгортаємо (зручно на мобільному)
+    // Якщо хочете щоб клік на слово лише грав звук — раскоментуйте рядок нижче:
+    // if (!isExpandBtn && target.closest('.word-cell')) return;
+
+    toggleAccordion(row);
+  });
+
+  function toggleAccordion(row) {
+    const id = row.dataset.id;
+    const accRow = table.querySelector(`.accordion-row[data-for="${id}"]`);
+    if (!accRow) return;
+
+    const expandBtn = row.querySelector(".expand-btn");
+    const isOpen = accRow.classList.contains("open");
+
+    // Закриваємо всі інші відкриті
+    table.querySelectorAll(".accordion-row.open").forEach((r) => {
+      r.classList.remove("open");
+      const forId = r.dataset.for;
+      const parentRow = table.querySelector(`.word-row[data-id="${forId}"]`);
+      if (parentRow) {
+        parentRow.classList.remove("expanded");
+        const btn = parentRow.querySelector(".expand-btn");
+        if (btn) btn.classList.remove("open");
+      }
+    });
+
+    // Відкриваємо поточний (якщо він був закритий)
+    if (!isOpen) {
+      accRow.classList.add("open");
+      row.classList.add("expanded");
+      if (expandBtn) expandBtn.classList.add("open");
+
+      // Плавний скрол до рядка якщо він за межами екрану
+      setTimeout(() => {
+        const rect = accRow.getBoundingClientRect();
+        if (rect.bottom > window.innerHeight) {
+          accRow.scrollIntoView({ behavior: "smooth", block: "nearest" });
+        }
+      }, 50);
+    }
+  }
+})();
