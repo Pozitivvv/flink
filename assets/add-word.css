@@ -709,3 +709,256 @@ table td b {
 .custom-select-options::-webkit-scrollbar-thumb:hover {
   background: rgba(255, 255, 255, 0.3);
 }
+/* ================= ТАБЛИЦА СЛОВ (ОБНОВЛЕННАЯ) ================= */
+.table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  border-radius: 16px;
+  margin-bottom: 30px;
+}
+.table-wrapper table {
+  margin: 0;
+}
+
+.article-cell {
+  width: 52px;
+  min-width: 52px;
+  max-width: 52px;
+  text-align: center;
+  font-weight: 600;
+  color: #3b82f6;
+  font-size: 14px;
+}
+td.word-cell {
+  max-width: 180px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.day-cell {
+  color: #9ca3af;
+  font-size: 13px;
+}
+.has-desc {
+  font-size: 12px;
+  margin-left: 6px;
+  cursor: help;
+}
+
+/* Кнопки действий */
+.action-cell {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  justify-content: flex-end;
+}
+.edit-btn,
+.expand-btn {
+  background: none;
+  border: none;
+  font-size: 18px;
+  cursor: pointer;
+  opacity: 0.7;
+  transition: all 0.2s ease;
+  color: #6b7280; /* Робимо стрілочку світло-сірою */
+}
+
+.edit-btn:hover,
+.expand-btn:hover {
+  opacity: 1;
+  transform: scale(1.15);
+  color: #e4e4e4; /* При наведенні стає білою */
+}
+
+.expand-btn.open {
+  transform: rotate(180deg);
+  color: #3b82f6; /* Синя при розгортанні */
+}
+.edit-btn:hover,
+.expand-btn:hover {
+  opacity: 1;
+  transform: scale(1.15);
+}
+.expand-btn.open {
+  transform: rotate(180deg);
+  color: #3b82f6;
+}
+
+/* Аккордеон */
+.accordion-row {
+  display: none;
+}
+.accordion-row.open {
+  display: table-row;
+}
+.accordion-cell {
+  padding: 0 !important;
+  border-bottom: 2px solid #3b82f6 !important;
+  background: #111 !important;
+}
+.accordion-content {
+  padding: 16px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  animation: accOpen 0.2s ease;
+}
+@keyframes accOpen {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.acc-full-word {
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 1.2;
+}
+.acc-article {
+  color: #3b82f6;
+}
+.acc-german {
+  color: #fff;
+}
+.acc-translation {
+  font-size: 16px;
+  color: #c4c4c4;
+}
+.acc-meta {
+  font-size: 13px;
+  color: #9ca3af;
+}
+.acc-description {
+  background: rgba(59, 130, 246, 0.06);
+  border-left: 3px solid #3b82f6;
+  border-radius: 0 8px 8px 0;
+  padding: 10px 14px;
+}
+.acc-label {
+  font-size: 12px;
+  font-weight: 600;
+  color: #6b7280;
+  text-transform: uppercase;
+}
+.word-row.expanded {
+  background: #161616 !important;
+}
+.word-row.expanded td {
+  border-bottom-color: transparent !important;
+}
+/* ================= ТАБЛИЦЯ (ФІКС КНОПОК, ОБРІЗКИ ТА АКОРДЕОНУ) ================= */
+
+/* 1. Жорстка обрізка тексту для мобільних екранів */
+td.word-cell {
+  max-width: 100px; /* Зменшили ліміт для телефонів */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+td.translation-cell {
+  max-width: 100px; /* Зменшили ліміт для телефонів */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* 2. Контейнер кнопок (щоб вони не злипалися і мали своє місце) */
+.action-cell {
+  display: flex;
+  gap: 12px; /* Відстань між кнопками */
+  align-items: center;
+  justify-content: flex-end;
+  min-width: 110px; /* Бронюємо місце, щоб текст їх не розчавив */
+}
+
+/* 3. Дизайн самих кнопок (олівець, стрілочка) */
+.edit-btn,
+.expand-btn {
+  background: none;
+  border: none;
+  font-size: 18px;
+  cursor: pointer;
+  color: #6b7280;
+  transition: all 0.2s ease;
+  padding: 0;
+  display: flex;
+  align-items: center;
+}
+
+.edit-btn:hover,
+.expand-btn:hover {
+  color: #e4e4e4;
+  transform: scale(1.15);
+}
+
+.expand-btn.open {
+  transform: rotate(180deg);
+  color: #3b82f6;
+}
+
+/* 4. Акордеон (розгорнуті деталі) */
+.accordion-row {
+  display: none;
+}
+.accordion-row.open {
+  display: table-row;
+}
+.accordion-cell {
+  padding: 0 !important;
+  border-bottom: 2px solid #3b82f6 !important;
+  background: #111 !important;
+}
+.accordion-content {
+  padding: 16px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.acc-full-word {
+  font-size: 22px;
+  font-weight: 700;
+}
+.acc-article {
+  color: #3b82f6;
+}
+.acc-german {
+  color: #fff;
+}
+.acc-translation {
+  font-size: 16px;
+  color: #c4c4c4;
+}
+.acc-description {
+  background: rgba(59, 130, 246, 0.06);
+  border-left: 3px solid #3b82f6;
+  border-radius: 0 8px 8px 0;
+  padding: 10px 14px;
+}
+.acc-label {
+  font-size: 12px;
+  font-weight: 600;
+  color: #6b7280;
+  text-transform: uppercase;
+}
+.has-desc {
+  font-size: 12px;
+  margin-left: 6px;
+  cursor: help;
+}
+
+/* Адаптив для ПК (повертаємо широкі ліміти) */
+@media (min-width: 768px) {
+  td.word-cell {
+    max-width: 240px;
+  }
+  td.translation-cell {
+    max-width: 220px;
+  }
+}

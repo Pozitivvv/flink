@@ -289,12 +289,25 @@ if (isset($_GET['ajax']) && $_GET['ajax'] === '1') {
                     <input type="text" id="editTranslation" name="translation" placeholder="Переклад" required>
                 </div>
                 <div class="form-group">
-                    <select id="editDayId" name="day_id">
-                        <option value="">Без теми</option>
-                        <?php foreach ($days as $day): ?>
-                            <option value="<?= $day['id'] ?>"><?= htmlspecialchars($day['title']) ?></option>
-                        <?php endforeach; ?>
-                    </select>
+                    <div class="form-group">
+                        <div class="custom-select-wrapper" id="editDaySelectWrapper">
+                            <div class="custom-select-trigger">
+                                <span>Без теми</span>
+                                <svg width="14" height="8" viewBox="0 0 14 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M1 1L7 7L13 1" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                </svg>
+                            </div>
+                            <div class="custom-select-options">
+                                <div class="custom-option selected" data-value="">Без теми</div>
+                                <?php foreach ($days as $day): ?>
+                                    <div class="custom-option" data-value="<?= $day['id'] ?>">
+                                        <?= htmlspecialchars($day['title']) ?>
+                                    </div>
+                                <?php endforeach; ?>
+                            </div>
+                            <input type="hidden" name="day_id" id="editDayId" value="">
+                        </div>
+                    </div>
                 </div>
                 <div class="form-group" style="margin-bottom: 20px;">
                     <textarea id="editDescription" name="description" placeholder="Додатковий опис або приклад використання..."></textarea>

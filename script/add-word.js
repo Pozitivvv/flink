@@ -401,48 +401,64 @@ if (modal) {
 }
 
 // Подтвердить удаление
+// Подтвердить удаление
 if (confirmBtn) {
   confirmBtn.addEventListener("click", function () {
     if (wordIdToDelete) {
-      const xhr = new XMLHttpRequest();
       const formData = new FormData();
       formData.append("delete_id", wordIdToDelete);
-      xhr.open("POST", "", true);
-      xhr.onload = function () {
-        if (xhr.responseText.trim() === "success") {
-          // Удаляем строку из таблицы
-          const row = document.getElementById("word-" + wordIdToDelete);
-          if (row) {
-            row.style.opacity = "0";
-            row.style.transform = "translateX(-20px)";
 
-            setTimeout(() => {
-              row.remove();
+      fetch("", {
+        method: "POST",
+        body: formData,
+      })
+        .then((res) => res.text())
+        .then((res) => {
+          if (res.trim() === "success") {
+            // Находим главную строку и строку-аккордеон
+            const row = document.querySelector(
+              `.word-row[data-id="${wordIdToDelete}"]`,
+            );
+            const accRow = document.querySelector(
+              `.accordion-row[data-for="${wordIdToDelete}"]`,
+            );
 
-              const remainingWords =
-                document.querySelectorAll('tr[id^="word-"]');
-              if (remainingWords.length === 0) {
-                const table = document.querySelector("table");
-                if (table) {
-                  const emptyMessage = document.createElement("p");
-                  emptyMessage.style.cssText =
-                    "color:#7f8c8d; margin-top:20px;";
-                  emptyMessage.textContent = "Поки що немає слів у цій темі.";
-                  table.parentNode.insertBefore(emptyMessage, table);
-                  table.remove();
+            if (row) {
+              row.style.transition = "all 0.3s ease";
+              row.style.opacity = "0";
+              row.style.transform = "translateX(-20px)";
+              if (accRow) accRow.style.opacity = "0";
+
+              setTimeout(() => {
+                row.remove();
+                if (accRow) accRow.remove();
+
+                // Проверяем, остались ли слова в таблице
+                const remainingWords = document.querySelectorAll(".word-row");
+                if (remainingWords.length === 0) {
+                  const tbody = document.querySelector("#wordsTable tbody");
+                  if (tbody) {
+                    tbody.innerHTML = `
+                      <tr>
+                        <td colspan="4" style="text-align: center; color: #6b6b6b; padding: 40px 20px; animation: fadeIn 0.3s ease;">
+                          Поки що немає слів у цій темі.
+                        </td>
+                      </tr>
+                    `;
+                  }
                 }
-              }
-            }, 300);
+              }, 300);
+            }
+
+            // Закрываем модалку
+            const modal = document.getElementById("deleteModal");
+            if (modal) modal.classList.remove("active");
+            wordIdToDelete = null;
           }
-          if (modal) modal.classList.remove("active");
-          wordIdToDelete = null;
-        }
-      };
-      xhr.send(formData);
+        });
     }
   });
 }
-
 // Закриття модалки по ESC
 document.addEventListener("keydown", function (e) {
   if (e.key === "Escape" && modal && modal.classList.contains("active")) {
@@ -455,4 +471,139 @@ document.addEventListener("keydown", function (e) {
 document.addEventListener("DOMContentLoaded", function () {
   attachDeleteEvents();
   attachSoundEvents();
+});
+// ================= EDIT & ACCORDION & AUDIO LOGIC (PORTED FROM DICTIONARY) =================
+
+const editModal = document.getElementById("editModal");
+const editForm = document.getElementById("editForm");
+const wordsTable = document.getElementById("wordsTable");
+
+if (wordsTable) {
+  wordsTable.addEventListener("click", function (e) {
+    const target = e.target;
+    const row = target.closest(".word-row");
+    if (!row) return;
+
+    // 1. Клик по кнопке "Редактировать"
+    if (target.closest(".edit-btn")) {
+      openEditModal(row);
+      return;
+    }
+
+    // 2. Клик по кнопке "Удалить" (уже обрабатывается вашим старым кодом,
+    // но если нужно делегировать, можно добавить сюда)
+    if (target.closest(".delete-btn")) {
+      wordIdToDelete = target.closest(".delete-btn").dataset.id;
+      document.getElementById("deleteModal").classList.add("active");
+      return;
+    }
+
+    // 3. Клик по слову (Озвучка)
+    if (target.closest(".word-cell") && !target.closest(".expand-btn")) {
+      const cell = target.closest(".word-cell");
+      const word = cell.dataset.word;
+
+      const textSpan = cell.querySelector(".word-text");
+      if (textSpan) {
+        textSpan.style.opacity = "0.5";
+        setTimeout(() => (textSpan.style.opacity = "1"), 200);
+      }
+      playWord(word);
+    }
+
+    // 4. Аккордеон (открывается при клике на строку или стрелочку)
+    if (!target.closest(".action-cell") || target.closest(".expand-btn")) {
+      toggleAccordion(row);
+    }
+  });
+}
+
+function toggleAccordion(row) {
+  const id = row.dataset.id;
+  const accRow = wordsTable.querySelector(`.accordion-row[data-for="${id}"]`);
+  if (!accRow) return;
+
+  const expandBtn = row.querySelector(".expand-btn");
+  const isOpen = accRow.classList.contains("open");
+
+  // Закрываем другие
+  wordsTable.querySelectorAll(".accordion-row.open").forEach((r) => {
+    r.classList.remove("open");
+    const parentRow = wordsTable.querySelector(
+      `.word-row[data-id="${r.dataset.for}"]`,
+    );
+    if (parentRow) {
+      parentRow.classList.remove("expanded");
+      const btn = parentRow.querySelector(".expand-btn");
+      if (btn) btn.classList.remove("open");
+    }
+  });
+
+  if (!isOpen) {
+    accRow.classList.add("open");
+    row.classList.add("expanded");
+    if (expandBtn) expandBtn.classList.add("open");
+  }
+}
+
+// Открытие модалки редактирования
+function openEditModal(row) {
+  document.getElementById("editId").value = row.dataset.id;
+  document.getElementById("editArticle").value = row.dataset.article;
+  document.getElementById("editGerman").value = row.dataset.german;
+  document.getElementById("editTranslation").value = row.dataset.translation;
+  document.getElementById("editDescription").value = row.dataset.description;
+
+  // Кастомный селект для "Типа"
+  const typeValue = row.dataset.type;
+  document.getElementById("editType").value = typeValue;
+
+  const wrapper = document.getElementById("editTypeSelectWrapper");
+  const triggerSpan = wrapper.querySelector(".custom-select-trigger span");
+  const targetOption = wrapper.querySelector(
+    `.custom-option[data-value="${typeValue}"]`,
+  );
+
+  wrapper
+    .querySelectorAll(".custom-option")
+    .forEach((opt) => opt.classList.remove("selected"));
+  if (targetOption) {
+    triggerSpan.textContent = targetOption.textContent.trim();
+    targetOption.classList.add("selected");
+  } else {
+    triggerSpan.textContent = "— Частина мови —";
+  }
+
+  editModal.classList.add("active");
+}
+
+// Закрытие модалки
+document
+  .getElementById("cancelEdit")
+  ?.addEventListener("click", () => editModal.classList.remove("active"));
+editModal?.addEventListener("click", (e) => {
+  if (e.target === editModal) editModal.classList.remove("active");
+});
+
+// Сохранение изменений (AJAX)
+editForm?.addEventListener("submit", function (e) {
+  e.preventDefault();
+  const formData = new FormData(this);
+
+  fetch("", {
+    method: "POST",
+    body: formData,
+  })
+    .then((res) => res.text())
+    .then((res) => {
+      if (res.trim() === "success") {
+        editModal.classList.remove("active");
+
+        // Перезагрузка страницы для обновления таблицы и аккордеонов
+        // (самый надежный вариант для add_word.php)
+        location.reload();
+      } else {
+        alert("Помилка збереження!");
+      }
+    });
 });

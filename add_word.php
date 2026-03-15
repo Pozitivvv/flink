@@ -28,8 +28,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['ajax_add'])) {
     $description = trim($_POST['description'] ?? '');
     if ($description !== '') {
         // 1. Вирізаємо всі HTML-теги
-        $description = strip_tags($description); 
-        
+        $description = strip_tags($description);
+
         // 2. Жорстко обрізаємо до 500 символів
         if (mb_strlen($description, 'UTF-8') > 500) {
             $description = mb_substr($description, 0, 500, 'UTF-8');
@@ -48,7 +48,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['ajax_add'])) {
         // Проверяем уникальность слова
         $check = $pdo->prepare("SELECT id FROM words WHERE user_id = ? AND german = ?");
         $check->execute([$user_id, $german]);
-        
+
         if ($check->fetch()) {
             echo json_encode(['status' => 'error', 'message' => ' Це слово вже є у вашому словнику.']);
         } else {
@@ -89,7 +89,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['ajax_add'])) {
 
             echo json_encode(['status' => 'success', 'message' => ' Слово додано!']);
         }
-
     } else {
         echo json_encode(['status' => 'error', 'message' => 'Заповніть усі обов\'язкові поля.']);
     }
@@ -112,6 +111,21 @@ if (isset($_POST['delete_id'])) {
         echo "error";
     }
     exit;
+}
+
+// ✅ Редактирование слова (AJAX)
+if (isset($_POST['edit_id'])) {
+    $edit_id = (int)$_POST['edit_id'];
+    $article = trim($_POST['article'] ?? '');
+    $german = trim($_POST['german'] ?? '');
+    $translation = trim($_POST['translation'] ?? '');
+    $type = trim($_POST['type'] ?? '');
+    if ($type === '') $type = null;
+    $description = trim($_POST['description'] ?? '');
+
+    $stmt = $pdo->prepare("UPDATE words SET article = ?, german = ?, translation = ?, type = ?, description = ? WHERE id = ? AND user_id = ?");
+    $stmt->execute([$article, $german, $translation, $type, $description, $edit_id, $user_id]);
+    exit('success');
 }
 
 // ✅ Загружаем темы
@@ -150,6 +164,7 @@ $app_version = getAppVersion($pdo);
 
 <!DOCTYPE html>
 <html lang="uk">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -159,28 +174,29 @@ $app_version = getAppVersion($pdo);
     <link rel="stylesheet" href="assets/add-word.css?v=<?= htmlspecialchars($app_version) ?>">
     <link rel="stylesheet" href="assets/main-style.css?v=<?= htmlspecialchars($app_version) ?>">
 </head>
+
 <body>
     <div class="container">
 
-    <div class="page-header">
-        <a href="#" class="back-btn" onclick="goBack()">
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                stroke-width="2" stroke-linecap="square" stroke-linejoin="miter">
-                <path d="M15 18l-6-6 6-6"/>
-            </svg>
-        </a>
-        <h1>✍️ Додати слово</h1>
-    </div>
+        <div class="page-header">
+            <a href="#" class="back-btn" onclick="goBack()">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                    stroke-width="2" stroke-linecap="square" stroke-linejoin="miter">
+                    <path d="M15 18l-6-6 6-6" />
+                </svg>
+            </a>
+            <h1>✍️ Додати слово</h1>
+        </div>
 
         <div id="message-container"></div>
-        
+
         <form id="addWordForm">
             <label>Оберіть тему:</label>
             <div class="custom-select-wrapper">
                 <div class="custom-select-trigger">
                     <span><?= $initial_theme_text ?></span>
                     <svg width="14" height="8" viewBox="0 0 14 8" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M1 1L7 7L13 1" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M1 1L7 7L13 1" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
                     </svg>
                 </div>
                 <div class="custom-select-options">
@@ -195,7 +211,7 @@ $app_version = getAppVersion($pdo);
             </div>
 
             <input type="text" maxlength="10" name="article" class="smart-input" placeholder="Артикль (der / die / das)">
-            
+
             <div class="input-wrapper">
                 <input type="text" maxlength="50" name="german" class="smart-input" placeholder="Німецьке слово" required>
                 <button type="button" id="quickPasteBtn" class="quick-paste-btn" title="Вставити з буфера">
@@ -206,8 +222,8 @@ $app_version = getAppVersion($pdo);
                 </button>
             </div>
 
-            <input  type="text" maxlength="100" name="translation" class="smart-input" placeholder="Переклад" required>
-            
+            <input type="text" maxlength="100" name="translation" class="smart-input" placeholder="Переклад" required>
+
             <button type="button" class="advanced-toggle" id="advancedToggleBtn">
                 <span>Додати тип та опис (необов'язково)</span>
                 <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -221,7 +237,7 @@ $app_version = getAppVersion($pdo);
                         <div class="custom-select-trigger">
                             <span>Частина мови (необов'язково)</span>
                             <svg width="14" height="8" viewBox="0 0 14 8" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M1 1L7 7L13 1" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M1 1L7 7L13 1" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
                             </svg>
                         </div>
                         <div class="custom-select-options">
@@ -242,11 +258,11 @@ $app_version = getAppVersion($pdo);
 
             <button type="submit">Додати слово</button>
         </form>
-        
+
         <div style="margin-top: -10px; margin-bottom: 10px;" class="section-hint">
             <p>Або <a href="function/modules/modules.php" class="hint-link">переглянути модулі</a> та додати готові пакети слів</p>
         </div>
-        
+
         <nav class="bottom-nav">
             <a href="dashboard.php" class="nav-item">
                 <span>🏠</span>
@@ -275,32 +291,100 @@ $app_version = getAppVersion($pdo);
         <?php endif; ?>
 
         <?php if ($words): ?>
-            <table>
-                <tr>
-                    <th>Артикль</th>
-                    <th>Слово</th>
-                    <th>Переклад</th>
-                    <th>Тип</th>
-                    <th></th>
-                </tr>
+            <div class="audio-hint">
+                <div class="hint-row">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+                        <path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path>
+                    </svg>
+                    Натисніть на слово - прослухати вимову
+                </div>
+                <div class="hint-row">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="9 18 15 12 9 6" />
+                    </svg>
+                    Натисніть ▾ - розгорнути деталі
+                </div>
+            </div>
 
-                <?php foreach ($words as $word): ?>
-                    <tr id="word-<?= $word['id'] ?>">
-                        <td><?= htmlspecialchars($word['article']) ?></td>
-                        <td>
-                            <b><?= htmlspecialchars($word['german']) ?></b>
-                            <?php if (!empty($word['description'])): ?>
-                                <div style="font-size: 13px; color: #9ca3af; margin-top: 6px; white-space: pre-wrap; line-height: 1.4; word-wrap: break-word;"><?= htmlspecialchars($word['description']) ?></div>
-                            <?php endif; ?>
-                        </td>
-                        <td><?= htmlspecialchars($word['translation']) ?></td>
-                        <td><?= htmlspecialchars($word['type']) ?></td>
-                        <td><button class="delete-btn" data-id="<?= $word['id'] ?>">🗑️</button></td>
-                    </tr>
-                <?php endforeach; ?>                
-            </table>
+            <div class="table-wrapper">
+                <table id="wordsTable">
+                    <thead>
+                        <tr>
+                            <th>Артикль</th>
+                            <th>Слово</th>
+                            <th>Переклад</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php foreach ($words as $word): ?>
+                            <?php
+                            $fullWord = trim(($word['article'] ? $word['article'] . ' ' : '') . $word['german']);
+                            $hasDesc = !empty($word['description']);
+                            $hasDescIcon = $hasDesc ? '<span class="has-desc" title="Є опис">📝</span>' : '';
+                            ?>
+                            <tr class="word-row"
+                                data-id="<?= $word['id'] ?>"
+                                data-article="<?= htmlspecialchars($word['article'] ?? '') ?>"
+                                data-german="<?= htmlspecialchars($word['german'] ?? '') ?>"
+                                data-translation="<?= htmlspecialchars($word['translation'] ?? '') ?>"
+                                data-type="<?= htmlspecialchars($word['type'] ?? '') ?>"
+                                data-description="<?= htmlspecialchars($word['description'] ?? '') ?>">
+
+                                <td class="article-cell"><?= htmlspecialchars($word['article']) ?></td>
+                                <td class="word-cell" data-word="<?= htmlspecialchars($fullWord) ?>">
+                                    <span class="word-text"><strong><?= htmlspecialchars($word['german']) ?></strong><?= $hasDescIcon ?></span>
+                                </td>
+                                <td class="translation-cell"><?= htmlspecialchars($word['translation']) ?></td>
+
+                                <td class="action-cell" style="white-space: nowrap;">
+                                    <button class="expand-btn" title="Розгорнути">▾</button>
+                                    <button class="edit-btn" title="Редагувати">✏️</button>
+                                    <button class="delete-btn" data-id="<?= $word['id'] ?>">🗑️</button>
+                                </td>
+                            </tr>
+
+                            <tr class="accordion-row" data-for="<?= $word['id'] ?>">
+                                <td colspan="4" class="accordion-cell">
+                                    <div class="accordion-content">
+                                        <div class="acc-full-word">
+                                            <?php if ($word['article']) echo '<span class="acc-article">' . htmlspecialchars($word['article']) . '</span> '; ?>
+                                            <span class="acc-german"><?= htmlspecialchars($word['german']) ?></span>
+                                        </div>
+                                        <div class="acc-translation"><?= htmlspecialchars($word['translation']) ?></div>
+                                        <?php if ($hasDesc): ?>
+                                            <div class="acc-description"><span class="acc-label">Опис:</span>
+                                                <p><?= nl2br(htmlspecialchars($word['description'])) ?></p>
+                                            </div>
+                                        <?php endif; ?>
+                                    </div>
+                                </td>
+                            </tr>
+                        <?php endforeach; ?>
+                    </tbody>
+                </table>
+            </div>
         <?php elseif ($current_day): ?>
-            <p style="color:#7f8c8d;margin-top:20px;">Поки що немає слів у цій темі.</p>
+            <div class="table-wrapper">
+                <table id="wordsTable">
+                    <thead>
+                        <tr>
+                            <th>Артикль</th>
+                            <th>Слово</th>
+                            <th>Переклад</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td colspan="4" style="text-align: center; color: #6b6b6b; padding: 40px 20px;">
+                                Поки що немає слів у цій темі.
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         <?php endif; ?>
         <div class="modal-overlay" id="deleteModal">
             <div class="modal">
@@ -315,16 +399,64 @@ $app_version = getAppVersion($pdo);
                 </div>
             </div>
         </div>
+        <div class="modal-overlay" id="editModal">
+            <div class="modal">
+                <div class="modal-header">
+                    <h2>Редагувати слово</h2>
+                    <p>Змініть дані або додайте опис</p>
+                </div>
+                <form id="editForm">
+                    <input type="hidden" id="editId" name="edit_id">
+
+                    <div class="form-group" style="margin-bottom: 12px;">
+                        <input type="text" id="editArticle" name="article" class="smart-input" placeholder="Артикль (der, die, das)">
+                    </div>
+                    <div class="form-group" style="margin-bottom: 12px;">
+                        <input type="text" id="editGerman" name="german" class="smart-input" placeholder="Слово" required>
+                    </div>
+                    <div class="form-group" style="margin-bottom: 12px;">
+                        <input type="text" id="editTranslation" name="translation" class="smart-input" placeholder="Переклад" required>
+                    </div>
+
+                    <div class="form-group" style="margin-bottom: 12px;">
+                        <div class="custom-select-wrapper" id="editTypeSelectWrapper">
+                            <div class="custom-select-trigger">
+                                <span>— Частина мови —</span>
+                                <svg width="14" height="8" viewBox="0 0 14 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M1 1L7 7L13 1" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                </svg>
+                            </div>
+                            <div class="custom-select-options">
+                                <div class="custom-option" data-value="">— Частина мови —</div>
+                                <div class="custom-option" data-value="noun">Іменник</div>
+                                <div class="custom-option" data-value="verb">Дієслово</div>
+                                <div class="custom-option" data-value="adj">Прикметник</div>
+                            </div>
+                            <input type="hidden" name="type" id="editType" value="">
+                        </div>
+                    </div>
+
+                    <div class="form-group" style="margin-bottom: 20px;">
+                        <textarea id="editDescription" name="description" class="smart-input" placeholder="Додатковий опис або приклад використання..."></textarea>
+                    </div>
+
+                    <div class="modal-buttons">
+                        <button type="button" class="modal-btn modal-btn-cancel" id="cancelEdit">Скасувати</button>
+                        <button type="submit" class="modal-btn modal-btn-save" style="background: linear-gradient(135deg, #3b82f6, #2563eb); color: white;">Зберегти</button>
+                    </div>
+                </form>
+            </div>
+        </div>
         <div id="smartPasteOverlay" class="sp-overlay">
             <div class="sp-modal">
                 <div class="sp-header">
                     <h3>✨ Розумна вставка</h3>
                     <button type="button" class="sp-close" id="smartPasteClose">×</button>
                 </div>
-                
+
                 <div>
                     <p class="sp-text-hint">Ми знайшли переклад у скопійованому тексті. Бажаєте автоматично розподілити його по полях?</p>
-                    
+
                     <div class="sp-content-box">
                         <p id="sp-article-text" style="display:none; color: #3b82f6; font-weight: 600; font-size: 14px; margin-bottom: 4px;"></p>
                         <p id="sp-word-text" style="font-size: 18px; font-weight: bold; color: #fff; margin-bottom: 4px;"></p>
@@ -338,8 +470,9 @@ $app_version = getAppVersion($pdo);
                 </div>
             </div>
         </div>
-            
-    <script src="script/add-word.js"></script>
+
+        <script src="script/add-word.js"></script>
 
 </body>
+
 </html>
