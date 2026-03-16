@@ -250,6 +250,11 @@ if (!$t) {
     <?php include 'function/tags/icons.html'; ?>
     <?php include 'function/tags/seo.html'; ?>
     <title><?= htmlspecialchars($t['page_title']) ?></title>
+    <link rel="canonical" href="https://wortly.one/?lang=<?= $lang ?>">
+    <link rel="alternate" hreflang="uk" href="https://wortly.one/?lang=uk">
+    <link rel="alternate" hreflang="de" href="https://wortly.one/?lang=de">
+    <link rel="alternate" hreflang="en" href="https://wortly.one/?lang=en">
+    <link rel="alternate" hreflang="x-default" href="https://wortly.one/">
     <link rel="manifest" href="/manifest.json">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>

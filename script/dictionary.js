@@ -10,68 +10,6 @@ const wordsTable = document.getElementById("wordsTable");
 const loadingSpinner = document.getElementById("loadingSpinner");
 const sentinel = document.getElementById("scroll-sentinel");
 
-// ================= VOICE SYSTEM =================
-function playWord(word) {
-  const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
-  if (isIOS) {
-    playWithWikimedia(word);
-  } else {
-    fallbackPlayWord(word);
-  }
-}
-
-function playWithWikimedia(word) {
-  const articles = [
-    "der",
-    "die",
-    "das",
-    "den",
-    "dem",
-    "des",
-    "einen",
-    "einem",
-    "eines",
-    "einer",
-  ];
-  let wordWithoutArticle = word;
-
-  for (let article of articles) {
-    if (word.toLowerCase().startsWith(article + " ")) {
-      wordWithoutArticle = word.substring(article.length + 1);
-      break;
-    }
-  }
-
-  const encodedWord = encodeURIComponent(wordWithoutArticle);
-  const audioUrl = `https://commons.wikimedia.org/wiki/Special:FilePath/De-${encodedWord}.ogg`;
-  const audio = new Audio(audioUrl);
-
-  const timeout = setTimeout(() => {
-    audio.pause();
-    fallbackPlayWord(word);
-  }, 3000);
-
-  audio.onplay = () => clearTimeout(timeout);
-  audio.onerror = () => fallbackPlayWord(word);
-  audio.play().catch(() => fallbackPlayWord(word));
-}
-
-function fallbackPlayWord(word) {
-  if ("speechSynthesis" in window) {
-    window.speechSynthesis.cancel();
-    const utterance = new SpeechSynthesisUtterance(word);
-    utterance.lang = "de-DE";
-
-    const voices = window.speechSynthesis.getVoices();
-    const germanVoice = voices.find(
-      (v) => v.lang === "de-DE" || v.lang.startsWith("de-"),
-    );
-    if (germanVoice) utterance.voice = germanVoice;
-
-    setTimeout(() => window.speechSynthesis.speak(utterance), 100);
-  }
-}
-
 // Функция назначения событий на новые элементы
 // Глобальная переменная для предотвращения аудио при долгом нажатии
 let preventAudioPlay = false;
@@ -94,7 +32,15 @@ function attachEvents() {
           textSpan.style.opacity = "0.5";
           setTimeout(() => (textSpan.style.opacity = "1"), 200);
         }
-        playWord(word);
+
+        // ВЫЗЫВАЕМ ФУНКЦИЮ ИЗ ВАШЕГО ОТДЕЛЬНОГО ФАЙЛА voice.js
+        if (typeof playWord === "function") {
+          playWord(word);
+        } else {
+          console.error(
+            "Функция playWord не найдена. Проверьте подключение voice.js",
+          );
+        }
       });
     });
 
@@ -311,12 +257,8 @@ confirmBtn.addEventListener("click", function () {
 // При первой загрузке страницы запускаем загрузку данных
 document.addEventListener("DOMContentLoaded", () => {
   loadWords(true);
-  // Полифилл голосов
-  if ("speechSynthesis" in window) {
-    window.speechSynthesis.onvoiceschanged = () =>
-      window.speechSynthesis.getVoices();
-  }
 });
+
 // ================= EDIT LOGIC =================
 const editModal = document.getElementById("editModal");
 const editForm = document.getElementById("editForm");
@@ -389,6 +331,7 @@ editForm.addEventListener("submit", function (e) {
       }
     });
 });
+
 /**
  * dictionary-accordion.js
  * Розгортає/згортає рядок деталей при кліку на рядок таблиці або кнопку ▾
@@ -411,11 +354,6 @@ editForm.addEventListener("submit", function (e) {
     const isExpandBtn = target.closest(".expand-btn");
     const row = target.closest(".word-row");
     if (!row) return;
-
-    // Якщо клік саме на word-cell і це не кнопка expand — нехай dictionary.js обробить звук,
-    // але ТАКОЖ розгортаємо (зручно на мобільному)
-    // Якщо хочете щоб клік на слово лише грав звук — раскоментуйте рядок нижче:
-    // if (!isExpandBtn && target.closest('.word-cell')) return;
 
     toggleAccordion(row);
   });

@@ -1,105 +1,140 @@
 // voice.js
 console.log("on voice");
 
-function playWord(word) {
+// Получаем язык из глобальной переменной (которую мы зададим через PHP).
+// Если переменная не задана, по умолчанию используем немецкий ('de').
+function getLearningLang() {
+  return window.LEARNING_LANGUAGE || "de";
+}
+
+function playWord(word, langCode = getLearningLang()) {
   const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
 
   if (isIOS) {
-    const wordWithoutArticle = stripArticle(word);
+    const wordWithoutArticle = stripArticle(word, langCode);
 
     // Если это связка слов (есть пробел внутри), сразу используем встроенный голос.
-    // Это критически важно для iOS, иначе асинхронный фолбэк заблокируется браузером.
     if (wordWithoutArticle.includes(" ")) {
-      fallbackPlayWord(word);
+      fallbackPlayWord(word, langCode);
     } else {
       // Для одиночных слов пробуем Wikimedia
-      playWithWikimedia(word, wordWithoutArticle);
+      playWithWikimedia(word, wordWithoutArticle, langCode);
     }
   } else {
     // Для Android/ПК всегда встроенный синтез
-    fallbackPlayWord(word);
+    fallbackPlayWord(word, langCode);
   }
 }
 
-// Вынесли удаление артиклей в отдельную функцию для удобства
-function stripArticle(word) {
-  const articles = [
-    "der",
-    "die",
-    "das",
-    "den",
-    "dem",
-    "des",
-    "denen",
-    "einen",
-    "einem",
-    "einer",
-    "eines",
-    "ein",
-  ];
+// Теперь функция учитывает язык при удалении артиклей
+function stripArticle(word, langCode) {
+  // База артиклей для популярных языков
+  const articlesMap = {
+    de: [
+      "der",
+      "die",
+      "das",
+      "den",
+      "dem",
+      "des",
+      "denen",
+      "einen",
+      "einem",
+      "einer",
+      "eines",
+      "ein",
+    ],
+    en: ["the", "a", "an"],
+    es: ["el", "la", "los", "las", "un", "una", "unos", "unas"],
+    fr: ["le", "la", "les", "l'", "un", "une", "des"],
+    it: ["il", "lo", "la", "i", "gli", "le", "l'", "un", "uno", "una", "un'"],
+  };
+
+  const articles = articlesMap[langCode.toLowerCase()] || [];
   let cleanedWord = word.trim();
   const lowerWord = cleanedWord.toLowerCase();
 
   for (let article of articles) {
-    if (lowerWord.startsWith(article + " ")) {
-      cleanedWord = cleanedWord.substring(article.length + 1).trim();
-      break;
+    // Учитываем языки с апострофами (например, французское l'arbre)
+    if (article.endsWith("'")) {
+      if (lowerWord.startsWith(article)) {
+        cleanedWord = cleanedWord.substring(article.length).trim();
+        break;
+      }
+    } else {
+      // Обычные артикли с пробелом
+      if (lowerWord.startsWith(article + " ")) {
+        cleanedWord = cleanedWord.substring(article.length + 1).trim();
+        break;
+      }
     }
   }
   return cleanedWord;
 }
 
-function playWithWikimedia(originalWord, wordWithoutArticle) {
+function playWithWikimedia(originalWord, wordWithoutArticle, langCode) {
   const encodedWord = encodeURIComponent(wordWithoutArticle);
-  const audioUrl = `https://commons.wikimedia.org/wiki/Special:FilePath/De-${encodedWord}.ogg`;
+
+  // Формируем правильный префикс (de -> De, en -> En, fr -> Fr)
+  const prefix =
+    langCode.charAt(0).toUpperCase() + langCode.slice(1).toLowerCase();
+
+  // Примечание: Wikimedia чаще всего использует префиксы вида De-Wort.ogg, En-Word.ogg.
+  // Если аудио для другого языка там нет (возникнет ошибка 404), наш код автоматически
+  // перехватит ошибку через audio.onerror и включит стандартный системный голос.
+  const audioUrl = `https://commons.wikimedia.org/wiki/Special:FilePath/${prefix}-${encodedWord}.ogg`;
 
   const audio = new Audio(audioUrl);
   audio.volume = 1.0;
 
   audio.onerror = () => {
-    fallbackPlayWord(originalWord);
+    fallbackPlayWord(originalWord, langCode);
   };
 
   const timeout = setTimeout(() => {
     audio.pause();
     audio.currentTime = 0;
-    fallbackPlayWord(originalWord);
+    fallbackPlayWord(originalWord, langCode);
   }, 3000);
 
   audio.onplay = () => clearTimeout(timeout);
 
   audio.play().catch(() => {
-    fallbackPlayWord(originalWord);
+    fallbackPlayWord(originalWord, langCode);
   });
 }
 
-function fallbackPlayWord(word) {
+function fallbackPlayWord(word, langCode) {
   if ("speechSynthesis" in window) {
     window.speechSynthesis.cancel();
     const utterance = new SpeechSynthesisUtterance(word);
-    utterance.lang = "de-DE";
+
+    // Указываем синтезатору речи нужный язык (например, 'en', 'es', 'de')
+    utterance.lang = langCode;
     utterance.rate = 1.0;
     utterance.pitch = 1.0;
     utterance.volume = 1.0;
 
     const voices = window.speechSynthesis.getVoices();
-    const germanVoice = voices.find(
-      (v) => v.lang === "de-DE" || v.lang === "de" || v.lang.startsWith("de-"),
+
+    // Ищем голос, который совпадает с языком.
+    // Поддерживаются как точные совпадения ('de'), так и региональные ('de-DE', 'en-US', 'en-GB')
+    const targetVoice = voices.find(
+      (v) =>
+        v.lang.toLowerCase() === langCode.toLowerCase() ||
+        v.lang.toLowerCase().startsWith(langCode.toLowerCase() + "-"),
     );
 
-    if (germanVoice) {
-      utterance.voice = germanVoice;
+    if (targetVoice) {
+      utterance.voice = targetVoice;
     }
 
-    // ВАЖНО: убрали setTimeout. На iOS Safari вызов speak() через таймер
-    // часто расценивается как программный (без клика) и блокируется.
     window.speechSynthesis.speak(utterance);
   }
 }
 
 // Загружаем голоса при инициализации страницы
 if ("speechSynthesis" in window) {
-  // Safari/iOS иногда требует "пнуть" синтез речи для инициализации голосов
   window.speechSynthesis.getVoices();
   window.speechSynthesis.onvoiceschanged = () => {
     window.speechSynthesis.getVoices();

@@ -9,7 +9,6 @@ if (!isset($_SESSION['user_id'])) {
 
 $user_id = $_SESSION['user_id'];
 $limit = 30; // Сколько слов грузить за раз
-
 // ✅ Удаление слова
 if (isset($_POST['delete_id'])) {
     $delete_id = (int)$_POST['delete_id'];
@@ -320,6 +319,8 @@ if (isset($_GET['ajax']) && $_GET['ajax'] === '1') {
             </form>
         </div>
     </div>
+
+    <script src="script/voice.js"></script>
     <script src="script/main-script.js"></script>
     <script src="script/dictionary.js?v=1.0.1"></script>
 </body>

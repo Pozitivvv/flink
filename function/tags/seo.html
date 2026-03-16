@@ -18,3 +18,7 @@ learn German, German language, German vocabulary, study German, German words, Ge
 <meta property="og:image" content="https://wortly.one/image/ads.png" />
 <meta property="og:url" content="https://wortly.one" />
 <meta property="og:type" content="website" />
+<script>
+  window.LEARNING_LANGUAGE =
+    "<?php echo isset($_SESSION['learning_language']) ? htmlspecialchars($_SESSION['learning_language']) : 'de'; ?>";
+</script>

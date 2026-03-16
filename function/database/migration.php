@@ -2,7 +2,7 @@
 header('Content-Type: text/html; charset=utf-8');
 /**
  * migrate.php — створює всі таблиці для застосунку "Німецький словник"
- * та додає колонки для системи ачивок
+ * та додає колонки для системи ачивок і вибору мови
  */
 
 try {
@@ -37,6 +37,7 @@ try {
             login VARCHAR(100) NOT NULL UNIQUE,
             email VARCHAR(255) UNIQUE NOT NULL,
             password VARCHAR(255) NOT NULL,
+            learning_language VARCHAR(10) DEFAULT 'de',
             errors_fixed INT DEFAULT 0,
             days_active INT DEFAULT 0,
             created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
@@ -44,19 +45,20 @@ try {
     ");
     echo "🧩 Таблиця 'users' створена або вже існує.<br>";
 
-    // 🔧 Перевіряємо наявність колонок для streak і first_login_done
+    // 🔧 Перевіряємо наявність колонок для streak, first_login_done та learning_language
     $cols = $db->query("SHOW COLUMNS FROM users")->fetchAll(PDO::FETCH_COLUMN);
     $alter = [];
 
     if (!in_array('last_active_date', $cols)) $alter[] = "ADD COLUMN last_active_date DATE DEFAULT NULL";
     if (!in_array('current_streak', $cols)) $alter[] = "ADD COLUMN current_streak INT DEFAULT 0";
     if (!in_array('first_login_done', $cols)) $alter[] = "ADD COLUMN first_login_done TINYINT(1) DEFAULT 0";
+    if (!in_array('learning_language', $cols)) $alter[] = "ADD COLUMN learning_language VARCHAR(10) DEFAULT 'de'";
 
     if (!empty($alter)) {
         $db->exec("ALTER TABLE users " . implode(", ", $alter) . ";");
-        echo "🔄 Колонки last_active_date, current_streak, first_login_done додані.<br>";
+        echo "🔄 Додаткові колонки (включаючи learning_language) успішно додані.<br>";
     } else {
-        echo "✅ Усі необхідні колонки вже існують.<br>";
+        echo "✅ Усі необхідні колонки в users вже існують.<br>";
     }
 
     // 📘 Таблиця days
@@ -81,10 +83,11 @@ try {
             german VARCHAR(255) NOT NULL,
             translation VARCHAR(255) NOT NULL,
             errors INT DEFAULT 0,
+            description TEXT NULL,
             created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+            interface_language VARCHAR(10) DEFAULT 'uk';
             FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE,
-            FOREIGN KEY (day_id) REFERENCES days(id) ON DELETE SET NULL,
-            description TEXT NULL;
+            FOREIGN KEY (day_id) REFERENCES days(id) ON DELETE SET NULL
         ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
     ");
     echo "🗣️ Таблиця 'words' створена або вже існує.<br>";
@@ -182,7 +185,8 @@ try {
             FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE,
             FOREIGN KEY (module_id) REFERENCES modules(id) ON DELETE CASCADE
         ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-    ")
+    "); // <--- ТУТ БЫЛА ПРОПУЩЕНА ТОЧКА С ЗАПЯТОЙ
+    echo "📚 Таблиця 'user_modules' створена або вже існує.<br>";
 
     $db->exec("
         CREATE TABLE IF NOT EXISTS app_metadata (
@@ -191,6 +195,8 @@ try {
             release_notes TEXT
         ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
     ");
+    echo "🛠 Таблиця 'app_metadata' створена або вже існує.<br>";
+
     // Повертаємо перевірку зовнішніх ключів
     $db->exec("SET FOREIGN_KEY_CHECKS=1;");
 
@@ -198,4 +204,3 @@ try {
 } catch (PDOException $e) {
     echo "❌ Помилка міграції: " . $e->getMessage();
 }
-?>
