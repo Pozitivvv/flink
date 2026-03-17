@@ -109,16 +109,24 @@ function fallbackPlayWord(word, langCode) {
     window.speechSynthesis.cancel();
     const utterance = new SpeechSynthesisUtterance(word);
 
-    // Указываем синтезатору речи нужный язык (например, 'en', 'es', 'de')
+    // Указываем язык
     utterance.lang = langCode;
-    utterance.rate = 1.0;
+
+    // --- ЛОГИКА ЗАМЕДЛЕНИЯ ---
+    // Если язык начинается на 'en' (en-US, en-GB и т.д.), ставим 0.8.
+    // Для остальных оставляем 1.0 (или тоже можно снизить до 0.9 для четкости)
+    if (langCode.toLowerCase().startsWith("en")) {
+      utterance.rate = 0.7;
+    } else {
+      utterance.rate = 1.0;
+    }
+    // -------------------------
+
     utterance.pitch = 1.0;
     utterance.volume = 1.0;
 
     const voices = window.speechSynthesis.getVoices();
 
-    // Ищем голос, который совпадает с языком.
-    // Поддерживаются как точные совпадения ('de'), так и региональные ('de-DE', 'en-US', 'en-GB')
     const targetVoice = voices.find(
       (v) =>
         v.lang.toLowerCase() === langCode.toLowerCase() ||
