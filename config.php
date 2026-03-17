@@ -1,15 +1,15 @@
 <?php
 // --- ПОДКЛЮЧЕНИЕ К БД ---
-// $DB_HOST = 'localhost';
-// $DB_NAME = 'flink';
-// $DB_USER = 'root';
-// $DB_PASS = 'root';
+$DB_HOST = 'localhost';
+$DB_NAME = 'flink';
+$DB_USER = 'root';
+$DB_PASS = 'root';
 
 // --- ПОДКЛЮЧЕНИЕ К БД ---
-$DB_HOST = 'localhost';
-$DB_NAME = 'flyca583_wortly';
-$DB_USER = 'flyca583_wortly';
-$DB_PASS = 'wortlyCMD_';
+// $DB_HOST = 'localhost';
+// $DB_NAME = 'flyca583_wortly';
+// $DB_USER = 'flyca583_wortly';
+// $DB_PASS = 'wortlyCMD_';
 // --- НАСТРОЙКИ СЕССИИ ---
 $session_lifetime = 60 * 60 * 24 * 7; // 7 дней
 $custom_sess_path = __DIR__ . '/sessions';

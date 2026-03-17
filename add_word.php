@@ -233,6 +233,11 @@ $app_version = getAppVersion($pdo);
 
             <div class="advanced-content" id="advancedContent">
                 <div class="advanced-inner">
+                    <div style="position: relative; margin-bottom: 12px;">
+                        <textarea name="description" id="wordDescription" class="smart-input" maxlength="500" placeholder="Опис, контекст або приклад використання..."></textarea>
+                        <span id="charCount" style="position: absolute; bottom: 12px; right: 12px; font-size: 12px; color: #6b6b6b; pointer-events: none;">0 / 500</span>
+                    </div>
+
                     <div class="custom-select-wrapper">
                         <div class="custom-select-trigger">
                             <span>Частина мови (необов'язково)</span>
@@ -247,11 +252,6 @@ $app_version = getAppVersion($pdo);
                             <div class="custom-option" data-value="adj">Прикметник</div>
                         </div>
                         <input type="hidden" name="type" value="">
-                    </div>
-
-                    <div style="position: relative;">
-                        <textarea name="description" id="wordDescription" class="smart-input" maxlength="500" placeholder="Опис, контекст або приклад використання... (до 500 символів)"></textarea>
-                        <span id="charCount" style="position: absolute; bottom: 26px; right: 12px; font-size: 12px; color: #6b6b6b; pointer-events: none;">0 / 500</span>
                     </div>
                 </div>
             </div>
@@ -406,6 +406,7 @@ $app_version = getAppVersion($pdo);
                     <p>Змініть дані або додайте опис</p>
                 </div>
                 <form id="editForm">
+
                     <input type="hidden" id="editId" name="edit_id">
 
                     <div class="form-group" style="margin-bottom: 12px;">
@@ -435,10 +436,10 @@ $app_version = getAppVersion($pdo);
                             <input type="hidden" name="type" id="editType" value="">
                         </div>
                     </div>
-
                     <div class="form-group" style="margin-bottom: 20px;">
                         <textarea id="editDescription" name="description" class="smart-input" placeholder="Додатковий опис або приклад використання..."></textarea>
                     </div>
+
 
                     <div class="modal-buttons">
                         <button type="button" class="modal-btn modal-btn-cancel" id="cancelEdit">Скасувати</button>
