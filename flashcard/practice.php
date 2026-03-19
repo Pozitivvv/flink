@@ -19,7 +19,7 @@ if ($selectedDayId) {
     $stmt = $pdo->prepare("SELECT id, title FROM days WHERE id=? AND user_id=?");
     $stmt->execute([$selectedDayId, $user_id]);
     $selectedDay = $stmt->fetch(PDO::FETCH_ASSOC);
-    
+
     if ($selectedDay) {
         $selectedDayTitle = $selectedDay['title'];
         $stmt2 = $pdo->prepare("SELECT id, title FROM days WHERE user_id = ? AND id != ? ORDER BY created_at DESC LIMIT 2");
@@ -44,113 +44,117 @@ $allTranslations = $stmt_trans->fetchAll(PDO::FETCH_COLUMN);
 ?>
 
 <!DOCTYPE html>
-    <html lang="uk">
-    <head>
+<html lang="uk">
+
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>🧠 Тест на слова</title>
     <link rel="stylesheet" href="../assets/main-style.css">
     <link rel="stylesheet" href="style/flashcard.css?v=1.0.1">
-    
-</head>
-<body>
-<div class="container">
+    <?php include '../function/tags/seo.html'; ?>
 
-    <div class="page-header">
+</head>
+
+<body>
+    <div class="container">
+
+        <div class="page-header">
             <a href="../dashboard.php" class="back-btn">
                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                     stroke-width="2" stroke-linecap="square" stroke-linejoin="miter">
-                    <path d="M15 18l-6-6 6-6"/>
+                    <path d="M15 18l-6-6 6-6" />
                 </svg>
             </a>
             <h1>🧩 Тест на знання слів</h1>
         </div>
-    
 
-    <!-- Меню выбора тем и режима -->
-<div id="menu">
-    
-    <div id="recentDays">
-        <div id="notifications"></div>
-        <strong class="section-title">Останні теми:</strong>
-        <button class="day-btn random-btn" data-id="0">🎲 Випадкові 20 слів</button>
-        <?php foreach($recentDays as $index => $day): ?>
-            <button class="day-btn <?= ($index === 0 && $selectedDayId === $day['id']) ? 'selected-day' : '' ?>" 
-                    data-id="<?= $day['id'] ?>"><?= htmlspecialchars($day['title']) ?></button>
-        <?php endforeach; ?>
-        <button class="all-themes-btn" onclick="window.location='select_day.php'">🔍 Усі теми</button>
-    </div>
 
-    <div>
-        <strong class="section-title">Режим:</strong>
-        <div id="modeButtons">
-            <button class="mode-btn active" data-mode="normal">🌍 Звичайний</button>
-            <button class="mode-btn" data-mode="errors">❌ Повтор помилок</button>
-            <button class="mode-btn" data-mode="articles">🧱 Артиклі</button>
-            <button class="mode-btn" data-mode="voice">🎤 Вимова</button>
+        <!-- Меню выбора тем и режима -->
+        <div id="menu">
+
+            <div id="recentDays">
+                <div id="notifications"></div>
+                <strong class="section-title">Останні теми:</strong>
+                <button class="day-btn random-btn" data-id="0">🎲 Випадкові 20 слів</button>
+                <?php foreach ($recentDays as $index => $day): ?>
+                    <button class="day-btn <?= ($index === 0 && $selectedDayId === $day['id']) ? 'selected-day' : '' ?>"
+                        data-id="<?= $day['id'] ?>"><?= htmlspecialchars($day['title']) ?></button>
+                <?php endforeach; ?>
+                <button class="all-themes-btn" onclick="window.location='select_day.php'">🔍 Усі теми</button>
+            </div>
+
+            <div>
+                <strong class="section-title">Режим:</strong>
+                <div id="modeButtons">
+                    <button class="mode-btn active" data-mode="normal">🌍 Звичайний</button>
+                    <button class="mode-btn" data-mode="errors">❌ Повтор помилок</button>
+                    <button class="mode-btn" data-mode="articles">🧱 Артиклі</button>
+                    <button class="mode-btn" data-mode="voice">🎤 Вимова</button>
+                </div>
+            </div>
+
+            <button class="start-btn" onclick="startTest()">Почати тест</button>
         </div>
-    </div>
 
-    <button class="start-btn" onclick="startTest()">Почати тест</button>
-</div>
-
-<!-- Контейнер теста -->
-<div id="quizContainer" class="hidden">
-    <div class="question" id="question"></div>
-    <div class="options" id="options"></div>
-    <div class="controls">
-        <button class="next-btn" onclick="nextQuestion()">Далі</button>
-    </div>
-    <p id="progress"></p>
-</div>
-
-<!-- Результаты теста -->
-<div id="resultsContainer" class="hidden">
-    <div class="results-card">
-        <div class="results-icon">🎉</div>
-        <h2 class="results-title">Тест завершено!</h2>
-        <div class="results-score">
-            <span id="finalScore"></span>
+        <!-- Контейнер теста -->
+        <div id="quizContainer" class="hidden">
+            <div class="question" id="question"></div>
+            <div class="options" id="options"></div>
+            <div class="controls">
+                <button class="next-btn" onclick="nextQuestion()">Далі</button>
+            </div>
+            <p id="progress"></p>
         </div>
-        <div class="results-percentage" id="percentageText"></div>
-        <button class="results-btn" onclick="resetTest()">
-            🔄 Повернутись до тестів
-        </button>
-    </div>
-</div>
 
-    <nav class="bottom-nav">
-        <a href="../dashboard.php" class="nav-item">
-            <span>🏠</span>
-            Головна
-        </a>
-        <a href="../add_day.php" class="nav-item ">
-            <span>📘</span>
-            Теми
-        </a>
-        <a href="../dictionary.php" class="nav-item">
+        <!-- Результаты теста -->
+        <div id="resultsContainer" class="hidden">
+            <div class="results-card">
+                <div class="results-icon">🎉</div>
+                <h2 class="results-title">Тест завершено!</h2>
+                <div class="results-score">
+                    <span id="finalScore"></span>
+                </div>
+                <div class="results-percentage" id="percentageText"></div>
+                <button class="results-btn" onclick="resetTest()">
+                    🔄 Повернутись до тестів
+                </button>
+            </div>
+        </div>
+
+        <nav class="bottom-nav">
+            <a href="../dashboard.php" class="nav-item">
+                <span>🏠</span>
+                Головна
+            </a>
+            <a href="../add_day.php" class="nav-item ">
+                <span>📘</span>
+                Теми
+            </a>
+            <a href="../dictionary.php" class="nav-item">
                 <span>📚</span>
                 Словник
             </a>
-        <a href="practice.php" class="nav-item active">
-            <span>✏️</span>
-            Практика
-        </a>
-        <a href="../profile/" class="nav-item">
-            <span>👤</span>
-            Профиль
-        </a>
-    </nav>
+            <a href="practice.php" class="nav-item active">
+                <span>✏️</span>
+                Практика
+            </a>
+            <a href="../profile/" class="nav-item">
+                <span>👤</span>
+                Профиль
+            </a>
+        </nav>
 
-<script>
-// Передача данных из PHP в JavaScript
-window.phpData = {
-    allTranslations: <?= json_encode(array_values($allTranslations), JSON_UNESCAPED_UNICODE) ?>,
-    selectedDayId: <?= $selectedDayId ? $selectedDayId : '0' ?>
-};
-</script>
-<script src="/script/voice.js"></script>
-<script src="script/flashcard.js?v=1.0.1"></script>
+        <script>
+            // Передача данных из PHP в JavaScript
+            window.phpData = {
+                allTranslations: <?= json_encode(array_values($allTranslations), JSON_UNESCAPED_UNICODE) ?>,
+                selectedDayId: <?= $selectedDayId ? $selectedDayId : '0' ?>
+            };
+        </script>
+        <script src="/script/voice.js"></script>
+        <script src="script/flashcard.js?v=1.0.1"></script>
 
 </body>
+
 </html>

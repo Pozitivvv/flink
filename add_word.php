@@ -405,18 +405,20 @@ $app_version = getAppVersion($pdo);
                     <h2>Редагувати слово</h2>
                     <p>Змініть дані або додайте опис</p>
                 </div>
-                <form id="editForm">
+                <form id="editForm" autocomplete="off">
 
                     <input type="hidden" id="editId" name="edit_id">
 
                     <div class="form-group" style="margin-bottom: 12px;">
-                        <input type="text" id="editArticle" name="article" class="smart-input" placeholder="Артикль (der, die, das)">
+                        <input type="text" id="editArticle" name="article" class="smart-input" placeholder="Артикль (der, die, das)" autocomplete="nope">
                     </div>
+
                     <div class="form-group" style="margin-bottom: 12px;">
-                        <input type="text" id="editGerman" name="german" class="smart-input" placeholder="Слово" required>
+                        <input type="text" id="editGerman" name="german" class="smart-input" placeholder="Слово" required autocomplete="nope">
                     </div>
+
                     <div class="form-group" style="margin-bottom: 12px;">
-                        <input type="text" id="editTranslation" name="translation" class="smart-input" placeholder="Переклад" required>
+                        <input type="text" id="editTranslation" name="translation" class="smart-input" placeholder="Переклад" required autocomplete="nope">
                     </div>
 
                     <div class="form-group" style="margin-bottom: 12px;">
@@ -436,10 +438,10 @@ $app_version = getAppVersion($pdo);
                             <input type="hidden" name="type" id="editType" value="">
                         </div>
                     </div>
+
                     <div class="form-group" style="margin-bottom: 20px;">
                         <textarea id="editDescription" name="description" class="smart-input" placeholder="Додатковий опис або приклад використання..."></textarea>
                     </div>
-
 
                     <div class="modal-buttons">
                         <button type="button" class="modal-btn modal-btn-cancel" id="cancelEdit">Скасувати</button>
@@ -471,7 +473,7 @@ $app_version = getAppVersion($pdo);
                 </div>
             </div>
         </div>
-
+        <script src="script/smart-past.js"></script>
         <script src="script/add-word.js"></script>
 
 </body>
