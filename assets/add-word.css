@@ -962,3 +962,9 @@ td.translation-cell {
     max-width: 220px;
   }
 }
+.modal form {
+  background: transparent;
+  padding: 0;
+  border: none;
+  margin: 0;
+}

@@ -190,7 +190,7 @@ $app_version = getAppVersion($pdo);
 
         <div id="message-container"></div>
 
-        <form id="addWordForm">
+        <form id="addWordForm" autocomplete="off">
             <label>Оберіть тему:</label>
             <div class="custom-select-wrapper">
                 <div class="custom-select-trigger">
@@ -210,10 +210,10 @@ $app_version = getAppVersion($pdo);
                 <input type="hidden" name="day_id" value="<?= htmlspecialchars((string)($day_id ?? '')) ?>">
             </div>
 
-            <input type="text" maxlength="10" name="article" class="smart-input" placeholder="Артикль (der / die / das)">
+            <input type="text" maxlength="10" name="article" class="smart-input" placeholder="Артикль (der / die / das)" autocomplete="new-password" autocorrect="off" autocapitalize="off" spellcheck="false">
 
             <div class="input-wrapper">
-                <input type="text" maxlength="50" name="german" class="smart-input" placeholder="Німецьке слово" required>
+                <input type="text" maxlength="50" name="german" class="smart-input" placeholder="Німецьке слово" required autocomplete="new-password" autocorrect="off" autocapitalize="off" spellcheck="false">
                 <button type="button" id="quickPasteBtn" class="quick-paste-btn" title="Вставити з буфера">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                         <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path>
@@ -222,7 +222,7 @@ $app_version = getAppVersion($pdo);
                 </button>
             </div>
 
-            <input type="text" maxlength="100" name="translation" class="smart-input" placeholder="Переклад" required>
+            <input type="text" maxlength="100" name="translation" class="smart-input" placeholder="Переклад" required autocomplete="new-password" autocorrect="off" spellcheck="false">
 
             <button type="button" class="advanced-toggle" id="advancedToggleBtn">
                 <span>Додати тип та опис (необов'язково)</span>
@@ -234,7 +234,7 @@ $app_version = getAppVersion($pdo);
             <div class="advanced-content" id="advancedContent">
                 <div class="advanced-inner">
                     <div style="position: relative; margin-bottom: 12px;">
-                        <textarea name="description" id="wordDescription" class="smart-input" maxlength="500" placeholder="Опис, контекст або приклад використання..."></textarea>
+                        <textarea name="description" id="wordDescription" class="smart-input" maxlength="500" placeholder="Опис, контекст або приклад використання..." autocomplete="off" spellcheck="false"></textarea>
                         <span id="charCount" style="position: absolute; bottom: 12px; right: 12px; font-size: 12px; color: #6b6b6b; pointer-events: none;">0 / 500</span>
                     </div>
 
@@ -410,15 +410,15 @@ $app_version = getAppVersion($pdo);
                     <input type="hidden" id="editId" name="edit_id">
 
                     <div class="form-group" style="margin-bottom: 12px;">
-                        <input type="text" id="editArticle" name="article" class="smart-input" placeholder="Артикль (der, die, das)" autocomplete="nope">
+                        <input type="text" id="editArticle" name="article" class="smart-input" placeholder="Артикль (der, die, das)" autocomplete="new-password" autocorrect="off" autocapitalize="off" spellcheck="false">
                     </div>
 
                     <div class="form-group" style="margin-bottom: 12px;">
-                        <input type="text" id="editGerman" name="german" class="smart-input" placeholder="Слово" required autocomplete="nope">
+                        <input type="text" id="editGerman" name="german" class="smart-input" placeholder="Слово" required autocomplete="new-password" autocorrect="off" autocapitalize="off" spellcheck="false">
                     </div>
 
                     <div class="form-group" style="margin-bottom: 12px;">
-                        <input type="text" id="editTranslation" name="translation" class="smart-input" placeholder="Переклад" required autocomplete="nope">
+                        <input type="text" id="editTranslation" name="translation" class="smart-input" placeholder="Переклад" required autocomplete="new-password" autocorrect="off" spellcheck="false">
                     </div>
 
                     <div class="form-group" style="margin-bottom: 12px;">
@@ -440,7 +440,7 @@ $app_version = getAppVersion($pdo);
                     </div>
 
                     <div class="form-group" style="margin-bottom: 20px;">
-                        <textarea id="editDescription" name="description" class="smart-input" placeholder="Додатковий опис або приклад використання..."></textarea>
+                        <textarea id="editDescription" name="description" class="smart-input" placeholder="Додатковий опис або приклад використання..." autocomplete="off" spellcheck="false"></textarea>
                     </div>
 
                     <div class="modal-buttons">
