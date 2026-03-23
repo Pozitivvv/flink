@@ -259,7 +259,7 @@ if (!$t) {
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,700;1,9..40,400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="assets/main-page.css">
+    <link rel="stylesheet" href="assets/main-page.css?v=0.0.1">
     <script>
         (function() {
             var t = localStorage.getItem('wortly-theme');
@@ -294,8 +294,29 @@ if (!$t) {
                     <?php endif; ?>
                 </nav>
             </div>
+
+            <!-- Mobile burger (< 450px only) -->
+            <button class="burger-btn" id="burgerBtn" aria-label="Menu" aria-expanded="false">
+                <span></span><span></span><span></span>
+            </button>
         </div>
     </header>
+
+    <!-- Mobile drawer -->
+    <div class="mobile-drawer" id="mobileDrawer" aria-hidden="true">
+        <div class="lang-sw" role="group" aria-label="Language">
+            <?php foreach (['uk' => 'UA', 'de' => 'DE', 'en' => 'GB'] as $code => $lbl): ?>
+                <a href="?lang=<?= $code ?>" class="lbtn <?= $lang === $code ? 'on' : '' ?>"><?= $lbl ?></a>
+            <?php endforeach; ?>
+        </div>
+        <?php if ($is_logged_in): ?>
+            <a href="dashboard.php" class="nbtn ghost"><?= htmlspecialchars($t['nav_back']) ?></a>
+            <button onclick="openLogout(); closeDrawer()" class="nbtn red"><?= htmlspecialchars($t['nav_logout']) ?></button>
+        <?php else: ?>
+            <a href="login.php" class="nbtn ghost"><?= htmlspecialchars($t['nav_login']) ?></a>
+            <a href="register.php" class="nbtn gold"><?= htmlspecialchars($t['nav_start']) ?></a>
+        <?php endif; ?>
+    </div>
 
     <section class="hero">
         <div class="hero-paper-lines" aria-hidden="true"></div>
@@ -536,6 +557,32 @@ if (!$t) {
         });
         document.addEventListener('keydown', e => {
             if (e.key === 'Escape') closeLogout();
+        });
+
+        /* ── BURGER MENU ───────────────────────── */
+        const burgerBtn = document.getElementById('burgerBtn');
+        const mobileDrawer = document.getElementById('mobileDrawer');
+
+        function closeDrawer() {
+            burgerBtn.classList.remove('open');
+            mobileDrawer.classList.remove('open');
+            burgerBtn.setAttribute('aria-expanded', 'false');
+            mobileDrawer.setAttribute('aria-hidden', 'true');
+        }
+
+        burgerBtn && burgerBtn.addEventListener('click', () => {
+            const isOpen = mobileDrawer.classList.toggle('open');
+            burgerBtn.classList.toggle('open', isOpen);
+            burgerBtn.setAttribute('aria-expanded', String(isOpen));
+            mobileDrawer.setAttribute('aria-hidden', String(!isOpen));
+        });
+
+        // Close drawer on outside click
+        document.addEventListener('click', e => {
+            if (mobileDrawer && mobileDrawer.classList.contains('open') &&
+                !mobileDrawer.contains(e.target) && !burgerBtn.contains(e.target)) {
+                closeDrawer();
+            }
         });
 
         /* ── HEADER SHADOW ─────────────────────── */

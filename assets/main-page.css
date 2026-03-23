@@ -1176,3 +1176,118 @@ footer {
     transform: none;
   }
 }
+
+/* ── MOBILE < 450px ───────────────────────── */
+@media (max-width: 449px) {
+  /* Hide desktop nav & lang switcher */
+  .hdr-right {
+    display: none;
+  }
+
+  /* Burger button */
+  .burger-btn {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    width: 36px;
+    height: 36px;
+    padding: 6px;
+    background: var(--blue-dim);
+    border: 1px solid var(--blue-border);
+    border-radius: var(--r-sm);
+    cursor: pointer;
+    flex-shrink: 0;
+    transition: background 0.2s;
+  }
+  .burger-btn span {
+    display: block;
+    height: 1.5px;
+    background: var(--blue-light);
+    border-radius: 2px;
+    transition:
+      transform 0.25s,
+      opacity 0.25s;
+  }
+  .burger-btn.open span:nth-child(1) {
+    transform: translateY(6.5px) rotate(45deg);
+  }
+  .burger-btn.open span:nth-child(2) {
+    opacity: 0;
+  }
+  .burger-btn.open span:nth-child(3) {
+    transform: translateY(-6.5px) rotate(-45deg);
+  }
+
+  /* Mobile drawer */
+  .mobile-drawer {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: 56px;
+    left: 0;
+    right: 0;
+    background: color-mix(in srgb, var(--ink-2) 97%, transparent);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--blue-border);
+    padding: 16px;
+    gap: 10px;
+    z-index: 299;
+    transform: translateY(-110%);
+    opacity: 0;
+    transition:
+      transform 0.3s cubic-bezier(0.22, 1, 0.36, 1),
+      opacity 0.3s;
+    pointer-events: none;
+  }
+  .mobile-drawer.open {
+    transform: translateY(0);
+    opacity: 1;
+    pointer-events: all;
+  }
+  .mobile-drawer .nbtn {
+    width: 100%;
+    justify-content: center;
+    padding: 11px 16px;
+    font-size: 14px;
+  }
+  .mobile-drawer .lang-sw {
+    display: flex;
+    justify-content: center;
+    gap: 6px;
+    padding-top: 4px;
+    border-top: 1px solid var(--border);
+  }
+  .mobile-drawer .lbtn {
+    padding: 6px 12px;
+    font-size: 11px;
+  }
+
+  /* Footer mobile */
+  footer {
+    padding: 16px;
+    padding-bottom: max(20px, calc(16px + env(safe-area-inset-bottom)));
+  }
+  .footer-inner {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    text-align: center;
+  }
+  .footer-links {
+    gap: 12px;
+    justify-content: center;
+  }
+  .footer-links a {
+    font-size: 12px;
+  }
+}
+
+/* Burger always hidden on wider screens */
+@media (min-width: 450px) {
+  .burger-btn,
+  .mobile-drawer {
+    display: none !important;
+  }
+}
