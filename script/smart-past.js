@@ -362,6 +362,80 @@ function parseSingleLine(text) {
     }
   }
 
+  // --- СЦЕНАРІЙ 5: слово+переводСлиплись + пример ---
+  // Формат: arbeitenработатьIch arbeite heute. (Я сегодня работаю)
+  // Разрезаем по границе: латиница → кириллица → латиница (заглавная)
+  {
+    // Вариант с примером: немецкоеСловоПереводIch arbeite heute. (Я работаю)
+    const glued = clean.match(/^([A-Za-zÀ-ɏ]+)([Ѐ-ӿ]+)([A-ZÀ-ɏ].*)$/);
+    if (glued) {
+      word = glued[1].trim();
+      translation = glued[2].trim();
+      description = glued[3].trim();
+      return {
+        article: article.substring(0, 10),
+        word: stripQuotes(word.substring(0, 100)),
+        translation: stripQuotes(translation.substring(0, 200)),
+        description: description.substring(0, 500),
+      };
+    }
+    // Вариант без примера: arbeitenработать (только латиница+кириллица, без пробелов)
+    const gluedSimple = clean.match(/^([A-Za-zÀ-ɏ]+)([Ѐ-ӿ]+)$/);
+    if (gluedSimple) {
+      word = gluedSimple[1].trim();
+      translation = gluedSimple[2].trim();
+      return {
+        article: article.substring(0, 10),
+        word: stripQuotes(word.substring(0, 100)),
+        translation: stripQuotes(translation.substring(0, 200)),
+        description: description.substring(0, 500),
+      };
+    }
+  }
+
+  // --- СЦЕНАРІЙ 6: слово (перевод в скобках) — пример (перевод примера) ---
+  // Формат: prüfen (проверять) — Ich prüfe das. (Я проверяю это)
+  {
+    const sc6 = clean.match(
+      /^([A-Za-zÄÖÜäöüß]+)\s*\(([^)]+)\)\s*[-—–]\s*(.+)$/,
+    );
+    if (sc6) {
+      word = sc6[1].trim();
+      translation = sc6[2].trim();
+      // Пример — всё, что после тире; может содержать (перевод)
+      description = sc6[3].trim();
+      return {
+        article: article.substring(0, 10),
+        word: stripQuotes(word.substring(0, 100)),
+        translation: stripQuotes(translation.substring(0, 200)),
+        description: description.substring(0, 500),
+      };
+    }
+  }
+
+  // --- СЦЕНАРІЙ 7: слово (кириллический перевод) без тире ---
+  // Формат: sehen (видеть)  |  der Baum (дерево)
+  // Отличие от сценария 6: нет тире после скобки
+  {
+    const sc7 = clean.match(
+      /^(?:(der|die|das)\s+)?([A-Za-zÄÖÜäöüß]+)\s+\(([Ѐ-ӿ][^)]*)\)\s*(.*)$/i,
+    );
+    if (sc7) {
+      article = (sc7[1] || "").trim();
+      word = sc7[2].trim();
+      translation = sc7[3].trim();
+      const rest = sc7[4].trim();
+      if (rest && !description) description = rest;
+
+      return {
+        article: article.substring(0, 10),
+        word: stripQuotes(word.substring(0, 100)),
+        translation: stripQuotes(translation.substring(0, 200)),
+        description: description.substring(0, 500),
+      };
+    }
+  }
+
   // --- СЦЕНАРІЙ 3: Пример в скобках (Das X ist Y — Перевод) ---
   // Извлекаем ДО разбора остального, чтобы пример не мешал парсингу слова
   {
