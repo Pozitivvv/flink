@@ -10,11 +10,8 @@ const spClose = document.getElementById("smartPasteClose");
 const quickPasteBtn = document.getElementById("quickPasteBtn");
 
 let pendingPaste = null;
-
-// Очередь для многострочной вставки
 let pasteQueue = [];
 
-// Динамічно створюємо елемент для показу опису в модальному вікні
 let spDescText = document.getElementById("sp-desc-text");
 if (!spDescText && spOverlay) {
   const contentBox = spOverlay.querySelector(".sp-content-box");
@@ -27,7 +24,6 @@ if (!spDescText && spOverlay) {
   }
 }
 
-// Индикатор очереди (показывает "ещё N слов в очереди")
 let spQueueText = document.getElementById("sp-queue-text");
 if (!spQueueText && spOverlay) {
   const contentBox = spOverlay.querySelector(".sp-content-box");
@@ -40,9 +36,6 @@ if (!spQueueText && spOverlay) {
   }
 }
 
-// =============================================================================
-// AUTOCOMPLETE OFF — убираем браузерные подсказки на всех полях формы
-// =============================================================================
 document
   .querySelectorAll(
     'input[name="article"], input[name="german"], input[name="translation"], textarea[name="description"]',
@@ -54,12 +47,6 @@ document
     el.setAttribute("spellcheck", "false");
   });
 
-// =============================================================================
-// СЦЕНАРІЙ 4: Умляуты — панель кнопок
-// Появляется НАД полем при фокусе на german/article/description
-// Скрывается при blur и при открытии модалки вставки
-// =============================================================================
-
 const UMLAUT_MAP = [
   { label: "ä", value: "ä" },
   { label: "ö", value: "ö" },
@@ -70,7 +57,6 @@ const UMLAUT_MAP = [
   { label: "ß", value: "ß" },
 ];
 
-// Одна плавающая панель на всю страницу
 const umlautBar = document.createElement("div");
 umlautBar.id = "umlaut-bar";
 umlautBar.style.cssText = `
@@ -86,7 +72,6 @@ umlautBar.style.cssText = `
   align-items: center;
 `;
 
-// Иконка-метка
 const umlautLabel = document.createElement("span");
 umlautLabel.textContent = "Ä";
 umlautLabel.style.cssText =
@@ -113,7 +98,6 @@ UMLAUT_MAP.forEach(({ label, value }) => {
   btn.addEventListener("mouseleave", () => (btn.style.background = "#2d2d44"));
 
   btn.addEventListener("mousedown", (e) => {
-    // preventDefault — не снимаем фокус с поля
     e.preventDefault();
     const target = document.activeElement;
     if (
@@ -134,18 +118,9 @@ UMLAUT_MAP.forEach(({ label, value }) => {
 
 document.body.appendChild(umlautBar);
 
-/**
- * Показывает панель НАД полем.
- * Позиционируем по top = rect.top - высота панели - отступ.
- * Так панель не перекрывает поле и не мешает набору.
- */
 function showUmlautBar(inputEl) {
-  // Скрываем, если модалка вставки открыта
   if (spOverlay && spOverlay.classList.contains("active")) return;
-
   umlautBar.style.display = "flex";
-
-  // Сначала показываем, чтобы получить реальную высоту панели
   requestAnimationFrame(() => {
     const rect = inputEl.getBoundingClientRect();
     const barH = umlautBar.offsetHeight || 34;
@@ -159,12 +134,8 @@ function hideUmlautBar() {
   umlautBar.style.display = "none";
 }
 
-// =============================================================================
-// Утилита: убрать кавычки вокруг слова/фразы — СЦЕНАРІЙ 1
-// =============================================================================
 function stripQuotes(str) {
   if (!str) return str;
-  // Убираем парные: "слово", 'слово', «слово», „слово", "слово"
   return str
     .trim()
     .replace(/^["'«„""](.+)["'»""]$/, "$1")
@@ -172,20 +143,13 @@ function stripQuotes(str) {
     .trim();
 }
 
-// =============================================================================
-// Утилита: извлечь транскрипцию [райф] из строки — СЦЕНАРІЙ 2
-// Возвращает { clean, transcription }
-// =============================================================================
 function extractTranscription(str) {
   let transcription = "";
-  // Ищем [...] или (кириллица...) — транскрипции обычно в квадратных скобках
-  // Паттерн: блок в [] содержащий кириллические символы или спецзнаки транскрипции
   const transcRe = /\[([^\]]+)\]/g;
   let match;
   const results = [];
   while ((match = transcRe.exec(str)) !== null) {
     const inner = match[1].trim();
-    // Считаем транскрипцией, если содержит кириллицу, дефис, апостроф или спецсимволы МФА
     if (/[а-яёА-ЯЁ'\-ˈˌ]/.test(inner)) {
       results.push({ full: match[0], inner });
     }
@@ -202,21 +166,13 @@ function extractTranscription(str) {
   return { clean, transcription };
 }
 
-// =============================================================================
-// Утилита: извлечь пример в скобках с переводом — СЦЕНАРІЙ 3
-// Формат: (Das Haus ist groß — Дом большой) или (Das Haus — Дом)
-// Возвращает { clean, example }
-// =============================================================================
 function extractExample(str) {
   let example = "";
-  // Ищем круглые скобки, содержащие тире/дефис (признак примера с переводом)
-  // Пример должен содержать букву с заглавной (начало предложения)
   const exampleRe = /\(([^)]{10,})\)/g;
   let match;
   let found = null;
   while ((match = exampleRe.exec(str)) !== null) {
     const inner = match[1].trim();
-    // Признак примера: содержит разделитель (тире или —) и заглавную букву
     if (/[-—–]/.test(inner) && /[A-ZА-ЯЁ]/.test(inner)) {
       found = { full: match[0], inner };
       break;
@@ -246,9 +202,6 @@ function applyNormalPaste() {
   }
 }
 
-/**
- * Заполняет форму из объекта { article, word, translation, description }
- */
 function fillFormFromParsed(parsed) {
   document.querySelector('input[name="article"]').value = parsed.article || "";
   document.querySelector('input[name="german"]').value = parsed.word || "";
@@ -268,9 +221,6 @@ function fillFormFromParsed(parsed) {
   }
 }
 
-/**
- * Показывает следующий элемент очереди в модалке, если очередь не пуста.
- */
 function showNextFromQueue(targetInput) {
   if (pasteQueue.length === 0) return;
   const next = pasteQueue.shift();
@@ -334,9 +284,7 @@ function parseSingleLine(text) {
           description: (obj.description || "").substring(0, 500),
         };
       }
-    } catch (e) {
-      // не JSON — продовжуємо
-    }
+    } catch (e) {}
   }
 
   // --- СЦЕНАРІЙ: Anki (крапка з комою) ---
@@ -362,34 +310,104 @@ function parseSingleLine(text) {
     }
   }
 
-  // --- СЦЕНАРІЙ 5: слово+переводСлиплись + пример ---
-  // Формат: arbeitenработатьIch arbeite heute. (Я сегодня работаю)
-  // Разрезаем по границе: латиница → кириллица → латиница (заглавная)
+  // --- СЦЕНАРІЙ 5: слово+перевод слиплись ---
+  // Поддерживаемые форматы:
+  //   arbeitenработать
+  //   arbeitenработатьIch arbeite heute. (Я сегодня работаю)
+  //   ÜberweisenПереводить (деньги)Ich überweise die Miete. (Я перевожу арендную плату)
+  //   ÜbermorgenПослезавтраWir treffen uns übermorgen. (Мы встретимся послезавтра)
+  //   Die PrüfungПроверка / КонтрольDie Prüfung der Rechnung dauert kurz. (Проверка счета)
   {
-    // Вариант с примером: немецкоеСловоПереводIch arbeite heute. (Я работаю)
-    const glued = clean.match(/^([A-Za-zÀ-ɏ]+)([Ѐ-ӿ]+)([A-ZÀ-ɏ].*)$/);
-    if (glued) {
-      word = glued[1].trim();
-      translation = glued[2].trim();
-      description = glued[3].trim();
-      return {
-        article: article.substring(0, 10),
-        word: stripQuotes(word.substring(0, 100)),
-        translation: stripQuotes(translation.substring(0, 200)),
-        description: description.substring(0, 500),
-      };
+    // Сначала пробуем вычленить артикль в начале (слиплось с заглавной буквы)
+    // Формат: DerBaum... / DasBonbon... / DiePrüfung...
+    // Только если сразу после артикля идёт заглавная латиница (начало слова)
+    const articleGluedRe =
+      /^(Der|Die|Das)\s*([A-ZÄÖÜ][A-Za-zÄÖÜäöüß]*)([\s\S]*)$/;
+    const agMatch = clean.match(articleGluedRe);
+    if (agMatch) {
+      article = agMatch[1].toLowerCase(); // der/die/das
+      clean = agMatch[2] + agMatch[3];
     }
-    // Вариант без примера: arbeitenработать (только латиница+кириллица, без пробелов)
-    const gluedSimple = clean.match(/^([A-Za-zÀ-ɏ]+)([Ѐ-ӿ]+)$/);
-    if (gluedSimple) {
-      word = gluedSimple[1].trim();
-      translation = gluedSimple[2].trim();
-      return {
-        article: article.substring(0, 10),
-        word: stripQuotes(word.substring(0, 100)),
-        translation: stripQuotes(translation.substring(0, 200)),
-        description: description.substring(0, 500),
-      };
+
+    // Шаг 1: вычленяем латинское слово (до первой кириллицы)
+    const latinWordRe = /^([A-Za-zÀ-ɏÄÖÜäöüß]+)([\s\S]*)$/;
+    const lwMatch = clean.match(latinWordRe);
+    if (lwMatch) {
+      const candidateWord = lwMatch[1];
+      const rest = lwMatch[2];
+
+      // Шаг 2: rest должен начинаться с кириллицы
+      if (/^[Ѐ-ӿА-Яа-яёЁ]/.test(rest)) {
+        // Шаг 3: вычленяем кириллический перевод до начала примера.
+        // Идём посимвольно, считаем глубину скобок.
+        // Как только встречаем заглавную латиницу вне скобок после
+        // хотя бы одного кирилл. символа — это начало примера.
+        let translationRaw = "";
+        let exampleRaw = "";
+        let depth = 0;
+        let cyrillicSeen = false;
+        let i = 0;
+
+        while (i < rest.length) {
+          const ch = rest[i];
+          if (ch === "(" || ch === "[") depth++;
+          else if (ch === ")" || ch === "]") {
+            depth--;
+            if (depth < 0) depth = 0;
+          }
+
+          if (/[Ѐ-ӿА-Яа-яёЁ]/.test(ch)) cyrillicSeen = true;
+
+          // Граница: заглавная латиница вне скобок после хотя бы одного кирилл. символа
+          // Предыдущий символ: пробел/тире/слэш, закрывающая скобка,
+          // или прямой переход кириллица→латиница (без пробела)
+          const prevCh = rest[i - 1] || "";
+          const prevIsBoundary =
+            /[\s\-—–\/\)\]]/.test(prevCh) || /[Ѐ-ӿА-Яа-яёЁ]/.test(prevCh);
+          if (
+            depth === 0 &&
+            cyrillicSeen &&
+            /[A-ZÄÖÜ]/.test(ch) &&
+            i > 0 &&
+            prevIsBoundary
+          ) {
+            exampleRaw = rest.slice(i).trim();
+            break;
+          }
+
+          translationRaw += ch;
+          i++;
+        }
+
+        if (!exampleRaw) translationRaw = rest;
+        translationRaw = translationRaw.trim();
+        exampleRaw = exampleRaw.trim();
+
+        if (translationRaw && /[Ѐ-ӿА-Яа-яёЁ]/.test(translationRaw)) {
+          word = candidateWord;
+          translation = translationRaw;
+          if (exampleRaw && !description) description = exampleRaw;
+
+          return {
+            article: article.substring(0, 10),
+            word: stripQuotes(word.substring(0, 100)),
+            translation: stripQuotes(translation.substring(0, 200)),
+            description: description.substring(0, 500),
+          };
+        }
+      }
+    }
+
+    // Если артикль был извлечён но слово не смогли разобрать — сбрасываем clean
+    if (article) {
+      const agMatchOrig = text
+        .replace(/^\d+[\.\)]\s*/, "")
+        .trim()
+        .match(articleGluedRe);
+      if (agMatchOrig) {
+        clean = text.replace(/^\d+[\.\)]\s*/, "").trim();
+        article = "";
+      }
     }
   }
 
@@ -402,7 +420,6 @@ function parseSingleLine(text) {
     if (sc6) {
       word = sc6[1].trim();
       translation = sc6[2].trim();
-      // Пример — всё, что после тире; может содержать (перевод)
       description = sc6[3].trim();
       return {
         article: article.substring(0, 10),
@@ -415,10 +432,9 @@ function parseSingleLine(text) {
 
   // --- СЦЕНАРІЙ 7: слово (кириллический перевод) без тире ---
   // Формат: sehen (видеть)  |  der Baum (дерево)
-  // Отличие от сценария 6: нет тире после скобки
   {
     const sc7 = clean.match(
-      /^(?:(der|die|das)\s+)?([A-Za-zÄÖÜäöüß]+)\s+\(([Ѐ-ӿ][^)]*)\)\s*(.*)$/i,
+      /^(?:(der|die|das)\s+)?([A-Za-zÄÖÜäöüß]+)\s+\(([Ѐ-ӿА-Яа-яёЁ][^)]*)\)\s*(.*)$/i,
     );
     if (sc7) {
       article = (sc7[1] || "").trim();
@@ -436,8 +452,24 @@ function parseSingleLine(text) {
     }
   }
 
+  // --- СЦЕНАРІЙ 2б: только артикль + слово (без перевода) ---
+  // Формат: "das Bonbon", "der Baum", "die Katze"
+  // Срабатывает ТОЛЬКО если строка = ровно артикль + одно слово с заглавной
+  // (защита от ложных срабатываний на обычные фразы)
+  {
+    const articleOnlyRe = /^(der|die|das)\s+([A-ZÄÖÜ][A-Za-zÄÖÜäöüß]+)$/i;
+    const aoMatch = clean.match(articleOnlyRe);
+    if (aoMatch) {
+      return {
+        article: aoMatch[1].toLowerCase().substring(0, 10),
+        word: aoMatch[2].substring(0, 100),
+        translation: "",
+        description: "",
+      };
+    }
+  }
+
   // --- СЦЕНАРІЙ 3: Пример в скобках (Das X ist Y — Перевод) ---
-  // Извлекаем ДО разбора остального, чтобы пример не мешал парсингу слова
   {
     const exResult = extractExample(clean);
     if (exResult.example) {
@@ -456,11 +488,9 @@ function parseSingleLine(text) {
   }
 
   // --- СЦЕНАРІЙ 2: Транскрипция [райф] ---
-  // Извлекаем из всей строки перед делением на слово/перевод
   {
     const transResult = extractTranscription(clean);
     if (transResult.transcription) {
-      // Транскрипция идёт в description (если description пустой, иначе добавляем)
       if (!description) {
         description = transResult.transcription;
       } else {
@@ -470,7 +500,7 @@ function parseSingleLine(text) {
     }
   }
 
-  // 2. Витягуємо опис з дужок () або [] (те, що залишилось після СЦЕНАРІЮ 3)
+  // 2. Витягуємо опис з дужок () або []
   clean = clean.replace(/[\(\[]([^)\]]+)[\)\]]/g, (match, p1) => {
     const inner = p1.trim().toLowerCase();
     if (!article && /^(der|die|das|a|an|the)$/i.test(inner)) {
@@ -496,7 +526,6 @@ function parseSingleLine(text) {
         description = parts.slice(2).join(" ");
     }
   } else {
-    // Ділимо по тире, дорівнює, двокрапці, вертикальній рисці
     const parts = clean
       .split(/(?:\s+[-—–=]+\s+)|(?:\s*[:|]\s*)/)
       .filter((p) => p.trim());
@@ -512,7 +541,7 @@ function parseSingleLine(text) {
 
   if (!word || !translation) return null;
 
-  // Відокремлення артикля від слова (якщо ще не знайдено)
+  // Відокремлення артикля від слова
   if (!article) {
     const articleMatch = word.match(/^(der|die|das|a|an|the)\s+(.+)$/i);
     if (articleMatch) {
@@ -534,7 +563,6 @@ function parseSingleLine(text) {
 }
 
 function handleSmartPaste(pasteText, targetInput, originalEvent = null) {
-  // Ігноруємо textarea (опис)
   if (
     targetInput.tagName.toLowerCase() === "textarea" ||
     targetInput.name === "description"
@@ -554,7 +582,6 @@ function handleSmartPaste(pasteText, targetInput, originalEvent = null) {
     return false;
   }
 
-  // --- СЦЕНАРІЙ: багаторядкова вставка ---
   const lines = pasteText
     .split(/\r?\n/)
     .map((l) => l.trim())
@@ -588,7 +615,6 @@ function handleSmartPaste(pasteText, targetInput, originalEvent = null) {
     return true;
   }
 
-  // --- Однорядкова вставка ---
   const parsed = parseSingleLine(pasteText);
 
   if (!parsed) {
@@ -630,14 +656,12 @@ smartInputs.forEach((input) => {
     handleSmartPaste(pasteText, this, e);
   });
 
-  // --- СЦЕНАРІЙ 4: Умляуты — панель кнопок (german і article) ---
   if (input.name === "german" || input.name === "article") {
     input.addEventListener("focus", () => showUmlautBar(input));
     input.addEventListener("blur", () => setTimeout(hideUmlautBar, 150));
   }
 });
 
-// Умляуты для textarea[name="description"] — панель над полем
 const descTextarea = document.querySelector('textarea[name="description"]');
 if (descTextarea) {
   descTextarea.addEventListener("focus", () => showUmlautBar(descTextarea));
@@ -700,3 +724,73 @@ if (spOverlay) {
     }
   });
 }
+
+// =============================================================================
+// АВТОСКОБКИ — вставка парных символов как в VSCode
+// Работает для полей: german, article, translation, description
+// =============================================================================
+const AUTO_PAIRS = {
+  "(": ")",
+  "[": "]",
+  '"': '"',
+  "'": "'",
+};
+
+const autoParenFields = document.querySelectorAll(
+  'input[name="article"], input[name="german"], input[name="translation"], textarea[name="description"]',
+);
+
+autoParenFields.forEach((el) => {
+  el.addEventListener("keydown", function (e) {
+    const open = e.key;
+    const close = AUTO_PAIRS[open];
+    if (!close) return;
+
+    const start = this.selectionStart;
+    const end = this.selectionEnd;
+    const value = this.value;
+    const selected = value.slice(start, end);
+
+    // Если есть выделение — оборачиваем его в скобки
+    if (selected.length > 0) {
+      e.preventDefault();
+      const newValue =
+        value.slice(0, start) + open + selected + close + value.slice(end);
+      this.value = newValue;
+      this.setSelectionRange(start + 1, end + 1);
+      this.dispatchEvent(new Event("input"));
+      return;
+    }
+
+    // Курсор перед закрывающей скобкой — пропрыгиваем через неё
+    if (value[start] === close) {
+      e.preventDefault();
+      this.setSelectionRange(start + 1, start + 1);
+      return;
+    }
+
+    // Вставляем пару, курсор между ними
+    e.preventDefault();
+    const newValue = value.slice(0, start) + open + close + value.slice(end);
+    this.value = newValue;
+    this.setSelectionRange(start + 1, start + 1);
+    this.dispatchEvent(new Event("input"));
+  });
+
+  // Backspace: если слева открывающая и справа закрывающая — удаляем оба
+  el.addEventListener("keydown", function (e) {
+    if (e.key !== "Backspace") return;
+    const start = this.selectionStart;
+    const end = this.selectionEnd;
+    if (start !== end) return;
+    const value = this.value;
+    const left = value[start - 1];
+    const right = value[start];
+    if (left && right && AUTO_PAIRS[left] === right) {
+      e.preventDefault();
+      this.value = value.slice(0, start - 1) + value.slice(start + 1);
+      this.setSelectionRange(start - 1, start - 1);
+      this.dispatchEvent(new Event("input"));
+    }
+  });
+});
